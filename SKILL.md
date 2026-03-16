@@ -1,6 +1,6 @@
 ---
 name: fpf-simple
-description: "First Principles Framework (FPF) — transdisciplinary reasoning architecture that accelerates rigorous thinking for systems engineering, knowledge coordination, and mixed human/AI teams. Use when the user mentions FPF, first principles framework, bounded contexts, holonic decomposition, SoTA packs, concept unification, assurance calculus, trust scores, epistemic scoring, or FPF Parts A-K. Not for general philosophy or Agile unrelated to FPF."
+description: "First Principles Framework (FPF) — thinking amplifier. Use when user wants to think through a complex problem, architect a system, evaluate alternatives, decompose complexity, or plan rigorously. Also triggers on: FPF, bounded contexts, SoTA packs, assurance calculus, FPF Parts A-K. Not for simple task planning, general philosophy, or Agile unrelated to FPF."
 license: MIT
 ---
 
