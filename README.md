@@ -52,14 +52,28 @@ The agent reads `_index.md` first, picks the right sub-section file, and loads o
 | 19 | Part J — Indexes | 0 |
 | 20 | Part K — Lexical Debt | 2 |
 
-## Regenerating sections
+## Updating after FPF spec changes
 
-If the upstream FPF spec changes, pull the submodule and re-run the splitter:
+When the upstream FPF specification changes, two things need updating:
+
+### 1. Regenerate section files
+
+Pull the submodule and re-run the splitter to rebuild the `sections/` hierarchy:
 
 ```bash
 git submodule update --remote
 python3 scripts/split_spec.py
 ```
+
+### 2. Update SKILL.md navigation
+
+The section files are raw content — `SKILL.md` is the navigation layer on top.
+After regenerating, review whether the thinking-verb router, use cases, or Section INDEX
+in `SKILL.md` need updating to reflect new, changed, or removed content.
+
+See **[FPF-SKILL-UPDATE-GUIDE.md](FPF-SKILL-UPDATE-GUIDE.md)** for the full
+methodology: what to check, how to validate router entries, and how to run an FPF self-audit
+on the skill file itself.
 
 ## Credits
 
