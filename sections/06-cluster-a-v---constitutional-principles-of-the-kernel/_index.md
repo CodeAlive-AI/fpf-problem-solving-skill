@@ -15,7 +15,7 @@
 - [A.15.1 - U.Work](10-a-15-1---u-work.md) (368 lines) — After we have agreed who is assigned (via Role assignment), what they can do (via Capability), and how in principle it should be done (via Method/MethodDescription), we still need a precise concept...
 - [A.15.2 - U.WorkPlan](11-a-15-2---u-workplan.md) (159 lines) — Operations live on time. Even with perfect roles, abilities, and methods, nothing ships unless we decide when and by whom concrete runs should happen, under what constraints and budgets. Teams need a...
 - [A.15.3 - SlotFillingsPlanItem](12-a-15-3---slotfillingsplanitem.md) (406 lines) — Tech-name: SlotFillingsPlanItem
-- [A.16 - Language-State Transduction Coordination](13-a-16---language-state-transduction-coordination.md) (310 lines) — Type: Architectural (A)
+- [A.16 - Language-State Transduction Coordination](13-a-16---language-state-transduction-coordination.md) (341 lines) — Type: Architectural (A)
 - [A.16.0 - U.LanguageStateTransductionTrajectory - Optional trajectory-account normal form over the language-state U.CharacteristicSpace](14-a-16-0---u-languagestatetransductiontrajectory---optional-tr.md) (244 lines) — Type: Architectural (A)
 - [A.16.1 - U.PreArticulationCuePack](15-a-16-1---u-prearticulationcuepack.md) (277 lines) — Type: Definitional (D)
 - [A.16.2 - Reopen / SketchBackoff / Respecify](16-a-16-2---reopen-sketchbackoff-respecify.md) (226 lines) — Type: Architectural (A)

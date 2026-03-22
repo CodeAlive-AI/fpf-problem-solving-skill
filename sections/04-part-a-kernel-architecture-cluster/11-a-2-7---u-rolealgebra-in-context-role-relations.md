@@ -53,10 +53,10 @@ Role algebra relates **role types** inside **one** `U.BoundedContext`. It is **n
 * **Use:** Frequent conjunctions (e.g., “On‑call Incident Commander” = *Engineer ⊗ Communicator ⊗ Decision‑Maker*).
 * **CC‑ALG‑3.** Engines that check `requires: [RoleC]` **MUST** expand to conjunctive checks.
 
-+> **Didactic guardrails.**
-+> Use `≤` for lasting ladders, `⊥` for critical safety/governance, `⊗` for frequent conjunctions. Prefer listing multiple `requiredRoles` on Method steps to avoid ornate lattices.
+> **Didactic guardrails.**
+> Use `≤` for lasting ladders, `⊥` for critical safety/governance, `⊗` for frequent conjunctions. Prefer listing multiple `requiredRoles` on Method steps to avoid ornate lattices.
 
-+### A.2.7:3 - Relations
+### A.2.7:3 - Relations
 
 **Builds on / depends on**
 

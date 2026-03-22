@@ -1,4 +1,4 @@
-# fpf-simple-skill
+# fpf-problem-solving-skill
 
 [Русская версия (README-RU.md)](README-RU.md)
 
@@ -10,12 +10,12 @@ FPF is a **thinking amplifier** — it helps you plan deeper and make better dec
 
 ## How it works
 
-This skill functions as **agentic RAG** — retrieval-augmented generation driven by the agent itself, with no external vector database or embedding pipeline. The 56,000-line FPF specification is split into a two-level hierarchy (20 directories, 224 files). SKILL.md provides a thinking-verb router that maps the user's intent to the right section. The agent then navigates `_index.md` files to pick the narrowest sub-section (~300 lines) and loads only that into context. The agent is the retriever, the router, and the reasoner — all in one loop.
+This skill functions as **agentic RAG** — retrieval-augmented generation driven by the agent itself, with no external vector database or embedding pipeline. The 59,000-line FPF specification is split into a two-level hierarchy (20 directories, 230 files). SKILL.md provides a thinking-verb router that maps the user's intent to the right section. The agent then navigates `_index.md` files to pick the narrowest sub-section (~300 lines) and loads only that into context. The agent is the retriever, the router, and the reasoner — all in one loop.
 
 ## Install
 
 ```bash
-npx skills add CodeAlive-AI/fpf-simple-skill -g
+npx skills add CodeAlive-AI/fpf-problem-solving-skill -g
 ```
 
 ## Structure
@@ -43,13 +43,13 @@ The agent reads `_index.md` first, picks the right sub-section file, and loads o
 | 02 | Table of Content | 0 |
 | 03 | Preface | 17 |
 | 04 | Part A — Kernel Architecture | 19 |
-| 05 | A.IV.A — Signature Stack & Boundary | 18 |
+| 05 | A.IV.A — Signature Stack & Boundary | 20 |
 | 06 | A.V — Constitutional Principles | 29 |
 | 07 | Part B — Trans-disciplinary Reasoning | 24 |
 | 08 | Part C — Kernel Extensions | 30 |
 | 09 | Part D — Ethics & Conflict | 1 |
 | 10 | Part E — Constitution & Authoring | 0 |
-| 11 | E-I — FPF Constitution | 29 |
+| 11 | E-I — FPF Constitution | 33 |
 | 12 | Part F — Unification Suite | 0 |
 | 13 | F.I — Context of Meaning | 19 |
 | 14 | UTS Layout A | 0 |

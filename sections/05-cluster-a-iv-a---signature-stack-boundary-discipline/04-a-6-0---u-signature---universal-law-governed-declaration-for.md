@@ -93,7 +93,7 @@ Every `U.Signature` **SHALL** present a **four‑row conceptual block** (names a
 For every **n‑ary relation or operator** declared in the **Vocabulary** row, the Signature **SHALL** assign, to each argument position, a **SlotSpec** triple:
 
 ```text
-+SlotSpec_i := ⟨SlotKind_i, ValueKind_i, refMode_i⟩
+SlotSpec_i := ⟨SlotKind_i, ValueKind_i, refMode_i⟩
 ```
 
 where:

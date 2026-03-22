@@ -1,4 +1,4 @@
-## E.18 - Transduction Graph Architecture** (E.TGA)
+## E.18 - Transduction Graph Architecture (E.TGA)
 
 > **Tech‑name:** **E.TGA** (pattern label)
 > **Plain‑name:** Architecture of the transduction graph

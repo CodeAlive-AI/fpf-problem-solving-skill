@@ -92,6 +92,17 @@ A published position claim in `U.LanguageStateSpace` should normally make at lea
 
 A position claim may be partial when some slots are intentionally unknown, but the unknowns should be declared rather than hidden under a broad readiness label.
 
+#### C.2.2a:4.5.a - Local position-reading witness
+For this pattern, a position claim is reviewable when:
+
+- the occupant is named or inherited by an already pinned upstream publication;
+- the slot values, intervals, or `ValueSet` claims are explicit enough to show where the publication stands;
+- the grounds, witnesses, or inherited pins that support those values remain visible;
+- any threshold-bearing use states the local threshold note or the pinned threshold source it inherits;
+- and the text keeps the occupant, publication form, publication face, and carrier in distinct role lanes.
+
+A polished note, a stronger carrier, or a more formal face does not by itself prove a new position. The chart claim remains lawful only when those role lanes and slot claims stay visible.
+
 #### C.2.2a:4.6 - Non-substitution of `F`
 `F` remains one basis slot in the chart, not the whole chart.
 
@@ -124,6 +135,23 @@ Comparisons inside one context may use the shared chart and local thresholds. Co
 
 `C.2.2a` therefore supports bridge work, but does not grant cross-context identity by itself.
 
+#### C.2.2a:4.10 - Corridor reading note
+The current `Language-State & Semantic Routing Corridor` in this cluster is a distributed overlay over:
+
+- `C.2.2a`
+- `C.2.LS`
+- `C.2.4–C.2.7`
+- `A.16`
+- `A.16.0–A.16.2`
+- `B.4.1`
+- `B.5.2.0`
+
+`A.16.1 / U.PreArticulationCuePack` remains the earliest durable seam publication form in that corridor. `B.4.1` is the explicit route-bearing seam after cue preservation, not the first publication in the corridor. `B.5.2.0` is typed prompt entry, not generic route ownership.
+
+`A.6.Q`, `A.6.A`, `A.6.P`, `B.5.2`, `A.15`, and `C.25` are seam-coupled downstream owners rather than members of this language-state owner set.
+
+This note gives readers one corridor map only. It does not relocate articulation, closure, route, prompt, bridge, or endpoint semantics out of their current owners.
+
 ### C.2.2a:5 - Archetypal Grounding
 **Tell.** One note can be strongly operator-loop anchored yet still weakly closed. Another can be document-mediated and symbol-heavy while still open on route choice. Both are positions in one language-state chart, but not on one maturity ladder.
 
@@ -140,6 +168,8 @@ The pattern deliberately biases authors toward decomposable coordinate claims an
 - `CC-C.2.2a-3` Position claims **SHALL** use slot-explicit values, `ValueSet` claims, or intervals; uncertainty **SHALL NOT** be hidden inside stage words such as `ready`, `early`, or `mature`.
 - `CC-C.2.2a-4` A position claim in the chart **MUST NOT** be conflated with the current ground, witness, publication form, publication face, or carrier.
 - `CC-C.2.2a-5` Cross-context comparison of positions or threshold talk **SHALL** go through bridge discipline rather than label similarity.
+- `CC-C.2.2a-6` Corridor and navigation notes **MUST NOT** be read as relocation of facet, seam, bridge, or downstream-owner semantics into the chart owner set.
+- `CC-C.2.2a-7` If a position claim is used for routing, endpoint entry, or gate-adjacent reasoning, the threshold note and the role-lane distinction between occupant, publication form, face, and carrier **SHALL** remain explicit or explicitly inherited from pinned upstream material.
 
 ### C.2.2a:8 - Common Anti-Patterns and How to Avoid Them
 - **Maturity monism.** Replace five facets with one stage word. Repair by publishing explicit slot placement.
@@ -147,6 +177,7 @@ The pattern deliberately biases authors toward decomposable coordinate claims an
 - **Carrier collapse.** Treat a document, cue pack, or routed note as if it were the position itself. Repair by separating carrier lane, publication form, publication face, and position claim.
 - **Threshold folklore.** Speak of readiness without any explicit threshold declaration. Repair by publishing relevant local threshold notes on explicit slots.
 - **Bridge by vibe.** Treat similar stage language in two schools as equivalence. Repair by explicit `F.9` bridge with loss notes.
+- **Corridor inflation.** Treat the navigation cluster or corridor map as if it were the owner set for all downstream semantics. Repair by naming whether the current statement belongs to the chart owner set, a seam publication owner, or a downstream owner.
 
 ### C.2.2a:9 - Consequences
 The benefit is that practitioners, including engineers, operators, researchers, managers, and engineer-managers, can speak about where a governed `U.Episteme` stands without hiding the reasons inside vague maturity language. The trade-off is that publication must carry explicit slot and threshold information when decisions depend on it.
@@ -155,7 +186,22 @@ The benefit is that practitioners, including engineers, operators, researchers, 
 Language-state work needs one explicit statement of what this chart is before individual facet, move, and endpoint patterns start using it. Without that statement, readers have to reconstruct the same geometry from scattered local rules and examples.
 
 ### C.2.2a:11 - SoTA-Echoing
-The pattern aligns with contemporary work on exploratory reasoning, embodied inquiry, operator-centered decision support, and structured representation: the useful invariant is not one universal ladder of maturity, but a stable multi-facet `U.CharacteristicSpace` chart in which position claims can be published, compared, and moved.
+
+**SoTA note.** This section does not mint a second rule layer. It is a load-bearing alignment surface: the Solution, Conformance Checklist, and role-lane discipline of this pattern must match the stance stated here or explicitly justify divergence.
+
+**Traditions covered.** This pattern binds itself to architecture-description governance, model-based systems engineering, and risk/governance profiling practice.
+
+| Claim need | SoTA practice (post-2015) | Primary source (post-2015) | Alignment with `C.2.2a` | Adoption status |
+|---|---|---|---|---|
+| Complex technical state should be published through explicit views, viewpoints, and model distinctions rather than one implicit maturity word. | Contemporary architecture-description governance separates source artefact, view, viewpoint, and correspondence burden instead of letting one surface adjective stand in for the whole state. | ISO/IEC/IEEE 42010:2022 | `C.2.2a` adopts this by keeping chart position, publication form, face, and carrier in distinct role lanes and by rejecting stage-language as a surrogate coordinate system. | **Adopt.** |
+| Rich engineering state is better represented through typed properties and relations than through one lifecycle ladder. | Recent MBSE practice favours explicit model elements, properties, and cross-view consistency over one implicit readiness staircase. | OMG SysML v2 (2025) | `C.2.2a` adapts this into a declared language-state chart with named basis facets, slot-explicit values, and local thresholds instead of one maturity rail. | **Adapt.** |
+| Governance-relevant readiness requires context-local profiles and thresholds, not one global adjective. | Current governance and risk frameworks use explicit profiles, thresholds, and scoped conditions rather than one blanket readiness label. | NIST AI RMF 1.0 (2023) | `C.2.2a` adopts the threshold-publication discipline and rejects the popular shortcut where `ready`, `early`, or `mature` replaces explicit slot conditions. | **Adopt/Reject-popular-shortcut.** |
+
+**Architecture-description governance.** `C.2.2a` adopts the discipline that positions, publication forms, faces, and carriers stay explicitly distinct, even when one local rendering makes them look aligned.
+
+**MBSE and profile discipline.** `C.2.2a` adapts multi-property state publication into a chart over `U.CharacteristicSpace` whose basis facets remain decomposable and locally thresholded.
+
+**Local stance.** The load-bearing SoTA claim for this pattern is narrow: best-known current practice treats governed language-state as a multi-facet chart with explicit thresholds and role-lane distinctions, not as one maturity ladder or one polished publication surface.
 
 ### C.2.2a:12 - Relations
 - Builds on: `A.19`, `E.10`, `F.18`.
@@ -189,6 +235,9 @@ That position explains why the alert belongs in a route-bearing seam publication
 #### C.2.2a:13.3 - Viewpoint-bound adequacy note
 A document-mediated adequacy note about an architecture description may be relatively high in formality and articulation, mid-level in closure, document-mediated in anchoring, and strongly symbolic in representation. That position remains within the same language-state chart even though its carrier lane differs from an embodied inquiry cue.
 
+#### C.2.2a:13.4 - Polished prose is not closure
+A prose rewrite may look cleaner, more compact, or more manager-readable than the source cue and still remain low in closure or articulation explicitness. If the underlying slot values, uncertainty, and route plurality remain unchanged, then publication polish changes the rendering or carrier lane, not the chart position by itself.
+
 ### C.2.2a:14 - Position Publication Package Discipline
 A publishable position claim should normally identify:
 
@@ -211,11 +260,9 @@ A reviewer should ask:
 5. If the text compares two contexts, is there a real bridge or only a lexical resemblance?
 
 ### C.2.2a:16 - Boundary Notes
-`C.2.2a` does not own move kinds, seam publication species, endpoint repair semantics, or bridge substitution licence. Those belong respectively to `A.16` / `A.16.0`, `A.16.1` / `B.4.1` / `B.5.2.0`, `A.6.*` / `C.25`, and `F.9` / `F.9.1`.
+`C.2.2a` does not own move kinds, seam publication forms, endpoint repair semantics, or bridge substitution licence. Those belong respectively to `A.16` / `A.16.0`, `A.16.1` / `B.4.1` / `B.5.2.0`, `A.6.*` / `C.25`, and `F.9` / `F.9.1`.
 
 Its job is narrower and more foundational: to make the declared language-state `U.CharacteristicSpace` chart readable so that downstream patterns can refer to one visible common geometry instead of rebuilding it piecemeal.
 
 ### C.2.2a:End
-
-
 

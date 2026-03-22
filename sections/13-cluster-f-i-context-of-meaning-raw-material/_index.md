@@ -3,7 +3,7 @@
 
 ## Contents
 
-- [F.0.1 - Contextual Lexicon Principles](01-f-0-1---contextual-lexicon-principles.md) (334 lines) — One‑sentence summary. All meanings in FPF are local to a U.BoundedContext (“Context of meaning”); terms are spoken with their Context, and any relation across Contexts exists only as an explicit...
+- [F.0.1 - Contextual Lexicon Principles](01-f-0-1---contextual-lexicon-principles.md) (335 lines) — One‑sentence summary. All meanings in FPF are local to a U.BoundedContext (“Context of meaning”); terms are spoken with their Context, and any relation across Contexts exists only as an explicit...
 - [F.1 - Domain‑Family Landscape Survey](02-f-1---domain-family-landscape-survey.md) (334 lines) — “Fix the context of meaning before you name anything.”
 - [F.2 — Term Harvesting & Normalisation](03-f-2-term-harvesting-normalisation.md) (316 lines) — “Harvest words inside Contexts, name them in the Context’s own idiom, and stop there.”
 - [F.3 - Intra‑Context Sense Clustering](04-f-3---intra-context-sense-clustering.md) (339 lines) — “Within one context, decide what ‘the same sense’ really is—before you ever cross Contexts.”

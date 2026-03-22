@@ -116,18 +116,24 @@ A.6.P defines a **suite recipe**. A pattern is a **RPR‑pattern** (member of A.
 
 #### A.6.P:4.0 — Trigger rule (when A.6.P applies)
 
-A relation mention is in-scope for A.6.P when **any** of the following holds:
+A relation mention or relation-bearing phrase is in-scope for A.6.P when **any** of the following holds:
 
 * the predicate/verb phrase is **lexically overloaded** (umbrella tokens such as “same/sync/link/connect/anchor/ground/align/map/depends”), or
-* one or more endpoints/qualifiers are expressed via **pronominal / deictic / metonymic stand‑ins** or **over‑broad kind tokens** (e.g., “it/this/that”, “the service”, “the system”, “at the table”), such that multiple referents/facets remain plausible, or
+* one or more endpoints/qualifiers are expressed via **pronominal / deictic / metonymic stand-ins** or **over-broad kind tokens** (e.g., “it/this/that”, “the service”, “the system”, “at the table”), such that multiple referents/facets remain plausible, or
+* a **generic or over-broad head noun** carries its load only through a qualifier, modifier, or surrounding phrase (e.g., “comparative note”, “safe guidance”, “interactive view”, “reliable output”), so the object kind is still ambiguous even though the qualifier sounds informative, or
 * the statement implicitly relies on **scope / Γ_time / viewpoint/view / schemes** (reference, representation), or
 * the relation is used for **assurance / admissibility / gating / publication** decisions, or
 * the relation crosses **Contexts or planes** (requires Bridges + CL; no silent equivalence), or
 * different stakeholders interpret endpoints differently (multi-view asymmetry and polarity fights).
 
-**Adoption test (review heuristic).** If a reviewer can reasonably ask any of: “Which kind is this?”, “What exactly does this span refer to (which facet/kind, and in which lane: Object vs Description vs Carrier)?”, “What else participates?”, “Under what scope/time/view?”, “What changed?”, or “What makes this admissible?”, then authors SHOULD treat the mention as in-scope and rewrite it into explicit kind+slots form before using it for cross‑Context reuse or decision/publication claims.
+**Repair order note.** When a load-bearing phrase is triggered because its **head noun** is too generic, first restore what kind of thing the head actually names (artifact, reading, process, lane, authority use, or another host-local kind) using local object-of-talk discipline (`E.10`, `A.7`, and nearby host law). A narrowing qualifier such as `comparative`, `safe`, `interactive`, or `reliable` may narrow the phrase, but it does **not** by itself restore the head kind. Then apply A.6.P to restore the remaining relation or comparison burden. Mixed-axis checks come **after** those two repairs, not before them.
+
+**Adoption test (review heuristic).** If a reviewer can reasonably ask any of: “Which kind is this?”, “What exactly does this span refer to (which facet/kind, and in which lane: Object vs Description vs Carrier)?”, “What relation or comparison burden is hidden in this qualifier?”, “What else participates?”, “Under what scope/time/view?”, “What changed?”, or “What makes this admissible?”, then authors SHOULD treat the mention as in-scope and rewrite it into explicit kind+slots form before using it for cross-Context reuse or decision/publication claims.
+
+**Precision/relaxation note.** A.6.P is not a blanket demand that every sentence stay maximally explicit forever. It is a trigger-based repair path for **load-bearing** prose. In design-time FPF texts and in run-time texts being prepared for admissible publication, review, gating, or reuse, the repair should be performed before any later didactic plain-language softening or lawful coarsening. Later relaxation is allowed only when the more precise upstream reading remains recoverable and authoritative.
 
 #### A.6.P:4.0 - Language-state entry note
+
 
 RPR entry normally presupposes enough `C.2.4` articulation explicitness that at least one relation-like skeleton can be named explicitly, and often enough `C.2.5` closure that one candidate reading is worth publishing as a relation record rather than remaining mere cue pressure.
 
@@ -135,27 +141,29 @@ If the material is still best treated as a cue pack, routed cue, or unresolved r
 
 #### A.6.P:4.0a — Operational repair sequence (how repairs actually proceed)
 
-The suite is presented as **lens → slots → change lexicon → guardrails** because the *stable abstraction* is what keeps repairs reusable. In actual editing, repairs often start from a **triggering surface token** and proceed through a context‑reconstruction step.
+The suite is presented as **lens → slots → change lexicon → guardrails** because the *stable abstraction* is what keeps repairs reusable. In actual editing, repairs often start from a **triggering surface token** and proceed through a context-reconstruction step.
 
 Operationally, authors SHOULD follow this repair sequence when applying an RPR repair:
 
-1. **Trigger on surface form.** Detect umbrella relation predicates *and* pronominal/umbrella endpoint tokens or metonymic pointers (including domain clusters such as **service** in A.6.8 and cross‑Context “same/equivalent/align/map” in A.6.9).
-2. **Reconstruct the situation ontology from local context.** Enumerate candidate referents/facets for endpoints *(including A.7 lane: Object vs Description vs Carrier when it matters)* and candidate `RelationKind` tokens for the umbrella predicate, plus implied participants (scope/time/view/scheme/mediator artefacts). Capture the result as a **Candidate‑Set Note** (A.6.P:4.0b) so review has a checkable artifact: candidates → selected facet/kind → why. When metonymy is plausible, include both the *literal* and the *intended* candidates.
-3. **Choose a stable lens** that can represent the reconstructed arity/polarity without ad‑hoc role invention.
-4. **Refine the ontology under the lens.** Turn implied roles into SlotSpecs; repair endpoint kind mismatches explicitly (narrowing / KindBridge / retargetParticipant); make qualifiers explicit as slots.
-5. **Emit canonical rewrites + routing hooks.** Produce Tech‑form rewrites (`relationKind(…)` / arrow form) and state the A.6.B hooks: which parts are L vs A vs D vs E, and which witnesses/commitments/work claims are now demanded.
+0. **Restore the head kind if needed.** If the triggering phrase uses a generic or over-broad head noun (`note`, `view`, `guidance`, `output`, `artifact`, and similar placeholders), first state what kind of thing it actually is in local host terms (publication artifact, reading, process, authority use, and so on). Do not let a qualifier do this job by implication alone.
+1. **Trigger on surface form.** Detect umbrella relation predicates, pronominal/umbrella endpoint tokens or metonymic pointers, and generic-head-plus-load-bearing-qualifier combinations (including domain clusters such as **service** in A.6.8 and cross-Context “same/equivalent/align/map” in A.6.9).
+2. **Reconstruct the situation ontology from local context.** Enumerate candidate referents/facets for endpoints *(including A.7 lane: Object vs Description vs Carrier when it matters)*, candidate head kinds where the phrase is noun-led, and candidate `RelationKind` tokens or comparison burdens for the overloaded predicate/qualifier, plus implied participants (scope/time/view/scheme/mediator artefacts). Capture the result as a **Candidate-Set Note** (A.6.P:4.0b) so review has a checkable artifact: candidates → selected facet/kind → why. When metonymy is plausible, include both the *literal* and the *intended* candidates.
+3. **Choose a stable lens** that can represent the reconstructed arity/polarity without ad-hoc role invention.
+4. **Refine the ontology under the lens.** Turn implied roles into SlotSpecs; repair endpoint kind mismatches explicitly (narrowing / KindBridge / retargetParticipant); separate object kind, relation burden, and qualifier burden; make qualifiers explicit as slots or routed conditions.
+5. **Emit canonical rewrites + routing hooks.** Produce Tech-form rewrites (`relationKind(…)` / arrow form) and state the A.6.B hooks: which parts are L vs A vs D vs E, and which witnesses/commitments/work claims are now demanded.
+6. **Only then allow later relaxation.** If a Plain, didactic, or coarsened restatement is still wanted, derive it from the repaired form and keep the repaired form as the authoritative source for any stronger reading.
 
-**Decision/publication fail‑closed (normative).** If an in‑scope mention is used to justify an admissibility gate, publication claim, or cross‑Context reuse, authors MUST resolve the candidate sets to a selected `RelationKind` and selected endpoint facets/kinds and emit an explicit rewrite. If that cannot be done from available context and witnesses, keep the statement as Plain/informative gloss (or split into multiple explicit alternatives) and do not treat it as admissible input for the gate.
+**Decision/publication fail-closed (normative).** If an in-scope mention is used to justify an admissibility gate, publication claim, or cross-Context reuse, authors MUST resolve the candidate sets to a selected `RelationKind`, selected endpoint facets/kinds, and any required head-kind reconstruction and emit an explicit rewrite. If that cannot be done from available context and witnesses, keep the statement as Plain/informative gloss (or split into multiple explicit alternatives) and do not treat it as admissible input for the gate.
 
 **Informative: referential compression spectrum.** Many triggers live on a spectrum from high to low referential precision:
 pronouns/deictics → overloaded polysemes → coarse domain kinds → facet head phrases → precise domain terms.
-Metonymy often shifts the denotation (e.g., a place phrase standing in for an object or a role). The repair sequence explicitly treats this as a **candidate‑set** problem, not as “the dictionary meaning”.
+Metonymy often shifts the denotation (e.g., a place phrase standing in for an object or a role). The repair sequence explicitly treats this as a **candidate-set** problem, not as “the dictionary meaning”.
 
 **Metonymy micro-example (informative; endpoint-side trigger beyond anaphora).**
 
 Draft: “Alice is **at the table**.”
 
-`at the table` → candidates `{place, meeting, artifact, role}` → choose explicitly → rewrite into endpoint‑refs + qualifiers:
+`at the table` → candidates `{place, meeting, artifact, role}` → choose explicitly → rewrite into endpoint-refs + qualifiers:
 
 ```
 CandidateSetNote(triggerSpan="at the table", role=endpointFacet(p₂)):
@@ -174,11 +182,11 @@ participatesInMeetingUnder(
 
 If the literal location reading is intended, select `PlaceRef(Table#7)` and rewrite as `locatedAt(…)` with an explicit `Γ_time` qualifier.
 
-This step is intentionally **not lexicon‑only**. The lexical rewrite is the *output* of an ontology‑ and lens‑constrained repair, not the starting point. If you cannot state the candidate referents/facets and the selected RelationKind token, the repair is incomplete.
+This step is intentionally **not lexicon-only**. The lexical rewrite is the *output* of an ontology- and lens-constrained repair, not the starting point. If you cannot state the candidate referents/facets, the selected head kind where needed, and the selected `RelationKind` token, the repair is incomplete.
 
 #### A.6.P:4.0b — Candidate‑Set Note (informative; review artifact)
 
-When endpoint identity (pronoun/deixis/metonymy/coarse kind) or relation‑kind selection is ambiguous, reviews can collapse into “lexicon debates”. A.6.P treats this as an ontology reconstruction step with an explicit, checkable intermediate artifact.
+When endpoint identity (pronoun/deixis/metonymy/coarse kind) or relation-kind selection is ambiguous, reviews can collapse into “lexicon debates”. A.6.P treats this as an ontology reconstruction step with an explicit, checkable intermediate artifact.
 
 **Candidate‑Set Note template (informative).**
 
@@ -187,9 +195,9 @@ When endpoint identity (pronoun/deixis/metonymy/coarse kind) or relation‑kind 
 For each ambiguous role (relation kind, endpoint facet/kind, qualifier, mediator), record:
 
 * **Trigger span:** the exact surface token(s) in the draft (copy/paste).
-* **Role being disambiguated:** `relationKind` | `endpointFacet(pᵢ)` | `endpointRef(pᵢ)` | `qualifier(qⱼ)` | `mediator`.
+* **Role being disambiguated:** `headKind` | `relationKind` | `endpointFacet(pᵢ)` | `endpointRef(pᵢ)` | `qualifier(qⱼ)` | `mediator`.
 * **Lane (A.7) (when endpoint‑side):** `Object` | `Description` | `Carrier` (state explicitly when live contenders span lanes; lane‑mixing is a common source of “contract” category errors).
-* **Candidate set:** a short list of plausible **kinds/facets** and/or **RelationKind tokens** (not synonyms), each with the local cue(s) that made it plausible.
+* **Candidate set:** a short list of plausible **head kinds**, **kinds/facets**, and/or **RelationKind tokens** (not synonyms), each with the local cue(s) that made it plausible.
 * **Selected facet/kind (and selected RelationKind, if relevant):** the chosen candidate(s).
 * **Why:** the discriminating test(s) that were applied, plus pointers to the specific local evidence/witness cues used (carriers, claims, artefacts).
 * **Consequence:** which SlotSpecs become required/forbidden and which A.6.B hooks are now triggered (L/A/D/E).
@@ -222,7 +230,7 @@ The lens is a compression device: one stable abstraction that keeps the relation
 
 For every in‑scope relational claim, authors SHALL select (or mint) an explicit **RelationKind token** as a declared vocabulary element.
 
-A RelationKind token is authored as a `U.Signature`‑level vocabulary element with explicit SlotSpecs for its participant and qualifier positions (`⟨SlotKind, ValueKind, refMode⟩`). 
+A RelationKind token is authored as a `U.Signature`‑level vocabulary element with explicit SlotSpecs for its participant and qualifier positions (`⟨SlotKind, ValueKind, refMode⟩`). When no suitable token already exists, authors SHALL NOT improvise a one-off string by intuition. They SHALL route mint-or-reuse through **F.18**: use **MintNew** by default, build a seed candidate set, surface an honest NQD-front, run the sense-seed read-through, and record why the selected token is chosen from the non-dominated front. Use **DocumentLegacy** only when the label is externally fixed and that status is stated explicitly.
 
 **RelationKind contract skeleton (minimum, recipe-level).**
 For each `RelationKind` token, a conforming Context publication SHALL publish a vocabulary entry whose **signature-level definition** is paired with (or points to) a **routed claim bundle** (“contract skeleton”) that declares (at minimum):
@@ -521,8 +529,9 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
 1. **CC‑A.6.P‑1 — Lens is explicit.**
    P SHALL name the stable lens used to stabilise the ambiguity cluster and justify its fit.
 
-2. **CC‑A.6.P‑2 — RelationKind is explicit and its contract skeleton is published.**
+2. **CC‑A.6.P‑2 — RelationKind is explicit and named through lawful mint-or-reuse.**
    Every in‑scope relation claim SHALL name an explicit RelationKind token, and that token SHALL resolve to a vocabulary entry whose contract skeleton publishes (at minimum): polarity (and explicit inverses if needed), participant SlotSpecs `⟨SlotKind, ValueKind, refMode⟩`, qualifier requirements, witness expectations for decision/publication lanes, admissible semantic change classes, and (when applicable) cross‑Context/plane policy (Bridge + CL + loss notes). Routed claims SHALL respect A.6.B.
+   When a suitable token does not already exist, authors SHALL mint or document it through **F.18** rather than inventing a one-off label by intuition: **MintNew** is the default, the seed candidate set and NQD-front SHALL be surfaced, and the final token SHALL be selected from that non-dominated front unless an explicit legacy exception is recorded.
    The contract skeleton SHALL also declare admissible **repair paths for endpoint kind mismatches** (KindBridge / explicit narrowing / explicit retargeting) and enforce **qualifier placement discipline** (no adjective smuggling).
 
 3. **CC‑A.6.P‑3 — Slot‑explicit instances.**
@@ -558,7 +567,7 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
     If a relation instance crosses Contexts/planes (or requires translation), the carrier SHALL cite Bridge ids + CL policy (and loss notes, when applicable). Label identity or “same anyway” prose SHALL NOT substitute.
 
 13. **CC‑A.6.P‑13 — Disambiguation guide is actionable.**
-    P SHALL include an explicit rewrite/selection guide that maps each red‑flag umbrella cluster to candidate `RelationKind` tokens (and, when the ambiguity is endpoint‑side, to candidate endpoint facets/kinds), required qualifiers, and canonical rewrite forms.
+    P SHALL include an explicit rewrite/selection guide that maps each red-flag umbrella cluster or generic load-bearing head phrase to candidate head kinds, candidate `RelationKind` tokens, and (when the ambiguity is endpoint-side) candidate endpoint facets/kinds, plus required qualifiers and canonical rewrite forms.
     The guide SHOULD follow the RPR‑Disambiguation format: **trigger → candidates → discriminating questions/tests → canonical rewrite → L/A/D/E routing hooks**.
     
     Where endpoint referential compression is a primary risk, the guide SHOULD also include (or point to) the **Candidate‑Set Note** template (A.6.P:4.0b) so instance‑level reviews have an auditable trail: candidates → selected facet/kind → why.
@@ -571,17 +580,20 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
 
 ### A.6.P:8 — Common Anti‑Patterns and How to Avoid Them
 
-| Anti-pattern                                   | Why it fails                                                                | Repair                                                                              |
+| Anti-pattern | Why it fails | Repair |
 | ---------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| “Just define the umbrella word”                | Definitions don’t separate arity, operation classes, or viewpoint asymmetry | Replace umbrella use with explicit RelationKind + qualified record + change lexicon |
-| Keep the umbrella verb, add adjectives         | Adjectives are not contracts; invariants remain unstated                    | Mint/select distinct RelationKind tokens; enforce rewrite discipline                |
-| Leave pronominal/metonymic endpoints implicit  | Endpoint identity/facet remains guesswork; slot typing cannot stabilise     | Reconstruct candidate referents/facets (**capture as a Candidate‑Set Note**); add explicit slots/refs; then rewrite (A.6.8 is the archetype for “service” polysemy) |
-| Ontology only, no lexical guardrails           | Prose re‑collapses meaning                                                  | Add red‑flag tokens + prohibited umbrella use in Tech/normative prose               |
-| Lexicon only, no structural lens               | Becomes subjective policing                                                 | Introduce stable lens + slot schema; then attach guardrails                         |
-| Solve viewpoint mismatch by renaming endpoints | Silent re‑typing breaks cross‑pattern reuse                                 | Keep roles stable; use explicit kind selection + explicit repair paths              |
-| Using “bind” to mean “edit relation”           | Collapses name-binding vs slot-writing layers                               | Reserve `bind/rebind` for names; use change lexicon / slot verbs properly           |
-| Implicit “current/latest”                      | Violates explicit time discipline                                           | Add explicit `Γ_time` where time matters                                            |
-| Treat `Γ_time` as witness freshness             | Time selection ≠ evidence freshness/decay; conflates time discipline with evidence lanes | Keep `Γ_time` for temporal scope; express freshness/decay via witness metadata and carrier-anchored E‑claims |
+| “Just define the umbrella word” | Definitions do not separate arity, operation classes, or viewpoint asymmetry. | Replace umbrella use with explicit RelationKind + qualified record + change lexicon. |
+| Keep the umbrella verb, add adjectives | Adjectives are not contracts; invariants remain unstated. | Mint/select distinct RelationKind tokens; enforce rewrite discipline. |
+| Leave a load-bearing generic head uninterpreted | Readers cannot tell what kind of thing the phrase governs, so later qualifiers float without an ontology. | Restore the head kind first in host-local terms; only then repair the remaining relation/comparison burden. |
+| Let a qualifier smuggle the real burden | A phrase like “comparative note”, “safe guidance”, or “reliable output” sounds precise while leaving the actual relation, comparison basis, or authority burden implicit. | Unpack the qualifier into explicit comparison basis, relation kind, admissibility condition, or routed claim before stronger use. |
+| Leave pronominal/metonymic endpoints implicit | Endpoint identity/facet remains guesswork; slot typing cannot stabilise. | Reconstruct candidate referents/facets (**capture as a Candidate‑Set Note**); add explicit slots/refs; then rewrite (A.6.8 is the archetype for “service” polysemy). |
+| Ontology only, no lexical guardrails | Prose re-collapses meaning. | Add red-flag tokens + prohibited umbrella use in Tech/normative prose. |
+| Lexicon only, no structural lens | Becomes subjective policing. | Introduce stable lens + slot schema; then attach guardrails. |
+| Solve viewpoint mismatch by renaming endpoints | Silent re-typing breaks cross-pattern reuse. | Keep roles stable; use explicit kind selection + explicit repair paths. |
+| Using “bind” to mean “edit relation” | Collapses name-binding vs slot-writing layers. | Reserve `bind/rebind` for names; use change lexicon / slot verbs properly. |
+| Implicit “current/latest” | Violates explicit time discipline. | Add explicit `Γ_time` where time matters. |
+| Treat `Γ_time` as witness freshness | Time selection does not equal evidence freshness/decay; this conflates time discipline with evidence lanes. | Keep `Γ_time` for temporal scope; express freshness/decay via witness metadata and carrier-anchored E-claims. |
+| Compare across a mixed ontological axis | Artifact, process, authority use, or owner-lane semantics get ranked on one axis before their kinds and burdens are restored. | First restore head kind, then qualifier burden, then rewrite the sentence through burden/threshold/handoff/owner-lane language so the comparison axis is homogeneous. |
 
 ### A.6.P:9 — Consequences
 

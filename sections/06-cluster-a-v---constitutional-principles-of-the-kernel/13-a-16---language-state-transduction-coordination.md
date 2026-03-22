@@ -62,7 +62,7 @@ After `route`, `projection`, `formalize`, or `operationalize`, the next lawful p
 Naming only the owner is insufficient because owners are not forms. Naming only the face is insufficient because faces are not forms. A lawful move note states the owned publication form first, then the owner, then the face if the face matters.
 
 #### A.16:4.4 - Effect-free versus work-requiring moves
-Some `formalize` and `operationalize` steps are effect-free epistemic rewrites or publication-strengthening steps over already available grounds. Others require new measurements, experiments, instrumentation, execution, or other `U.Work`. When the latter happens, the move note shall expose the crossing or handoff explicitly; `A.16` does not pretend that world-facing work occurred inside the language layer.
+Some `formalize` and `operationalize` moves are effect-free epistemic rewrites or publication-strengthening moves over already available grounds. Others require new measurements, experiments, instrumentation, execution, or other `U.Work`. When the latter happens, the move note shall expose the crossing or handoff explicitly; `A.16` does not pretend that world-facing work occurred inside the language layer.
 
 #### A.16:4.5 - Move-note threshold and path publication discipline
 A typed local move note is sufficient when a small move or short move chain can be kept reconstructible without publishing extra lineage machinery.
@@ -70,7 +70,7 @@ A typed local move note is sufficient when a small move or short move chain can 
 Use `A.16.0` only when at least one of the following is load-bearing:
 
 - derivation, supersession, fork, merge, or retirement structure;
-- a multi-step history whose compression would hide owner or authority changes;
+- a multi-move history whose compression would hide owner or authority changes;
 - visible loss notes or reopen conditions spanning more than one move;
 - responsibility handoff or bridge/viewpoint entry that depends on upstream history.
 
@@ -95,6 +95,8 @@ The pattern biases authors toward explicit move-typing and away from folk storie
 - `CC-A.16-6` `respecify` **SHALL NOT** be used to hide slot-explicit semantic repair that belongs to later repair owners.
 - `CC-A.16-7` Retreat or retirement **SHALL** preserve, withdraw, or discard prior witnesses and authority explicitly.
 - `CC-A.16-8` Published path structures **SHOULD** reuse `E.18` when a graph publication object is needed.
+- `CC-A.16-9` `AuthorityState` and `EndpointAdmissionProfile` reuse **SHALL NOT** be treated as new owners, new route-bearing forms, or substitutes for gate or work state.
+- `CC-A.16-10` A summarized multi-move publication **SHALL** keep intermediate owner transitions reconstructible; otherwise the case must reopen or publish richer history.
 
 ### A.16:8 - Common Anti-Patterns and How to Avoid Them
 - **Trajectory-wrapper inflation.** Do not wrap every local move in `A.16.0`. Publish a local move note unless history has its own governance value.
@@ -111,7 +113,15 @@ The benefit is a clean owner for language-state transductions and a lawful place
 This separation keeps `C.2.3` as the sole owner of formality while `C.2.2a` / `A.19` define position semantics, `A.16.0` packages only the history that deserves publication as an account, and `A.16` defines move legality.
 
 ### A.16:11 - SoTA-Echoing
-The pattern follows contemporary practice in iterative reasoning, exploratory design, incident response, operator intervention, and model-probing practice: advancement, route publication, backoff, reframing, and branch retirement are all part of the same governed space.
+**Claim 1.** Best-known current incident-response, exploratory design, and inquiry practice treats advance, backoff, reopening, and retirement as governed transitions rather than as one irreversible maturity climb.
+
+**Practice / source / alignment / adoption.** Contemporary incident review, exploratory design, and inquiry practice after 2015 keeps rollback, reopen, and retirement explicit because otherwise later readers over-credit earlier weak forms. This pattern **adopts** explicit retreat and retirement, **adapts** them to typed publication forms, route states, and authority states, and **rejects** the still-popular shortcut where every change is narrated as one-way maturation.
+
+**Claim 2.** Best-known current provenance, path-publication, and model-evaluation practice distinguishes a local transition note from a heavier published history object.
+
+**Practice / source / alignment / adoption.** Contemporary provenance and evaluation practice separates lightweight transition marking from heavier account publication when branch structure, loss notes, or handoff history become governance-relevant. This pattern **adopts** that separation, **adapts** it through the `A.16` / `A.16.0` / `E.18` split, and **rejects** both extremes: wrapping every move in a mandatory trajectory object and compressing a governance-relevant move history into one vague maturity sentence.
+
+**Local stance.** The load-bearing SoTA claim for this pattern is narrow: lawful language-state movement needs typed move notes, explicit authority effects, and explicit retreat/retirement options, but it does not need a second ladder or a mandatory wrapper around every move.
 
 ### A.16:12 - Relations
 - Builds on: `C.2.2a`, `C.2.LS`, `C.2.4`, `C.2.5`, `C.2.6`, `C.2.7`, `A.18`, `A.19`.
@@ -237,12 +247,19 @@ A governed publication after route work is usually in one of four states:
 
 - **open plurality** - several downstream directions remain live;
 - **selected-but-not-owned** - one route is preferred, but the publication is still in an early or seam owner;
-- **endpoint-owned** - a later owner now carries the relevant contract;
+- **endpoint-owned** - a later owner now carries the relevant publication and responsibility;
 - **retired / withdrawn** - the publication or branch is no longer current and survives only as historical continuity.
 
 Confusing these states is one of the main causes of premature endpoint language.
 
-#### A.16:18.3 - Authority may rise, stay bounded, fall, or retire
+#### A.16:18.3 - `AuthorityState` extraction note
+The four states above may be reused as `AuthorityState`, an extracted shared profile for corridor coordination and review.
+
+That extraction does **not** create a new owner. It reuses the state vocabulary already owned here for later cross-references in `B.4.1`, `B.5.2.0`, `A.6.P`, `A.6.Q`, `A.6.A`, and `A.15`.
+
+`AuthorityState` names authority posture after route work. It does not replace `routeDecision`, `selectedRoute`, `routeAuthorityState`, route-bearing publication ownership, gate state, or work-execution state. Any `endpoint-owned` state still names the downstream owner explicitly.
+
+#### A.16:18.4 - Authority may rise, stay bounded, fall, or retire
 A move may:
 
 - **raise authority**, as when a routed cue becomes a lawful endpoint-owned form;
@@ -252,8 +269,17 @@ A move may:
 
 The authority effect should be named as carefully as the move kind itself.
 
-#### A.16:18.4 - Boundary to owner replacement
+#### A.16:18.5 - Boundary to owner replacement
 `A.16` never authorizes a silent owner replacement. If a route crosses into `A.6.P`, `B.5.2`, `A.15`, `C.25`, or another endpoint owner, that owner and the owned publication form must be named explicitly. `A.16` coordinates the crossing; it does not absorb the destination owner's semantics.
+
+#### A.16:18.6 - `EndpointAdmissionProfile` extraction note
+The corridor may later reuse an `EndpointAdmissionProfile` as a declarative host-derived profile for lawful handoff from language-state publications to later owners.
+
+That profile is stated over already-owned conditions: declared language-state positions in `C.2.2a`, facet readings in `C.2.LS` and `C.2.4`-`C.2.7`, explicit route state in `B.4.1`, prompt-readiness in `B.5.2.0`, and witness or grounding conditions that are already visible in the publication chain.
+
+`EndpointAdmissionProfile` decides whether handoff is lawful; it does not own the downstream publication form itself. A relation-like skeleton may therefore be admitted toward `A.6.P`; an explicit open question with rival-set may be admitted toward `B.5.2.0`; evaluative or action-inviting material may be admitted toward `A.6.Q` or `A.6.A`; executable docking may be admitted toward `A.15`.
+
+No admission result makes a later owner optional. Tone, style, or mere apparent explicitness is never sufficient on its own; the relevant owner conditions still have to be named and met.
 
 ### A.16:19 - Worked Failure and Recovery Cases
 
@@ -269,13 +295,16 @@ A note is formalized too early into a relation-like shape, but later review show
 #### A.16:19.4 - Silent branch disappearance
 A route-bearing publication originally kept two candidate routes live. Later text talks only as if one route ever existed. Reviewers should treat that as silent branch laundering unless the abandoned route was explicitly retired, merged, or shown never to have become its own branch.
 
-### A.16:20 - Multi-Step Composition and Path Publication
+#### A.16:19.5 - Form-owner-face collapse
+A note says only `the move publishes a Tech face` or `the move enters A.6.P` and never names the actual publication form. That wording is non-conforming because it collapses three different layers into one phrase. The repair is to name the publication form first, then the owner, then the MVPK face if the face matters for rendering or review.
+
+### A.16:20 - Multi-Move Composition and Path Publication
 
 #### A.16:20.1 - Compound move rule
-Many histories are short chains such as `notice -> stabilize -> route -> projection` into `U.AbductivePrompt`, or `endpoint-owned form -> reopen -> sketchBackoff -> route`. A conforming publication may summarize such a chain only if the intermediate owner transitions remain reconstructible.
+Many published histories are short move chains such as `notice -> stabilize -> route -> projection` into `U.AbductivePrompt`, or `endpoint-owned form -> reopen -> sketchBackoff -> route`. A conforming publication may summarize such a chain only if the intermediate owner transitions remain reconstructible.
 
-#### A.16:20.2 - Stepwise authority reading
-Read authority stepwise. Later strengthening does not retroactively authorize earlier weak forms, and later retreat or retirement does not erase the fact that stronger authority once existed.
+#### A.16:20.2 - Move-by-move authority reading
+Read authority move by move. Later strengthening does not retroactively authorize earlier weak forms, and later retreat or retirement does not erase the fact that stronger authority once existed.
 
 #### A.16:20.3 - `A.16.0` threshold
 When a move history acquires governance value of its own, publish it through `A.16.0` rather than overloading one local move note with hidden lineage structure.
@@ -286,13 +315,13 @@ When the history must be published as a path object in a graph sense, reuse `E.1
 ### A.16:21 - Comparative Move Law and Boundary Tests
 
 #### A.16:21.1 - Comparing move histories
-Move histories may be compared across contexts only if the compared steps are typed by publication form, owner, and authority effect. Comparing one context's `route -> projection` chain to another context's `cue -> requirement` leap as though they were the same "formalization speed" is a category mistake.
+Move histories may be compared across contexts only if the compared moves are typed by publication form, owner, and authority effect. Comparing one context's `route -> projection` chain to another context's `cue -> requirement` leap as though they were the same "formalization speed" is a category mistake.
 
 #### A.16:21.2 - No maturity-ladder compression
-A multi-step path shall not be redescribed as one generic climb in maturity, rigor, or readiness. The lawful comparison is over move kinds, facet shifts, route states, owner crossings, and authority effects.
+A multi-move path shall not be redescribed as one generic climb in maturity, rigor, or readiness. The lawful comparison is over move kinds, facet shifts, route states, owner crossings, and authority effects.
 
 #### A.16:21.3 - Boundary test for silent path laundering
-If a later endpoint claim depends on prior steps that are not visible anywhere in the publication chain, reviewers should assume silent path laundering until the missing move records are supplied. `A.16` exists precisely to prevent such invisible transitions.
+If a later endpoint claim depends on prior move publications that are not visible anywhere in the publication chain, reviewers should assume silent path laundering until the missing move records are supplied. `A.16` exists precisely to prevent such invisible transitions.
 
 ### A.16:22 - Review Matrix for Integration Integrity
 
@@ -302,9 +331,11 @@ A reviewer can test an `A.16` move or move chain with six questions:
 2. **Are owner and face kept distinct from the form?** If not, the move collapses layers.
 3. **Is the authority effect explicit?** If not, later owner boundaries will drift.
 4. **Is route plurality being confused with lineage fork?** If yes, the history is being misread.
-5. **Are intermediate steps suppressed in a way that changes the reading?** If yes, the chain is over-compressed.
+5. **Are intermediate move publications suppressed in a way that changes the reading?** If yes, the chain is over-compressed.
 6. **Has `A.16` started to impersonate a later owner or a trajectory wrapper?** If yes, the relevant later owner or `A.16.0` threshold needs to be named explicitly.
 
 This matrix keeps the integration layer narrow while still making its move semantics inspectable.
 ### A.16:End
+
+
 

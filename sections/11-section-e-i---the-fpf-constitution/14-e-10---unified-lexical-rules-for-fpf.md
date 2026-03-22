@@ -16,7 +16,7 @@
 * **Naming morphology** (allowed suffixes & style) for the kernel’s core objects;
 * **Minimal Generality** tests (names are neither parochial nor vacuous);
 * **Canonical rewrites** for overloaded words (e.g., *process*, *function*, *service*);
-* **Conformance checks** (lintable) and minimal examples.
+* **Conformance checks** and minimal examples.
 
 **Scope.** Applies to:
 (a) **Core** (Parts A–G), (b) **Extensions patterns specs** (CAL/LOG/CHR), (c) **Context glossaries** that claim FPF conformity, and (d) **Diagrams/prose** in normative text. It **does not** constrain Tooling or Pedagogy wording other than where they quote Core semantics.
@@ -241,7 +241,7 @@ Every plain twin **MUST** have a **registry entry** (in the LEX registry) record
 
 #### E.10:7.1 - `LEX.TokenClass` (meta‑lexical; not a USM Scope)
 **Definition.** `LEX.TokenClass : NameToken → {KernelToken | ContextToken | DiscriminatorToken}`.  
-This is a **Characteristic on NameTokens** (symbols), used by the LEX registry and MG-DA lints.
+This is a **Characteristic on NameTokens** (symbols), used by the LEX registry and MG-DA checks.
 It is **not** a USM scope and carries **no** truth/validity semantics.
 
 #### E.10:7.2 - `KernelToken` — Minimal Generality (MG‑K)
@@ -508,9 +508,9 @@ Example: using a `KernelToken` in a Context constraint may require a Bridge/alia
 > **Red/Green pattern (example).** ✗ “The **process** ensures quality.” → ✓ “The **MethodDescription** defines steps; **Work** is **evaluated** against **RequirementRole**.”
 
 
-#### E.10:9.2 - Quick, lintable substitutions (mechanical helpers)
+#### E.10:9.2 - Quick substitutions (common rewrite hints)
 
-> Editors may auto‑offer these rewrites; accept only if the transformed sentence passes **§ 7 MG-DA** and **§ 8 LEX.Morph** gates.
+> Use these as quick rewrite hints; accept only if the transformed sentence passes **§ 7 MG-DA** and **§ 8 LEX.Morph** gates.
 
 | **Ban**                         | **Canonical rewrite**                                                                   |
 | ------------------------------- | --------------------------------------------------------------------------------------- |
@@ -567,7 +567,7 @@ A text **passes** LEX if all answers are **Green**:
 5. **LEX‑CC‑5 (MG-DA).** New tokens pass **MG-DA** tests, including **full‑text collision** and **Reserved‑Names** checks.
 6. **LEX‑CC‑6 (Service & evidence).** Service acceptance computed from **Work**; evidence is an **EvidenceRole** on an **Episteme** with provenance.
 7. **LEX‑CC‑7 (USM compatibility).** For each LexicalAct, `USM.Scope ∈ AllowedScopes(LEX.TokenClass)`.
-
+8. **LEX‑CC‑8 (Minting discipline).** If overload cleanup requires a new or replacement token, the text records lawful reuse or a full **F.18 `MintNew` / `DocumentLegacy`** procedure; intuition-first partial Name Cards are non-conformant.
 
 #### E.10:9.6 - Worked micro‑examples (short, cross‑domain)
 
@@ -590,9 +590,21 @@ API = `accessSpec : MethodDescription#REST_v12`; **promise content** “Feature 
 reproducibility via **StateAssertions** on `ReplicationEvidenceRole`;
 procedures are `U.MethodDescription`; re‑runs are **Work**.
 
+**Semioarchitecture.**
+✗ “`projection` means the same thing in routing and bridge prose.”
+✓ `A.16` keeps `projection` as a move name for route-bounded partialization; `F.9.1` keeps `projection` as a bridge stance label. If a new token is really needed, route the naming question through **F.18 `MintNew` / `DocumentLegacy`** rather than flattening both readings into one umbrella rewrite.
 
 **Editorial note.**
 This section **inherits** § 7 **MG-DA** (anchored head nouns; Characteristic/CharacteristicSpace for enums; collision checks) and § 8 **LEX.Morph** (suffix/prefix/casing). It deliberately **omits** their details to avoid duplication.  The only legitimate uses of *plane* in the Core are **CHR:ReferencePlane** and the derived operators **CL^plane** and **Φ_plane**; policy flags MUST NOT introduce new “planes”. To distinguish pre‑operational vs operational states *within* **ReferencePlane=world**, use **WorldRegime ∈ {prep|live}** (formerly `PlaneRegime`).
+
+### E.10:9.1 - Guarded-head cross-reference *(normative lexical caution)*
+When one surface head already carries several load-bearing local readings, lexical cleanup should prefer a **guarded-head note** over silent flattening. The note may record that the head remains risky, name the lawful local owners, and point readers to the local canonical reading in each owner.
+
+If cleanup reveals that no lawful existing token can carry the needed meaning, the editor must route the naming question through **F.18 `MintNew` / `DocumentLegacy`** rather than inventing an ad hoc synonym by feel.
+
+This cross-reference is lexical only. It does **not** create a new repair owner, does **not** establish Cross-context equivalence, and does **not** overrule owner-local definitions. It simply keeps overloaded heads from being normalized into one false global reading.
+
+`projection` is the main current example: `A.16` keeps it as a move name for route-bounded partialization, while `F.9.1` keeps it as a bridge stance label. E.10 therefore requires deconfliction notes and owner-explicit prose, not one umbrella rewrite that erases the distinction.
 
 ### E.10:10 - Migration playbook — turning messy language into ULR‑clean prose *(informative)*
 
@@ -632,35 +644,40 @@ This section **inherits** § 7 **MG-DA** (anchored head nouns; Characteristic/Ch
 3.4 Log a short **DRR** when renames/aliases occur (F.13), linking to grep results that motivated the change.
 
 
-### E.10:11 - ULR conformance prompts *(normative, concept‑only questions)*
+### E.10:11 - ULR conformance prompts *(normative, concept-only questions)*
 
 > Use these **prompts** during review. They reference § 7 (MG-DA) and § 8 (LEX.Morph) instead of repeating them.
 
 1. **Context prompt.** Does each potentially polysemous noun live inside a **named `U.BoundedContext`**?
 2. **Layer prompt.** Is each sentence in the correct **I/D/S layer** (I: type/role; D: description/spec; run: actuals)?
 3. **Token prompt.** For new/renamed tokens, is **`LEX.TokenClass`** declared and consistent with where the token appears?
-4. **Object‑of‑talk prompt.** Does the **head noun** name the object being classified (Role/Method/Service/Work/Context/Characteristic)?
-5. **Morphology prompt.** Do suffix/prefix/casing pass **LEX.Morph** gates (e.g., `…Role`, `MethodDescription`, `Work`)?
-6. **Promise vs ability vs performance.** Are **Service** (promise), **Capability** (ability), and **Work** (performance) distinct?
-7. **Plan vs execution.** Are **WorkPlan** windows separated from **Work** actuals?
-8. **Evidence prompt.** Do documents **hold roles** and **justify**, while **systems act**?
-9. **Bridge prompt.** If sameness spans Contexts, is there an explicit **Bridge** with **CL** and loss notes?
-10. **Collision prompt.** Did we run full‑text + Reserved‑Names checks (no other meaning of this token anywhere in FPF)?
+4. **Head-kind prompt.** Does the **head noun** name what kind of thing the phrase is actually about (Role/Method/Service/Work/Context/Characteristic/publication artifact/reading/process/authority use)? A narrowing qualifier alone does **not** answer this question.
+5. **Qualifier-burden prompt.** If an adjective, participle, genitive, or comparative modifier is doing semantic work, has that burden been restored explicitly rather than left inside the modifier alone?
+6. **Comparison-axis prompt.** If the sentence compares, ranks, escalates, or downgrades something, is the comparison axis ontologically homogeneous after head-kind and qualifier restoration?
+7. **Morphology prompt.** Do suffix/prefix/casing pass **LEX.Morph** gates (e.g., `…Role`, `MethodDescription`, `Work`)?
+8. **Promise vs ability vs performance.** Are **Service** (promise), **Capability** (ability), and **Work** (performance) distinct?
+9. **Plan vs execution.** Are **WorkPlan** windows separated from **Work** actuals?
+10. **Evidence prompt.** Do documents **hold roles** and **justify**, while **systems act**?
+11. **Bridge prompt.** If sameness spans Contexts, is there an explicit **Bridge** with **CL** and loss notes?
+12. **Collision prompt.** Did we run full-text + Reserved-Names checks (no other meaning of this token anywhere in FPF)?
+13. **Naming-procedure prompt.** If no lawful existing token carried the needed meaning, did we run the full **F.18 `MintNew` / `DocumentLegacy`** procedure rather than picking a label by intuition and filling a partial Name Card afterward?
 
+**Working order for precision repair on load-bearing prose.** Restore the head kind first; a narrowing qualifier such as `comparative`, `safe`, `interactive`, or `reliable` does **not** by itself restore that kind. Then unpack qualifier burden, then check whether the comparison or escalation axis is homogeneous. Only after that may a later Plain, didactic, or coarsened rendering lawfully relax the sentence, and even then the more precise upstream reading must remain recoverable.
 
-### E.10:12 - ULR regression cues *(concept‑only “diff” triggers)*
+### E.10:12 - ULR regression cues *(concept-only “diff” triggers)*
 
-Re‑review your prose when any of these happen:
+Re-review your prose when any of these happen:
 
-* **Context edition** changes → re‑affirm twin labels, Bridges, and acceptance wording.
-* **A role/type name grows** (“and/plus/‑‑”) → apply MG-DA: split or bundle (A.2).
+* **Context edition** changes → re-affirm twin labels, Bridges, and acceptance wording.
+* **A role/type name grows** (“and/plus/--”) → apply MG-DA: split or bundle (A.2).
 * **A “service” statement broadens scope** → check that **acceptance** terms cover the new target; else split the Service.
 * **Recipes gain/lose steps** → update **`MethodDescription`**, not `Service` or `Role` names.
-* **Evidence verbs creep into actor sentences** → re‑apply L‑rules (documents don’t act).
+* **Evidence verbs creep into actor sentences** → re-apply L-rules (documents do not act).
+* **A generic head acquires a strong qualifier** (`comparative`, `safe`, `interactive`, `reliable`, and similar burden-carrying modifiers) → restore the head kind first, then unpack the qualifier burden before stronger publication.
 * **New token minted** → ensure `LEX.TokenClass` declared; run collision checks; add CharacteristicSpace if enum.
 * **Suffix drift** (e.g., `…Work` on a plan) → fix via **LEX.Morph**.
-* **Cross‑Context reuse by label** appears → require a **Bridge** (F.9) or split senses.
-
+* **Cross-Context reuse by label** appears → require a **Bridge** (F.9) or split senses.
+* **A guarded head needs a new label** → prefer a guarded-head note first; if no lawful existing token remains, route the naming question through full **F.18 `MintNew` / `DocumentLegacy`**.
 
 ### E.10:13 - Teaching deck — the ULR quick card *(reusable in any Context)*
 
@@ -716,4 +733,4 @@ The platform offers **Service** ‘Object Storage’ (access = `S3_API_Spec_vX`;
 
 
 ### E.10:End
-  
+

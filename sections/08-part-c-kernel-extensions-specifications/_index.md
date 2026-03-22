@@ -11,9 +11,9 @@
 - [C.2 - Epistemic holon composition (KD-CAL)](01-c-2---epistemic-holon-composition.md) (117 lines) — Scope & exports. A substrate‑neutral calculus for composing epistemic holons (U.Episteme) and reasoning about their motion and equivalence. Exports: (i) three point‑characteristics—Formality F,...
 - [C.2.1 - U.Episteme — Epistemes and their slot graph](02-c-2-1---u-episteme-epistemes-and-their-slot-graph.md) (806 lines) — One-line summary. U.Episteme is the holon type for epistemes; its internal ontology is given by U.EpistemeSlotGraph, which replaces the legacy semantic triangle with a typed graph n-ary relation over...
 - [C.2.2 - Reliability R in the F–G–R triad](03-c-2-2---reliability-r-in-the-f-g-r-triad.md) (375 lines) — Reliability (R) is a conservative, evidence-bound warrant signal for a typed claim under an explicit claim scope (G). Cross-context reuse is Bridge-only: scope may be re-expressed via...
-- [C.2.2a - U.LanguageStateSpace - Language-state chart over U.CharacteristicSpace](04-c-2-2a---u-languagestatespace---language-state-chart-over-u.md) (221 lines) — Type: Architectural (A)
-- [C.2.3 - Unified Formality Characteristic F](05-c-2-3---unified-formality-characteristic-f.md) (311 lines) — Type: Definitional (D)
-- [C.2.LS - U.LanguageStateFacetProfile - Thin owner for language-state facets](06-c-2-ls---u-languagestatefacetprofile---thin-owner-for-langua.md) (207 lines) — Type: Definitional (D)
+- [C.2.2a - U.LanguageStateSpace - Language-state chart over U.CharacteristicSpace](04-c-2-2a---u-languagestatespace---language-state-chart-over-u.md) (268 lines) — Type: Architectural (A)
+- [C.2.3 - Unified Formality Characteristic F](05-c-2-3---unified-formality-characteristic-f.md) (312 lines) — Type: Definitional (D)
+- [C.2.LS - U.LanguageStateFacetProfile - Thin owner for language-state facets](06-c-2-ls---u-languagestatefacetprofile---thin-owner-for-langua.md) (243 lines) — Type: Definitional (D)
 - [C.2.4 - U.ArticulationExplicitness](07-c-2-4---u-articulationexplicitness.md) (173 lines) — Type: Definitional (D)
 - [C.2.5 - U.LanguageStateClosureDegree](08-c-2-5---u-languagestateclosuredegree.md) (184 lines) — Type: Definitional (D)
 - [C.2.6 - U.LanguageStateAnchoringMode](09-c-2-6---u-languagestateanchoringmode.md) (163 lines) — Type: Definitional (D)

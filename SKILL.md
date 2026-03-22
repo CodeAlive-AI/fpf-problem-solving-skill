@@ -1,5 +1,5 @@
 ---
-name: fpf-simple
+name: fpf-problem-solving
 description: "First Principles Framework (FPF) — thinking amplifier. Use when user wants to think through a complex problem, architect a system, evaluate alternatives, decompose complexity, or plan rigorously. Also triggers on: FPF, bounded contexts, SoTA packs, assurance calculus, FPF Parts A-K. Not for simple task planning, general philosophy, or Agile unrelated to FPF."
 license: MIT
 ---
@@ -45,6 +45,7 @@ The use cases above help decide WHETHER to invoke FPF. The router below decides 
 | **Resolve conflicts** across stakeholders or values | 09 Part D → Ethics & Conflict |
 | **Unify vocabulary** across teams or domains | 13 F.I Context of Meaning → 14-15 UTS tables → 20 Lexical Debt |
 | **Document** for multiple audiences | 11 E-I Constitution → E.17 Multi-View Publication Kit |
+| **Sharpen expression** — repair vague wording, surface ambiguity | 11 E-I → E.17.SD Surface Discipline, E.17.EFP Explanation Faithfulness; 05 A.IV.A → A.6.H Wholeness Unpacking |
 | **Survey a discipline** and build a reusable toolkit | 16 Part G → SoTA Packs, TraditionCards, OperatorCards |
 | **Trace provenance** of a claim | 06 A.V → A.10 Evidence Graph; 16 Part G → G.6 Provenance Ledger |
 
@@ -89,13 +90,13 @@ Structural reference. Each entry is a folder — read its `_index.md` first, the
 | 02 | [Table of Content](sections/02-table-of-content/_index.md) | 0 | Navigate the spec, locate a pattern, trace inter-section dependencies. |
 | 03 | [Preface](sections/03-preface/_index.md) | 17 | **Onboard**: reading paths by role, FPF philosophy, purpose and non-goals. |
 | 04 | [Part A — Kernel](sections/04-part-a-kernel-architecture-cluster/_index.md) | 19 | **Decompose and assign**: holons, bounded contexts, roles, transformers, method/work separation. |
-| 05 | [A.IV.A — Signatures](sections/05-cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) | 18 | **Set boundaries**: classify statements as definitions, gates, duties, or evidence. |
+| 05 | [A.IV.A — Signatures](sections/05-cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) | 20 | **Set boundaries**: classify statements as definitions, gates, duties, or evidence. |
 | 06 | [A.V — Principles](sections/06-cluster-a-v---constitutional-principles-of-the-kernel/_index.md) | 29 | **Prevent confusion**: category errors, measuring, comparing, evidence graphs. |
 | 07 | [Part B — Reasoning](sections/07-part-b-trans-disciplinary-reasoning-cluster/_index.md) | 24 | **Compose and evaluate**: aggregation (Gamma), trust scores, emergence, reasoning cycles. |
 | 08 | [Part C — Extensions](sections/08-part-c-kernel-extensions-specifications/_index.md) | 30 | **Score and search**: epistemic quality (F-G-R), kinds, measurement, open-ended search. |
 | 09 | [Part D — Ethics](sections/09-part-d-multi-scale-ethics-conflict-optimisation/_index.md) | 1 | **Resolve conflicts**: ethical trade-offs, bias auditing, safety overrides. |
 | 10 | [Part E — Constitution](sections/10-part-e---fpf-constitution-and-authoring-cluster/_index.md) | 0 | Entry point for Part E subsections. |
-| 11 | [E-I — Constitution](sections/11-section-e-i---the-fpf-constitution/_index.md) | 29 | **Govern and publish**: 11 Pillars, guard-rails, multi-view publication (MVPK). |
+| 11 | [E-I — Constitution](sections/11-section-e-i---the-fpf-constitution/_index.md) | 33 | **Govern and publish**: 11 Pillars, guard-rails, multi-view publication (MVPK), surface discipline. |
 | 12 | [Part F — Unification](sections/12-part-f-the-unification-suite-concept-sets-sensecells-contextual-role-a/_index.md) | 0 | Entry point for Part F subsections. |
 | 13 | [F.I — Meaning](sections/13-cluster-f-i-context-of-meaning-raw-material/_index.md) | 19 | **Align vocabulary**: semantic drift, homonym collisions, Alignment Bridges. |
 | 14 | [UTS Layout A](sections/14-block-fpf-u-type-unified-tech-name-unified-plain-name-plain-twin-gover/_index.md) | 0 | **Map concepts** across standards (BPMN, PROV-O, ITIL). |

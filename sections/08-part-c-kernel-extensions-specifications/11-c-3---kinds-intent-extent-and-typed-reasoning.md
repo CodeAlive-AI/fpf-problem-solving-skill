@@ -615,7 +615,7 @@ Never treat **AT** as “wider/narrower” **G**.
 
 ### C.3:11 - Worked examples (end‑to‑end)
 
-+> *Each example shows the typed pre‑check, Scope composition, penalties to **R**, and the managerial decision. Full guard clauses for these scenarios are in **Annex C.3.A**.*
+> *Each example shows the typed pre‑check, Scope composition, penalties to **R**, and the managerial decision. Full guard clauses for these scenarios are in **Annex C.3.A**.*
 
 #### C.3:11.1 - Cyber‑physical braking policy across labs and plants
 

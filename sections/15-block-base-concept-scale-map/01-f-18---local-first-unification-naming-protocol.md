@@ -74,6 +74,13 @@ When a label changes, or two labels consolidate or split, record it on the Name 
 
 #### F.18:4.2 - The Six P‑practices (normative process)
 
+#### F.18:4.3 - Guarded-head note for locally risky labels
+Some locally useful heads remain risky because they already carry different load-bearing readings under different owners. In such cases, authors may publish a **guarded-head note** as a thin naming-governance companion.
+
+A guarded-head note does **not** create a new owner, does **not** establish Cross-context sameness by itself, and does **not** replace the host owner's meaning. It simply records that one surface head should stay deconflicted while local-first naming continues to govern minting, reuse, aliases, and Bridges.
+
+This is especially useful when one head already appears in more than one lawful local reading, such as `projection` in `A.16` move language and in `F.9.1` bridge stance language. The note should therefore name the consumer sites, keep the local owner meanings explicit, and resist any temptation to flatten them into one global head.
+
 **P1 — Candidate set (*NQD-front* of seed-words).**
 Do **not** pick a label “in one shot”. Build a **small, non-dominated candidate set** (an *NQD-front*, typically 5–10 items) by seeding and varying along:
 **Traditions** — mathematics, physics, engineering, computer science, systems thinking, management, etc. with their typical contexts and situations; use maximum diversity here;
@@ -134,15 +141,19 @@ To prevent “post-hoc justification” of intuitively chosen labels, every **Na
 
 * **MintNew.** The Card is the **output of an NQD-style lexical search** over a **candidate label set** generated inside
   the home Context(s), using the lexical Q-tuple `{SemanticFidelity, CognitiveErgonomics, OperationalAffordance,
-  AliasRisk}` together with **Novelty (N)** and **Diversity_P** (per A.0 / C.17–C.18 / B.5.2.1).  
-  – The Card SHALL record:  
-    – a minimal **CandidateSet** (the labels actually evaluated), with **head-term family** tags for each candidate;  
-    – the resulting **NQD-front** of **non-dominated candidates** over ⟨Q-tuple, N, Diversity_P⟩;  
+  AliasRisk}` together with **Novelty (N)** and **Diversity_P** (per A.0 / C.17–C.18 / B.5.2.1).
+  – The Card SHALL record:
+    – a minimal **CandidateSet** (the labels actually evaluated), with **head-term family** tags for each candidate;
+    – the resulting **NQD-front** of **non-dominated candidates** over ⟨Q-tuple, N, Diversity_P⟩;
+    – the **sense-seeds** used for P2 read-through and their mismatch patterns;
     – a short **selection note** explaining why the chosen Tech/Plain pair was picked from that front
-      (e.g., “better CognitiveErgonomics at equal SemanticFidelity”).  
- 
+      (e.g., “better CognitiveErgonomics at equal SemanticFidelity”).
+
   – A single-element NQD-front is permitted only if the Card records a brief rationale why **no alternative candidate
     survived** the lexical and NQD filters (e.g., legacy constraints, strong AliasRisk on all other options).
+  – A MintNew card is **non-conformant** if authors fill only the top fields after choosing a label by intuition.
+    Recording the chosen label, Kind, and a short rationale is **not** a substitute for the seed set, NQD-front,
+    sense-seed read-through, and explicit non-dominated selection.
 
 * **DocumentLegacy.** The Card documents an **externally imposed legacy label** (e.g., a regulatory or de facto Standard)
   and its mapping to FPF structures. In this mode the Card MAY omit a full NQD-front, but SHALL:  
@@ -168,9 +179,9 @@ A **Name Card** is the authoritative, human‑readable record of a name inside i
 10. **Alignment note** — if a Bridge exists to other Contexts, cite it and record **loss/fit** in plain words (no formulas required on the Card).
 11. **Relation kind** — if the name is for a relation, declare **structural** vs **epistemic** and `validationMode ∈ {axiomatic, inferential, postulate}`. For **structural** relations, provide **Constructive** grounding (`tv:groundedBy → Γₘ.sum|set|slice`). If the name is not for a relation with arity ≥ 2, set this field to “n/a”.
 12. **Manager’s clip** — one‑line “use/avoid” guidance for everyday communication.
-13. **Archetypal situations (sense‑seeds)** — **5-10 short “X‑case” lines** used by **P2** for the semantic read‑through; keep them **edition‑aware** and **context‑local**.
-14. **NQD‑front seeds** — brief rationale for discarded candidates (**include mismatch patterns from P2 and any lexical Q‑scores used in P1**).
-15. **SemanticFidelity/CognitiveErgonomics/OperationalAffordance/AliasRisk** scores for the NQD-front labels.
+13. **Archetypal situations (sense‑seeds)** — **5-10 short “X‑case” lines** used by **P2** for the semantic read‑through; keep them **edition‑aware** and **context‑local**. For **MintNew** cards these are required evidence, not optional examples.
+14. **NQD‑front notes** — brief rationale for discarded candidates (**include mismatch patterns from P2, the head-term family mix, and any lexical Q‑scores used in P1**).
+15. **SemanticFidelity/CognitiveErgonomics/OperationalAffordance/AliasRisk** scores for the NQD-front labels, recorded at least ordinally for the surviving candidates.
 16. **Version**  — current status and history of editions.
 17. **Card notes** — optional free text with comments about the name (e.g., recommended translations, etymology, pronunciation). 
 
@@ -510,16 +521,19 @@ Letting a Plain label or alias accumulate extra meanings absent in the underlyin
 
 **CC‑F18‑13 (Lexical Pareto discipline).** When a Name Card uses **NQD‑CAL (C.18)** to score label candidates, the **chosen Unified Tech label** **SHALL** lie on the **Pareto frontier** of the lexical Q‑tuple `{SemanticFidelity, CognitiveErgonomics, OperationalAffordance, AliasRisk}` (per **C.16** ordinal discipline and P1’s NQD‑front definition), unless an explicit exception is recorded. If authors deliberately select a dominated candidate (e.g., to honour legacy regulation or user muscle memory), the Name Card’s notes **MUST** state the reason for stepping off the frontier.
 
-**CC-F18-13 (NQD-front surfaced, with honest diversity).**  
+**CC-F18-14 (NQD-front surfaced, with honest diversity).**  
 When a Name Card is in **MintNew** mode, the **candidate label set** and the resulting **NQD-front of non-dominated label candidates** over the lexical Q-tuple `{SemanticFidelity, CognitiveErgonomics, OperationalAffordance, AliasRisk}` **SHALL** be explicitly recorded on the Card (at least as a small table or list), together with the NQD evidence hooks (`DescriptorMapRef`, `DistanceDefRef`, and a brief `Diversity_P` / coverage summary).  
 Each candidate **SHALL** carry a **head-term family** tag; morphological or prepositional variants built on the same head (e.g. “X plane”, “plane of X”, “planar X”) **MAY NOT** be counted as distinct for Diversity_P. The Card **SHALL** indicate how many distinct head-term families are represented on the NQD-front.  
 An NQD-front with fewer than **three** head-term families is permitted **only** if the Card records why no lexically more diverse alternatives survived the SemanticFidelity / AliasRisk filters (e.g., very narrow domain, frozen legacy idiom).
 
-**CC-F18-14 (Selection from the front only).**  
+**CC-F18-15 (Selection from the front only).**  
 The **Unified Tech** and **Plain** labels published on the UTS row for a unified concept **SHALL** be drawn from the currently recorded **NQD-front** on the Name Card. Publishing a Tech/Plain pair that is **not** on that front (or that is dominated with respect to the declared lexical Q-axes plus NQD) is **non-conformant**, except in explicit **DocumentLegacy** mode as defined in §5.1.
 
-**CC-F18-15 (Mode declaration).**  
+**CC-F18-16 (Mode declaration).**  
 Every Name Card **SHALL** declare its `CardMode ∈ {MintNew, DocumentLegacy}`. For Core-surface naming of **U.Types** and other canonical FPF concepts, **MintNew** is the default; **DocumentLegacy** is permitted only when recording pre-existing external names and MUST (i) cite the legacy source, and (ii) either attach an NQD-front over viable FPF variants or record a short rationale why NQD search is out-of-scope.
+
+**CC-F18-17 (Procedure is not optional in MintNew mode).**  
+A **MintNew** Name Card is **non-conformant** if it records only the chosen label, Kind, and a short rationale while omitting the seed candidate set, the NQD-front, the sense-seed read-through, or the mismatch patterns that justify the final choice. A card filled in after an intuition-first label pick does **not** satisfy F.18.
 
 ### F.18:16 - Anti‑patterns & safe rewrites (normative)
 
@@ -734,4 +748,5 @@ All patterns that propose or consume unified names and rows in Part F; any Part 
 **A.17/A.18** for measurement lexicon when rows concern measurable notions (Characteristic/Scale/Level/Coordinate vocabulary), ensuring neutral naming aligns with canonical terms and eases external alignment via Bridges.  
 
 ### F.18:End
+
 

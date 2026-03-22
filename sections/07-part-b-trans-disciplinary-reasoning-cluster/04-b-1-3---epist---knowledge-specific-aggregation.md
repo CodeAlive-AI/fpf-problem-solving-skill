@@ -126,7 +126,7 @@ The penalty function `Φ` quantifies the loss of reliability due to poor concept
 | :--- | :--- | :--- | :--- | :--- |
 | **Penalty Φ(CL_min)** | 1.5 | 1.0 | 0.5 | 0.0 |
 
-+*A domain profile **MAY** provide an alternative table but **MUST** preserve monotonic decrease (a lower `CL` cannot have a smaller penalty). The default values are derived from empirical fits in KD-CAL Bench 0.3.*
+*A domain profile **MAY** provide an alternative table but **MUST** preserve monotonic decrease (a lower `CL` cannot have a smaller penalty). The default values are derived from empirical fits in KD-CAL Bench 0.3.*
 
  6. **Conflict detection (no averaging).**
     Detect contradictions (e.g., `p` and `¬p` with overlapping scope). Do **not** average. Either (i) **separate** by context or scope (bounded contexts; Γ\_time slices), (ii) mark **provisional** with explicit conflict edges, or (iii) if resolution yields **new closure**, consider **MHT**.

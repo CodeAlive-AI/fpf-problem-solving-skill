@@ -1,4 +1,4 @@
-## C.2.LS - `U.LanguageStateFacetProfile` - Thin owner for language-state facets
+## C.2.LS - U.LanguageStateFacetProfile - Thin owner for language-state facets
 
 > **Type:** Definitional (D)
 > **Status:** Draft
@@ -45,6 +45,16 @@ Without a dedicated profile owner, authors blur articulation, closure, anchoring
 #### C.2.LS:4.2 - Threshold publication discipline
 Any threshold used for routing, lawful move guards, or entry into `A.6.P` shall be published on explicit named facets within the profile. Contexts shall not speak of hidden sub-levels of `F` when what matters is really articulation, closure, anchoring, or the representation-factor bundle.
 
+#### C.2.LS:4.2.a - Local profile-reading witness
+For this pattern, a published facet profile is reviewable when:
+
+- the facet refs are explicit or explicitly inherited from already pinned upstream material;
+- any threshold-bearing use names the facet whose threshold is being invoked;
+- route notes or local overlays remain informative and visibly docked to the explicit facet bundle;
+- and the profile does not smuggle move law, bridge law, gate state, or downstream-owner semantics into the bundle record.
+
+A polished label, one strong facet, or one memorable route note does not by itself yield a lawful profile reading. The profile remains conformant only when the named facets stay explicit and decomposable.
+
 #### C.2.LS:4.3 - Composite readings
 A language-state judgement may be composite, but the composite shall be decomposable. For example, a cue may be:
 
@@ -54,6 +64,11 @@ A language-state judgement may be composite, but the composite shall be decompos
 - and representation-wise mixed rather than purely symbolic.
 
 A conforming profile makes this decomposition visible rather than hiding it under one poetic label such as "early" or "raw".
+
+#### C.2.LS:4.4 - Corridor map note
+`C.2.LS` participates in the current `Language-State & Semantic Routing Corridor`, but only as the thin owner of the facet-profile bundle. Readers who need one map of the full language-state owner set should read the corridor note in `C.2.2a`.
+
+That map does not change the owner boundary here: `C.2.LS` still does not own cue preservation, route-bearing publication, prompt entry, or downstream endpoint handoff.
 
 ### C.2.LS:5 - Archetypal Grounding
 **Tell.** A team may say a draft is "still forming" for different reasons. `U.LanguageStateFacetProfile` forces the team to say whether the issue is low articulation, weak candidate-space closure, an anchoring mismatch, or an unresolved representation-factor bundle.
@@ -70,13 +85,16 @@ The pattern biases authors toward explicit facet ownership and away from master-
 - `CC-C.2.LS-2` `C.2.LS` **MUST NOT** redefine `F` or create a second formality ladder.
 - `CC-C.2.LS-3` Thresholds that matter for routing, reopening, or lexical repair **SHALL** be published on explicit facets.
 - `CC-C.2.LS-4` Trajectory accounts that rely on facet profiles **SHOULD** reuse `A.16` move kinds and `E.18` path publication rules.
-- `CC-C.2.LS-5` Composite labels such as "early", "settled", or "ready" **SHALL NOT** stand in for the explicit facet bundle when those states matter operationally.
+- `CC-C.2.LS-5` Composite labels such as `early`, `settled`, or `ready` **SHALL NOT** stand in for the explicit facet bundle when those states matter operationally.
+- `CC-C.2.LS-6` Composite readings, overlays, and route notes **SHALL** remain decomposable into named facets and **MUST NOT** behave as hidden master axes.
+- `CC-C.2.LS-7` A profile bundle **MUST NOT** smuggle move law, bridge law, gate state, or downstream-owner semantics into what should remain a thin facet-profile record.
 
 ### C.2.LS:8 - Common Anti-Patterns and How to Avoid Them
-- **Shadow ladder.** Treating "early/late" as a master scale. Split the judgement into the named facets.
+- **Shadow ladder.** Treating `early/late` as a master scale. Split the judgement into the named facets.
 - **Formality capture.** Letting `F` stand in for closure or articulation. Publish those facets explicitly.
 - **Bundle inflation.** Turning `U.LanguageStateFacetProfile` into a second `A.19`. Keep it thin and referential.
-- **Opaque readiness.** Using words such as "ready" or "mature" without naming which facet justifies the claim.
+- **Opaque readiness.** Using words such as `ready` or `mature` without naming which facet justifies the claim.
+- **Route-note capture.** Letting an informative route note behave like move law, gate state, or endpoint ownership. Keep route notes informative and push operative authority back to `A.16`, downstream owners, or gate/work owners.
 
 ### C.2.LS:9 - Consequences
 The benefit is owner clarity: early cue work, bridge annotations, and reopen moves can all talk about one explicit facet profile. The trade-off is more explicit profile authoring and threshold publication.
@@ -85,7 +103,22 @@ The benefit is owner clarity: early cue work, bridge annotations, and reopen mov
 The pattern gives the declared language-state chart over `U.CharacteristicSpace` one stable facet-profile record through which its facet bundle can be published together, while respecting the rest of FPF's owner boundaries.
 
 ### C.2.LS:11 - SoTA-Echoing
-The factorization fits contemporary work on embodied cue capture, model probing, exploratory design, and interpretive bridge work: the useful invariant is not one universal ladder, but a small profile of orthogonal facets.
+
+**SoTA note.** This section does not mint a second rule layer. It is a load-bearing alignment surface: the Solution, Conformance Checklist, and boundary discipline of this pattern must match the stance stated here or explicitly justify divergence.
+
+**Traditions covered.** This pattern binds itself to architecture-description governance, model-based systems engineering, and governance/profile discipline.
+
+| Claim need | SoTA practice (post-2015) | Primary source (post-2015) | Alignment with `C.2.LS` | Adoption status |
+|---|---|---|---|---|
+| Multi-facet state should be published through explicit profile elements rather than one summary stage label. | Contemporary architecture-description practice keeps the relevant properties, views, and correspondence burden explicit instead of replacing them with one reader-facing maturity word. | ISO/IEC/IEEE 42010:2022 | `C.2.LS` adopts this by requiring explicit facet refs and by rejecting profile-by-vibe labels such as `ready` or `raw` when the bundle matters operationally. | **Adopt.** |
+| Complex technical state is better captured through typed properties and decomposable profiles than one lifecycle rail. | Recent MBSE practice favours explicit properties, viewpoints, and cross-view consistency over one implicit staircase of readiness. | OMG SysML v2 (2025) | `C.2.LS` adapts this into a thin facet-profile bundle whose members remain decomposable and whose thresholds stay tied to named facets. | **Adapt.** |
+| Governance-facing readiness should stay scoped and profile-based, not collapse into one global adjective. | Current governance frameworks use explicit profiles, scoped conditions, and local thresholds rather than one blanket readiness label. | NIST AI RMF 1.0 (2023) | `C.2.LS` adopts profile-level threshold publication and rejects the popular shortcut where one polished profile label substitutes for explicit facet talk. | **Adopt/Reject-popular-shortcut.** |
+
+**Architecture-description governance.** `C.2.LS` adopts the discipline that useful state publication should keep the relevant profile elements explicit rather than hiding them inside one summary label.
+
+**MBSE and profile discipline.** `C.2.LS` adapts typed multi-property state publication into a thin, decomposable language-state facet bundle rather than one master scale.
+
+**Local stance.** The load-bearing SoTA claim for this pattern is narrow: best-known current practice treats language-state publication as a small explicit facet profile with local thresholds and decomposable readings, not as one maturity adjective or one route-coloured bundle label.
 
 ### C.2.LS:12 - Relations
 - Builds on: `A.18`, `A.19`, `C.2.2a`, `C.2.3`.
@@ -102,7 +135,7 @@ A console alert note may be published with a language-state facet profile such a
 - `LanguageStateAnchoringMode = AM.OperatorLoop` because the note is directly anchored to operator action;
 - `RepresentationFactorBundle = {local, sparse, mixed-symbolic}` because alert text and compact codes coexist.
 
-This example shows why no one facet can replace the others. The note is not "simply early"; it is early in a specific, decomposable way.
+This example shows why no one facet can replace the others. The note is not `simply early`; it is early in a specific, decomposable way.
 
 #### C.2.LS:13.2 - Research cue before lexical repair
 A felt or trace-anchored mismatch cue in an inquiry note may be:
@@ -116,6 +149,9 @@ That profile explains why the cue should remain in `A.16.1` rather than being fo
 
 #### C.2.LS:13.3 - Architecture-description case
 A viewpoint-bound note about the adequacy of an architecture description may be moderately high in `F`, moderately high in `AE`, still mid-level in `CD`, document-mediated in `AM`, and strongly symbolic in its representation-factor bundle. The profile keeps description-side adequacy distinct from system-side engineering quality.
+
+#### C.2.LS:13.4 - Same `F`, different profile
+Two notes may share the same rough `F` band and still differ sharply in articulation, closure, anchoring, and representation factors. One may be operator-loop anchored and low-closure; another may be document-mediated and comparatively closed. The profile bundle keeps that difference visible instead of letting `F` behave like a master axis.
 
 ### C.2.LS:14 - Authoring and Review Guidance
 

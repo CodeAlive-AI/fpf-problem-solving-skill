@@ -62,4 +62,4 @@ _(Choose 3–5 that fit the thread; do not place Contexts here.)_
 
 ## Contents
 
-- [F.18 - Local‑First Unification Naming Protocol](01-f-18---local-first-unification-naming-protocol.md) (737 lines) — Status: normative (Part F, Unification Suite). Audience: engineer‑managers, lead architects, editors of FPF artefacts.
+- [F.18 - Local‑First Unification Naming Protocol](01-f-18---local-first-unification-naming-protocol.md) (752 lines) — Status: normative (Part F, Unification Suite). Audience: engineer‑managers, lead architects, editors of FPF artefacts.

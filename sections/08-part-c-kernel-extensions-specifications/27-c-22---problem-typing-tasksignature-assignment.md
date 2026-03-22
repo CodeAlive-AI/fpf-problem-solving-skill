@@ -178,7 +178,7 @@ If the problem requires **open‑ended generation** of tasks/environments, S2 **
 2. **Fill TaskSignature (S2).** Populate all fields; mark `unknown` explicitly; align **Missingness** with CHR semantics. 
 3. **Bind CG-Spec ids.** For any numeric comparison/aggregation you expect downstream, cite **CG-Spec.Characteristics** and prove **CSLC** legality. 
 4. **Attach Evidence Graph Ref.** Lanes (TA/VA/LA), carriers, freshness windows; set **Gamma-fold** default; no self-evidence. 
-+5. **Publish crossings.** If importing across a **GateCrossing** boundary, mint **BridgeDescription + UTS row**; record **CL/CL^plane**; penalties **→ R only**. 
+5. **Publish crossings.** If importing across a **GateCrossing** boundary, mint **BridgeDescription + UTS row**; record **CL/CL^plane**; penalties **→ R only**. 
 6. **Keep thresholds in Acceptance.** Move any thresholds (gate numbers) into **G.4**;  wire **RSCR** refusal tests (illegal ops; unit/scale checks; **tri-state unknowns**; CL->R routing; **Phi tables present**).
 7. **Run GateCrossing checks** on the signature and crossings: stance tagging (if used; informative only), **CrossingSurface** presence/consistency (**E.18/A.27/F.9**), **LanePurity**, and **Lexical SD** (**E.10**); attach **UTS Name Cards** with twin labels.
 8. **Bias audit.** Check E.5.4 and C.21 hooks if the problem lives *inside* a discipline dashboard or SoTA pack.

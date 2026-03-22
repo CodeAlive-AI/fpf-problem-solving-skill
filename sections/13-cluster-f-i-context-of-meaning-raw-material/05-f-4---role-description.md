@@ -260,8 +260,8 @@ Let **`stance(T)`** ∈ {**design**, **run**} (from the Context).
 #### F.4:11.4 - Co‑wearability / co‑bearability
 
 **Form.**
-+`senseFamily(T₁)=senseFamily(T₂)=Role ∧ stance(T₁)=stance(T₂) ∧ ¬incompatible(T₁,T₂) ⊢ coWearable(T₁,T₂)`
-+`senseFamily(T₁)=senseFamily(T₂)=Status ∧ ¬incompatible(T₁,T₂) ⊢ stackable(T₁,T₂)`
+`senseFamily(T₁)=senseFamily(T₂)=Role ∧ stance(T₁)=stance(T₂) ∧ ¬incompatible(T₁,T₂) ⊢ coWearable(T₁,T₂)`
+`senseFamily(T₁)=senseFamily(T₂)=Status ∧ ¬incompatible(T₁,T₂) ⊢ stackable(T₁,T₂)`
 
 **Reading.** Within a Context, two Roles can be worn together (or two Statuses carried) when they **do not** conflict.
 

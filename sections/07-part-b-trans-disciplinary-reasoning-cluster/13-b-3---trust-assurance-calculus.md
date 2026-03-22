@@ -286,7 +286,7 @@ These obligations refine the generic Proof Kit from **B.1.1 §6** for **assuranc
   * `CL`: mapping of scales (CL1 vs CL3).
   * `G`: populations union, but unsupported sub‑populations are dropped.
 * **Aggregation:**
-+* **Aggregation:**  
+* **Aggregation:**  
 * **\[M‑1]** ordinal support ranking; note weakest‑link study.  
 * **\[M‑2]** compute `R_eff` with Φ table; record `CL_min` for scale mappings.  
 * **\[F‑constructive]** formalise the effect‑model equivalence and export proof‑term hash.  # [M/F]

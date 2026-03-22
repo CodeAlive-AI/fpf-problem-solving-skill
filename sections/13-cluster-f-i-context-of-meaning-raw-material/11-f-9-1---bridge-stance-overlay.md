@@ -74,7 +74,7 @@ The annotation mirrors common interpretive practice in comparative theory, desig
 
 ### F.9.1:12 - Relations
 - Builds on: `F.9`, `C.2.2a`.
-- Coordinates with: `A.16.0`, `E.17.1`, `A.6.P`, `A.6.A`, `A.6.Q`, `C.25`, and `B.4.1`.
+- Coordinates with: `A.16.0`, `E.17.1`, `E.17.ID.CR`, `A.6.P`, `A.6.A`, `A.6.Q`, `C.25`, and `B.4.1`.
 - Constrains: authoring annotations for tradition and routing bundles.
 ### F.9.1:13 - Worked Bridge-Card Examples
 
