@@ -1,6 +1,6 @@
 ---
 name: fpf-problem-solving
-description: "First Principles Framework (FPF) — thinking amplifier. Use when user wants to think through a complex problem, architect a system, evaluate alternatives, decompose complexity, or plan rigorously. Also triggers on: FPF, bounded contexts, SoTA packs, assurance calculus, FPF Parts A-K. Not for simple task planning, general philosophy, or Agile unrelated to FPF."
+description: "First Principles Framework (FPF) — thinking amplifier. Use when user wants to think through a complex problem, architect a system, evaluate alternatives, decompose complexity, classify problems, define quality attributes, or plan rigorously. Also triggers on: FPF, bounded contexts, SoTA packs, assurance calculus, FPF Parts A-K. Not for simple task planning, general philosophy, or Agile unrelated to FPF."
 license: MIT
 ---
 
@@ -23,6 +23,8 @@ Use FPF whenever you need to think more rigorously than the situation's default.
 - Structure a proposal that must survive scrutiny from multiple expert perspectives
 - Generate alternatives systematically instead of anchoring on the first idea
 - Define what "better" means before comparing options
+- Classify what kind of problem you're facing before searching for solutions
+- Plan how an AI agent should select and sequence its tools under budget and trust constraints
 
 ## How to navigate
 
@@ -37,16 +39,19 @@ The use cases above help decide WHETHER to invoke FPF. The router below decides 
 | **Set boundaries** on what statements mean | 05 Signature Stack → classify as definitions, gates, duties, or evidence |
 | **Prevent category errors** (role vs. function, method vs. work) | 06 Constitutional Principles → A.7 Strict Distinction |
 | **Evaluate confidence** in a claim or artifact | 07 Part B → B.3 Trust & Assurance; 08 Part C → C.2 F-G-R scoring |
-| **Compose** parts into wholes preserving properties | 07 Part B → B.1 Gamma algebra; 08 Part C → C.13 Compose-CAL |
+| **Compose** parts into wholes preserving properties | 07 Part B → B.1 Gamma algebra; 08 Part C → C.13 Compose-CAL, C.20 Discipline-CAL |
 | **Reason through** a problem systematically | 07 Part B → B.5 Reasoning Cycle, B.5.2 Abductive Loop |
 | **Generate alternatives** / explore solution space | 08 Part C → C.18 NQD Open-Ended Search, C.19 Explore-Exploit |
-| **Measure and compare** options rigorously | 06 A.V → A.17-A.19 Characteristics & CSLC; 08 Part C → C.16 MM-CHR |
+| **Measure and compare** options rigorously | 06 A.V → A.17-A.19 Characteristics, CSLC & SelectorMechanism; 08 Part C → C.16 MM-CHR |
 | **Score knowledge** quality (formality, scope, reliability) | 08 Part C → C.2 KD-CAL, C.2.2 Reliability, C.2.3 Formality |
 | **Resolve conflicts** across stakeholders or values | 09 Part D → Ethics & Conflict |
 | **Unify vocabulary** across teams or domains | 13 F.I Context of Meaning → 14-15 UTS tables → 20 Lexical Debt |
 | **Document** for multiple audiences | 11 E-I Constitution → E.17 Multi-View Publication Kit |
-| **Sharpen expression** — repair vague wording, surface ambiguity | 11 E-I → E.17.SD Surface Discipline, E.17.EFP Explanation Faithfulness; 05 A.IV.A → A.6.H Wholeness Unpacking |
-| **Survey a discipline** and build a reusable toolkit | 16 Part G → SoTA Packs, TraditionCards, OperatorCards |
+| **Sharpen expression** — repair vague wording, surface ambiguity | 11 E-I → E.17.SD.SPR Surface Precision Restoration, E.17.SD.OOTD Object-of-Talk Discipline, E.17.EFP Explanation Faithfulness; 05 A.IV.A → A.6.H Wholeness Unpacking |
+| **Survey a discipline** and build a reusable toolkit | 16 Part G → SoTA Packs, TraditionCards, OperatorCards; 08 Part C → C.21 Discipline-CHR (field health & maturity) |
+| **Classify** a problem type before solving | 08 Part C → C.22 Problem-CHR, C.3 Kind-CAL (typed reasoning) |
+| **Define quality** attributes ("-ilities") as structured bundles | 08 Part C → C.25 Q-Bundle; 06 A.V → A.17-A.19 Characteristics |
+| **Orchestrate** agentic tool use under budgets and trust gates | 08 Part C → C.24 Agent-Tools-CAL |
 | **Trace provenance** of a claim | 06 A.V → A.10 Evidence Graph; 16 Part G → G.6 Provenance Ledger |
 
 For complex problems, follow paths across multiple sections — the router shows where to start, not where to stop.
@@ -91,12 +96,12 @@ Structural reference. Each entry is a folder — read its `_index.md` first, the
 | 03 | [Preface](sections/03-preface/_index.md) | 17 | **Onboard**: reading paths by role, FPF philosophy, purpose and non-goals. |
 | 04 | [Part A — Kernel](sections/04-part-a-kernel-architecture-cluster/_index.md) | 19 | **Decompose and assign**: holons, bounded contexts, roles, transformers, method/work separation. |
 | 05 | [A.IV.A — Signatures](sections/05-cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) | 20 | **Set boundaries**: classify statements as definitions, gates, duties, or evidence. |
-| 06 | [A.V — Principles](sections/06-cluster-a-v---constitutional-principles-of-the-kernel/_index.md) | 29 | **Prevent confusion**: category errors, measuring, comparing, evidence graphs. |
+| 06 | [A.V — Principles](sections/06-cluster-a-v---constitutional-principles-of-the-kernel/_index.md) | 29 | **Prevent confusion**: category errors, measuring, comparing, evidence graphs, mechanism suite, flow constraints, gate profiles. |
 | 07 | [Part B — Reasoning](sections/07-part-b-trans-disciplinary-reasoning-cluster/_index.md) | 24 | **Compose and evaluate**: aggregation (Gamma), trust scores, emergence, reasoning cycles. |
-| 08 | [Part C — Extensions](sections/08-part-c-kernel-extensions-specifications/_index.md) | 30 | **Score and search**: epistemic quality (F-G-R), kinds, measurement, open-ended search. |
+| 08 | [Part C — Extensions](sections/08-part-c-kernel-extensions-specifications/_index.md) | 30 | **Score and search**: epistemic quality (F-G-R), kinds, measurement, open-ended search, problem typing, discipline composition, agentic tool-use, quality bundles. |
 | 09 | [Part D — Ethics](sections/09-part-d-multi-scale-ethics-conflict-optimisation/_index.md) | 1 | **Resolve conflicts**: ethical trade-offs, bias auditing, safety overrides. |
 | 10 | [Part E — Constitution](sections/10-part-e---fpf-constitution-and-authoring-cluster/_index.md) | 0 | Entry point for Part E subsections. |
-| 11 | [E-I — Constitution](sections/11-section-e-i---the-fpf-constitution/_index.md) | 33 | **Govern and publish**: 11 Pillars, guard-rails, multi-view publication (MVPK), surface discipline. |
+| 11 | [E-I — Constitution](sections/11-section-e-i---the-fpf-constitution/_index.md) | 33 | **Govern and publish**: 11 Pillars, guard-rails, multi-view publication (MVPK), surface discipline, comparative reading, transduction graph, pattern quality gates. |
 | 12 | [Part F — Unification](sections/12-part-f-the-unification-suite-concept-sets-sensecells-contextual-role-a/_index.md) | 0 | Entry point for Part F subsections. |
 | 13 | [F.I — Meaning](sections/13-cluster-f-i-context-of-meaning-raw-material/_index.md) | 19 | **Align vocabulary**: semantic drift, homonym collisions, Alignment Bridges. |
 | 14 | [UTS Layout A](sections/14-block-fpf-u-type-unified-tech-name-unified-plain-name-plain-twin-gover/_index.md) | 0 | **Map concepts** across standards (BPMN, PROV-O, ITIL). |
