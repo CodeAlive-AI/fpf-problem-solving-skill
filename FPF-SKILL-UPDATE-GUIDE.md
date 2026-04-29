@@ -42,7 +42,7 @@ This is the core navigation improvement. Each row maps a **thinking verb** to a 
 To add a new row:
 1. Identify the thinking need the new FPF content serves (what does it help the user DO?)
 2. Name it with a bold verb: **Decompose**, **Evaluate**, **Unify**, etc.
-3. Point to the specific section AND sub-section (e.g., "08 Part C -> C.18 NQD")
+3. Point to the specific section AND sub-section (e.g., "06 Part C -> C.18 NQD"). For nested clusters, write the full path (e.g., "04 Part A -> A.V -> A.7").
 4. Check for overlap with existing rows — merge if the thinking need is the same
 
 To validate a row:

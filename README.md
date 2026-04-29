@@ -10,7 +10,7 @@ FPF is a **thinking amplifier** — it helps you plan deeper and make better dec
 
 ## How it works
 
-This skill functions as **agentic RAG** — retrieval-augmented generation driven by the agent itself, with no external vector database or embedding pipeline. The 59,000-line FPF specification is split into a two-level hierarchy (20 directories, 230 files). SKILL.md provides a thinking-verb router that maps the user's intent to the right section. The agent then navigates `_index.md` files to pick the narrowest sub-section (~300 lines) and loads only that into context. The agent is the retriever, the router, and the reasoner — all in one loop.
+This skill functions as **agentic RAG** — retrieval-augmented generation driven by the agent itself, with no external vector database or embedding pipeline. The FPF specification is split into 14 top-level Parts; Part A additionally contains 2 nested clusters (16 directories, 241 files total). SKILL.md provides a thinking-verb router that maps the user's intent to the right section. The agent then navigates `_index.md` files to pick the narrowest leaf (~300 lines) and loads only that into context. The agent is the retriever, the router, and the reasoner — all in one loop.
 
 ## Install
 
@@ -23,42 +23,45 @@ npx skills add CodeAlive-AI/fpf-problem-solving-skill -g
 ```
 sections/
   04-part-a-kernel-architecture-cluster/
-    _index.md                          # TOC with descriptions of all sub-sections
-    01-a-0---onboarding-glossary.md    # 137 lines
-    02-a-1---holonic-foundation.md     # 185 lines
-    ...                                # 19 sub-sections total
-  08-part-c-kernel-extensions-specifications/
+    _index.md                                       # TOC + sub-cluster links
+    01-a-0---onboarding-glossary.md                 # 137 lines
+    02-a-1---holonic-foundation.md                  # 185 lines
+    ...                                             # 19 leaf files
+    cluster-a-iv-a---signature-stack-boundary-discipline/
+      _index.md                                     # nested TOC
+      01-a-6---signature-stack-boundary-discipline.md
+      ...                                           # 22 leaf files
+    cluster-a-v---constitutional-principles-of-the-kernel/
+      _index.md
+      ...                                           # 31 leaf files
+  06-part-c-kernel-extensions-specifications/
     _index.md
-    ...                                # 30 sub-sections
-  ...                                  # 20 directories total
+    ...                                             # 36 leaf files
+  ...                                               # 14 top-level Parts
 ```
 
-The agent reads `_index.md` first, picks the right sub-section file, and loads only that.
+The agent reads `_index.md` first, picks the right leaf (or descends into a sub-cluster's `_index.md`), and loads only that file.
 
 ## Sections
 
 | # | Section | Sub-sections |
 |---|---------|:---:|
 | 01 | Title page | 0 |
-| 02 | Table of Content | 0 |
+| 02 | Table of Content | 1 |
 | 03 | Preface | 17 |
-| 04 | Part A — Kernel Architecture | 19 |
-| 05 | A.IV.A — Signature Stack & Boundary | 20 |
-| 06 | A.V — Constitutional Principles | 29 |
-| 07 | Part B — Trans-disciplinary Reasoning | 24 |
-| 08 | Part C — Kernel Extensions | 30 |
-| 09 | Part D — Ethics & Conflict | 1 |
-| 10 | Part E — Constitution & Authoring | 0 |
-| 11 | E-I — FPF Constitution | 33 |
-| 12 | Part F — Unification Suite | 0 |
-| 13 | F.I — Context of Meaning | 19 |
-| 14 | UTS Layout A | 0 |
-| 15 | UTS Layout B | 1 |
-| 16 | Part G — SoTA Patterns Kit | 15 |
-| 17 | Part H — Glossary | 0 |
-| 18 | Part I — Annexes | 0 |
-| 19 | Part J — Indexes | 0 |
-| 20 | Part K — Lexical Debt | 2 |
+| 04 | Part A — Kernel Architecture | 19 + 2 sub-clusters |
+| 04 | &nbsp;&nbsp;└─ A.IV.A — Signature Stack & Boundary | 22 |
+| 04 | &nbsp;&nbsp;└─ A.V — Constitutional Principles | 31 |
+| 05 | Part B — Trans-disciplinary Reasoning | 24 |
+| 06 | Part C — Kernel Extensions | 36 |
+| 07 | Part D — Ethics & Conflict | 1 |
+| 08 | Part E — Constitution (incl. Section E-I) | 35 |
+| 09 | Part F — Unification Suite (incl. Cluster F.I, UTS) | 20 |
+| 10 | Part G — SoTA Patterns Kit | 15 |
+| 11 | Part H — Glossary | 0 |
+| 12 | Part I — Annexes | 1 |
+| 13 | Part J — Indexes | 1 |
+| 14 | Part K — Lexical Debt | 2 |
 
 ## Updating after FPF spec changes
 
