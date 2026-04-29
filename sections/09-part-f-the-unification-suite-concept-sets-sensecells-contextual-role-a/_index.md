@@ -1,3 +1,5 @@
+# **Part F — The Unification Suite (U‑Suite): Concept‑Sets, SenseCells & Contextual Role Assignment**
+
 # Cluster F.I — context of meaning & Raw Material
 
 
@@ -21,4 +23,5 @@
 - [F.14 - Anti‑Explosion Control (Roles & Statuses)](16-f-14---anti-explosion-control.md) (294 lines) — “Name less, express more.”
 - [F.15 - SCR/RSCR Harness for Unification](17-f-15---scr-rscr-harness-for-unification.md) (393 lines) — “Prove locality and parsimony first; only then prove composition.”
 - [F.16 - Worked‑Example Template (Cross‑Domain)](18-f-16---worked-example-template.md) (305 lines) — “Show the thought, not the tooling.”
-- [F.17 - Unified Term Sheet (UTS)](19-f-17---unified-term-sheet.md) (223 lines) — “One table that a careful mind can hold.”
+- [F.17 - Unified Term Sheet (UTS)](19-f-17---unified-term-sheet.md) (297 lines) — “One table that a careful mind can hold.”
+- [F.18 - Local‑First Unification Naming Protocol](20-f-18---local-first-unification-naming-protocol.md) (796 lines) — Status: normative (Part F, Unification Suite). Audience: engineer‑managers, lead architects, editors of FPF artefacts.

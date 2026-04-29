@@ -1,6 +1,11 @@
 # Part A – Kernel Architecture Cluster
 
 
+## Sub-clusters
+
+- [Cluster A.IV.A - Signature Stack & Boundary Discipline (A.6.\)](cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) (22 sub-sections)
+- [Cluster A.V - Constitutional Principles of the Kernel](cluster-a-v---constitutional-principles-of-the-kernel/_index.md) (31 sub-sections)
+
 ## Contents
 
 - [A.0 - Onboarding Glossary (NQD & E/E‑LOG)](01-a-0---onboarding-glossary.md) (248 lines) — One‑screen purpose (manager‑first). This pattern gives newcomers a plain‑language starter kit for FPF’s generative engine so they can run a lawful problem‑solving / search loop on day one. It...
