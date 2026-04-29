@@ -1,9 +1,14 @@
 # Part A – Kernel Architecture Cluster
 
 
+## Sub-clusters
+
+- [Cluster A.IV.A - Signature Stack & Boundary Discipline (A.6.\)](cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) (22 sub-sections)
+- [Cluster A.V - Constitutional Principles of the Kernel](cluster-a-v---constitutional-principles-of-the-kernel/_index.md) (31 sub-sections)
+
 ## Contents
 
-- [A.0 - Onboarding Glossary (NQD & E/E‑LOG)](01-a-0---onboarding-glossary.md) (137 lines) — One‑screen purpose (manager‑first). This pattern gives newcomers a plain‑language starter kit for FPF’s generative engine so they can run a lawful problem‑solving / search loop on day one. It...
+- [A.0 - Onboarding Glossary (NQD & E/E‑LOG)](01-a-0---onboarding-glossary.md) (248 lines) — One‑screen purpose (manager‑first). This pattern gives newcomers a plain‑language starter kit for FPF’s generative engine so they can run a lawful problem‑solving / search loop on day one. It...
 - [A.1 - Holonic Foundation: Entity → Holon](02-a-1---holonic-foundation-entity-holon.md) (185 lines) — Type: Architectural (A)
 - [A.1.1 - U.BoundedContext: The Semantic Frame](03-a-1-1---u-boundedcontext-the-semantic-frame.md) (201 lines) — Type: Architectural (A)
 - [A.2 - Role Taxonomy](04-a-2---role-taxonomy.md) (210 lines) — Type: Architectural (A)

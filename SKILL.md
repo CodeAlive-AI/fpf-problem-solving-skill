@@ -34,33 +34,35 @@ The use cases above help decide WHETHER to invoke FPF. The router below decides 
 
 | What you need to do | Start here |
 |---|---|
-| **Decompose** a complex whole into bounded parts | 04 Kernel → A.1 Holons, A.1.1 Bounded Contexts, A.14 Mereology |
-| **Assign** roles and responsibilities | 04 Kernel → A.2 Roles, A.15 Role-Method-Work Alignment |
-| **Set boundaries** on what statements mean | 05 Signature Stack → classify as definitions, gates, duties, or evidence |
-| **Prevent category errors** (role vs. function, method vs. work) | 06 Constitutional Principles → A.7 Strict Distinction |
-| **Evaluate confidence** in a claim or artifact | 07 Part B → B.3 Trust & Assurance; 08 Part C → C.2 F-G-R scoring |
-| **Compose** parts into wholes preserving properties | 07 Part B → B.1 Gamma algebra; 08 Part C → C.13 Compose-CAL, C.20 Discipline-CAL |
-| **Reason through** a problem systematically | 07 Part B → B.5 Reasoning Cycle, B.5.2 Abductive Loop |
-| **Generate alternatives** / explore solution space | 08 Part C → C.18 NQD Open-Ended Search, C.19 Explore-Exploit |
-| **Measure and compare** options rigorously | 06 A.V → A.17-A.19 Characteristics, CSLC & SelectorMechanism; 08 Part C → C.16 MM-CHR |
-| **Score knowledge** quality (formality, scope, reliability) | 08 Part C → C.2 KD-CAL, C.2.2 Reliability, C.2.3 Formality |
-| **Resolve conflicts** across stakeholders or values | 09 Part D → Ethics & Conflict |
-| **Unify vocabulary** across teams or domains | 13 F.I Context of Meaning → 14-15 UTS tables → 20 Lexical Debt |
-| **Document** for multiple audiences | 11 E-I Constitution → E.17 Multi-View Publication Kit |
-| **Sharpen expression** — repair vague wording, surface ambiguity | 11 E-I → E.17.SD.SPR Surface Precision Restoration, E.17.SD.OOTD Object-of-Talk Discipline, E.17.EFP Explanation Faithfulness; 05 A.IV.A → A.6.H Wholeness Unpacking |
-| **Survey a discipline** and build a reusable toolkit | 16 Part G → SoTA Packs, TraditionCards, OperatorCards; 08 Part C → C.21 Discipline-CHR (field health & maturity) |
-| **Classify** a problem type before solving | 08 Part C → C.22 Problem-CHR, C.3 Kind-CAL (typed reasoning) |
-| **Define quality** attributes ("-ilities") as structured bundles | 08 Part C → C.25 Q-Bundle; 06 A.V → A.17-A.19 Characteristics |
-| **Orchestrate** agentic tool use under budgets and trust gates | 08 Part C → C.24 Agent-Tools-CAL |
-| **Trace provenance** of a claim | 06 A.V → A.10 Evidence Graph; 16 Part G → G.6 Provenance Ledger |
+| **Decompose** a complex whole into bounded parts | 04 Part A → A.1 Holons, A.1.1 Bounded Contexts, A.14 Mereology |
+| **Assign** roles and responsibilities | 04 Part A → A.2 Roles, A.15 Role-Method-Work Alignment |
+| **Set boundaries** on what statements mean | 04 Part A → A.IV.A Signatures → classify as definitions, gates, duties, or evidence |
+| **Prevent category errors** (role vs. function, method vs. work) | 04 Part A → A.V Principles → A.7 Strict Distinction |
+| **Evaluate confidence** in a claim or artifact | 05 Part B → B.3 Trust & Assurance; 06 Part C → C.2 F-G-R scoring |
+| **Compose** parts into wholes preserving properties | 05 Part B → B.1 Gamma algebra; 06 Part C → C.13 Compose-CAL, C.20 Discipline-CAL |
+| **Reason through** a problem systematically | 05 Part B → B.5 Reasoning Cycle, B.5.2 Abductive Loop |
+| **Generate alternatives** / explore solution space | 06 Part C → C.18 NQD Open-Ended Search, C.19 Explore-Exploit |
+| **Measure and compare** options rigorously | 04 Part A → A.V → A.17-A.19 Characteristics, CSLC & SelectorMechanism; 06 Part C → C.16 MM-CHR |
+| **Score knowledge** quality (formality, scope, reliability) | 06 Part C → C.2 KD-CAL, C.2.2 Reliability, C.2.3 Formality |
+| **Decide** under uncertainty (act despite incomplete evidence) | 06 Part C → C.11 Decsn-CAL |
+| **Resolve conflicts** across stakeholders or values | 07 Part D → Ethics & Conflict |
+| **Unify vocabulary** across teams or domains | 09 Part F → Context of Meaning, UTS tables → 14 Part K Lexical Debt |
+| **Document** for multiple audiences | 08 Part E → E.17 Multi-View Publication Kit |
+| **Sharpen expression** — repair vague wording, surface ambiguity | 08 Part E → E.17.AUD AuthoredUnitDiscipline (umbrella), E.17.AUD.LHR Local Head Restoration, E.17.AUD.OOTD Object-of-Talk Discipline, E.17.EFP Explanation Faithfulness; 04 Part A → A.IV.A → A.6.H Wholeness Unpacking |
+| **Survey a discipline** and build a reusable toolkit | 10 Part G → SoTA Packs, TraditionCards, OperatorCards; 06 Part C → C.21 Discipline-CHR (field health & maturity) |
+| **Classify** a problem type before solving | 06 Part C → C.22 Problem-CHR, C.3 Kind-CAL (typed reasoning) |
+| **Define quality** attributes ("-ilities") as structured bundles | 06 Part C → C.25 Q-Bundle; 04 Part A → A.V → A.17-A.19 Characteristics |
+| **Orchestrate** agentic tool use under budgets and trust gates | 06 Part C → C.24 Agent-Tools-CAL |
+| **Trace provenance** of a claim | 04 Part A → A.V → A.10 Evidence Graph; 10 Part G → G.6 Provenance Ledger |
 
 For complex problems, follow paths across multiple sections — the router shows where to start, not where to stop.
 
 ### Step 2 — Read the _index.md, then the sub-section
 
-1. Open the `_index.md` of the target section folder — it lists all sub-sections with line counts and descriptions.
-2. Read only the specific sub-section file you need.
-3. Do NOT load entire sections. Pick the narrowest file that serves the user's question.
+1. Open the `_index.md` of the target section folder — it lists all sub-sections with line counts and descriptions, plus any sub-clusters (currently only Part A has them: A.IV.A Signatures, A.V Principles).
+2. If the target lives inside a sub-cluster, open that sub-cluster's `_index.md` next.
+3. Read only the specific leaf file you need.
+4. Do NOT load entire sections. Pick the narrowest file that serves the user's question.
 
 ### Step 3 — Apply in plain language
 
@@ -92,22 +94,16 @@ Structural reference. Each entry is a folder — read its `_index.md` first, the
 | # | Section | Sub | When to use |
 |---|---------|:---:|-------------|
 | 01 | [Title page](sections/01-first-principles-framework-core-conceptual-specification/_index.md) | 0 | Authorship, version date, top-level identity. |
-| 02 | [Table of Content](sections/02-table-of-content/_index.md) | 0 | Navigate the spec, locate a pattern, trace inter-section dependencies. |
+| 02 | [Table of Content](sections/02-table-of-content/_index.md) | 1 | Navigate the spec, locate a pattern, trace inter-section dependencies; keyword/search-query discoverability discipline. |
 | 03 | [Preface](sections/03-preface/_index.md) | 17 | **Onboard**: reading paths by role, FPF philosophy, purpose and non-goals. |
-| 04 | [Part A — Kernel](sections/04-part-a-kernel-architecture-cluster/_index.md) | 19 | **Decompose and assign**: holons, bounded contexts, roles, transformers, method/work separation. |
-| 05 | [A.IV.A — Signatures](sections/05-cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) | 20 | **Set boundaries**: classify statements as definitions, gates, duties, or evidence. |
-| 06 | [A.V — Principles](sections/06-cluster-a-v---constitutional-principles-of-the-kernel/_index.md) | 29 | **Prevent confusion**: category errors, measuring, comparing, evidence graphs, mechanism suite, flow constraints, gate profiles. |
-| 07 | [Part B — Reasoning](sections/07-part-b-trans-disciplinary-reasoning-cluster/_index.md) | 24 | **Compose and evaluate**: aggregation (Gamma), trust scores, emergence, reasoning cycles. |
-| 08 | [Part C — Extensions](sections/08-part-c-kernel-extensions-specifications/_index.md) | 30 | **Score and search**: epistemic quality (F-G-R), kinds, measurement, open-ended search, problem typing, discipline composition, agentic tool-use, quality bundles. |
-| 09 | [Part D — Ethics](sections/09-part-d-multi-scale-ethics-conflict-optimisation/_index.md) | 1 | **Resolve conflicts**: ethical trade-offs, bias auditing, safety overrides. |
-| 10 | [Part E — Constitution](sections/10-part-e---fpf-constitution-and-authoring-cluster/_index.md) | 0 | Entry point for Part E subsections. |
-| 11 | [E-I — Constitution](sections/11-section-e-i---the-fpf-constitution/_index.md) | 33 | **Govern and publish**: 11 Pillars, guard-rails, multi-view publication (MVPK), surface discipline, comparative reading, transduction graph, pattern quality gates. |
-| 12 | [Part F — Unification](sections/12-part-f-the-unification-suite-concept-sets-sensecells-contextual-role-a/_index.md) | 0 | Entry point for Part F subsections. |
-| 13 | [F.I — Meaning](sections/13-cluster-f-i-context-of-meaning-raw-material/_index.md) | 19 | **Align vocabulary**: semantic drift, homonym collisions, Alignment Bridges. |
-| 14 | [UTS Layout A](sections/14-block-fpf-u-type-unified-tech-name-unified-plain-name-plain-twin-gover/_index.md) | 0 | **Map concepts** across standards (BPMN, PROV-O, ITIL). |
-| 15 | [UTS Layout B](sections/15-block-base-concept-scale-map/_index.md) | 1 | **Map concepts** across disciplines (operations, physics, math). |
-| 16 | [Part G — SoTA Kit](sections/16-part-g-discipline-sota-patterns-kit/_index.md) | 15 | **Harvest disciplines**: SoTA Packs, TraditionCards, OperatorCards, benchmarks. |
-| 17 | [Part H — Glossary](sections/17-part-h-glossary-definitional-pattern-index/_index.md) | 0 | **Look up terms**: canonical definitions, four-register naming, cross-references. |
-| 18 | [Part I — Annexes](sections/18-part-i-annexes-extended-tutorials/_index.md) | 0 | Walkthroughs, change log, external standards mappings. |
-| 19 | [Part J — Indexes](sections/19-part-j-indexes-navigation-aids/_index.md) | 0 | Concept-to-pattern, pattern-to-example, principle-trace indexes. |
-| 20 | [Part K — Lexical Debt](sections/20-part-k-lexical-debt/_index.md) | 2 | **Fix terminology**: mandatory replacements and migration debt. |
+| 04 | [Part A — Kernel](sections/04-part-a-kernel-architecture-cluster/_index.md) | 19 + 2 clusters | **Decompose, set boundaries, prevent confusion**. Direct (19): holons, bounded contexts, roles, transformers, method/work separation. Sub-clusters: [A.IV.A Signatures](sections/04-part-a-kernel-architecture-cluster/cluster-a-iv-a---signature-stack-boundary-discipline/_index.md) (22) — definitions, gates, duties, evidence, recognition signatures, controlled coarsening; [A.V Principles](sections/04-part-a-kernel-architecture-cluster/cluster-a-v---constitutional-principles-of-the-kernel/_index.md) (31) — category errors, measuring, comparing, evidence graphs, mechanism suite, cross-surface substrate, flow constraints, gate profiles. |
+| 05 | [Part B — Reasoning](sections/05-part-b-trans-disciplinary-reasoning-cluster/_index.md) | 24 | **Compose and evaluate**: aggregation (Gamma), trust scores, emergence, reasoning cycles. |
+| 06 | [Part C — Extensions](sections/06-part-c-kernel-extensions-specifications/_index.md) | 36 | **Score, decide, search**: epistemic quality (F-G-R), kinds, decision theory, measurement, open-ended search, problem typing, discipline composition, agentic tool-use, quality bundles, quantum-like modeling. |
+| 07 | [Part D — Ethics](sections/07-part-d-multi-scale-ethics-conflict-optimisation/_index.md) | 1 | **Resolve conflicts**: ethical trade-offs, bias auditing, safety overrides. |
+| 08 | [Part E — Constitution](sections/08-part-e---fpf-constitution-and-authoring-cluster/_index.md) | 35 | **Govern and publish**: 11 Pillars, guard-rails, first-practical entry & discoverability (E.11), multi-view publication (MVPK), authored-unit discipline (AUD), comparative reading, transduction graph, pattern quality gates. |
+| 09 | [Part F — Unification](sections/09-part-f-the-unification-suite-concept-sets-sensecells-contextual-role-a/_index.md) | 20 | **Align vocabulary**: semantic drift, homonym collisions, Alignment Bridges, UTS concept maps across standards and disciplines. |
+| 10 | [Part G — SoTA Kit](sections/10-part-g-discipline-sota-patterns-kit/_index.md) | 15 | **Harvest disciplines**: SoTA Packs, TraditionCards, OperatorCards, benchmarks. |
+| 11 | [Part H — Glossary](sections/11-part-h-glossary-definitional-pattern-index/_index.md) | 0 | **Look up terms**: canonical definitions, four-register naming, cross-references. |
+| 12 | [Part I — Annexes](sections/12-part-i-annexes-extended-tutorials/_index.md) | 1 | Walkthroughs (I.2 detailed worked entry-readings), change log, external standards mappings. |
+| 13 | [Part J — Indexes](sections/13-part-j-indexes-navigation-aids/_index.md) | 1 | Concept-to-pattern, pattern-to-example, principle-trace, first-practical-entry neighborhood indexes. |
+| 14 | [Part K — Lexical Debt](sections/14-part-k-lexical-debt/_index.md) | 2 | **Fix terminology**: mandatory replacements and migration debt. |
