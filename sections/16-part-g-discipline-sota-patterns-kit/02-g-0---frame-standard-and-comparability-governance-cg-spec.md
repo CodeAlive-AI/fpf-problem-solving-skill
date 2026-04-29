@@ -1,14 +1,14 @@
 ## G.0 - Frame Standard and Comparability Governance — CG‑Spec
 
 **Tag.** Architectural pattern (foundational Standard; constrains G.1–G.5)
-**Stage.** *design-time* contract surface (establishes comparison legality & evidence minima; constrains run-time gates)
+**Stage.** *design-time* legality gate (establishes comparison legality & evidence minima; constrains run-time gates)
 **Primary output.** `CG‑Spec` — a notation-independent legality gate for a `CG‑Frame`, published to UTS (with explicit edition pins for downstream reproducibility and RSCR).
 **Primary hooks.** `USM.ScopeSlice(G)`, `describedEntity`, `SCP`, `MinimalEvidence`, `CNSpecRef`, `Γ‑fold`, `Φ(CL)` / `Φ_plane` policy pins, `UTS` publication (Name Cards + edition pins).
 **Non-duplication note.** Universal Part‑G invariants are owned by `G.Core` and are satisfied here **only via delegation** (`CC‑G0‑CoreRef` → `CC‑GCORE‑*`). Single‑owner contract-surface discipline (CN/CG) is enforced via `CC‑GCORE‑CN‑CG‑1` (no shadow specs; no competing defaults).
 
 ### G.0:1 - Problem frame
 
-A team defines or evolves a `CG‑Frame` (e.g., a frame for creativity measurement, decision quality, architecture trade‑offs, or portfolio selection). Downstream mechanisms (G.1–G.5 and beyond) must compare, aggregate, and publish CHR‑typed observations in ways that are:
+A team defines or evolves a `CG‑Frame` (e.g., a frame for creativity measurement, decision quality, architecture trade‑offs, or selected-set publication). Downstream mechanisms (G.1–G.5 and beyond) must compare, aggregate, and publish CHR‑typed observations in ways that are:
 
 * lawful with respect to measurement legality (scale/unit/polarity constraints),
 * auditable with explicit evidence minima and provenance,
@@ -107,7 +107,7 @@ CG‑Spec :=
 
   ReferenceMap := minimal map{term/id → UTS|CHR|SoTA-pack refs},
 
-  CNSpecRef := ⟨A.19 ref, CNSpecRef.edition⟩,          // CN‑Spec is the contract surface (single-owner)
+  CNSpecRef := ⟨A.19 ref, CNSpecRef.edition⟩,          // CN‑Spec is the governance card (single-owner)
 
   Characteristics := [CHR.Characteristic.id…],          // pointers only; authored in G.3 CHR pack
 
@@ -209,7 +209,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId; not new Patter
 
   * `BridgeCardId/BridgeId` (when crossings are permitted)
   * `CL` / `CL^k` and `Φ`/`Φ_plane` policy ids (when penalties are in play)
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.ReferencePlaneEdit}`
+* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.ReferencePlaneEdit}`
 * **Notes (wiring-only):** Crossing semantics and penalty routing are delegated to `G.Core`; this module only lists the required pins used by `CG‑Spec` entries.
 
 **GPatternExtension: SoTAPaletteInputs**
@@ -223,7 +223,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId; not new Patter
 * **RequiredPins/EditionPins/PolicyPins (minimum):**
 
   * `SoTA-Pack@CG‑Frame` refs used to justify comparator admissibility, evidence minima, and crossing allowances (e.g., claim sheets, operator inventory, bridge matrix ids)
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.FreshnessOrDecayEvent}`
+* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.FreshnessOrDecayEvent}`
 * **Notes (wiring-only):** Any SoTA palette/tradition semantics are owned by `G.2`. `G.0` only requires that `CG‑Spec` entries cite the needed SoTA artefacts for auditability.
 
 **GPatternExtension: QDAndExplorationHooks**
@@ -257,15 +257,15 @@ All blocks below are `GPatternExtension` modules (PatternScopeId; not new Patter
 * exposes crossing pins (bridge ids + CL/policy ids) when reuse across rigs is attempted,
 * publishes the pinned editions so parity/refresh can detect drift.
 
-#### G.0:5.2 - Archetype 2: Epistemic comparability for portfolio selection across traditions
+#### G.0:5.2 - Archetype 2: Epistemic comparability for selected-set publication across traditions
 
-**Tell.** A team selects an R&D portfolio using multiple evaluation traditions: safety assurance, cost models, and readiness heuristics.
+**Tell.** A team selects an R&D set using multiple evaluation traditions: safety assurance, cost models, and readiness heuristics.
 
 **Show (failure without CG‑Spec).** The team collapses partial orders into a single score, hides the threshold policy in code, and cannot explain why cross-tradition penalties changed between runs.
 
 **Show (repair with CG‑Spec).** A conformant `CG‑Spec`:
 
-* defines a comparator portfolio (e.g., Pareto dominance + explicit lexicographic tiebreaks where lawful),
+* defines a comparator bundle (e.g., Pareto dominance + explicit lexicographic tiebreaks where lawful),
 * pins `CNSpecRef.edition` and the editioned segments (`ComparatorSetRef.edition`, `SCPRef.edition`, `MinimalEvidenceRef.edition`),
 * makes `AcceptanceStubs` explicit as templates while locating thresholds in CAL (G.4),
 * ensures RSCR triggers are emitted when comparator or policy pins change.
@@ -285,7 +285,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId; not new Patter
 | --- | --- |
 | **CC‑G0‑CoreRef** | `G.0` is conformant only if the applicable core obligations listed in `G.0:4.1` are satisfied (delegation to `CC‑GCORE‑*`; no shadow specs, no competing defaults, typed RSCR triggers, explicit pins). |
 | CC‑G0‑01 | `CG‑Spec` is published as a notation-independent UTS object with explicit `Edition`, `Context`, `Scope`, `describedEntity`, and a minimum `ReferenceMap`. |
-| CC‑G0‑02 | `CNSpecRef.edition` is present and is treated as an external contract surface reference (no local redefinition of CN semantics). *(Delegation target: `CC‑GCORE‑CN‑CG‑1`.)* |
+| CC‑G0‑02 | `CNSpecRef.edition` is present and is treated as an external governance-card reference (no local redefinition of CN semantics). *(Delegation target: `CC‑GCORE‑CN‑CG‑1`.)* |
 | CC‑G0‑03 | `ComparatorSet` is explicit and finite; each comparator is typed and bound to `SCP` and referenced CHR characteristics; **anything not enumerated MUST be treated as illegal/abstain by default** (no implicit comparator defaults). |
 | CC‑G0‑04 | `SCP` declares, per characteristic, the lawful operation regime needed for each referenced comparator (scale/unit/polarity constraints and any required proofs/refs). |
 | CC‑G0‑05 | `MinimalEvidence` is declared per characteristic and includes explicit lane/carrier requirements, freshness window references (if any), and explicit failure behavior wiring (tri-state semantics delegated). If freshness windows are used, a stable window id (e.g., `PathSliceId`) MUST be pinned for audit. |

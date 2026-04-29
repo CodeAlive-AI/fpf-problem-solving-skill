@@ -84,7 +84,7 @@ Governance principle vs Architectural principle clash: e.g. Core release schedul
   - the **tolerances** α/δ and objective vector used (E.2 **BLP‑1e**),
   - a **Heuristic‑Debt** entry (owner, scope, expiry/review, de‑hardening plan) per E.2 **BLP‑4**,
   - an **AutonomyProfileId** (see **E.3‑ABL**) and the GateDecision authority (see **Gate‑decision authority map** below).
-**Portfolio‑first parity.** All precedence decisions that compare methods **MUST** use the G.5/G.9 parity harness and **Pareto** dominance; scalarisation across mixed scales/units is **prohibited** (B.3).
+**Set-returning parity.** All precedence decisions that compare methods **MUST** use the G.5/G.9 parity harness and **Pareto** dominance; scalarisation across mixed scales/units is **prohibited** (B.3).
 
 **BLP — Bitter‑Lesson Hooks into Precedence**
 1) **Tie‑breaking.** If two lawful options are **within δ** assurance and **within α** budget, prefer the option whose **slope vector Pareto‑dominates** over the audited window; if no dominance, prefer the **more general** method. (E.2 **BLP‑2**.)
@@ -114,7 +114,7 @@ This section defines an **extensible family of autonomy oversight profiles** for
   * **L0–L1:** execution MAY start only after an explicit **GateDecision** authorizing the CallPlan is present in the declared window.
   * **L2:** sentinels MUST be able to pause execution; resumption requires a new **GateDecision** recorded in the DecisionLog.
   * **L3:** the profile MUST declare periodic review windows; continued execution across a review boundary requires an explicit **GateDecision**.
-  * **L4:** continuous telemetry review; the default locus is **sandboxed**; leaving the sandbox requires an explicit **GateCrossing** with a published CrossingSurface (E.18 + F.9/A.27).
+  * **L4:** continuous telemetry review; the default locus is **sandboxed**; leaving the sandbox requires an explicit **GateCrossing** with a published CrossingBundle (E.18 + F.9/A.27).
 
 **Gate‑decision authority map (default signers; who may author GateDecisions).**
 * **L0:** EoR or appointed maintainer.

@@ -14,6 +14,10 @@ This pattern defines the **Evidence Graph Referring Standard** common to all Γ�
 (a) the difference between **mereology** (part‑whole; builds holarchies) and **provenance** (why a claim is admissible; does *not* build holarchies);
 (b) the run‑time / design‑time separation (A.4) across **Role–Method–Work** (A.15).
 
+Use this when a model, report, metric, confidence badge, review note, or QL reading is starting to act like evidence but the carrier, transformer, method, time stance, or provenance edge is still implicit. The action is to turn the assertion into a small because-graph: name the claim, name the carriers, name the external transformer role, name the method or work trace, state the time/coverage condition, and attach the resulting evidence edge to the claim rather than to the holon itself.
+
+Useful output: a claim that can answer "because of which carriers, by which transformer, using which method, and when?" without making provenance pretend to be part-whole structure.
+
 
 ### A.10:2 - Problem
 
@@ -44,7 +48,7 @@ The business effect is predictable: confidence badges cannot be defended, cross�
 The Standard is a small set of primitives applied uniformly, with **manager‑first clarity** and **formal hooks** for proof obligations.
 
 #### A.10:4.1 - EPV‑DAG (Evidence–Provenance DAG).
-A **typed, acyclic** graph disjoint from mereology. Node types: **SymbolCarrier** (a `U.System` in **CarrierRole**, A.15), **TransformerRole** (external Transformer, A.12), **MethodDescription** (design‑time blueprint of a method, A.15), **Observation** (a dated assertion/result), **U.Episteme** (knowledge holon). Edge vocabulary is small and normative: `evidences`, `derivedFrom`, `measuredBy`, `interpretedBy`, `usedCarrier`, `happenedBefore` (temporal), etc.
+A **typed, acyclic** graph disjoint from mereology. Node types: **SymbolCarrier** (a `s.System` in **CarrierRole**, A.15), **TransformerRole** (external Transformer, A.12), **MethodDescription** (design‑time blueprint of a method, A.15), **Observation** (a dated assertion/result), **s.Episteme** (knowledge holon). Edge vocabulary is small and normative: `evidences`, `derivedFrom`, `measuredBy`, `interpretedBy`, `usedCarrier`, `happenedBefore` (temporal), etc.
 *Manager view:* it is the *“because‑graph”*: every claim answers “because of these carriers, by this Transformer, using that method, then.”
 
 #### A.10:4.2 - Anchors (two relations, two flavours).**
@@ -80,7 +84,7 @@ The system that produces or interprets evidence is **external** to the holon und
 
 ### A.10:5 - Archetypal Grounding
 
-| Aspect                       | `U.System` — Autonomous Brake                                                                       | `U.Episteme` — Meta‑analysis                                                                                             |
+| Aspect                       | `s.System` — Autonomous Brake                                                                       | `s.Episteme` — Meta‑analysis                                                                                             |
 | ---------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | **Claim**                    | “Stop within 50 m from 100 km/h.”                                                                   | “Drug A outperforms control on endpoint E.”                                                                              |
 | **Anchor**                   | `verifiedBy`: static‑analysis proof of no overflow; `validatedBy`: instrumented track tests.        | `verifiedBy`: power‑analysis proof of sample size; `validatedBy`: pooled effect sizes with bias checks.                  |
@@ -93,7 +97,7 @@ The system that produces or interprets evidence is **external** to the holon und
 | ID                                      | Requirement                                                                                                                                                                                                                             | Purpose (what it prevents)                                 |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | **CC‑A10.1 (EPV‑DAG Presence)**         | Every published claim MUST have a path in the Evidence–Provenance DAG (EPV‑DAG) to concrete **SymbolCarrier** nodes and to the **external** `TransformerRole` that produced or interpreted the evidence.                                | Stops “weightless claims” and self‑justifying text.        |
-| **CC‑A10.2 (SCR)**                      | Any `Γ_epist^synth` operation SHALL output an **SCR** listing all symbol carriers materially used in the aggregate `U.Episteme`.                                                                                                        | Prevents source loss during aggregation.                   |
+| **CC‑A10.2 (SCR)**                      | Any `Γ_epist^synth` operation SHALL output an **SCR** listing all symbol carriers materially used in the aggregate `s.Episteme`.                                                                                                        | Prevents source loss during aggregation.                   |
 | **CC‑A10.3 (RSCR)**                     | Any `Γ_epist^compile` operation SHALL output an **RSCR** adapted to the target bounded context (vocabularies, units) with publication‑grade identifiers/hashes; SCR→RSCR MUST preserve carrier identity/integrity.                      | Keeps releases auditable and context‑consistent.           |
 | **CC‑A10.4 (Resolution)**               | Every provenance/evidence node in the dependency graph MUST be resolvable to an SCR/RSCR entry. Unresolved links invalidate the claim.                                                                                                  | Eliminates dangling references and unverifiable citations. |
 | **CC‑A10.5 (Scope Separation)**         | A single EPV‑DAG instance SHALL NOT mix design‑time MethodDescription nodes with run‑time Work traces. Bridges (“this run trace instantiates that spec”) MUST be explicit.                                                                     | Avoids conflating intent and execution.                    |
@@ -132,7 +136,7 @@ The system that produces or interprets evidence is **external** to the holon und
 ### A.10:9 - Relations
 
 * **Builds on:** A.1 Holonic Foundation; A.4 Temporal Duality; **A.12 Transformer Externalization**; **A.14 Advanced Mereology**; **A.15 Role–Method–Work Alignment**.
-* **Constrains / Used by:** B.1 (all Γ‑flavours: `Γ_sys`, `Γ_epist`, `Γ_method`, `Γ\_time`, `Γ_work`); B.1.1 (Dependency Graph & Proofs).
+* **Constrains / ssed by:** B.1 (all Γ‑flavours: `Γ_sys`, `Γ_epist`, `Γ_method`, `Γ\_time`, `Γ_work`); B.1.1 (Dependency Graph & Proofs).
 * **Enables:** **B.3 Trust Calculus** (R/CL inputs, auditability); B.4 Canonical Evolution Loop (clean design/run bridges).
 
 ### A.10:10 - Migration (practical and brief)
@@ -153,5 +157,38 @@ Apply these text edits:
    * In **B.1.5 (`Γ_method`)**: ensure **MIC** is referenced (Precedes/Choice/Join, guards, exceptions) and run‑time traces reference the **MethodDescription** they instantiate.
    * In **B.1.6 (`Γ_work`)**: say “resource rosters are not SCR/RSCR; anchor meter/log readings via EPV‑DAG.”
 
-### A.10:End
+### A.10:10a - Evidence carriers for quantum-like readings
 
+Use A.10 when a quantum-like statement needs evidence rather than only a local modeling note. The practical question is not "is this quantum-like source impressive?" but "which carrier supports which weak claim, under which time window and method?"
+
+Action path:
+
+1. State the weakest state/probe/export/viability reading being supported.
+2. Pin the concrete carriers: source, trace, dashboard export, report, observation, metric, work result, model output, interview, survey, or incident record.
+3. State the evidence-producing role and method: who or what produced the carrier, by which method, probe, measurement, or work act.
+4. State the time window and decay/reopen condition.
+5. State what the carrier does not show, including the strongest rival explanation still live.
+6. Choose the next pattern: stay in A.10 for carrier anchoring, route to `B.3` for assurance strength, route to `C.16` for measurement legality, route to `F.9` for bridge/export loss, or route to a `C.26.*` pattern for the remaining probe/state/envelope burden.
+
+For probe-coupled, distributed-state, bridge-loss, measurement-frame, or viability-envelope readings, include at least:
+
+| Field | Required content |
+| --- | --- |
+| Claim | The weakest state/probe/export/viability reading being supported |
+| Carrier | The concrete evidence carrier or carrier class |
+| Source role | Source, witness, measurement, report, trace, dashboard, work product, or human statement |
+| Method / probe | The measurement, work act, survey, dashboard query, API read, workshop, model, or trace query that produced the carrier |
+| Time window | When the evidence was produced and how long it remains fit for the intended inference |
+| Confidence / limits | What the carrier does not show, and what rival explanation remains plausible |
+| Reopen trigger | When stronger decision, assurance, audit, or action use requires more evidence |
+
+Useful outputs:
+
+- a local evidence note when the claim only guides discussion;
+- an EPV-DAG / SCR / RSCR entry when the claim enters a published assertion;
+- a B.3 assurance tuple when the claim will support readiness, audit, release, compliance, or comparative strength;
+- a reroute note when the carrier shows only ordinary measurement, bridge loss, or work enactment.
+
+Do not let the label `quantum-like` carry evidence weight by itself. The evidence graph carries the claim; the math lens only explains what representational mistake the evidence is being used to avoid.
+
+### A.10:End

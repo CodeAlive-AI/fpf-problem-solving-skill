@@ -59,6 +59,17 @@ Using this **CSLC structure**, every measurement is unambiguous and self-contain
 
 Finally, the solution ensures **tier optionality**: If a domain uses named Levels, we include them; if not, we don’t force it. For example, one can have a _Bug Severity_ Characteristic with Levels {Minor, Major, Critical} on an ordinal scale, whereas a _Length_ Characteristic would have a continuous scale (no predefined levels, just units). Both fit the pattern.
 
+#### A.18:4.1 - Characteristic-space support must stay declared
+
+- When one front, archive, shortlist, or derived tradition view is discussed in one space, declare the object kind and the relevant characteristic space explicitly.
+- Use one `SpaceRef` only when the text truly needs to recover which space or typed feature family is carrying the comparison.
+- One declared space does not imply that every neighboring line must use the same space.
+- Different declared spaces may coexist for the same family when they answer different burdens, but the active one must stay recoverable.
+- If one atlas-like reading uses several declared spaces over the same palette, front, archive, or shortlist family, say which `SpaceRef` is active in the current reading rather than letting the atlas label hide that choice.
+- If one outcome surface is materially different from one representation or search surface, keep that difference explicit rather than calling both simply `space`.
+- `OutcomeMapRef` is warranted only when the text needs one declared map from the current set surface into one outcome or effect surface.
+- When `OutcomeMapRef` is cited for one atlas-like or cross-level reading, keep the source set surface and the projected outcome surface visible together so the map stays support for the view rather than a replacement default.
+
 ### A.18:5 - Archetypal Grounding (System & Episteme Examples)
 
 **In a physical scenario (`U.System`):** Consider an athlete’s long jump. We define a Characteristic **Jump Distance** with a Scale “meters (m)” ranging from 0 upward (ratio scale with meters as the unit). When the athlete jumps and lands at 7.45 m, we record a **Coordinate** of _7.45 m_ for the Jump Distance Characteristic. Here, Jump Distance is the Characteristic, the meter-scale is the declared Scale, and _7.45 m_ is the value (Coordinate). Because this is a cardinal measurement, we can meaningfully say one jump is 1.5 m longer than another, etc. Now consider another metric in the system: **Battery Health** of a device, which might be categorized qualitatively. We could define an ordinal Scale with Levels like _Good, Fair, Poor_ for the Battery Health Characteristic. If a particular device is rated “Poor”, that is a Coordinate on the Battery Health scale (with _Poor_ as the Level name). No arithmetic is done on these labels, but we can order devices by health (Good > Fair > Poor). Both examples illustrate the one-characteristic-one-scale rule: the jump’s distance is not combined with any other aspect; the battery’s health is evaluated on its own defined scale.
@@ -141,4 +152,6 @@ In essence, A.18 is the _infrastructure of meaning_ for metrics. It may appear a
 -   **Constrained by lexical rules:** This pattern’s content is part of the formal lexicon governance. It works within **E.10 LEX-BUNDLE**, which means the terms _Characteristic, Scale, Coordinate, Level,_ etc., are controlled vocabulary. A.18 localizes some generic requirements from A.17 (for example, A.17 mandates polarity in principle; A.18 requires it be declared per template in practice). It also aligns with external standards: by having explicit scale types and units, it dovetails with ISO/IEC measurement terminology and allows straightforward mapping to frameworks like **ISO 80000 (quantities and units)** and **Stevens’s scale types**. This relation to standards is deliberate – it eases **F.9 (Alignment Bridge)** construction to external ontologies by having a clean internal schema (A.18 provides that schema). In effect, A.18 is where FPF’s internal consistency meets external compatibility, ensuring our measurement semantics can relate to those outside FPF when needed.
 
 ### A.18:End
+
+---
 

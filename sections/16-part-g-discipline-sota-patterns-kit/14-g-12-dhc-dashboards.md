@@ -4,7 +4,7 @@
 
 **Stage:** design‑time authoring **→** run‑time computation & publication (series and slices); **refresh/RSCR‑wired**
 
-**Primary hooks:** **G.Core** (core invariants, linkage catalogues, RSCR trigger catalogue, default ownership index), **C.21** (DHC slots + `DHCPack` / `DHCMethodSpec` / `DHCSeries` artefacts), **G.6** (EvidenceGraph; `PathId`/`PathSliceId` citation), **G.7** (Bridge calibration / CL & `Φ/Ψ/Φ_plane` policy surfaces; when crossings/plane routing is used), **G.11** (telemetry‑driven refresh/decay orchestration), **G.5** (selector portfolios / set‑returning outputs, when dashboard consumes performance trade‑offs), **A.19** (CN‑Spec contract surface), **G.0** (CG‑Spec legality gate), **F.17/F.18** (UTS + twin labels), **E.5.2** (notation independence), **E.10** (LEX discipline).
+**Primary hooks:** **G.Core** (core invariants, linkage catalogues, RSCR trigger catalogue, default ownership index), **C.21** (DHC slots + `DHCPack` / `DHCMethodSpec` / `DHCSeries` artefacts), **G.6** (EvidenceGraph; `PathId`/`PathSliceId` citation), **G.7** (Bridge calibration / CL & `Φ/Ψ/Φ_plane` policy surfaces; when crossings/plane routing is used), **G.11** (telemetry‑driven refresh/decay orchestration), **G.5** (selector set-surface / set‑returning outputs, when dashboard consumes performance trade‑offs), **A.19** (CN‑Spec governance card), **G.0** (CG‑Spec legality gate), **F.17/F.18** (UTS + twin labels), **E.5.2** (notation independence), **E.10** (LEX discipline).
 *(Optional, extension‑gated hooks:* **G.2** (SoTA palette & DHC alignment hooks), **C.18/C.19** (QD / E‑E / OEE telemetry pins), **G.8** (SoS‑LOG bundle & maturity ladder view), **G.10** (shipping inclusion of dashboard slices).)*
 
 **Why this exists.** **C.21** defines *what* lawful “discipline health” slots are (CHR‑typed; scale/legality aware; freshness‑windowed), but it does not, by itself, provide a **generation‑first** method for producing **edition‑pinned, evidence‑citable DHC time series** that remain refreshable under RSCR.
@@ -17,7 +17,7 @@
 Produce **lawful, reproducible, refresh‑aware discipline‑health dashboards** by turning **C.21** DHC definitions into:
 
 1. a **UTS‑published** time series (`DHCSeries@Context`) whose rows are evidence‑citable by **`PathId`/`PathSliceId`**,
-2. a dashboard slice surface (`DashboardSlice@Context`) that is **view‑only** (no hidden re‑aggregation or “new objectives”), and
+2. a dashboard slice view (`DashboardSlice@Context`) that is **view‑only** (no hidden re‑aggregation or “new objectives”), and
 3. **telemetry pins** that allow **G.11** to plan **slice‑scoped refresh** (rather than “rerun everything”).
 
 ### G.12:2 — Problem frame
@@ -28,7 +28,7 @@ Dashboards routinely drift or become illegal when they:
 * hide normalization and re‑parameterization (“normalized score” with no CN‑Spec pins),
 * silently cross Contexts or planes (implicit reuse without explicit Bridge/Plane routing),
 * fail to pin editions of computation methods, descriptor spaces, or distances,
-* turn portfolios/archives into a single scalar “winner” by dashboard fiat,
+* turn selected sets or archives into a single scalar “winner” by dashboard fiat,
 * cannot refresh selectively (no actionable telemetry pins; only narrative “this changed”).
 
 We need a **dashboard kit** that makes the *method of obtaining dashboard values* explicit and auditable, while keeping universal invariants single‑owned in **G.Core**.
@@ -37,7 +37,7 @@ We need a **dashboard kit** that makes the *method of obtaining dashboard values
 
 * **Legality and comparability are contract‑owned.** Dashboards must not invent local legality/acceptance/normalization “mini‑specs”; they pin and cite **CN‑Spec** and **CG‑Spec** surfaces (routed via **G.Core**).
 * **Ordinal discipline is non‑negotiable.** The most common dashboard failure mode is illicit arithmetic on ranks/categories; the kit must make “compare‑only” enforceable.
-* **Set‑returning discipline survives into views.** Dashboards must not silently scalarize partial orders or selector portfolios; any scalarization/promotion is an explicit owner policy (routed via **G.Core**; semantics owned by the relevant pattern/policy).
+* **Set‑returning discipline survives into views.** Dashboards must not silently scalarize partial orders or selector selected-set surfaces; any scalarization/promotion is an explicit owner policy (routed via **G.Core**; semantics owned by the relevant pattern/policy).
 * **Edition‑awareness is the difference between “trend” and “drift”.** If the method definition changes, the dashboard must either (i) fork series edition, or (ii) emit telemetry and refresh slices under pinned conditions.
 * **RSCR must be actionable.** Causes are emitted as **canonical ids** (typed trigger kinds + id‑valued pins), not prose.
 
@@ -67,7 +67,7 @@ Effective obligations/pins/triggers are computed as **union(expand(sets), explic
   *(Any additional causes required by optional dashboard panels MUST be introduced only by the corresponding `GPatternExtension` blocks in `G.12:4.9`.)*
 
 * `DefaultsConsumed` := `∅`
-  *(Default routing for `DefaultId.PortfolioMode` / `DefaultId.DominanceRegime` is only relevant when portfolio outputs are consumed; see `G.12:Ext.PortfolioTelemetry`.)*
+  *(Default routing for `DefaultId.PortfolioMode` / `DefaultId.DominanceRegime` is only relevant when selection outputs with `PortfolioMode` are consumed; see `G.12:Ext.PortfolioTelemetry`.)*
 
 * `CorePinSetIds` := {
   `GCorePinSetId.PartG.AuthoringMinimal`,
@@ -128,7 +128,7 @@ A single computed row of the series.
   crossingPins? := ⟨BridgeId[], PlaneMapRef.edition?, CL/CL^k/CL^plane?, Φ/Ψ/Φ_plane policy‑ids…⟩  
 ⟩`
 
-**(3) `DashboardSlice@Context`** *(view surface; non‑semantic)*
+**(3) `DashboardSlice@Context`** *(view; non‑semantic)*
 A view‑friendly grouping over one or more series/rows. It MUST NOT introduce new aggregation/legality semantics; it is a projection over already computed, pinned, citable rows.
 
 `DashboardSlice@Context := ⟨  
@@ -157,7 +157,7 @@ A conceptual telemetry pin emitted to refresh/orchestration (owner: **G.11**) wi
 A1. **Select the DHC slot set (owner: C.21).**
 Choose `DHCSlotId[]` from **C.21** (typed DHC slots), and declare the series scope explicitly as `TargetSlice` (USM tuple) plus an explicit time selector (`Γ_time` per row; optionally a `WindowSpec` that generates the row windows). Do not restate slot semantics in the dashboard kit; cite the C.21 owners.
 
-A2. **Bind contract surfaces (owners: A.19, G.0).**
+A2. **Bind governance card and legality gate (owners: A.19, G.0).**
 Pin `CNSpecRef.edition` and `CGSpecRef.edition`. Any normalization or numeric comparability assumptions are expressed by explicit CN‑Spec artefacts (ids/refs) and any numeric legality requirements cite CG‑Spec artefacts (SCP / MinimalEvidence / Γ‑fold pins as applicable). The dashboard does not introduce local “shadow specs”.
 If the dashboard series/slice actually uses cross‑Context or cross‑plane routing, it MUST additionally pin the relevant crossing and penalty‑policy surfaces as ids (Bridge/CL/plane ids, `Φ/Ψ/Φ_plane` policy‑ids, `PlaneMapRef.edition?`) and cite their semantic owners (typically `G.7` for bridge calibration/CL kits, routed via `G.Core`). The dashboard MUST NOT encode a dashboard‑local “penalty regime”.
 
@@ -165,7 +165,7 @@ A3. **Pin computation methods (owner: C.21).**
 For each slot/method used to compute a time series value, record `DHCMethodSpecRef.edition` and `DHCMethodRef.edition` (table‑backed, per C.21). The dashboard series is edition‑aware: if a method spec changes, the dashboard either forks the series edition or emits telemetry and refreshes under explicit pins.
 
 A4. **Declare optional panels via Extensions only.**
-If the dashboard depends on (i) selector portfolio outputs, (ii) QD illumination / archive telemetry, (iii) open‑endedness telemetry, (iv) maturity ladder views, or (v) pack inclusion, then the relevant `GPatternExtension` block(s) in `G.12:4.9` MUST be present and their pins MUST be satisfied.
+If the dashboard depends on (i) selector set-surface outputs, (ii) QD illumination / archive telemetry, (iii) open‑endedness telemetry, (iv) maturity ladder views, or (v) pack inclusion, then the relevant `GPatternExtension` block(s) in `G.12:4.9` MUST be present and their pins MUST be satisfied.
 
 **Stage B — Compute rows (run‑time; Work/Audit)**
 
@@ -173,7 +173,7 @@ B1. **Resolve evidence by Path (owner: G.6).**
 Compute rows from evidence cited as `PathSliceId[]` (and `PathId[]` when needed), under the declared window/freshness regime. Preserve lane discipline and handle missingness using tri‑state stances (routed via **G.Core**).
 
 B2. **Compute slot values using pinned methods (owner: C.21).**
-Compute each slot value by applying the pinned `DHCMethodRef.edition`/`DHCMethodSpecRef.edition` under the pinned contract surfaces. Enforce “no illicit arithmetic” for ordinals/categoricals as a dashboard‑kit obligation (see CC‑G12.\*).
+Compute each slot value by applying the pinned `DHCMethodRef.edition`/`DHCMethodSpecRef.edition` under the pinned governance card and legality gate. Enforce “no illicit arithmetic” for ordinals/categoricals as a dashboard‑kit obligation (see CC‑G12.\*).
 Any cross‑Context/plane use is expressed only via explicit crossing pins (Bridge/Plane routing) and policy ids (routed via **G.Core**).
 
 B3. **Emit RSCR‑actionable telemetry pins (owner: G.11).**
@@ -211,18 +211,18 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 
 **RSCRTriggerKindIds (delta):** `∅`
 
-##### `G.12:Ext.PortfolioTelemetry` — selector/portfolio integration panel
+##### `G.12:Ext.PortfolioTelemetry` — selector set-surface integration panel
 
 **PatternScopeId:** `G.12:Ext.PortfolioTelemetry`
 **GPatternExtensionId:** `PortfolioTelemetry`
 **GPatternExtensionKind:** `MethodSpecific`
-**SemanticOwnerPatternId:** `G.5` *(portfolio semantics and set‑return discipline)*
+**SemanticOwnerPatternId:** `G.5` *(`PortfolioMode` citation plus selected-set semantics and set‑return discipline)*
 **Uses:** `{G.5, G.6}`
 **⊑/⊑⁺:** `∅`
 
 **RequiredPins/EditionPins/PolicyPins (minimum):**
 
-* `TaskSignatureRef?` *(when portfolio semantics depend on TaskSignature traits)*
+* `TaskSignatureRef?` *(when `PortfolioMode` semantics depend on TaskSignature traits)*
 * `DominanceRegime` *(resolved via `DefaultId.DominanceRegime` owner routing; publish the resolved regime, do not invent a local default)*
 * `PortfolioMode` *(resolved via `DefaultId.PortfolioMode` owner routing; publish the resolved mode)*
 * `SCRId/DRRId` *(or equivalent selector evidence pins, when dashboard row depends on selector outcomes)*
@@ -233,7 +233,7 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 
 **Notes (wiring‑only):**
 
-* The dashboard may visualise portfolio/Archive telemetry, but MUST keep set‑returning semantics; any scalar “headline number” is a view projection, not a legality‑bearing decision.
+* The dashboard may visualise selected-set / Archive telemetry, but MUST keep set‑returning semantics; any scalar “headline number” is a view projection, not a legality‑bearing decision.
 
 ##### `G.12:Ext.QDTelemetry` — illumination / archive telemetry panel
 
@@ -340,7 +340,7 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 | --- | ----------- | ---------- | --------- |
 | **G.12‑1 `Create_DHCSeries`** | Create/bind a DHC series scope (C.21‑grounded; edition‑aware) | `DHCSlotId[]`, `DHCPackRef.edition?`, `DHCMethodSpecRef.edition`, `TargetSlice` (USM), `WindowSpec?`, `ReferencePlane`, `CNSpecRef.edition`, `CGSpecRef.edition` | `DHCSeries@Context` (UTS artefact; edition‑aware) |
 | **G.12‑2 `Update_DHCSeries`** | Compute/update one or more rows under pinned conditions (run‑time; Work/Audit‑citable) | `PathSliceId[]`, `EvidenceGraphId?`, `DHCMethodRef.edition`, `DHCMethodSpecRef.edition`, `Γ_time`, crossing pins (if any) | `DHCRow@Context[]` (UTS artefacts; stance + pins; `DesignRunTag = run`) |
-| **G.12‑3 `Integrate_PortfolioTelemetry`** *(extension‑gated)* | Integrate selector/portfolio evidence into a slice/series | See `G.12:Ext.PortfolioTelemetry` | Extension‑gated fields / telemetry pins |
+| **G.12‑3 `Integrate_PortfolioTelemetry`** *(extension‑gated)* | Integrate selector set-surface evidence into a slice/series | See `G.12:Ext.PortfolioTelemetry` | Extension‑gated fields / telemetry pins |
 | **G.12‑4 `Integrate_QDTelemetry`** *(extension‑gated)* | Integrate QD illumination/archive telemetry | See `G.12:Ext.QDTelemetry` | Extension‑gated fields / telemetry pins |
 | **G.12‑5 `Integrate_OEETelemetry`** *(extension‑gated)* | Integrate open‑endedness / transfer telemetry | See `G.12:Ext.OpenEndedTelemetry` | Extension‑gated fields / telemetry pins |
 | **G.12‑6 `Publish_DashboardSlice`** | Publish a view slice as a projection over computed rows | `DHCSeriesId(UTS)[]`, `DHCRowId(UTS)[]?`, `SliceAnnotations?` | `DashboardSlice@Context` (UTS artefact; view‑only) |
@@ -356,7 +356,7 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 | **CC‑G12.1** | **DHC slot typing (C.21‑grounded).** Every published dashboard value is indexed by a **C.21‑authored** `DHCSlotId` (typed DHC slot: `CharacteristicId` + scale/unit/polarity + reference plane binding + lane discipline) and is scoped by an explicit `TargetSlice` + `Γ_time`. | Evidence: row/series references `DHCSlotId` and pins `ReferencePlane` and `Γ_time` (or a series `WindowSpec` that yields row Γ_time). |
 | **CC‑G12.2** | **Edition discipline (no drift).** Every published time‑series value carries `DHCMethodRef.edition` and any other definition‑pins actually used to obtain it (e.g., `DescriptorMapRef.edition`, `DistanceDefRef.edition`, `UNM_id`, `NormalizationMethodInstanceId[]`, `ComparatorSetRef.edition?`). No free‑text versioning. | Check that `.edition` appears only on `…Ref`; check presence of all definition pins used by the pipeline; extension pins appear only when their extension blocks are present. |
 | **CC‑G12.3** | **Contract citation for numeric operations (no shadow specs; no illicit arithmetic).** Any numeric operation in the dashboard pipeline is legal only under explicit **CG‑Spec** and **CN‑Spec** pins (e.g., `SCPRef.edition`, `MinimalEvidenceRef.edition`, `ΓFoldRef.edition?` when used), and any normalization is explicit (`UNM_id` + `NormalizationMethodInstanceId[]` etc). Ordinal/categorical slots remain **compare‑only** (no illicit arithmetic). | Check that operations cite pinned owners; reject “normalize, then compare” without explicit UNM pins; reject arithmetic over ordinal slots unless an owner‑declared lawful mapping exists. |
-| **CC‑G12.4** | **Set‑returning selection is preserved.** If the dashboard consumes selection/portfolio outputs, it MUST preserve set‑return semantics and MUST publish the resolved `DominanceRegime` and `PortfolioMode` by citing the single owners (via `G.Core.DefaultOwnershipIndex`) rather than inventing local defaults. Any promotion of illumination/telemetry into dominance MUST cite the owner policy (typically CAL) and be auditable via evidence paths. | Check for set/portfolio outputs; check that any scalar headline is view‑only; check citations to owner defaults/policies. |
+| **CC‑G12.4** | **Set‑returning selection is preserved.** If the dashboard consumes selection / set-surface outputs, it MUST preserve set‑return semantics and MUST publish the resolved `DominanceRegime` and `PortfolioMode` by citing the single owners (via `G.Core.DefaultOwnershipIndex`) rather than inventing local defaults. Any promotion of illumination/telemetry into dominance MUST cite the owner policy (typically CAL) and be auditable via evidence paths. | Check for set-surface outputs; check that any scalar headline is view‑only; check citations to owner defaults/policies. |
 | **CC‑G12.5** | **UTS publication discipline.** `DHCSeries@Context` and its rows (and any published slices) are published as UTS artefacts with Tech/Plain twins and stable identifiers; deprecations/edition bumps follow the canonical UTS discipline. | Check stable ids + twin labels; check that publication does not smuggle “gate decisions” as authoritative artefacts. |
 | **CC‑G12.6** | **Bridge/plane routing is explicit when used.** If a series crosses contexts or planes, the rows MUST cite the Bridge/PlaneMap routing (`BridgeId[]`, `CL/CL^k/CL^plane`, `Φ/Ψ/Φ_plane policy‑ids`, `PlaneMapRef.edition?`) and respect penalty routing to `R_eff` only (semantics routed via `G.Core`). | Check presence of crossing pins when contexts/planes differ; check that any loss is expressed via R‑lane impact only. |
 | **CC‑G12.7** | **Telemetry sufficiency for slice‑scoped RSCR.** Emitted dashboard telemetry pins MUST (i) use canonical `RSCRTriggerKindId`, (ii) include `scope` (PathSliceId[] or PatternScopeId) and the touched `…Ref.edition`/policy/window pins, and (iii) block publication when required pins are missing. Each published row is evidence‑citable by `PathSliceId[]` under explicit `Γ_time`. | Check: no free‑text causes; payload includes path/window/editions/policies; missing pins block publish; row has PathSliceId[] and Γ_time. |
@@ -378,7 +378,7 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 ### G.12:9 — Relations
 
 **Builds on:** `G.Core`, `C.21`, `G.6`, `G.11`, `A.19`, `G.0`, `F.17/F.18`, `E.5.2`, `E.10`.
-**Coordinates with:** `G.5` *(when portfolio/set outputs are consumed)*, `G.7` *(when crossings/plane routing or `CL/Φ/Ψ/Φ_plane` policy pins are used)*, `G.8` *(when maturity ladder view is included)*, `G.10` *(when dashboard slices are shipped)*.
+**Coordinates with:** `G.5` *(when selector set-surface outputs are consumed)*, `G.7` *(when crossings/plane routing or `CL/Φ/Ψ/Φ_plane` policy pins are used)*, `G.8` *(when maturity ladder view is included)*, `G.10` *(when dashboard slices are shipped)*.
 **Constrains:** dashboard consumers: dashboards are projections over pinned, evidence‑citable rows; they do not mint new contract semantics.
 
 ### G.12:10 — Author’s quick checklist
@@ -389,7 +389,7 @@ Dashboards emit pins; refresh orchestration remains owned by **G.11**.
 4. Ensure rows are evidence‑citable by `PathSliceId[]` and include explicit `Γ_time` (row is run‑time: `DesignRunTag = run`).
 5. Publish UTS artefacts with twins and the required pins.
 6. Emit canonical telemetry pins (`RSCRTriggerKindId` + scope + payload pins) for `G.11`.
-7. If SoTA palette hooks / portfolio / QD / OEE / maturity / shipping panels are needed, add the corresponding `G.12:Ext.*` blocks and satisfy their pins.
+7. If SoTA palette hooks / selection / QD / OEE / maturity / shipping panels are needed, add the corresponding `G.12:Ext.*` blocks and satisfy their pins.
 
 ### G.12:11 — Worked micro‑examples (informative; SoTA‑oriented)
 
@@ -398,7 +398,7 @@ Slots (from **C.21**): *ReproducibilityRate* (freshness‑windowed), *Standardis
 Evidence: citation graphs, benchmark traces, and bridge calibrations are referenced via `PathSliceId[]`.
 Optional panels:
 
-* `G.12:Ext.PortfolioTelemetry` to visualise set‑returning method portfolios without forcing a scalar winner.
+* `G.12:Ext.PortfolioTelemetry` to visualise set‑returning method selected sets without forcing a scalar winner.
 * `G.12:Ext.QDTelemetry` to include illumination/archive telemetry using modern QD families (e.g., CMA‑ME / policy‑gradient QD variants / surrogate‑assisted illumination lines) as telemetry.
 
 **(B) Evolutionary software architecture dashboard (open‑endedness‑aware).**

@@ -10,7 +10,7 @@
 UTS entries (Name Cards + twin labels + lifecycle notes incl. deprecations and lexical‑continuity notes),
 RSCR tests, Worked‑Examples, and a `TaskMap@Context` (`TaskMap`; handoff surface consumed by `G.5`).
 
-**Primary hooks.** `G.Core` (Part‑G invariants + RSCR trigger catalogue + default ownership index), `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust / freshness / decay), `E.18` + `A.21` + `A.27` (GateCrossing / CrossingSurface harnesses), `F.9` (BridgeCard / CL), `G.6` (EvidenceGraph / PathId / PathSliceId; wired via Extensions), `G.5` (Selector & Dispatch), `G.10` (shipping), `G.11` (refresh orchestration), plus Contexts/UTS/LEX disciplines already fixed elsewhere in the spec.
+**Primary hooks.** `G.Core` (Part‑G invariants + RSCR trigger catalogue + default ownership index), `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust / freshness / decay), `E.18` + `A.21` + `A.27` (GateCrossing / CrossingBundle harnesses), `F.9` (BridgeCard / CL), `G.6` (EvidenceGraph / PathId / PathSliceId; wired via Extensions), `G.5` (Selector & Dispatch), `G.10` (shipping), `G.11` (refresh orchestration), plus Contexts/UTS/LEX disciplines already fixed elsewhere in the spec.
 
 **Non‑duplication note.** Universal Part‑G invariants (no shadow specs, crossing visibility, tri‑state guard, penalties→`R_eff`‑only, set‑return semantics, P2W split, typed RSCR causes, default ownership discipline, shipping boundary) are single‑owned by `G.Core` and are pulled into `G.4` only through the `G.Core linkage` manifest in **G.4:4.1** (and via explicit delegations in CC).
 
@@ -20,9 +20,9 @@ A CG‑Frame has:
 
 * a declared `CG-FrameContext` (scope, described entity, plane),
 * a plurality of method traditions and claims (SoTA inputs), and
-* CHR‑typed measurement surfaces (`Characteristic/Scale/Coordinate` + legality guard macros).
+* CHR‑typed measurement constructs (`Characteristic/Scale/Coordinate` + legality guard macros).
 
-Before any run‑time selection, comparison, aggregation, or portfolio formation is executed downstream, the CG‑Frame needs an explicit, auditable **calculus layer (CAL)** that:
+Before any run‑time selection, comparison, aggregation, or selected-set formation is executed downstream, the CG‑Frame needs an explicit, auditable **calculus layer (CAL)** that:
 
 1. defines *what operators exist* and what they are allowed to do over CHR types,
 2. externalizes *fit‑for‑purpose acceptance* as typed predicates (with Context‑local thresholds), and
@@ -44,9 +44,9 @@ Teams repeatedly face drift and ambiguity in the calculus layer that sits betwee
 
 * **Expressiveness vs legality.** CAL must allow useful comparisons/aggregations while staying lawful under CHR typing and legality gates.
 * **Pluralism vs comparability.** Multiple method traditions must coexist without forcing premature unification, yet remain cross‑citable and auditable.
-* **Decision support vs auditability.** CAL must support selection and portfolio formation while preserving explicit, reviewable assumptions and proofs.
+* **Decision support vs auditability.** CAL must support selection and selected-set formation while preserving explicit, reviewable assumptions and proofs.
 * **Exploration vs assurance.** CAL must support exploratory regimes (probing, novelty, open‑ended search) without letting un‑assured outputs silently become dominance claims.
-* **Locality vs portability.** CAL must be Context‑local by default but prepared for explicit reuse via Bridges and published crossing surfaces.
+* **Locality vs portability.** CAL must be Context‑local by default but prepared for explicit reuse via Bridges and published crossing bundles.
 
 ### G.4:4 - Solution — CAL authoring kit and publication surface
 
@@ -100,8 +100,8 @@ Notes (normative intent, routed semantics):
 * `CAL.Charter@Context` — scope anchor for this CAL pack:
 
   * cites `CG-FrameContext`, `describedEntity`, `ReferencePlane`,
-  * cites contract surfaces (`CNSpecRef`, `CGSpecRef`) by edition pins,
-  * records the “assumption envelope” that acceptance predicates rely on (without minting a new contract surface).
+  * cites the governance card and legality gate (`CNSpecRef`, `CGSpecRef`) by edition pins,
+  * records the “assumption envelope” that acceptance predicates rely on (without minting a new governance card or legality gate).
   * emits `TaskMap@Context` (`TaskMap`) as the canonical handoff surface to `G.5` (task→gates/flows/evidence pins).
 * `CAL.Operator[]` — typed operator cards (UTS‑published):
 
@@ -114,7 +114,7 @@ Notes (normative intent, routed semantics):
   * exposes unknown handling and failure behavior via policy pins.
 * `CAL.Flow[]` — legality‑checked compositions of operator cards:
 
-  * declares result kind (scalar only when lawful; set/portfolio when partial orders remain partial orders),
+  * declares result kind (scalar only when lawful; selected-set / set-surface when partial orders remain partial orders),
   * records which acceptance clauses gate which flows.
 * `CAL.EvidenceProfiles` — evidence wiring surface:
 
@@ -172,7 +172,7 @@ CAL.EvidenceProfile :=
 Authors declare a `CAL.Charter@Context` that:
 
 * anchors CAL to the CG‑Frame scope (`CG-FrameContext`, `describedEntity`, `ReferencePlane`),
-* pins the relevant contract surfaces (`CNSpecRef.edition`, `CGSpecRef.edition`),
+* pins the relevant governance card and legality gate refs (`CNSpecRef.edition`, `CGSpecRef.edition`),
 * records the local assumption envelope used by acceptance predicates (as explicit statements to be audited, not as hidden algorithmic assumptions),
 * declares which CAL artifacts are intended to be cited downstream (UTS ids).
 * emits a `TaskMap@Context` (`TaskMap`) that binds each declared `TaskSignature` (or task family) to:
@@ -202,7 +202,7 @@ Each `CAL.Acceptance` is a UTS‑published predicate with:
 * explicit **freshness envelope** (freshness window + decay/Γ_time selector refs/pins) when evidence recency is part of admissibility,
 * `UnknownHandling` as a tri‑state choice (via `G.Core` semantics),
 * `FailureBehaviorRef` (policy‑bound) for degrade/abstain behavior.
-* `GateCrossingId[]` / `CrossingSurfaceId[]` **iff** the clause relies on cross‑context/plane/edition imports (no “silent reuse”).
+* `GateCrossingId[]` / `CrossingBundleId[]` **iff** the clause relies on cross‑context/plane/edition imports (no “silent reuse”).
   Missing required crossing artefacts is a conformance failure and blocks publication of the affected clause/flow (GateCrossing harness: `E.18`/`A.21`/`A.27`; crossing invariants: `G.Core`).
 
 **C4 — Aggregation & comparison flows (safe by construction).**
@@ -210,7 +210,7 @@ Each `CAL.Acceptance` is a UTS‑published predicate with:
 
 * which acceptance clauses gate the flow,
 * which operator outputs are decision‑relevant vs report‑only,
-* what the **result kind** is (scalar only where lawful; otherwise set/portfolio).
+* what the **result kind** is (scalar only where lawful; otherwise selected-set / set-surface).
 * any thinning/decision‑aid policy (e.g., ε‑front selection) as an explicit policy pin that **does not** silently replace the declared result kind.
 
 **C5 — Evidence wiring surface.**
@@ -248,7 +248,7 @@ CAL publication emits:
   * flow legality checks are exercised,
   * acceptance clauses behave as authored on examples.
 
-Any cross‑context/plane/edition import required by CAL publication is handled through GateCrossing/CrossingSurface discipline (as routed by `G.Core`), and CAL publication is blocked if required crossing artifacts are missing.
+Any cross‑context/plane/edition import required by CAL publication is handled through GateCrossing/CrossingBundle discipline (as routed by `G.Core`), and CAL publication is blocked if required crossing artifacts are missing.
 
 **C9 — Packaging & refresh readiness (without owning orchestration).**
 CAL pack versions:
@@ -350,24 +350,24 @@ CAL pack versions:
 
 ### G.4:5 - Archetypal Grounding
 
-**Tell.** A CG‑Frame must choose and justify a set of candidate methods (possibly a portfolio) under explicit legality, evidence, and scope constraints. CHR provides the typed measurement surface; CAL turns it into executable, auditable predicates and flows.
+**Tell.** A CG‑Frame must choose and justify a set of candidate methods (possibly a selected set or archive) under explicit legality, evidence, and scope constraints. CHR provides the typed measurement basis; CAL turns it into executable, auditable predicates and flows.
 
 **Show 1 (in‑context CAL pack skeleton).**
-Context: R&D portfolio choice. CHR defines `SafetyClass(ord↑)`, `CostUSD_2026(ratio↓)`, `Readiness(nominal)`.
+Context: R&D selected-set choice. CHR defines `SafetyClass(ord↑)`, `CostUSD_2026(ratio↓)`, `Readiness(nominal)`.
 
 * `CAL.Operator: DominatesPareto`
   Signature over CHR types, precondition references CHR guard macros.
 * `CAL.AcceptanceClause: AC_SafetyGate`
   Typed predicate binding `SafetyClass` (and its levels) with Context‑local thresholds; unknown handling uses tri‑state pins.
 * `CAL.Flow: Flow_ParetoPortfolio`
-  Produces a set/portfolio result kind; gates by `AC_SafetyGate` and `AC_Budget`.
+  Produces a selected-set result kind; gates by `AC_SafetyGate` and `AC_Budget`.
 * `CAL.EvidenceProfile: EP_SafetyEvidence`
   Declares anchor ids and freshness policy pins required for `SCR`.
 
 Downstream, `G.5` consumes only the handoff manifest: clause ids, operator ids, and evidence profile ids (no embedded thresholds).
 
 **Show 2 (explicit cross‑context import).**
-A `SafetyClass` value is imported from a different Context/plane. CAL may still author an acceptance clause using that value, but only after the reuse is made explicit as a published crossing surface and the CAL artifacts cite the relevant ids/pins. The CAL pack remains Context‑local; portability is achieved through explicit crossings and citations, not by silently widening scope.
+A `SafetyClass` value is imported from a different Context/plane. CAL may still author an acceptance clause using that value, but only after the reuse is made explicit as a published crossing bundle and the CAL artifacts cite the relevant ids/pins. The CAL pack remains Context‑local; portability is achieved through explicit crossings and citations, not by silently widening scope.
 
 ### G.4:6 - Bias-Annotation
 
@@ -388,7 +388,7 @@ The pattern mitigates these by requiring typed acceptance clauses, explicit poli
 | **CC‑G4‑01**      | `CAL Pack@CG-Frame` is published as a notation‑independent object with stable UTS ids (Name Cards + twin labels) for `CAL.Charter`, `TaskMap`, all operator/acceptance/flow/evidence artifacts, Worked‑Examples, and lifecycle notes (incl. deprecations and lexical‑continuity notes). Tooling/vendor details remain non‑normative. |
 | **CC‑G4‑02**      | `CAL.Charter@Context` pins `CG-FrameContext`, `describedEntity` (incl. `ReferencePlane`), and the relevant contract references by edition pins (`CNSpecRef.edition`, `CGSpecRef.edition`).                                                                                                                     |
 | **CC‑G4‑03**      | Every `CAL.Operator` has an explicit CHR‑typed signature and explicit preconditions; any legality guard macros referenced are cited by id (no “implicit legality”).                                                                                                                                             |
-| **CC‑G4‑04**      | Every `CAL.Acceptance` binds to CHR ids (`CharacteristicRefs`) and declares unknown handling and failure behavior via pins/refs; thresholds and cutoffs appear only here (not inside CHR artifacts and not inside operator prose). If the clause depends on cross‑context/plane/edition imports, it cites `GateCrossingId[]/CrossingSurfaceId[]`. |
+| **CC‑G4‑04**      | Every `CAL.Acceptance` binds to CHR ids (`CharacteristicRefs`) and declares unknown handling and failure behavior via pins/refs; thresholds and cutoffs appear only here (not inside CHR artifacts and not inside operator prose). If the clause depends on cross‑context/plane/edition imports, it cites `GateCrossingId[]/CrossingBundleId[]`. |
 | **CC‑G4‑05**      | If an acceptance clause, operator, or flow induces numeric comparison/aggregation, it cites the relevant `CG‑Spec.characteristic` ids and links to legality proof refs (CSLC) in the ProofLedger; otherwise it must be authored so that downstream can degrade/abstain rather than perform illegal operations. |
 | **CC‑G4‑06**      | Every `CAL.Flow` declares its result kind and the set of gating acceptance clauses; any thinning/selection‑aid policies (e.g., ε‑front selection) are explicitly policy‑bound and do not silently replace the underlying result kind.                                                                      |
 | **CC‑G4‑07**      | Every `CAL.EvidenceProfile` declares: provenance anchors (A.10), evidence lanes (`F/G/R`), freshness/decay pins (incl. freshness window + decay/Γ_time selector refs), and any penalty routing policy pins (`Φ(CL)`, `Ψ(CL^k)`, `Φ_plane`) needed for run‑time `SCR` surfacing. It either pins an explicit `ΓFoldRef.edition` override or (if absent) cites `DefaultId.GammaFoldForR_eff` (via `G.Core.DefaultOwnership`). Penalty policies affect `R_eff` only and do not define dominance. Any referenced penalty policy family is justified in the ProofLedger (monotone + bounded).  |
@@ -436,7 +436,7 @@ CAL sits at the boundary where typed measurement becomes actionable choice. Maki
 The design separates concerns:
 
 * CHR owns measurement typing and legality guard macros,
-* CG‑Spec/CN‑Spec own contract surfaces,
+* CG‑Spec and CN‑Spec own the legality gate and governance card, respectively,
 * `G.Core` owns Part‑G invariants and trigger/default discipline,
 * `G.4` owns the CAL kit: authoring objects, publication surface, and handoff manifest.
 
@@ -448,7 +448,7 @@ CAL authoring is compatible with post‑2015 best practice families without conf
 
 * **Risk‑controlled acceptance**: modern conformal / selective / set‑valued prediction families where “abstain” is a first‑class, audited outcome (fits tri‑state gating + explicit calibration pins).
 * **Robust acceptance envelopes**: distribution‑shift‑aware and distributionally‑robust acceptance styles, expressed as policy‑pinned predicates rather than hidden heuristics.
-* **Modern multi‑objective practice**: preference‑aware, interactive, and set‑returning multi‑objective decision families that preserve partial orders and portfolios.
+* **Modern multi‑objective practice**: preference‑aware, interactive, and set‑returning multi‑objective decision families that preserve partial orders and selected sets.
 * **Quality‑Diversity after 2015**: archive‑based search families (e.g., CMA‑ME‑class) attach as wiring via edition‑pinned descriptor/distance/insertion artifacts.
 * **Open‑ended exploration after 2015**: environment‑method co‑evolution families (e.g., POET‑class) attach through explicit generator family wiring and policy‑bound acceptance branches.
 

@@ -51,7 +51,7 @@
 
 #### A.2.1:4.1 - Canonical definition (notation‑free)
 
-**`U.RoleAssignment`** is a **context-local assignment:
+**`U.RoleAssignment`** is a **context-local assignment**:
 
 ```
 RoleAssignment ::=

@@ -53,14 +53,25 @@ A conforming routed cue set may publish:
 
 A multi-route `RoutedCueSet` is still one governed member. A lineage fork appears only after distinct successor publications are issued.
 
-#### B.4.1:4.2 - Starter route family
+#### B.4.1:4.2 - Starter route family and conditional extension species
 The candidate route set may contain, among others:
 
-- `EvaluativeRoute`
-- `ActionInvitationRoute`
-- `ProblemAbductionRoute`
-- `MethodWorkRoute`
-- `RequirementCommitmentRoute`
+- starter canonical routes:
+  - `EvaluativeRoute`
+  - `ActionInvitationRoute`
+  - `ProblemAbductionRoute`
+  - `MethodWorkRoute`
+  - `RequirementCommitmentRoute`
+- conditional extension routes for bounded specialization or corridor discovery:
+  - `TaskFamilySpecializationRoute`
+  - `AdaptationProbeRoute`
+  - `NonHumanUtilityRoute`
+  - `SubstrateDiversificationRoute`
+
+##### B.4.1:4.2.1 - Specialization-sensitive extension route family
+These four routes are not part of the starter canonical core. Use them only when the cue already carries explicit bounded-specialization pressure, corridor-entry pressure, or substrate-fit doubt that later owners must be able to recover by value.
+
+Use `TaskFamilySpecializationRoute` when the cue points toward acquiring one narrower higher-fit specialist lane for one declared task family under budget, where that lane may later resolve into one specialist method, portfolio, or competence bundle. Use `AdaptationProbeRoute` when the honest next question is whether threshold-reaching specialization is actually attainable under the current budget. Use `NonHumanUtilityRoute` when the cue suggests a promising utility target outside the current human-default solution corridor but still tied to one declared task family or utility target. Use `SubstrateDiversificationRoute` when the cue says the current method substrate may be too narrow and a broader or different substrate should be tested before commitment.
 
 Contexts may refine the route family locally, but they shall keep the distinction between early route publication and endpoint ownership.
 
@@ -91,6 +102,7 @@ The pattern favors preserving weak cues and publishing route plurality explicitl
 - `CC-B.4.1-3` When route selection occurs, `routeDecision`, `selectedRoute`, and `routeRationale` **SHALL** be explicit.
 - `CC-B.4.1-4` `publicationFaceRefs` **MAY** be named, but route-bearing form and publication face **SHALL NOT** be collapsed.
 - `CC-B.4.1-5` `RoutedCueSet` **SHALL NOT** silently masquerade as a late endpoint owner.
+- `CC-B.4.1-6` When a specialization-sensitive route is kept live, the route package **SHALL** name the declared task family or utility target, the current budget window if known, the missing discriminator still needed, and the downstream owner that would become lawful if the discriminator is satisfied.
 
 ### B.4.1:8 - Common Anti-Patterns and How to Avoid Them
 - **Anomaly inflation.** Treat every early cue as already an anomaly statement.
@@ -135,36 +147,14 @@ This is lawful only if the route rationale makes the plurality explicit rather t
 #### B.4.1:13.3 - Invalid direct jump
 It is invalid to treat a routed cue set as if it were already a hypothesis, a gate, or a work plan. It is a route-bearing publication form, not the endpoint owner.
 
-### B.4.1:14 - Authoring and Review Guidance
+#### B.4.1:13.4 - Specialization-route and nonhuman-utility split
+A routed cue set for a new task family may lawfully keep `ProblemAbductionRoute`, `TaskFamilySpecializationRoute`, and `NonHumanUtilityRoute` live together. The point is to preserve the declared task family, utility target, current budget window, missing discriminator, and possible corridor-entry burden without laundering those routes into a premature prompt, selector, or policy choice.
 
-#### B.4.1:14.1 - Author prompt
-A routed cue set should say:
+### B.4.1:14 - Keeping route plurality useful
 
-- where the cue came from,
-- which routes are live,
-- whether route selection has occurred,
-- why one route was selected if a selection occurred,
-- what typed downstream publication, if any, is now lawful.
+A routed cue set stays useful only when route plurality, route grounds, and current authority remain explicit without turning the seam into one hidden endpoint.
 
-#### B.4.1:14.2 - Review prompt
-A reviewer should check whether the selected route is justified by the published cue pack and whether suppressed alternative routes were genuinely considered rather than silently erased.
-
-#### B.4.1:14.3 - Threshold reminder
-If the articulation threshold is not met, the routed cue set should keep the publication early rather than laundering it into a late endpoint form.
-
-### B.4.1:15 - Migration and Boundary Notes
-
-#### B.4.1:15.1 - Migration from anomaly-first prose
-Older anomaly-first language should be migrated into route publication when the publication is not yet strong enough for anomaly ownership.
-
-#### B.4.1:15.2 - Boundary reminder
-`B.4.1` owns route publication, not abductive reasoning, lexical repair, deontic commitment, or work execution. Those belong to later owners.
-
-### B.4.1:16 - Route-Set Package Discipline
-
-A routed cue set is strongest when it makes route plurality, route grounds, and current authority explicit.
-
-#### B.4.1:16.1 - Minimal route package
+#### B.4.1:14.1 - Minimal route package
 A robust route package should identify:
 
 - the **originating cue pack**,
@@ -177,29 +167,27 @@ A robust route package should identify:
 
 This is enough to keep later handoff reviewable without collapsing the seam into an endpoint owner.
 
-#### B.4.1:16.2 - Selected route is not endpoint ownership
+For specialization-sensitive routes, the package should also make explicit the declared task family or utility target, the current budget window, the missing discriminator still needed, and the downstream owner that would become lawful if that discriminator is satisfied.
+
+#### B.4.1:14.2 - Selected route is not endpoint ownership
 Even when one route is selected, the routed cue set remains a seam publication form until a later owner is entered explicitly.
 
-#### B.4.1:16.3 - Deferred selection
+#### B.4.1:14.3 - Review prompt and threshold reminder
+A reviewer should check whether the selected route is justified by the published cue pack and whether suppressed alternative routes were genuinely considered rather than silently erased. If the articulation threshold is not yet met, keep the publication early rather than laundering it into a late prompt, requirement, or work owner.
+
+#### B.4.1:14.4 - Deferred selection and route splitting
 Deferral is lawful when route plurality and missing discriminators are published. It is not lawful when one route is silently assumed while the publication still speaks as if the question were open.
 
-### B.4.1:17 - Route Selection and Branch Law
+One cue cluster may also split into several routed cue sets if different sub-cues support different destinations. The split should be published explicitly so that later readers do not assume that one route exhausted the whole original cue complex.
 
-#### B.4.1:17.1 - Selecting one route
-Route selection should be driven by published cue grounds, not by convenience. A selected route should therefore cite the stabilizing anchors, route rationale, and any threshold conditions that make later handoff lawful.
+### B.4.1:15 - Migration and worked continuation boundaries
 
-#### B.4.1:17.2 - Keeping several routes live
-Some cues are genuinely multi-routable. In those cases, the point of `B.4.1` is not to force premature convergence but to keep the route set legible until later owners can discriminate more sharply.
+`B.4.1` owns route publication, not abductive reasoning, lexical repair, deontic commitment, or work execution. Those belong to later owners once the next publication is explicit enough to carry them.
 
-#### B.4.1:17.3 - Multi-route state versus lineage fork
-One routed cue set may keep several candidate routes live without yet forking lineage. A fork occurs only when distinct successor publications are actually issued and acquire their own authority, losses, or handoff semantics.
+#### B.4.1:15.1 - Migration from anomaly-first prose
+Older anomaly-first language should be migrated into route publication when the publication is not yet strong enough for anomaly ownership.
 
-#### B.4.1:17.4 - Route splitting
-One cue cluster may split into several routed cue sets if different sub-cues support different destinations. The split should be published explicitly so that later readers do not assume that one route exhausted the whole original cue complex.
-
-### B.4.1:18 - Worked Seam Cases and Review Tests
-
-#### B.4.1:18.1 - Intervention vs inquiry split
+#### B.4.1:15.2 - Intervention vs inquiry split
 An operator-facing disturbance may legitimately support both:
 
 - an immediate intervention-oriented route,
@@ -207,17 +195,11 @@ An operator-facing disturbance may legitimately support both:
 
 `B.4.1` preserves both without forcing one to swallow the other.
 
-#### B.4.1:18.2 - Requirement-route overreach
-A route set that includes `RequirementCommitmentRoute` should not be read as if the requirement already exists. Reviewers should ask whether a requirement owner has actually been entered or whether the route is merely one lawful continuation among others.
+#### B.4.1:15.3 - Requirement-route overreach
+A route set that includes `RequirementCommitmentRoute` should not be read as if the requirement already exists. The route is only one lawful continuation unless a later requirement owner is actually entered.
 
-#### B.4.1:18.3 - Review test for false single-route certainty
-A reviewer should ask: if the selected route were denied, would the publication still contain enough information to explain the other live routes? If not, the route set is likely under-published and has collapsed too early into one favored continuation.
-
-### B.4.1:19 - Boundary to Later Owners
-
-The routed cue set exists to make later owner entry cleaner, not to delay it indefinitely.
-
-Typical next-owner conditions are:
+#### B.4.1:15.4 - Leaving the seam
+The routed cue set should leave this pattern only when one later publication is already explicit enough to own the next move, for example:
 
 - explicit evaluative family selection for `A.6.Q`,
 - explicit action-oriented family selection for `A.6.A`,
@@ -225,7 +207,7 @@ Typical next-owner conditions are:
 - explicit requirement or commitment head for requirement-facing owners,
 - or explicit method/work hook for `A.15`-side use.
 
-If none of those next-owner conditions can yet be stated, the governed publication likely still belongs in the seam. If they can already be stated, `B.4.1` should not remain a holding form for a publication that has already crossed the threshold.
+If those next-owner conditions cannot yet be stated honestly, the governed publication still belongs in the seam and should keep its route plurality visible.
 
 ### B.4.1:20 - Route Evidence and Discrimination Package
 
@@ -235,8 +217,14 @@ Each live route in a routed cue set should cite the cue grounds that actually su
 #### B.4.1:20.2 - Discriminator publication
 When a route set remains plural, authors should name the discriminator they are waiting for: a missing anchor, contrast, measurement, witness, articulation threshold, closure condition, or other explicit facet transition. Doing so makes deferred selection informative instead of merely indecisive.
 
-#### B.4.1:20.3 - Projection restraint
+#### B.4.1:20.3 - Multi-route state is not yet a lineage fork
+One routed cue set may keep several candidate routes live without yet forking lineage. A fork occurs only when distinct successor publications are actually issued and acquire their own authority, losses, or handoff semantics.
+
+#### B.4.1:20.4 - Projection restraint
 A typed downstream projection publication or prompt may be shown as one lawful continuation, but it shall not dominate the routed cue set so strongly that the other routes become unreadable. Projection is guidance, not covert owner replacement.
+
+#### B.4.1:20.5 - Review test for false single-route certainty
+Ask: if the selected route were denied, would the publication still contain enough information to explain the other live routes and the discriminator that would separate them? If not, the route set is under-published and has collapsed too early into one favored continuation.
 ### B.4.1:End
 
 

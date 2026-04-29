@@ -1,5 +1,6 @@
 ## A.16.0 - `U.LanguageStateTransductionTrajectory` - Optional trajectory-account normal form over the language-state `U.CharacteristicSpace`
 
+
 > **Type:** Architectural (A)
 > **Status:** Draft
 > **Normativity:** Normative unless marked informative

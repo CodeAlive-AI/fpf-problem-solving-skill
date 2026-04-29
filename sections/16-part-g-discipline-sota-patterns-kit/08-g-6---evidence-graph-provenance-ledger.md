@@ -3,7 +3,7 @@
 **Tag.** Architectural pattern
 **Stage.** design‑time (assembly) + run‑time (telemetry ingestion)
 **Primary output.** A notation‑independent `EvidenceGraph` + a stable `PathId` / `PathSliceId` citation surface + an SCR projection (“Assurance SCR”) suitable for audit, selection explainability, and refresh/RSCR wiring.
-**Primary hooks.** A.10 (evidence anchors/carriers; SCR/RSCR anchoring), B.3 (assurance lanes and `F/G/R` skeleton), F.9 (BridgeCard/CL), G.4 (CAL `EvidenceProfiles` + `ProofLedger` linkage), `G.Core` (Part‑G invariants, RSCR trigger catalogue, default‑ownership index), E.18/A.21 (GateCrossing + CrossingSurface checks), F.17 (UTS publication), F.15 (RSCR), E.10 (LEX), E.5.* (notation‑independence discipline).
+**Primary hooks.** A.10 (evidence anchors/carriers; SCR/RSCR anchoring), B.3 (assurance lanes and `F/G/R` skeleton), F.9 (BridgeCard/CL), G.4 (CAL `EvidenceProfiles` + `ProofLedger` linkage), `G.Core` (Part‑G invariants, RSCR trigger catalogue, default‑ownership index), E.18/A.21 (GateCrossing + CrossingBundle checks), F.17 (UTS publication), F.15 (RSCR), E.10 (LEX), E.5.* (notation‑independence discipline).
 **Non‑duplication note.** Universal Part‑G invariants (no shadow specs; Bridge‑only crossings; tri‑state discipline; penalties→`R_eff` only; P2W split; typed/id‑based RSCR causes; single‑owner defaults; Δ‑discipline) are owned by `G.Core` and are *cited* via `CC‑GCORE‑*`. This pattern defines only the *EvidenceGraph kit* and its path‑addressable provenance surfaces.
 
 ### G.6:1 - Problem frame
@@ -90,7 +90,7 @@ This pattern introduces the missing kit: a typed, lane‑aware `EvidenceGraph` p
     Additional narrative edges MAY exist as informative annotations but MUST NOT be relied on for conformance checks.
 * **Lane tags.** Every binding on a path is lane‑typed with `assuranceUse ∈ {TA, VA, LA}` (lane separation remains explicit through to SCR projections; no silent cross‑lane averaging).
 * **Externality (no self‑evidence).** Any evidencing `TransformerRole` that would certify the evaluated holon MUST be modelled as external (or model a meta‑holon explicitly); G.6 does not permit reflexive “self‑evidence” shortcuts.
-* **Context and plane attachment.** Nodes and claims carry `BoundedContext` and `ReferencePlane`. Any movement across context/kind/plane/design↔run/edition boundaries is represented via explicit GateCrossing/CrossingSurface artefacts (with crossing pins routed per `G.Core`).
+* **Context and plane attachment.** Nodes and claims carry `BoundedContext` and `ReferencePlane`. Any movement across context/kind/plane/design↔run/edition boundaries is represented via explicit GateCrossing/CrossingBundle artefacts (with crossing pins routed per `G.Core`).
 
 #### G.6:4.3 - PathId and PathSliceId (citable justification addresses)
 
@@ -146,7 +146,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId‑scoped, **not
   * `RSCRTriggerAliasId?` *(e.g., legacy human labels such as `G.6:H3:...` recorded as labels only)*
   * `scope: PathSliceId[] | PathId[] | PatternScopeId`
   * `TriggerAliasMapRef := G.Core.TriggerAliasMap.G6` *(docking reference)*
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
+* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
 * **Notes (wiring‑only):** This module preserves ergonomics/back‑compat by allowing `G.6:H3:*` labels, while requiring that recorded causes use canonical `RSCRTriggerKindId` (per `CC‑GCORE‑TRIG‑3`).
 
 **GPatternExtension: SoSLOGPathCitationWiring**
@@ -179,7 +179,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId‑scoped, **not
   * `BridgeId/BridgeCardId`
   * `RegressionSetId?` / `SentinelId[]?` *(as published by G.7, when sentinel wiring is used)*
   * `PathId[] | PathSliceId[]` *(paths that cite the bridge and must be re‑audited on bridge/sentinel changes)*
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
+* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
 * **Notes (wiring‑only):** This module requires that bridge/sentinel changes re‑trigger RSCR **path‑locally** for affected `PathId/PathSliceId` scopes, without redefining sentinel semantics (owned by G.7) and without inventing new trigger kinds (owned by `G.Core`).
 
 **GPatternExtension: QD_OEE_TelemetryPins**
@@ -214,7 +214,7 @@ Claim: “Method family M attains parity on ImageNet‑style tasks under a decla
 ### G.6:6 - Bias‑Annotation
 
 Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
-Scope: Universal for the EvidenceGraph kit; any method‑specific telemetry/portfolio wiring is modularized as Extensions and cited to its semantic owners.
+Scope: Universal for the EvidenceGraph kit; any method‑specific telemetry / `PortfolioMode` wiring is modularized as Extensions and cited to its semantic owners.
 
 ### G.6:7 - Conformance Checklist (normative) — **CC‑G6**
 
@@ -280,7 +280,7 @@ Where universal invariants apply (crossings, penalties, trigger typing), this se
 #### G.6:7.5.6 - H6 — Bridge/CL Edge Annotation (GateCrossings)
 
 * **Trigger.** An EvidenceGraph edge traverses a declared GateCrossing boundary (context/kind/plane/design↔run/edition).
-* **Obligation.** Publish a CrossingSurface‑checkable crossing record with explicit crossing pins (UTS row id, Bridge id/card id if applicable, CL regime pins if applicable, and plane pins if applicable).
+* **Obligation.** Publish a CrossingBundle‑checkable crossing record with explicit crossing pins (UTS row id, Bridge id/card id if applicable, CL regime pins if applicable, and plane pins if applicable).
 * **Publishes/Consumes.** Publishes: crossing row/pins. Consumes: GateCrossing metadata and Bridge artefacts (when present).
 * **Invariants.** Crossing visibility is core‑owned (`CC‑GCORE‑CROSS‑1`); penalties routing is core‑owned (`CC‑GCORE‑PEN‑1`).
 
@@ -291,7 +291,7 @@ Where universal invariants apply (crossings, penalties, trigger typing), this se
 * **Publishes/Consumes.** Publishes: SCR/UTS fields containing policy ids. Consumes: the owner’s policy registries as cited artefacts (do not duplicate tables).
 * **Invariants.** Penalty routing is delegated (`CC‑GCORE‑PEN‑1`); no shadow specs (`CC‑GCORE‑CN‑CG‑1`).
 
-#### G.6:7.5.8 - H8 — CrossingSurface exposure (E.18)
+#### G.6:7.5.8 - H8 — CrossingBundle exposure (E.18)
 
 * **Trigger.** G.6 artefacts are exported for release or consumed by downstream patterns that require GateCrossing checks.
 * **Obligation.** Provide harness‑readable ids/pins so GateCrossing checks can verify: required crossing records exist, lexical constraints hold, and crossing pins are explicit.
@@ -368,7 +368,7 @@ This pattern aligns with post‑2015 best practice in reproducibility and evalua
 
 ### G.6:12 - Relations
 
-**Builds on:** `G.Core`, `A.10` (evidence anchors/carriers; SCR/RSCR), `B.3` (assurance skeleton), `F.9` (BridgeCard/CL), `G.4` (CAL EvidenceProfiles/ProofLedger), `E.18/A.21` (GateCrossing/CrossingSurface checks), `E.10` (lexical rules), `E.5.*` (notation independence), `F.17` (UTS), `F.15` (RSCR).
+**Builds on:** `G.Core`, `A.10` (evidence anchors/carriers; SCR/RSCR), `B.3` (assurance skeleton), `F.9` (BridgeCard/CL), `G.4` (CAL EvidenceProfiles/ProofLedger), `E.18/A.21` (GateCrossing/CrossingBundle checks), `E.10` (lexical rules), `E.5.*` (notation independence), `F.17` (UTS), `F.15` (RSCR).
 **Publishes to:** UTS (Name Cards + PathCards), SCR/RSCR surfaces, downstream selectors/LOG by `PathId` citation, refresh/orchestration as typed triggers (consumed by `G.11` when used).
 **Used by:** `G.5` (selector explainability and admissibility justifications), `G.8` (SoS‑LOG bundles), `G.9` (parity harness traces), `G.10` (shipping pins and audit payload), `G.11` (refresh orchestration).
 **Constrains:** downstream patterns MUST cite paths when evidence is claimed; they MUST treat edits to pinned evidence/crossing/policy/edition/time bindings as refresh‑relevant causes with canonical trigger ids (routing via `G.Core`).

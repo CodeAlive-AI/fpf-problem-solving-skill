@@ -1,5 +1,6 @@
 ## A.16.2 - Reopen / SketchBackoff / Respecify
 
+
 > **Type:** Architectural (A)
 > **Status:** Draft
 > **Normativity:** Normative unless marked informative

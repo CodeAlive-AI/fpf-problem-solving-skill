@@ -4,7 +4,7 @@
 **Stage.** *design‑time* (authoring discipline + ID‑stable routing; no run‑time mechanism)
 **Primary hooks.** E.8 (pattern template), E.10 (lexical/ontological rules), E.19 (conformance discipline), A.6.7 (SuiteObligations + suite protocol pins), A.15.3 (planned baseline), A.19 (CN‑Spec), G.0 (CG‑Spec), A.19.CHR (CHR suite boundary), C.23 (SoS‑LOG), F.17 (UTS), F.15 (RSCR).
 
-**Status.** Draft (Phase‑2 deliverable)  
+**Status.** Stable (Phase‑2 deliverable)  
 **Placement.** Part G → immediately after `G.0` (without renumbering `G.0…G.13`)  
 **Normativity.** Normative unless explicitly marked informative  
 
@@ -65,7 +65,7 @@ Part G requires a single place where these invariants and refactoring discipline
 | --- | --- | --- |
 | `transport_declarative_only` + `cg_spec_cite_required_for_numeric_ops` | A.6.7 + A.19 (CN‑Spec) + G.0 (CG‑Spec) + A.19.CHR | CN/CG are *pins*, not copies (“contract surfaces are pins, not copies”). No embedded/shadow contract surfaces. |
 | `bridge_only_crossings` | A.6.7 + E.18 | Any cross‑Context/plane/kind move is Bridge‑mediated; no implicit crossings. |
-| `crossing_visibility_required` | E.18 (CrossingSurface) + A.6.7 | Crossing visibility is a published **CrossingSurface**. `edition_key` changes on **crossing‑relevant artefacts** (Bridge/CL surfaces, BridgeCards, CrossingSurface registries, and UTS rows for crossing artefacts) are treated as CrossingSurface edits. If the required CrossingSurface is missing/non‑conformant, downstream consumers MUST **abstain** from cross‑Context/plane reuse (no silent crossings). |
+| `crossing_visibility_required` | E.18 (CrossingBundle) + A.6.7 | Crossing visibility is a published **CrossingBundle**. `edition_key` changes on **crossing‑relevant artefacts** (Bridge/CL surfaces, BridgeCards, CrossingBundle registries, and UTS rows for crossing artefacts) are treated as crossing-bundle edits. If the required CrossingBundle is missing/non‑conformant, downstream consumers MUST **abstain** from cross‑Context/plane reuse (no silent crossings). |
 | `two_bridge_rule_for_described_entity_change` | A.6.7 | describedEntity retargeting requires an explicit KindBridge (`CL^k`) in addition to any Context/Plane Bridge. |
 | `guard_decision_tristate(pass|degrade|abstain)` + `unknown_never_coerces_to_pass` | A.6.7 + C.23 | `GuardDecision := {pass|degrade|abstain}` only; `unknown` maps to `degrade`/`abstain` via explicit SoS‑LOG branch/policy pins. |
 | `penalties_route_to_r_eff_only` | A.6.7 | Penalties affect the **R lane (R_eff)** only; **F/G invariants** must not be altered by penalties. |
@@ -134,7 +134,7 @@ A `GCorePinSetId` is a stable identifier for a named set of commonly recurring *
 | GCorePinSetId | Expands to `CorePinsRequired` (set) | Notes |
 | --- | --- | --- |
 | `GCorePinSetId.PartG.AuthoringMinimal` | `{CG-FrameContext, describedEntity := ⟨GroundingHolon, ReferencePlane⟩, CNSpecRef.edition, CGSpecRef.edition}` | Baseline scope+contract pins for most Part‑G authoring kits (design‑time, citable, refreshable). |
-| `GCorePinSetId.PartG.CrossingVisibilityPins` | `{BridgeId/BridgeCardId, BridgeMatrixId?, CL/CL^k/CL^plane, Φ/Ψ/Φ_plane policy-ids, CrossingSurfaceId?, UTSRowId[]?, PathId[]/PathSliceId[]?}` | Use when the kit asserts or consumes crossings (Bridge‑only + visible). Conditional pins cover “only if that surface is used” cases (UTS publication, path‑citable evidence, explicit CrossingSurface reference). |
+| `GCorePinSetId.PartG.CrossingVisibilityPins` | `{BridgeId/BridgeCardId, BridgeMatrixId?, CL/CL^k/CL^plane, Φ/Ψ/Φ_plane policy-ids, CrossingBundleId?, UTSRowId[]?, PathId[]/PathSliceId[]?}` | Use when the kit asserts or consumes crossings (Bridge‑only + visible). Conditional pins cover “only if that bundle is used” cases (UTS publication, path‑citable evidence, explicit CrossingBundle reference). |
 
 #### G.Core:4.3 - RSCR Trigger Catalogue and docking discipline
 
@@ -190,7 +190,7 @@ The Phase‑2 stabilized canonical catalogue (based on the Phase‑2 inventory; 
 
 * `RSCRTriggerKindId.LegalitySurfaceEdit`
 * `RSCRTriggerKindId.PenaltyPolicyEdit`
-* `RSCRTriggerKindId.CrossingSurfaceEdit`
+* `RSCRTriggerKindId.CrossingBundleEdit`
 * `RSCRTriggerKindId.ReferencePlaneEdit`
 * `RSCRTriggerKindId.EditionPinChange`
 * `RSCRTriggerKindId.TokenizationOrNameChange`
@@ -210,9 +210,9 @@ Each `RSCRTriggerKindId` SHALL have a short, stable definition in `G.Core` (sing
 | --- | --- | --- |
 | `RSCRTriggerKindId.LegalitySurfaceEdit` | A legality surface changed (CG‑Spec: ComparatorSet/SCP/Γ_fold/MinimalEvidence, or equivalent legality inputs). | `CGSpecRef.edition`, `ComparatorSetRef.edition`, `SCPRef.edition`, `ΓFoldRef.edition` |
 | `RSCRTriggerKindId.PenaltyPolicyEdit` | A penalty / Φ / Ψ / FailureBehavior / SoS‑LOG branch policy changed. | penalty policy ids, `Φ`/`Ψ` policy ids, SoS‑LOG branch id pins |
-| `RSCRTriggerKindId.CrossingSurfaceEdit` | A crossing surface changed (Bridge/CL routing, crossing registry cards, crossing policy pins), including `edition_key` changes of crossing‑relevant artefacts (BridgeCards, CrossingSurface registries, UTS rows for crossing artefacts). | `BridgeId/BridgeCardId`, `BridgeMatrixId?`, `CL*` ids, crossing policy ids, `UTSRowId[]`, `PathId/PathSliceId?` |
+| `RSCRTriggerKindId.CrossingBundleEdit` | A crossing bundle changed (Bridge/CL routing, crossing-bundle registry cards, crossing policy pins), including `edition_key` changes of crossing‑relevant artefacts (BridgeCards, CrossingBundle registries, UTS rows for crossing artefacts). | `BridgeId/BridgeCardId`, `BridgeMatrixId?`, `CL*` ids, crossing policy ids, `UTSRowId[]`, `PathId/PathSliceId?` |
 | `RSCRTriggerKindId.ReferencePlaneEdit` | ReferencePlane or plane-routing surface changed. | `ReferencePlaneId`, plane-policy ids |
-| `RSCRTriggerKindId.EditionPinChange` | Any pinned edition relevant to downstream artifacts changed (including **`CNSpecRef.edition`**, `CGSpecRef.edition`, comparator/method/descriptor/distance/etc.). Crossing‑artefact edition_key changes are additionally classified as `CrossingSurfaceEdit` per multi‑cause discipline. | changed `*.edition` pins, affected `PathSliceId`s |
+| `RSCRTriggerKindId.EditionPinChange` | Any pinned edition relevant to downstream artifacts changed (including **`CNSpecRef.edition`**, `CGSpecRef.edition`, comparator/method/descriptor/distance/etc.). Crossing‑artefact edition_key changes are additionally classified as `CrossingBundleEdit` per multi‑cause discipline. | changed `*.edition` pins, affected `PathSliceId`s |
 | `RSCRTriggerKindId.TokenizationOrNameChange` | A published tokenization / naming / alias surface changed in a way that can affect docking, citations, or dispatch (e.g., UTS Name Cards, twin labels, alias maps). | affected `UTSRowId[]`, `NameCardId[]`, alias ids / maps |
 | `RSCRTriggerKindId.PolicyPinChange` | A policy-id pin used by characterization changed (selection, insertion, emission, routing, refresh policy, etc.). | policy ids (and other non-edition configuration pins when they are explicitly pinned) |
 | `RSCRTriggerKindId.TelemetryDelta` | Telemetry inputs that influence refresh/selection changed (not merely display-only). | telemetry ids/refs, `Audit`-published pins |
@@ -228,11 +228,11 @@ Each `RSCRTriggerKindId` SHALL have a short, stable definition in `G.Core` (sing
 
 | GCoreTriggerSetId | RSCRTriggerKindIds (set) | Notes |
 | --- | --- | --- |
-| `GCoreTriggerSetId.CGSpecGate` | `{RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.FreshnessOrDecayEvent}` | Covers CG‑Spec legality‑gate kits (e.g., `G.0`). |
-| `GCoreTriggerSetId.SoTAHarvestSynthesis` | `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.TokenizationOrNameChange, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent}` | Covers SoTA harvesting/synthesis packs (e.g., `G.2`). |
-| `GCoreTriggerSetId.EvidenceGraphKit` | `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.BaselineBindingEdit}` | Covers EvidenceGraph/SCR kits (e.g., `G.6`). |
-| `GCoreTriggerSetId.BridgeCalibrationKit` | `{RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.BaselineBindingEdit}` | Covers bridge calibration/CL kits (e.g., `G.7`). |
-| `GCoreTriggerSetId.RefreshOrchestration` | `{RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.BaselineBindingEdit}` | Covers refresh orchestration (e.g., `G.11`). |
+| `GCoreTriggerSetId.CGSpecGate` | `{RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.FreshnessOrDecayEvent}` | Covers CG‑Spec legality‑gate kits (e.g., `G.0`). |
+| `GCoreTriggerSetId.SoTAHarvestSynthesis` | `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.TokenizationOrNameChange, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent}` | Covers SoTA harvesting/synthesis packs (e.g., `G.2`). |
+| `GCoreTriggerSetId.EvidenceGraphKit` | `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.BaselineBindingEdit}` | Covers EvidenceGraph/SCR kits (e.g., `G.6`). |
+| `GCoreTriggerSetId.BridgeCalibrationKit` | `{RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.BaselineBindingEdit}` | Covers bridge calibration/CL kits (e.g., `G.7`). |
+| `GCoreTriggerSetId.RefreshOrchestration` | `{RSCRTriggerKindId.LegalitySurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.BaselineBindingEdit}` | Covers refresh orchestration (e.g., `G.11`). |
 
 ##### G.Core:4.3.5 - Initial alias maps
 
@@ -245,19 +245,19 @@ Based on the existing trigger catalogue in `G.11` (`T0…T7`).
 * `G.11:T1 → { RSCRTriggerKindId.TelemetryDelta }`
 * `G.11:T2 → { RSCRTriggerKindId.EditionPinChange }`
 * `G.11:T3 → { RSCRTriggerKindId.EditionPinChange }`
-* `G.11:T4 → { RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.PenaltyPolicyEdit }`
+* `G.11:T4 → { RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit }`
 * `G.11:T5 → { RSCRTriggerKindId.FreshnessOrDecayEvent }`
 * `G.11:T6 → { RSCRTriggerKindId.MaturityRungChange }`
 * `G.11:T7 → { RSCRTriggerKindId.PolicyPinChange }`
 
 **TriggerAliasMap.G0 (reserved; empty in Phase‑2).**
-Map any stable legacy registry‑hook labels emitted/recorded by `G.0` to the canonical kinds above (typically `LegalitySurfaceEdit`, `PenaltyPolicyEdit`, `CrossingSurfaceEdit`, `ReferencePlaneEdit`, `TokenizationOrNameChange`), preserving the original label text as `RSCRTriggerAliasId`. If none exist, `G.0` SHOULD emit canonical `RSCRTriggerKindId` values directly.
+Map any stable legacy registry‑hook labels emitted/recorded by `G.0` to the canonical kinds above (typically `LegalitySurfaceEdit`, `PenaltyPolicyEdit`, `CrossingBundleEdit`, `ReferencePlaneEdit`, `TokenizationOrNameChange`), preserving the original label text as `RSCRTriggerAliasId`. If none exist, `G.0` SHOULD emit canonical `RSCRTriggerKindId` values directly.
  
 **TriggerAliasMap.G6**
 EvidenceGraph `H3` example causes → canonical kinds:
 
 * `G.6:H3:freshness/decay change → { RSCRTriggerKindId.FreshnessOrDecayEvent }`
-* `G.6:H3:Bridge CL/CL^k or loss update → { RSCRTriggerKindId.CrossingSurfaceEdit }`
+* `G.6:H3:Bridge CL/CL^k or loss update → { RSCRTriggerKindId.CrossingBundleEdit }`
 * `G.6:H3:Φ/Ψ policy change → { RSCRTriggerKindId.PenaltyPolicyEdit }`
 * `G.6:H3:lane tag correction → { RSCRTriggerKindId.EvidenceSurfaceEdit }`
 * `G.6:H3:ReferencePlane correction → { RSCRTriggerKindId.ReferencePlaneEdit }`
@@ -320,7 +320,7 @@ Non-CC public identifiers (e.g., `UTSRowId`, `RSCRTriggerAliasId`, deprecation n
 In Phase‑2 refactoring, `G.Core` is the hub that allows each `G.x` to become structurally predictable: (a) a short, normative “Core linkage” slice, and (b) pattern‑scoped `Extensions`. Universal obligations are routed to canonical owners (A.6.7 / A.15.3 / A.19 / G.0 / A.19.CHR), while RSCR causes and default ownership become typed and single-owned.
 
 **Show 1: Refresh triggers without semantic drift.**
-`G.11` already uses trigger tokens `T0…T7`. `G.Core` keeps them as aliases and maps them to canonical trigger kinds (e.g., `TelemetryDelta`, `EditionPinChange`, `CrossingSurfaceEdit`). This makes RSCR reason codes consistent across patterns and avoids re-explaining trigger semantics in every pattern.
+`G.11` already uses trigger tokens `T0…T7`. `G.Core` keeps them as aliases and maps them to canonical trigger kinds (e.g., `TelemetryDelta`, `EditionPinChange`, `CrossingBundleEdit`). This makes RSCR reason codes consistent across patterns and avoids re-explaining trigger semantics in every pattern.
 
 **Show 2: Resolving competing defaults.**
 If multiple patterns imply a default for `PortfolioMode`, the Default Ownership Index points to a single owner (currently `CC‑G5.23`). Other patterns (e.g., bundles/log patterns) must cite that owner or delegate to it, rather than restating the default with slightly different wording. This preserves intent while preventing drift and ambiguity. 
@@ -351,7 +351,7 @@ Conformance items are authoring obligations and are enforced transitively by `CC
 | **CC‑GCORE‑DEL‑1**   | A conforming `G.Core` SHALL be delegation‑first: if a norm is already owned by A.6.7 / A.15.3 / A.19 / G.0 / A.19.CHR / E.*, `G.Core` routes to it rather than duplicating semantics. |
 | **CC‑GCORE‑CN‑CG‑1** | Any pattern in Part G that builds on `G.Core` SHALL cite `CN‑Spec` and `CG‑Spec` as the only contract/legality surfaces and SHALL NOT introduce shadow specs (incl. complying with `SuiteObligations.transport_declarative_only` and `SuiteObligations.cg_spec_cite_required_for_numeric_ops`). |
 | **CC‑GCORE‑OBL‑1**   | A conforming `G.Core` SHALL treat the obligation vocabulary in `A.6.7:4.2` as the canonical naming surface for Part‑G‑wide obligations and SHALL NOT introduce competing obligation names for the same norms. |
-| **CC‑GCORE‑CROSS‑1** | A Part‑G pattern that introduces or consumes crossings SHALL enforce `SuiteObligations.bridge_only_crossings` and `SuiteObligations.crossing_visibility_required` (CrossingSurface per E.18); SHALL prohibit implicit crossings; SHALL treat `edition_key` changes on **crossing‑relevant artefacts** (Bridge/CL/CrossingSurface registries and UTS rows for crossing artefacts) as `RSCRTriggerKindId.CrossingSurfaceEdit` (and, when an edition pin is involved, also `RSCRTriggerKindId.EditionPinChange` per multi‑cause discipline); and SHALL route `SuiteObligations.two_bridge_rule_for_described_entity_change` to its canonical owner. |
+| **CC‑GCORE‑CROSS‑1** | A Part‑G pattern that introduces or consumes crossings SHALL enforce `SuiteObligations.bridge_only_crossings` and `SuiteObligations.crossing_visibility_required` (CrossingBundle per E.18); SHALL prohibit implicit crossings; SHALL treat `edition_key` changes on **crossing‑relevant artefacts** (Bridge/CL/CrossingBundle registries and UTS rows for crossing artefacts) as `RSCRTriggerKindId.CrossingBundleEdit` (and, when an edition pin is involved, also `RSCRTriggerKindId.EditionPinChange` per multi‑cause discipline); and SHALL route `SuiteObligations.two_bridge_rule_for_described_entity_change` to its canonical owner. |
 | **CC‑GCORE‑GUARD‑1** | A Part‑G pattern SHALL treat `GuardDecision := {pass|degrade|abstain}` as the only admissibility/eligibility decision domain (`SuiteObligations.guard_decision_tristate(pass|degrade|abstain)`); `unknown` SHALL NOT silently coerce to `pass` (`SuiteObligations.unknown_never_coerces_to_pass`); “sandbox/probe‑only” SHALL be expressed via SoS‑LOG branch pins (policy/FailureBehavior) (see `C.23`), not as an extra decision value. |
 | **CC‑GCORE‑PEN‑1**   | A Part‑G pattern SHALL route penalties/assurance loss to the **R lane (`R_eff`) only** (`SuiteObligations.penalties_route_to_r_eff_only`) and SHALL preserve **F/G invariants** under penalties (penalties do not alter legality/invariant lanes). |
 | **CC‑GCORE‑SET‑1**   | A Part‑G pattern SHALL preserve set-return semantics for partial orders and SHALL prohibit silent scalarization/totalization (`SuiteObligations.no_silent_scalarisation_of_partial_orders`, `SuiteObligations.no_silent_totalisation`); any scalar summary SHALL be report-only unless declared as a lawful comparator surface. |
@@ -410,7 +410,7 @@ Although FPF is conceptual (not a data governance framework), `G.Core` aligns Pa
 
 * **Selective prediction / abstention** informs tri‑state guard discipline: abstaining or degrading is a first-class outcome, not an error coerced into a scalar.
 * **Set-valued / conformal methods** motivate set-return semantics: when comparability is partial or uncertainty is structural, returning sets/regions is often the SoTA-friendly representation.
-* **Multiobjective optimization and quality-diversity** reinforce portfolio/Archive semantics instead of forced “best single scalar”.
+* **Multiobjective optimization and quality-diversity** reinforce declared set-surface and `Archive` semantics instead of forced “best single scalar”.
 * **Monotone constrained modelling** (where used) supports “legality-first” scoring/aggregation: constraints and admissibility precede optimization, mirroring CG‑Spec gate discipline.
 * **Schema evolution and contract testing** motivate id-stable conformance points and typed trigger catalogues: stable identifiers + regression hooks are the practical mechanism for safe refactoring.
 
@@ -420,13 +420,13 @@ Although FPF is conceptual (not a data governance framework), `G.Core` aligns Pa
 
   * `E.8` pattern template and section discipline
   * `E.10` lexical/ontological rules (strict distinction; twin naming; kind‑suffix discipline)
-  * `E.18` CrossingSurface (crossing visibility surface)
+* `E.18` CrossingBundle (crossing visibility bundle)
   * `E.19` conformance discipline
   * `A.6.7` SuiteObligations + suite protocol pins (routing surface)
   * `A.15.3` SlotFillingsPlanItem (planned baseline anchor)
-  * `A.19` CN‑Spec contract surface
+  * `A.19` CN‑Spec governance card
   * `G.0` CG‑Spec legality gate
-  * `A.19.CHR` CHR suite boundary and “contract surfaces are pins, not copies” discipline
+  * `A.19.CHR` CHR suite boundary and "governance cards and legality gates are cited as pins, not copied locally" discipline
   * `C.23` SoS‑LOG (tri‑state branches; sandbox/probe‑only)
   * `F.17` UTS (identifier registry; alias/deprecation discipline)
   * `F.15` RSCR (regression/conformance loop)

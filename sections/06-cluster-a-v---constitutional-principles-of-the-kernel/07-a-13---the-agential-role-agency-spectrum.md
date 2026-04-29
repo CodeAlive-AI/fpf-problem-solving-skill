@@ -67,6 +67,11 @@ The `Agency-CHR` profile is grounded in contemporary research (e.g., Active Infe
 4.  **Policy Enactment Reliability (PER):** The probability that the agent will successfully execute its chosen `U.Method` under operational conditions. *(How reliably does it do what it decides to do?)*
 5.  **Objective Complexity (OC):** A measure of the complexity of the `U.Objective` the agent can pursue, from simple set-points to abstract, multi-scale goals.
 
+##### A.13:4.3.1 - Context-bounded task-family specialization claims
+
+When work shifts to a new `TaskFamily`, describe the holder as acquiring **context-bounded task-family specialization** rather than as becoming more generally intelligent in the abstract. The same holder may carry different task-family specializations across different task families without becoming a new kernel type. Breadth across unrelated task families is not the governed claim here; the governed claim is **time-to-usable specialization** on the declared task family and work target under a named work-measure threshold, adaptation budget, and freshness or provenance basis.
+
+Low-human-overlap or newly discovered task families remain admissible when the task family, evidence basis, and reuse window are explicit by value.
 #### A.13:4.4 - The Agency Grade (Didactic Layer)
 
 While the multi-dimensional `Agency-CHR` profile is essential for formal assurance, engineers and managers need a simpler, at-a-glance summary. The **Agency Grade** is a **non-normative, didactic** scale from 0 to 4 that synthesizes the CHR profile into an intuitive level of autonomy.

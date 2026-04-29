@@ -1,5 +1,6 @@
 # **Part K  – Lexical debt**
 
+
 ## Contents
 
 - [Mandatory replacement map for measurement terms](01-mandatory-replacement-map-for-measurement-terms.md) (13 lines) — Rule: In all normative content (specifications, data schemas, etc.), the deprecated terms “axis” and “dimension” (and their plural or compound forms) MUST NOT be used to denote a measurable aspect....

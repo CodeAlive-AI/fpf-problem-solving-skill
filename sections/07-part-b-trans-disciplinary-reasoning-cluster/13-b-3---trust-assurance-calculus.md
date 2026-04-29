@@ -20,7 +20,7 @@ B.3 is **conceptual and normative**: it defines *which assurance components must
 
 **Mechanism linkage.** For law‑governed operation families (e.g., **USM/UNM**) authored as **mechanisms**, use A.6.1 — U.Mechanism to publish **OperationAlgebra/LawSet/AdmissibilityConditions** and the **Transport** clause (Bridge‑only, CL/CL^k/CL^plane). All such penalties **reduce `R/R_eff` only**; **F/G** remain invariant.
 
-**Working‑Model handshake (alignment with E.14 - B.3.5 - C.13).**  
+**Working‑Model handshake (alignment with E.14 - B.3.5 - C.13).**
 Assurance consumes two inputs declared at the **Working‑Model** surface (CT2R‑LOG, B.3.5): the **justification stance** `validationMode ∈ {postulate, inferential, axiomatic}` and, where present, the **grounding link** `tv:groundedBy`. Structural claims that aspire to the strongest guarantees rely on **Constructive** grounding as a **Γₘ** (Compose‑CAL) narrative referenced via `tv:groundedBy`. No assurance artefact **defines** Working‑Model wording or layout (downward‑only dependence, E.14).
 
 ### B.3:2 - Problem
@@ -80,7 +80,7 @@ We standardize **two node characteristics**, **one node scope object**, and **on
 > * Assurance components live at **value/scope level**: **F/R** as characteristics, **G** as a scope object, while Γ‑flavours fold **structure/order/time**.
 > * Do not smuggle assurance components into structural edges; keep **F/R/CL** explicit as CHR metadata and **G** explicit as a USM scope object.
 
-> **Assurance shoulders (Working‑Model split).**  
+> **Assurance shoulders (Working‑Model split).**
 > **Mapping** raises **TA** (typing, fit/CL). **Logical** and **Constructive** contribute to **VA** (intended relation semantics; Γₘ extensional identity for structure). **Empirical Validation** contributes to **LA** (evidence in a bounded context). These supports attach **downward** from the Working‑Model surface (E.14).
 
 #### B.3:4.2 - Assurance as a typed claim
@@ -97,10 +97,10 @@ Assurance(H, C | K, S) = ⟨F_eff, G_eff, R_eff, Notes⟩
 
 This tuple gives readers an at‑a‑glance view (didactic primacy) while preserving the pieces needed for audit and improvement.
 
-**Validation modes (declaration, normative).** 
-Each published Working‑Model assertion **SHALL** declare **`validationMode ∈ {postulate, inferential, axiomatic}`** (E.14).  
-— *postulate* → pragmatic working claim; **Empirical Validation** is **required** for audit.  
-— *inferential* → reasoned consequence; **Logical** assurance carries the burden.  
+**Validation modes (declaration, normative).**
+Each published Working‑Model assertion **SHALL** declare **`validationMode ∈ {postulate, inferential, axiomatic}`** (E.14).
+— *postulate* → pragmatic working claim; **Empirical Validation** is **required** for audit.
+— *inferential* → reasoned consequence; **Logical** assurance carries the burden.
 — *axiomatic* → constructive identity; **structural** edges MUST provide a Γₘ narrative and a **`tv:groundedBy`** pointer (C.13, B.3.5).
 
 **Design vs run (no chimeras).** Assurance tuples for **design‑time** and **run‑time** SHALL be reported **separately** and **not composed into a single score**; see the *Scope drift* hazard in §2 and the obligations in B.3.3.
@@ -147,8 +147,8 @@ Any Γ‑flavour that claims an **Assurance** result **must** adopt the followin
    * *Monotone:* increasing any `R_i` or any `CL` cannot lower `R_eff`.
 
 4. **SCR and Notes:**
-   * The aggregate SHALL produce a SCR listing all contributing nodes and edges, with their F, G, R, CL, scopes, and evidence links (A.10).  
-   * The SCR SHALL additionally surface the **describedEntity** (`describe(Object→GroundingHolon)`) and the **ReferencePlane** for the claim, and present a **separable TA/VA/LA table** of evidence contributions with **valid_until/decay** marks and the **Epistemic‑Debt** per § B.3.4.  
+   * The aggregate SHALL produce a SCR listing all contributing nodes and edges, with their F, G, R, CL, scopes, and evidence links (A.10).
+   * The SCR SHALL additionally surface the **describedEntity** (`describe(Object→GroundingHolon)`) and the **ReferencePlane** for the claim, and present a **separable TA/VA/LA table** of evidence contributions with **valid_until/decay** marks and the **Epistemic‑Debt** per § B.3.4.
    * If order/time mattered for the claim, attach the OrderSpec or TimeWindow identifiers (B.1.4).
 
 This skeleton is **mandatory**. Domain‑specific patterns may add **refinements** (e.g., separate epistemic “replicability” vs. “calibration”) as long as they **do not violate** WLNK or MONO and preserve scale kinds.
@@ -178,7 +178,7 @@ This skeleton is **mandatory**. Domain‑specific patterns may add **refinements
 
 To prevent silent misuse:
 
-* **Ordinal scales (F, CL):** never average or subtract; only `min`/`max`, thresholds, and monotone comparisons are allowed.
+* **Ordinal scales (F, CL):** never average or subtract; only `min`/`max`, thresholds, and monotone comparisons are valid operations.
 * **Coverage scales (G):** use union/intersection in a declared domain space; do not “average” sets. If a numeric proxy is used (e.g., coverage ratio), it **must** be derived from a set operation, not vice versa.
 * **Ratio scales (R):** may be combined with `min`, `max`, or **explicitly justified** conservative functions; do not add R’s from different contexts without normalization of `K` (assumptions).
 
@@ -286,9 +286,9 @@ These obligations refine the generic Proof Kit from **B.1.1 §6** for **assuranc
   * `CL`: mapping of scales (CL1 vs CL3).
   * `G`: populations union, but unsupported sub‑populations are dropped.
 * **Aggregation:**
-* **Aggregation:**  
-* **\[M‑1]** ordinal support ranking; note weakest‑link study.  
-* **\[M‑2]** compute `R_eff` with Φ table; record `CL_min` for scale mappings.  
+* **Aggregation:**
+* **\[M‑1]** ordinal support ranking; note weakest‑link study.
+* **\[M‑2]** compute `R_eff` with Φ table; record `CL_min` for scale mappings.
 * **\[F‑constructive]** formalise the effect‑model equivalence and export proof‑term hash.  # [M/F]
 
   * `R_eff = max(0, min(R_RCT1, R_RCT2, R_OBS) − Φ(CL_min=CL1))`.
@@ -327,7 +327,7 @@ These obligations refine the generic Proof Kit from **B.1.1 §6** for **assuranc
 | **CC‑B3.3** | The **Congruence Level** `CL` **SHALL** live on **edges**; the penalty `Φ(CL)` **SHALL** be **monotone decreasing** and **bounded** (`R_eff ≥ 0`).                            | Make integration quality first‑class.        |                                   |
 | **CC‑B3.4** | `R_eff` **SHALL** be computed as `R_eff = max(0, min_i R_i − Φ(CL_min))` for the relevant integration path(s), unless a stricter domain‑specific rule is justified.           | Enforce WLNK and penalize weak integrations. |                                   |
 | **CC‑B3.5** | `F_eff = min_i F_i`; `G_eff = SpanUnion({G_i})` **constrained by support**.                                                                                                   | Prevent over‑generalization.                 |                                   |
-| **CC‑B3.6** | An **Assurance SCR** **SHALL** be produced, listing node/edge values, Evidence Graph Ref, and any OrderSpec/TimeWindow identifiers, **and SHALL also display**:  (i) the **describedEntity binding** `describe(Object→GroundingHolon)` for the claim and the declared **CHR:ReferencePlane ∈ {world|concept|episteme}** (cf. C.2.3); (ii) a **TA/VA/LA breakdown** of anchored evidence **kept separable** per **CC–KD‑08**, with **decay/valid‑until** indicators on empirical bindings (A.10), and the **Epistemic‑Debt** tally as computed in **§ B.3.4**. | Provide auditability (A.10).                 |                      
+| **CC‑B3.6** | An **Assurance SCR** **SHALL** be produced, listing node/edge values, Evidence Graph Ref, and any OrderSpec/TimeWindow identifiers, **and SHALL also display**:  (i) the **describedEntity binding** `describe(Object→GroundingHolon)` for the claim and the declared **CHR:ReferencePlane ∈ {world|concept|episteme}** (cf. C.2.3); (ii) a **TA/VA/LA breakdown** of anchored evidence **kept separable** per **CC–KD‑08**, with **decay/valid‑until** indicators on empirical bindings (A.10), and the **Epistemic‑Debt** tally as computed in **§ B.3.4**. | Provide auditability (A.10).                 |
 | **CC‑B3.7** | **Agency‑CHR** values (A.13) **SHALL NOT** override WLNK or `Φ(CL)` penalties; if agency grade change alters capabilities, model it as a **Meta‑Holon Transition**.           | Preserve safety; keep agency separate.       |                                   |
 | **CC‑B3.8** | Design‑time and run‑time assurance **SHALL NOT** be mixed in one tuple; compare them side‑by‑side if needed.                                                                  | Avoid design/run mixing.                     |                                   |
 
@@ -381,5 +381,31 @@ This arrangement preserves **A.11 Parsimony** (few characteristics), aligns with
 > Report assurance as **⟨F, G, R⟩** for a **typed claim** under explicit **context/scope**, and penalize by the **lowest edge‑level congruence**.
 > Improve assurance by raising **F**, **G**, **R**, or **CL**—and keep order, time, and cost in their own lanes.
 
-### B.3:End
+### B.3:11a - Assurance posture for quantum-like claims
 
+Quantum-like wording does not raise assurance burden by default. A local `C.26` modeling note can remain lightweight when it only prevents a representational mistake and does not support action, close audit, certify readiness, or claim empirical superiority.
+
+Action path:
+
+1. Decide the claim strength before building assurance machinery.
+2. If the QL note only prevents a local misreading, keep it as QL-lite with ordinary evidence.
+3. If the claim will be reused, state source role, ordinary FPF pattern, local stop condition, and evidence posture.
+4. If the claim supports release, readiness, audit, compliance, assurance, or high-impact action, build the B.3 assurance claim over named evidence carriers and scope.
+5. If the claim says QL is better, faster, more accurate, or uniquely necessary, compare rival models, baseline, mechanism, scope, and loss.
+6. State decay/reopen conditions so an old QL-supported assurance claim does not silently stay current after probes, carriers, or scope change.
+
+| Claim strength | B.3 expectation | Output |
+| --- | --- | --- |
+| Local modeling note | No assurance tuple beyond the ordinary pattern and evidence note | QL-lite note with local stop |
+| Reusable pattern/example | Name source role, ordinary pattern, local stop condition, and evidence posture | Reusable example with source-support role |
+| Decision, release, audit, readiness, or compliance use | Provide F-G-R/congruence support, evidence carriers, confidence, rival explanations, and decay/reopen conditions | Assurance tuple and evidence route |
+| Comparative superiority claim | Add rival-model comparison, baseline, mechanism, and scope limits | Bounded superiority claim or reroute |
+
+Useful outputs:
+
+- no B.3 action when QL is only a local representational lens;
+- a lightweight assurance note when reuse is modest;
+- a full assurance tuple only when consequence level demands it;
+- a rejected or weakened claim when evidence does not support the intended use.
+
+### B.3:End

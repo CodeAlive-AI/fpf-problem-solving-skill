@@ -1,10 +1,18 @@
 ## A.16 - Language-State Transduction Coordination
 
 > **Type:** Architectural (A)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Normative unless marked informative
 
 **Plain-name.** Language-state move coordination.
+
+**Start here when.** Your first honest artefact is a cue, not yet a claim, requirement, method, or work record, and you need to name the next lawful move without pretending that one downstream owner has already taken over.
+
+**First output.** A small typed move note or early preservation-to-routing note that names the source publication form, target publication form, target owner, and MVPK face where that face matters.
+
+**Typical next owners.** `A.16.1` for early preservation, `B.4.1` for route publication, `B.5.2.0` for cue-derived abductive prompting, later endpoint owners such as `A.6.P`, `A.6.A`, and `A.6.Q`, and `A.16.2` when the right move is reopen/backoff/respecify/retire.
+
+**Common wrong escalations / reroutes.** If history itself must be published as an accountable trajectory, reroute to `A.16.0`; if you are already doing slot-explicit semantic repair, reroute to `A.6.P`, `A.6.Q`, or `A.6.A`; if the publication target is a graph object in its own right, reroute to `E.18`.
 
 ### A.16:1 - Problem frame
 Once positions in the declared language-state `U.CharacteristicSpace` chart from `C.2.2a` are explicit, teams still need lawful move kinds for how governed `U.Episteme` publications change, narrow, reopen, or hand off across that chart. Those moves must not collapse into a second formality ladder, a generic workflow story, or an invisible sequence of owner replacements.
@@ -338,4 +346,5 @@ This matrix keeps the integration layer narrow while still making its move seman
 ### A.16:End
 
 
+---
 

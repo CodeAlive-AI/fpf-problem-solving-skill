@@ -15,7 +15,7 @@
 **Step 2 — Ontology and contract surfaces the CHR suite operates on.**
 
 * This pattern **A.19** — `U.CharacteristicSpace` and the dynamics hook: the base ontology of measurable coordinates and their spaces.
-* **A.19.CN** — CN‑frame / **CN‑Spec**: the contract surface for normalization and comparability routing, indicator policy, aggregation routing, and acceptance; it explicitly points to **C.16** for evidence/backing and to **G.0** for legality gates.
+* **A.19.CN** — CN‑frame / **CN‑Spec**: the governance card for normalization and comparability routing, indicator policy, aggregation routing, and acceptance; it explicitly points to **C.16** for evidence/backing and to **G.0** for legality gates.
 
 **Step 3 — Legality gates and mechanism shape (what to check when numbers appear).**
 
@@ -43,7 +43,7 @@ Each mechanism below owns its `U.Mechanism.Intension` card and assumes the measu
 3. **A.19.USCM** — scoring (SCP-first; no implicit UNM).
 4. **A.19.ULSAM** — lawful aggregation (explicit `Γ_fold`; ordinals are not averaged).
 5. **A.19.CPM** — comparison (set-valued outcomes; no silent scalarisation/totalisation).
-6. **A.19.SelectorMechanism** — selection kernel (set-returning; dominance/portfolio defaults are policy-bound).
+6. **A.19.SelectorMechanism** — selection kernel (set-returning; dominance/`PortfolioMode` defaults are policy-bound).
 
 **Step 6 — Specialization and reuse.**
 
@@ -63,7 +63,7 @@ This pattern is intentionally **not** a second semantic owner for CHR mechanisms
 - **Indicatorization vocabulary + admissibility** (UINDM artifacts: `IndicatorChoicePolicy`, `Indicator`, `IndicatorSet`, indicatorization as a policy step; “NCV ⇒ indicator” prohibition) are owned normatively by **A.19.UINDM**.
 - **Other CHR mechanism vocabulary referenced here** (e.g., scoring / aggregation / comparison / selection terms) is owned normatively by the corresponding mechanism‑owner pattern in the `A.19.<MechId>` family (e.g., `A.19.USCM`, `A.19.ULSAM`, `A.19.CPM`, `A.19.SelectorMechanism`).
 - **Evidence/calibration backing** for normalization is owned by **C.16 (MM‑CHR)**.
-- **CN‑frame surface wiring** (how CN‑Spec references normalization/comparability by fields/refs) is owned by **A.19.CN (CN‑Spec)**.
+- **CN‑Spec field/ref bindings** (`CN_Spec.normalization`, `CN_Spec.comparability.*`) are owned by **A.19.CN (CN‑Spec)**.
 - **Vocabulary extension rule.** If this pattern needs a new normalization / indicatorization / scoring / aggregation / comparison / selection term, it SHALL be introduced in the corresponding mechanism‑owner pattern first, then cited here (*Tell + Cite*). A.19 SHALL NOT mint new CHR‑mechanism vocabulary.
 
 **Terminology pointer (informative; do not duplicate).** When A.19 uses normalization or indicatorization terms below, it uses them *by reference* to **A.19.UNM** / **A.19.UINDM** and **C.16**. This pattern only constrains how such artifacts are **cited** when doing state‑space comparability, embeddings, and certification.
@@ -71,7 +71,7 @@ This pattern is intentionally **not** a second semantic owner for CHR mechanisms
 **Reader map (informative).**
 * If you need the **meaning** of `UNM`, `NCV`, `≡_UNM`, or `NormalizationFix` / `NormalizationFixSpec`: see **A.19.UNM**.  
 * If you need the **meaning** of `IndicatorChoicePolicy` / indicatorization: see **A.19.UINDM**.  
-* If you need the **CN‑Spec field/Ref wiring** (`CN_Spec.normalization`, `CN_Spec.comparability.*`): see **A.19.CN**.  
+* If you need the **CN‑Spec field/ref bindings** (`CN_Spec.normalization`, `CN_Spec.comparability.*`): see **A.19.CN**.  
 * If you need **evidence/calibration backing** for normalization or scoring legality: see **C.16 (MM‑CHR)**.  
 * If you need **cross‑context alignment mechanics**: see **F.9 (Alignment Bridge)** and the `Transport` discipline (A.6.1).
 
@@ -90,6 +90,8 @@ This pattern is intentionally **not** a second semantic owner for CHR mechanisms
     
 
 A.19 **does not** introduce any new measurement aspects, composite metrics, or **normalization semantics** (owned by **A.19.UNM**, with evidence/calibration under **C.16 (MM‑CHR)**), and it does not define how dynamics evolve over time or any predictive laws (see **A.3.3** for dynamics semantics). The focus here is purely on the _structure of state spaces_ and their comparability.
+
+**Space-vs-consumer boundary.** Use A.19 to declare the **space object itself**: the declared `CharacteristicSpace`, its slots, its optional overlays, and the `U.Dynamics.stateSpace` typing hook. Do **not** use A.19 to declare consumer-side ref positions that merely point to a declared space, and do **not** use it to declare relation kinds between several such refs. Accordingly, one field such as `...SpaceRef` is a reference to a declared `CharacteristicSpace`, not a second space kind, not a slot alias inside that space, and not a role claim. If a line needs search-side versus outcome-side positions over declared spaces, one explicit relation between those refs, one source-surface bridge, or one support-view reading over already-declared substrate objects, declare that in the pattern or surface that uses the space rather than in A.19 itself.
 
 **Lexical guard (“map”).** Follow the normalization lexical discipline owned by **A.19.UNM**. In this pattern, lowercase **map** is used only in the mathematical sense, while capitalized **Map** retains its Part‑G suffix meaning (e.g., `DescriptorMap`). Do not mint new normalization terminology here.
 
@@ -145,7 +147,7 @@ where:
     
 Then a **CharacteristicSpace** (CS) is formally the Cartesian product of all slot **value sets**:
 
-$$\mathbf{CS} = \prod_{i \in I} \mathrm{ValueSet}(\mathrm{slot}_i)\,.$$
+$\mathbf{CS} = \prod_{i \in I} \mathrm{ValueSet}(\mathrm{slot}_i)\,.$
 
 In other words, a point (state) in the space consists of one coordinate value for each slot. A **state** _x_ in CS can be seen as a total function _x(i)_ that picks a value from each slot’s **ValueSet** (for every _i ∈ I_, _x(i) ∈ ValueSet(slot\_i)_). By kernel mandate, any `U.Dynamics.stateSpace` **SHALL** be bound to some instance of `CharacteristicSpace`, and all states or trajectories described by that dynamics model **MUST** lie within that space’s **value set**. (The actual dynamic **laws** and time progression are handled in A.3.3; A.19 only defines the state‑space container and its properties.)
 
@@ -155,8 +157,7 @@ To ensure consistency and comparability, a CharacteristicSpace must obey the fol
 
 -   **A19-CS-1 (Exactly one per slot).** Each slot **binds exactly one** Characteristic to **exactly one** Scale (including a specific Unit or kind, if applicable). This mirrors the CSLC clause of “one aspect – one scale”: there are no ambiguous or compound mappings in a single slot. (If a Characteristic can be measured on multiple scales, only one is chosen for a given space; others would require separate slots or a different space.)
     
--   **A19-CS-2 (Named basis).** A CharacteristicSpace **SHALL** publish an ordered list of its slots as its **basis**. Each slot in the basis has a stable identifier (or key) that can be used in data structures or APIs. These basis names should be treated as technical identifiers (machine-readable tokens); any human-friendly alias or description for a slot should be provided only in the Plain register as a non-normative aid (per E.10). In short, the identity and order of slots in the space are explicit and stable.
- -   **A19-CS-2 (Named basis).** A CharacteristicSpace **SHALL** publish an ordered list of its slots as its **basis**. Each slot in the basis has a stable identifier (or key) that can be used in technical notations and interfaces. These basis names should be treated as stable technical tokens (identifier‑like); any human-friendly alias or description for a slot should be provided only in the Plain register as a non-normative aid (per E.10). In short, the identity and order of slots in the space are explicit and stable.
+-   **A19-CS-2 (Named basis).** A CharacteristicSpace **SHALL** publish an ordered list of its slots as its **basis**. Each slot in the basis has a stable identifier (or key) that can be used in technical notations, interfaces, data structures, or APIs. These basis names should be treated as stable technical tokens (identifier-like); any human-friendly alias or description for a slot should be provided only in the Plain register as a non-normative aid (per E.10). In short, the identity and order of slots in the space are explicit and stable.
     
 -   **A19-CS-3 (Immutability of meaning).** Once a space is in use, the meaning of each slot is fixed. A slot’s `(Characteristic, Scale)` pair **MUST NOT** be retroactively altered. If requirements change (e.g. a different scale or a revised definition of the Characteristic), one **MUST** define a new version of the space (or a new slot) rather than silently changing the existing one. When a space is versioned or a slot replaced, an explicit **embedding** (mapping from the old space to the new space) should be published to relate historical states to the new coordinates. This ensures past data remains interpretable and prevents semantic drift.
     
@@ -167,6 +168,8 @@ To ensure consistency and comparability, a CharacteristicSpace must obey the fol
    In particular, any handling of **polarity** (which way “better” is), weighting, or cross-slot aggregation happens in those external mechanisms/policies, not inside the space definition. The space provides the raw coordinates; the logic to interpret or aggregate them is added by domain‑specific layers with explicit disclosure of how it’s done.
 
  - **A19-CS-6 (Slot meta completeness).** Where applicable, each slot **SHALL** declare `admissible_domain` and **missingness semantics** (e.g., codes for *missing*, *censored*, *not-applicable*), consistent with the Characteristic’s Scale and with MM‑CHR. This prevents silent domain drift and clarifies how absent values participate in predicates and comparisons.
+
+ - **A19-CS-7 (Space-vs-consumer boundary).** A `CharacteristicSpace` publishes only its own slot basis, optional overlays, and typing hooks. Ref-typed consumer fields that point to a declared space, explicit relation kinds between such refs, source-surface wiring, support-view organization, and publication metadata are **outside** the space object and **MUST** be declared in the pattern or surface that uses the space. This prevents `CharacteristicSpace` from being silently widened into ref-position semantics, selector semantics, source-surface semantics, publication-form semantics, or support-view semantics.
 
 ##### A.19:5.1.3 - Minimal structure hooks (optional overlays)
 
@@ -332,6 +335,19 @@ Canonical evaluation chain (notation‑neutral):
 
 **OP‑1 (Normative).** If `Align_B` is used in **gating**, the **Bridge used** and its **CL** **MUST** be declared in the assurance argument; the corresponding Φ(CL) penalty is applied per B.3. Silent cross‑context reuse is forbidden. (A.19 does not mandate any storage/ID scheme.)
 
+#### A.19:5.4 - Typed set views and optional neighboring transition-sensitive selection support
+
+- `TypedSetViews` name declared views over already declared set surfaces such as one palette, one front, one archive, or one shortlist.
+- A typed set view is one optional neighboring support for interpretation or shipping; it does not become a new public head for the set and it does not redefine the current minimal core burden by itself.
+- `SelectionSlot` still returns one selected set surface, and `Shortlist` remains the public head when a selected surface is emitted.
+- If one atlas-like reading uses several typed set views over the same source surface, each view should keep its active source surface and typed burden recoverable instead of speaking as though one default view already settles the whole family.
+- In cross-surface support prose, `SearchSpaceRef` and `OutcomeSpaceRef` are role-specific refinements of the older `SpaceRef` idiom. Do not let umbrella `SpaceRef` wording hide which support role the current typed-set-view reading depends on.
+- Use one `SpaceMetricRef` only when a comparison, neighborhood, spread, or crowding claim truly depends on one declared space metric or comparison rule.
+- Use one `TransitionSupportRef` only when the text must say how transition or trajectory relations behave across one declared level shift, normalization choice, or aggregation step. One covariance-style model is one admissible subtype of `TransitionSupportRef`, not the only one.
+- If one typed set view also cites one such role-specific space ref or `OutcomeMapRef`, keep those refs as declared support for that view rather than as one new public set head.
+- If one selector or comparison reads one derived tradition view through one typed set view, keep the underlying declared source surface recoverable at the same time.
+- Different typed set views may coexist for the same source surface; keep that plurality visible rather than pretending one metric or transition formalism already settles every neighboring comparison.
+
 ### A.19:6 - Conformance Checklist (normative) — **CC‑A19**
 
 **Formality anchors & operational segregation (normative).** A.19 aligns with **C.2.3 Unified Formality Characteristic (F)**. The legacy tier labels **T0/T1/T2 are deprecated**; speak **F** directly and treat operations separately (see **E.10** for registers).
@@ -405,4 +421,8 @@ _The following are common modeling mistakes (“anti-patterns”) related to mea
     ✓ **Never alter historical assertions:** **Leave history as‑is.** If criteria change, issue new assertions under the new criteria going forward, and if needed, explicitly **version** the **NormalizationMethod/UNM** or checklist. Past assertions remain valid for the old version and their time; new ones apply henceforth. This ensures auditability and avoids erasing or rewriting what was true under earlier standards.
 
 ### A.19:End
+
+---
+
+---
 

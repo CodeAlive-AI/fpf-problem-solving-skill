@@ -93,7 +93,7 @@ Every UTS row **MUST** carry the following fields (verbatim headings recommended
 
 #### F.17:6.1 - NQD Fields (normative; when applicable)
 
-If a UTS row **describes** a **Generator/Selector/Portfolio** (design‑time or run‑time artefact), it **MUST** add the following fields. These are *publication* fields, not tooling‑specific formats.
+If a UTS row **describes** a generator, selector, or typed portfolio-publication surface (design‑time or run‑time artefact), it **MUST** add the following fields. These are *publication* fields, not tooling‑specific formats.
 
 | Field | Purpose |
 | --- | --- |
@@ -103,7 +103,7 @@ If a UTS row **describes** a **Generator/Selector/Portfolio** (design‑time or 
 | **D\_P (Portfolio Diversity)** | Diversity contribution relative to the **current PortfolioPack** (`ArchiveConfig`, grid/binning, K‑capacity, dedup). |
 | **E/E‑LOG policy‑id (PolicyIdRef)** | Edition id of the explore/exploit governor policy that governed generation/selection budgets. |
 
-**Note.** These fields *extend* the Row Schema; they do not change SenseCells/Bridges/Names. Rows that are *purely definitional* (no generator/selector/portfolio semantics) do not carry §6.1.
+**Note.** These fields *extend* the Row Schema; they do not change SenseCells/Bridges/Names. Rows that are *purely definitional* (no generator/selector/typed portfolio-publication semantics) do not carry §6.1.
 
 #### F.17:6.2 - Autonomy fields (when applicable)
 Add the following columns (nullable; **required** when autonomy is claimed by the row’s subject):

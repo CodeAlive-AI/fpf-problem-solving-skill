@@ -68,6 +68,8 @@ The Canonical Evolution Loop is universal. It applies identically to the evoluti
         3.  **Refine:** Another research team (`Transformer`) revises the original theory, adding a new term to its equations (`design-time` model) that accounts for the new protein class.
         4.  **Deploy:** The team (`Transformer`) publishes the revised theory in a journal. The scientific community begins to use the new version. **Note.** The *chart* and any CG‑frame readings derived from this episteme MUST cite the updated `MethodDescription` (per A.19.CN CC‑A19.D1‑3) to keep comparability auditable.
 
+      **Adaptive-specialization note.** Knowledge instantiation for one declared task family **SHALL** name the prior basis being refined from, the named work-measure threshold being pursued, the adaptation budget being spent, and the freshness or provenance basis for claiming the specialization is reusable. If the refinement is claimed as one specialization step, it **SHALL** also cite the declared `TaskFamily` or `TaskSignature` anchor that later `C.22.1`, `G.5`, and `G.9` will consume. This keeps the refinement legible as contextual task-family specialization rather than vague general capability growth.
+
 *   **B.4.3 - Method Instantiation (Adaptive Method Loop):**
     *   **Context:** A field-maintenance organization uses a declared inspection-and-repair method (`U.Method`).
     *   **Loop Example:**
@@ -76,11 +78,15 @@ The Canonical Evolution Loop is universal. It applies identically to the evoluti
         3.  **Refine:** The method stewards (`Transformer`) revise the design-time method description by adding an earlier isolation step and a clearer classification checkpoint.
         4.  **Deploy:** The revised method description is adopted for the next maintenance cycle. **Note.** Method evolution MUST be recorded as `Γ_method` composition over `U.Method` (design‑time) and separated from `U.Work` (run‑time), with DRR ids attached (per A.4/B.1.5).
 
+      **Adaptive-specialization note.** Method instantiation for one declared task family **SHALL** name the narrower higher-fit specialist method or specialist portfolio being activated, the refinement budget being spent, the escalation or commit checkpoints, and the fallback when that method fails. If the method update is being used as evidence of specialization, the note **SHALL** keep the bearer of that specialization explicit: the holder, dyad, team, or scoped portfolio carries the claim; the method is only one selected vehicle. This keeps method evolution reviewable as bounded specialist acquisition rather than as hidden budget inflation.
+
 ### B.4:6 - **Conformance Checklist**
 
 *   **CC-B4.1 (Loop Integrity):** Any evolutionary change to a holon **MUST** be documented as a full traversal of the four-phase loop. Ad-hoc changes that bypass a phase (e.g., deploying a refinement without a documented observation and evidence phase) are a process violation.
 *   **CC-B4.2 (Temporal Scope Mandate):** The *Refine* phase **MUST** operate on `design-time` artifacts, while the *Operate* phase involves a `run-time` artifact. The *Observe* and *Deploy* phases are the only permissible bridges between these scopes.
 *   **CC-B4.3 (Transformer Mandate):** The *Observe*, *Refine*, and *Deploy* transitions **MUST** be performed by an explicitly identified external `Transformer` (Pattern A.12). A holon cannot observe, refine, or deploy itself.
+*   **CC-B4.4 (Adaptive-specialization anchoring):** When `B.4.2` or `B.4.3` carries a bounded-specialization claim, that claim **MUST** name the declared `TaskFamily` or `TaskSignature`, the work-measure threshold target, the adaptation budget, and the freshness or provenance basis for reuse.
+*   **CC-B4.5 (Adaptive-specialization boundary):** `B.4.2` and `B.4.3` **SHALL NOT** silently re-own selector/parity semantics. If transfer, retention, downstream exploitation efficiency, corridor entry, or downside burden are comparison-relevant, the host note **MUST** leave those fields recoverable by the downstream `C.22.1`, `G.5`, and `G.9` owners.
 
 ### B.4:7 - **Common Anti-Patterns and How to Avoid Them**
 

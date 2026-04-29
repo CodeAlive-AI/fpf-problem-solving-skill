@@ -1,9 +1,9 @@
 ## A.0 - Onboarding Glossary (NQD & E/E‑LOG)
-**One‑screen purpose (manager‑first).** This pattern gives newcomers a plain‑language starter kit for FPF’s *generative* engine so they can run a lawful **problem‑solving / search loop** on day one. It explains the few terms you must publish when you **generate, select, and ship portfolios** (not single “winners”), and points to the formal anchors you’ll use later. *(OEE is a Pillar; NQD/E/E‑LOG are the engine parts.)*
+**One‑screen purpose (manager‑first).** This pattern gives newcomers a plain‑language starter kit for FPF’s *generative* engine so they can run a lawful **problem‑solving / search loop** on day one. It explains the few terms you must publish when you **generate, select, and ship declared set surfaces or typed portfolio publications** (not single “winners”), and points to the formal anchors you’ll use later. *(OEE is a Pillar; NQD/E/E‑LOG are the engine parts.)*
 
-**Builds on.** E.2 (**P‑10 Open‑Ended Evolution; P‑2 Didactic Primacy**), A.5, C.17–C.19 - **Coordinates with.** E.7, E.8, E.10; F.17 (UTS); G.5, G.9–G.12 - **Constrains.** Any pattern/UTS row that **describes a generator, selector, or portfolio**.
+**Builds on.** E.2 (**P‑10 Open‑Ended Evolution; P‑2 Didactic Primacy**), A.5, C.17–C.19 - **Coordinates with.** E.7, E.8, E.10; F.17 (UTS); G.5, G.9–G.12 - **Constrains.** Any pattern/UTS row that **describes a generator, selector, or typed portfolio-publication / set-return surface**.
 
-**Keywords & queries.** *novelty, quality‑diversity (NQD), explore/exploit (E/E‑LOG), **portfolio (set)**, illumination map *(report‑only telemetry)*, parity run, comparability, ReferencePlane, CL^plane, **ParetoOnly** default*
+**Keywords & queries.** *novelty, quality‑diversity (NQD), explore/exploit (E/E‑LOG), **declared set surface**, **typed portfolio publication**, illumination map *(report‑only telemetry)*, parity run, comparability, ReferencePlane, CL^plane, **ParetoOnly** default*
 
 ### 1) Problem frame
 
@@ -18,7 +18,7 @@ In current practice:
 * **Hidden policies.** Explore/exploit budgets and governor rules are implicit; results are irreproducible and **refresh‑unsafe** (no edition/policy pins).
 * **Tool lock‑in.** Implementation terms (pipelines, file formats) leak into the Core, violating Guard‑Rails.
 
-FPF needs a **short, normative glossary** that names the generative primitives in **Plain** register and ties each to its **formal anchor**—so portfolios, not single scores, become the default publication. 
+FPF needs a **short, normative glossary** that names the generative primitives in **Plain** register and ties each to its **formal anchor**—so declared set surfaces and typed portfolio publications, not single scores, become the default publication. 
 
 ### 3) Forces
 
@@ -38,7 +38,7 @@ FPF needs a **short, normative glossary** that names the generative primitives i
 | **Novelty (N)**           | *How unlike the known set in your declared **CharacteristicSpace**. **Compute lawfully** (declared `DescriptorMapRef` + `DistanceDefRef`; no ad‑hoc normalisation). | C.17, C.18 |
 | **Use‑Value (U / ValueGain)** | *What it helps you achieve now under your **CG‑Frame**; tie to acceptance/tests; **publish units, scale kind, polarity, ReferencePlane**.                   | C.17, C.18 |
 | **Constraint‑Fit (C)**    | *Satisfies must‑constraints (Resource/Risk/Ethics)*; legality via **CG‑Spec**; **unknowns propagate** (never coerce to zero).                                | C.18, G.4  |
-| **Diversity_P (portfolio)** | *Adds a new niche to the **portfolio**; measured against the **active archive/grid**, not a single list; declare **ReferencePlane** for each head.          | C.17, C.18 |
+| **Diversity_P (declared retained set)** | *Adds a new niche to the declared retained set or portfolio-publication surface; measured against the **active archive/grid**, not a single list; declare **ReferencePlane** for each head.          | C.17, C.18 |
 | **E/E‑LOG**               | *Named, versioned **explore↔exploit** policy*; governs when to widen space vs refine candidates; **policy‑id is published**.                                   | C.19       |
 | **ReferencePlane**        | *Where a value lives:* **world** (system), **concept** (definition), **episteme** (about a claim). **Plane‑crossings add CL^plane** (penalties to **R only**); cite policy‑id. | F.9, G.6   |
 | **Scale Variables (S)**  | *The **monotone knobs** along which improvement is expected* (e.g., parameterisation breadth, data exposure, iteration budget, resolution). **Declare S** for any generator/selector claimed to scale. | C.18.1       |
@@ -50,15 +50,15 @@ FPF needs a **short, normative glossary** that names the generative primitives i
 
 #### 4.2 Publication & telemetry duties (where these terms **show up**)
 
-1. **UTS surface (Part F).** When a **UTS row describes a generator, selector, or portfolio**, it **MUST** surface **N, U, C, Diversity_P, E/E‑LOG `policy‑id`, `ReferencePlane`**, with **units/scale/polarity** typed under **MM‑CHR / CG‑Spec**, and lawful references to `DescriptorMapRef`/`DistanceDefRef`. *(Row schema: F.17; shipping via G.10.)*  
+1. **UTS surface (Part F).** When a **UTS row describes a generator, selector, or typed portfolio-publication / set-return surface**, it **MUST** surface **N, U, C, Diversity_P, E/E‑LOG `policy‑id`, `ReferencePlane`**, with **units/scale/polarity** typed under **MM‑CHR / CG‑Spec**, and lawful references to `DescriptorMapRef`/`DistanceDefRef`. *(Row schema: F.17; shipping via G.10.)*  
 2. **Parity & edition pins (Part G).** When QD/OEE is in scope, **pin** `DescriptorMapRef.edition` and `DistanceDefRef.edition` (and, where applicable, `CharacteristicSpaceRef.edition`, `TransferRulesRef.edition`) and record `policy‑id` + `PathSliceId`. Treat **illumination/coverage as report‑only telemetry**; publish an **Illumination Map** where G‑kit mandates parity artefacts. **Declare S** (Scale Variables) and run at least one **scale‑probe** (two points along S) when claiming **scale‑amenability**. **Dominance policy defaults to `ParetoOnly`;** including illumination in dominance **MUST** cite a CAL policy‑id.
-3. **Tell‑Show‑Show (E.7/E.8).** Any arhitectural pattern that claims generative behaviour **MUST** embed **both** a **U.System** and a **U.Episteme** illustration using this glossary (manager‑first didactics). 
+3. **Tell‑Show‑Show (E.7/E.8).** Any architectural pattern that claims generative behaviour **MUST** embed **both** a **U.System** and a **U.Episteme** illustration using this glossary (manager‑first didactics). 
 
 #### 4.3 Minimal recipe (run this on day one)
 1) Declare **CG‑Frame** (what “quality” means; lawful units/scales) and **ReferencePlane**.  
 2) Pick 2–4 **Q components** + a simple **DescriptorMap** (≥2 dims) for N/D; publish **editions**.  
 3) Choose an **E/E‑LOG policy** (explore↔exploit budget); record **policy‑id**.  
-4) Call the selector under **G.5** with parity pins; **return a set** (Pareto/Archive), not a single score.  
+4) Call the selector under **G.5** with parity pins; **return a declared set surface** (`Front`, `Archive`, `Shortlist`, or `RankedShortlist` as appropriate), not a single score or an unnamed "portfolio".  
 5) **Publish to UTS** + **PathIds/PathSliceId**; **Illumination Map** is **report‑only telemetry** by default.
 
 ### 5) Archetypal Grounding
@@ -66,7 +66,7 @@ FPF needs a **short, normative glossary** that names the generative primitives i
 
 **Show‑A - SRE capacity plan (selector returns a set).**
 *Frame.* We must raise service commitment headroom for Q4 without breaking latency SLOs.
-*Portfolio.* `{cache‑expansion, read‑replicas, query‑shaping, circuit‑breaker tuning, schema‑denorm}`.
+*Declared retained set.* `{cache‑expansion, read‑replicas, query‑shaping, circuit‑breaker tuning, schema‑denorm}`.
 *Glossary in action.* `U = latency@p95 & error‑rate`, `C = budget ≤ $X, risk ≤ R`, `N = dissimilarity to current playbook`, `Diversity_P = adds a previously empty niche in our archive (e.g., “shifts load to edge”)`. E/E‑LOG starts **Explore‑heavy**, flips **Exploit‑heavy** once ≥ K distinct niches are lit. *(Publish UTS row + parity pins; illumination stays report‑only telemetry.)*  
 
 **Show‑B - Policy search with QD archive (MAP‑Elites‑class).**
@@ -74,11 +74,11 @@ FPF needs a **short, normative glossary** that names the generative primitives i
 *Glossary in action.* `CharacteristicSpace = {step‑frequency, lateral‑stability}`, `ArchiveConfig = CVT grid`, `N` from descriptor distance, `U` = task reward, `Diversity_P` = coverage gain; **PortfolioMode=Archive**. Families include **MAP‑Elites (2015)**, **CMA‑ME/MAE (2020–)**, **Differentiable QD/MEGA (2022–)**, **QDax (2024)**; publish editions and policy‑ids; treat illumination as **report‑only telemetry**.  
 
 *(Optional)* **Show‑C - OEE parity (POET/Enhanced‑POET).**
-Co‑evolve `{environment, method}` portfolios; publish **coverage/regret** as telemetry metrics; pin `TransferRulesRef.edition`; return *sets*, not a single winner. 
+Co‑evolve declared `{environment, method}` sets; publish **coverage/regret** as telemetry metrics; pin `TransferRulesRef.edition`; return *sets*, not a single winner. 
   
 **Show‑Epi - Evidence synthesis (U.Episteme).**
 *Frame.* A living review compares rival **causal identification** methods (e.g., IV vs. DiD vs. RCT‑adjacent surrogates) across policy domains.
-*Glossary in action.* `U = external‑validity gain @ F/G‑declared lanes`, `C = ethics & data‑licence constraints`, `N = dissimilarity in **ClaimGraph** transformations`, `D_P = coverage of identification niches in the archive`. `ReferencePlane = episteme`. Illumination/coverage stays **report‑only telemetry**; selection returns a **portfolio** of methods per niche. *(Publish UTS rows; cite Bridges + CL for cross‑domain reuse; edition‑pin Descriptor/Distance defs where QD applies.)*
+*Glossary in action.* `U = external‑validity gain @ F/G‑declared lanes`, `C = ethics & data‑licence constraints`, `N = dissimilarity in **ClaimGraph** transformations`, `D_P = coverage of identification niches in the archive`. `ReferencePlane = episteme`. Illumination/coverage stays **report‑only telemetry**; selection returns a declared retained-set surface or portfolio-publication view of methods per niche. *(Publish UTS rows; cite Bridges + CL for cross‑domain reuse; edition‑pin Descriptor/Distance defs where QD applies.)*
 
 ### 6) Bias‑Annotation
 
@@ -86,16 +86,16 @@ Co‑evolve `{environment, method}` portfolios; publish **coverage/regret** as t
 **Known risks & mitigations.**
 *Over‑aggregation:* forbid mixed‑scale sums; use **CG‑frame** and **MM‑CHR**.
 *Terminology drift:* enforce **LEX‑BUNDLE** registers; ban tool jargon in Core.
-*Optimization monoculture:* require **portfolio** publication where G‑kit mandates parity; illumination stays **report‑only telemetry** unless a CAL policy promotes it (policy‑id cited).   
+*Optimization monoculture:* require declared set-surface or typed portfolio publication where G‑kit mandates parity; illumination stays **report‑only telemetry** unless a CAL policy promotes it (policy‑id cited).   
 
 ### 7) Conformance Checklist (SCR/RSCR stubs)
 
 | ID          | Requirement                                                                                                                                                                               | Purpose                                                                         |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **CC‑A0‑1** | If a pattern/UTS row **describes a generator, selector, or portfolio**, it **MUST** surface **N, U, C, Diversity_P, `ReferencePlane`, and E/E‑LOG `policy‑id`**; **units/scale/polarity** **MUST** be declared. | Makes generative claims comparable and auditable (UTS as publication surface).  |
+| **CC‑A0‑1** | If a pattern/UTS row **describes a generator, selector, or typed portfolio-publication / set-return surface**, it **MUST** surface **N, U, C, Diversity_P, `ReferencePlane`, and E/E‑LOG `policy‑id`**; **units/scale/polarity** **MUST** be declared. | Makes generative claims comparable and auditable (UTS as publication surface).  |
 | **CC‑A0‑2** | When QD/OEE is in scope, **pin** editions: `DescriptorMapRef.edition`, `DistanceDefRef.edition` (and, where applicable, `CharacteristicSpaceRef.edition`, `TransferRulesRef.edition`); log `PathSliceId` and policy‑ids. | Enables lawful *parity/refresh*; edition‑aware telemetry.                       |
 | **CC‑A0‑3** | **No mixed‑scale roll‑ups**; ordinal data **SHALL NOT** be averaged; any roll‑up **MUST** live under a declared **CG‑frame**.                                                             | Prevents illegal scoring; keeps comparisons lawful.                             |
-| **CC‑A0‑4** | Where the G‑kit requires parity, **publish an Illumination Map** (coverage per niche); **single‑number leaderboards are non‑conformant** on the Core surface when a ParityReport is required. | Portfolio‑first publication; avoids single‑winner bias.                         |
+| **CC‑A0‑4** | Where the G‑kit requires parity, **publish an Illumination Map** (coverage per niche); **single‑number leaderboards are non‑conformant** on the Core surface when a ParityReport is required. | Declared-set-first / typed portfolio-publication posture; avoids single‑winner bias.                         |
 | **CC‑A0‑5** | Keep **illumination/coverage** as **report‑only telemetry**; **dominance policy defaults to `ParetoOnly`**; any change is CAL‑authorised and cited by policy‑id.                                          | Separates fit from exploration; preserves auditability.                         |
 | **CC‑A0‑6** | Apply **E.7/E.8**: include a **U.System** and a **U.Episteme** illustration when claiming generative behaviour; obey **E.10** register hygiene; use the exact subsection title **“Archetypal Grounding.”** | Locks didactic primacy; prevents jargon drift.                                  |
 | **CC-A0-7** | **ReferencePlane declared** for every N/U/C/Diversity_P head and **CL^plane** penalties **route to R only**; **Φ_plane** policy-id published when planes differ.                            | Prevents plane/stance category errors; aligns with Bridge/**GateCrossing visibility** guards (Bridge+UTS+CL/Φ_plane). |
@@ -109,7 +109,7 @@ Co‑evolve `{environment, method}` portfolios; publish **coverage/regret** as t
 
 **Benefits.**
 • **Immediate usability** for engineer‑managers (plain one‑liners) with **formal anchors** for auditors.
-• **Portfolio‑first** culture (sets & illumination) instead of brittle leaderboards.
+• **Declared-set-first / typed portfolio-publication** culture (typed set surfaces & illumination) instead of brittle leaderboards.
 • **Edition‑aware comparability**; parity/refresh is routine, not ad‑hoc.
 
 **Trade‑offs & mitigations.**
@@ -125,13 +125,124 @@ This pattern **instantiates P‑10 Open‑Ended Evolution** by making *generatio
 **Builds on.** **E.2 Pillars** (P-10, P-2, P-6), **A.5** (Open-Ended Kernel), **B.5/B.5.2.1** (Abductive loops + NQD integration), **C.17–C.19** (Creativity-CHR, NQD-CAL, E/E-LOG).    
 
 **Coordinates with.** **E.7/E.8** (Archetypal Grounding; Authoring template), **E.10** (LEX‑BUNDLE), **F.17** (UTS), **G.5/G.9–G.12** (set‑returning selectors, **iso‑scale** parity, shipping & refresh).
-**Constrains.** Any generator/selector/portfolio publication on the Core surface: **N‑U‑C‑Diversity_P + policy‑ids; S/Scale‑probe where applicable; parity pins; lawful scales; portfolio‑first where mandated**. (Ties into UTS rows and parity artefacts.)
+**Constrains.** Any generator/selector/typed portfolio publication on the Core surface: **N‑U‑C‑Diversity_P + policy‑ids; S/Scale‑probe where applicable; parity pins; lawful scales; declared-set publication where mandated**. (Ties into UTS rows and parity artefacts.)
 **Editor’s cross‑reference.** For agentic orchestration of scalable tool‑calls under **BLP**/**SLL**, see **C.24 (Agent‑Tools‑CAL)**.
 
-### Editor’s note (implementation hint)
+### A.0:QF.0a - Scope of this glossary
 
-This pattern is an **on‑ramp**: it **does not replace** C.17–C.19. It binds Plain definitions to **publication/telemetry** expectations so newcomers can *use* NQD/E/E‑LOG immediately while experts follow the formal trails. 
+This pattern is an **on‑ramp**: it **does not replace** C.17–C.19. It binds Plain definitions to **publication/telemetry** expectations so newcomers can *use* NQD/E/E‑LOG immediately while experts follow the formal trails.
+
+### A.0:QF.1 - Early set-surface and metric-kind vocabulary
+
+- Use `Palette` for a plurality-preserving set with no dominance semantics yet.
+- Use `TraditionPalette` only when the members are traditions gathered before later comparison or choice semantics are declared.
+- For methods, hypotheses, environment-method pairs, candidate explanations, or other member kinds, use `Palette` plus explicit `SubjectKind` instead of borrowing the `TraditionPalette` head.
+- Use `Front` only for a non-dominated set under one declared `DominanceSet`.
+- Use `Q-Front` when the declared `DominanceSet` is the declared `Q` components.
+- Use `Archive` for a retained set whose purpose is coverage, stepping-stone retention, or frontier expansion rather than current non-domination.
+- Use `ExplorationArchive` for the broad retained exploration surface; it is the exploration-specific specialization of `Archive`.
+- Use `SteppingStoneSet` only for one narrower retained subset whose stated purpose is future frontier reach rather than the whole archive. It is not part of the ordinary first-pass public-head family for retained exploration.
+- Use `Shortlist` for the set chosen from one declared source surface by one named lens.
+- Use `RankedShortlist` only when that shortlist is explicitly rank-ordered.
+- Use `ShortlistId` for the stable public token of one emitted shortlist; it is not the shortlist itself.
+- Use `ChoiceSet` only when the mathematical set object underlying one shortlist must be named explicitly; do not let it replace the public shortlist head.
+- Use `Q-set` for the declared current objective tuple that may ground the current `DominanceSet`.
+- Use `LearningProgressSignal` for an optional policy-side signal that says further exploration is expected to improve capability or competence; it is not part of `Q` or dominance by default.
+- Use `CompetenceModelRef` for the cited model or evidence surface that makes a capability or competence estimate reviewable.
+- Use `GoalSpaceExpansionCue` for a declared reason to widen the goal or task palette; it is a pool-policy/probe cue, not proof that one candidate is already on the current front.
+- Use `GoalSpaceExpansionPolicyRef` for the declared pool policy that says when learning-progress or competence evidence justifies widening goals, tasks, or curricula; it governs archive/curriculum growth, not default dominance.
+- When future reach depends on transition or transfer potential, cite that reachability or transfer rule together with `LearningProgressSignal`, `CompetenceModelRef`, or `GoalSpaceExpansionCue`; keep that bridge on the archive/pool-policy side unless one explicit policy promotes it.
+- If one front is meant to be current-`Q` by default, say so as `Q-Front` or as `Front over the declared Q components` rather than leaving the relation between `Q-set` and `DominanceSet` implicit.
+- `Use-Value` may be one member of the `Q-set` only when the current Context declares it there; it is not the whole `Q-set` or the default `Q-set` by itself.
+- Metric-kind doctrine: the `Q-set` is the candidate/front-facing objective tuple; `Novelty@context` is one context-relative candidate signal; `DeltaDiversity_P` is one set-relative marginal diversity contribution; `IlluminationSummary` is one report-only archive telemetry summary unless one explicit policy promotes it.
+- Minimal mathematical lens: the current front lives in one declared comparison or outcome space, while the exploration archive may depend on one declared search, niche, or reachability space. Keep both spaces explicit when they differ.
+- Keep `Novelty@context`, `DeltaDiversity_P`, `Surprise`, and `IlluminationSummary` outside the default `Q-set` unless one declared `PromotionPolicy` says otherwise.
+- A reader should be able to tell whether one sentence is talking about a `Palette`, a `Front`, an `Archive`, a `SteppingStoneSet`, a `Shortlist`, or one explicit `RankedShortlist`, and whether one selected set came from one declared source surface, before later policy or geometry detail arrives.
+- Use `portfolio` only when the governed object is a declared retained set plus a selection/retention rule or a portfolio-publication posture. Do not use bare `portfolio` when `Palette`, `Front`, `Archive`, `SteppingStoneSet`, `Shortlist`, or `RankedShortlist` is already recoverable.
+
+### A.0:QF.1a - Helper declarations for set-surface language
+
+- Ordinary public set-surface heads are `Palette`, `TraditionPalette`, `Front`, `Q-Front`, `Archive`, `ExplorationArchive`, `Shortlist`, and `RankedShortlist`.
+- `ExplorationArchive` is the exploration-specific specialization of `Archive`; use `Archive` as the wider family head only when that exploration-specific subtype does not matter.
+- `SteppingStoneSet` is one narrow retained-subset head only when that subset itself is the visible published surface; do not treat it as the ordinary public head for retained exploration.
+- `ShortlistId` is the stable public token or id companion for one emitted shortlist; it is not a set-surface head.
+- `ChoiceSet` is only the mathematical set gloss for a shortlist when that object itself must be named.
+- `SetSurfaceKind` is a declaration field naming which public set-surface family is being emitted; it is not another public head and not a Part-E `SurfaceKind` value such as `PublicationSurface` or `InteropSurface`.
+- `SourceSurfaceKind` is a declaration field naming the immediate source-surface family acted on by a lens, such as `Q-Front`, `ExplorationArchive`, `Front`, `Archive`, or `TraditionPalette`; it does not carry derivation, composition, or object-id load, it does not rename the emitted `Shortlist` or `RankedShortlist`, and it is not a Part-E `SurfaceKind` value.
+- `SourceSurfaceComposition` is an optional declaration field naming a multi-source composition such as `Front+Archive` when one lens genuinely acts over more than one declared source-surface family; it is not itself a kind.
+- `SubjectKind` is a declaration field naming what the members are, such as traditions, methods, hypotheses, environment-method pairs, candidate explanations, or other subject-kinded alternatives.
+- `EligibilitySet`, `DominanceSet`, `TieBreakerSet`, and `TelemetrySet` are the comparison-bundle sets behind the surface, not rival publication heads: `EligibilitySet` says what may enter, `DominanceSet` says what counts for current non-domination, `TieBreakerSet` says what may order or choose among survivors, and `TelemetrySet` says what may be reported without changing dominance.
+- `PromotionPolicy` is the policy pin that authorizes one tie-breaker or telemetry signal to move into dominance. Without that pin, novelty, diversity, surprise, illumination, or similar signals remain outside the current `DominanceSet`.
+- `DerivedViewKind` is an optional declaration field for a derived view, such as one tradition view used for interpretation or publication. It must leave the base `SourceSurfaceKind`, `SetSurfaceKind`, and emitted shortlist family recoverable.
+- `BasePaletteRef` is an optional cited id/ref for the base palette when one derived tradition view or shortlist depends on that palette; it is a ref, not a kind.
+- Stable values for `SetSurfaceKind`, `SourceSurfaceKind`, `SourceSurfaceComposition`, `SubjectKind`, and `DerivedViewKind` should come from controlled tokens, cited ids, or already-declared head labels; do not let one ad hoc local prose label become a de facto field value.
+- When the upstream object is `SoTAPaletteDescription` and its members are traditions, `TraditionPalette` may be used as the reader-facing tradition-only palette head for that same palette burden. It is an aliasing head over the same palette burden, not a separate owner. When the members are not traditions, keep `SoTAPaletteDescription` or `Palette + SubjectKind` explicit instead of widening `TraditionPalette`.
+- `RetentionIntent=steppingStone` is a field value on retained archive membership when the purpose is future frontier reach; it is not the same thing as publishing a `SteppingStoneSet`, which names a narrower retained subset only when that subset itself is the surface being discussed and not the default archive head.
+
+### A.0:QF.2 - First public wording for shortlisted results
+
+- When one reader needs the visible selected surface, say `Shortlist from <SourceSurfaceKind> under <LensId>` rather than one generic `choice set` or `portfolio`.
+- When the selected surface must be cited as one stable emitted object, say `ShortlistId` and keep one nearby line that names the shortlist and its source surface.
+- When the shortlist is ordered, say `RankedShortlist` and keep the underlying shortlisted surface recoverable rather than jumping straight from `Front` to ranking.
+- Use `choice set underlying that shortlist` only when the mathematical set object itself is the point of the sentence.
+- A reader should be able to recover on first pass what source surface was acted on, what shortlist came out, and whether the text is naming the surface, the token, or the mathematical set object.
+
+### A.0:QF.2a - Support-stack reading glosses
+
+The current support-stack terms should read plainly as follows:
+
+- `SearchSpaceRef`
+  - one declared reference to the `CharacteristicSpace` currently used to search, compare, or navigate candidate possibilities
+  - it is one role-named ref field over the existing `CharacteristicSpaceRef` / `SpaceRef` idiom, not one brand-new space kind
+- `OutcomeSpaceRef`
+  - one declared reference to the `CharacteristicSpace` currently used to judge outcomes, effects, or realized value
+  - it is one role-named ref field over that same idiom, not one synonym for `SearchSpaceRef`
+- `CrossSurfaceSupportView`
+  - the ordinary/common head of one optional support-view family laid over one already-declared substrate-bearing line or one source/set surface whose substrate remains recoverable
+  - it helps the reader see the current support question; it does not replace the base source surface or silently invent one new substrate
+- `CrossSurfaceAtlasView`
+  - one stronger optional support view that keeps several declared views, spaces, mappings, or qualifiers visible together
+  - use it only when the current reading truly needs that composite support, and say why thinner support is not enough; it is not the default meaning of palette, front, archive, shortlist, or candidate surface
+- `TypedSetViews`
+  - one explicit list of which declared set-view heads the current atlas/support reading is holding together
+  - use it when several declared views must stay visible together; it does not create one new surface and should not hide the active source/set surface
+- `OutcomeMapRef`
+  - one explicit support ref that shows how one declared source or set surface maps into one outcome or effect surface when that map materially matters
+  - it supports the reading; it does not rename the source surface into the outcome surface
+- `SpaceMetricRef`
+  - one explicit support ref to the metric, neighborhood, distance, density, or reachability discipline being used inside one declared space
+  - it qualifies how the reader is comparing positions in that space; it is not the space itself and not one substitute for `SearchSpaceRef` or `OutcomeSpaceRef`
+- `TransitionSupportRef`
+  - one explicit support ref to the transition, level-shift, dynamic-coupling, or phase-change basis that the reading depends on
+  - it explains why motion or cross-level change is being read a certain way; it does not by itself decide policy, planning, or publication
+- `BridgeDistortionNote`
+  - one explicit note that a bridge, projection, aggregation, or derived reading is useful but not perfectly faithful
+  - it tells the reader where comparability bends or information is lost, so the stronger reading does not over-claim
+
+### A.0:QF.2b - Practitioner-facing reading cue
+
+- If the question is “Which space are we searching or navigating?”, look for `SearchSpaceRef`.
+- If the question is “Which space are we judging outcomes in?”, look for `OutcomeSpaceRef`.
+- If the question is “What optional overlay helps me read several declared surfaces together?”, look for `CrossSurfaceSupportView`.
+- If that overlay also keeps several declared views, spaces, mappings, or qualifiers together, it is the stronger `CrossSurfaceAtlasView`.
+- If the atlas/support reading must keep several declared set views visible at once, look for `TypedSetViews`.
+- If the overlay depends on one explicit source-to-outcome mapping, look for `OutcomeMapRef`.
+- If the overlay depends on one metric, neighborhood, or reachability discipline inside one declared space, look for `SpaceMetricRef`.
+- If the overlay depends on one transition, level-shift, or dynamic-coupling basis, look for `TransitionSupportRef`.
+- If the overlay depends on one bridge or projection that may lose fidelity, look for `BridgeDistortionNote`.
+
+### A.0:QF.2c - First-use routing check
+
+- Start with `CrossSurfaceSupportView` when the NQD/OEE burden is simply to keep one declared palette, front, shortlist, or archive readable while comparing candidate material.
+- Start with it only when any cited `SearchSpaceRef`, `OutcomeSpaceRef`, mappings, or qualifiers are already declared elsewhere and remain recoverable through the base substrate or source/set surface.
+- Escalate to `CrossSurfaceAtlasView` only when the reading must hold several declared views, spaces, mappings, or qualifiers together to explain why one specialization, evaluation, or boundary call stays lawful, and state why thinner support is insufficient.
+- If the reading keeps several declared set views together, name `TypedSetViews` explicitly instead of letting atlas wording hide that view-set choice.
+- If the reading depends on one source-to-outcome map, name `OutcomeMapRef` explicitly instead of letting the overlay silently stand in for that map.
+- If the reading depends on one metric or neighborhood discipline, name `SpaceMetricRef` explicitly instead of letting the space name stand in for that metric.
+- If the reading depends on one transition, level-shift, or dynamic-coupling basis, name `TransitionSupportRef` explicitly instead of letting the overlay silently absorb that transition burden.
+- Not this glossary-side support stack when the real move is to invent one new search doctrine, one new outcome metric family, or one new publication surface. Those burdens stay with the owner patterns that govern the object itself.
 
 ### A.0:End
 
+---
 

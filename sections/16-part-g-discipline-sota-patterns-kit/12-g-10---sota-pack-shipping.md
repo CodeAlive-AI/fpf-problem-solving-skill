@@ -1,9 +1,9 @@
 ## G.10 - SoTA Pack Shipping
 
 **Tag:** Architectural pattern (conceptual; notation‑independent; pack‑boundary owner)
-**Stage:** release‑time composition and publication; edition‑aware; **GateCrossing‑gated** via `E.18` CrossingSurface (and the relevant GateCrossing harness patterns).
+**Stage:** release‑time composition and publication; edition‑aware; **GateCrossing‑gated** via `E.18` CrossingBundle (and the relevant GateCrossing harness patterns).
 **Builds on:** `G.Core` (Part‑G core invariants and routing); upstream pack/kit owners as cited artefacts (not redefined here).
-**Owns (scope boundary):** *shipping* of Part‑G outputs as a **pack** (`SoTA‑Pack(Core)`), including the pack‑level publication kit: (i) selector‑facing portfolio/parity surface, (ii) PathId/PathSlice citation surface, (iii) telemetry pins for refresh planning, and (iv) optional interop ingestion as citation‑only notes.
+**Owns (scope boundary):** *shipping* of Part‑G outputs as a **pack** (`SoTA‑Pack(Core)`), including the pack‑level publication kit: (i) selector‑facing selection/parity roster, (ii) PathId/PathSlice citation surface, (iii) telemetry pins for refresh planning, and (iv) optional interop ingestion as citation‑only notes.
 **Does not own:** contract surfaces (`CN‑Spec`, `CG‑Spec`), CHR/CAL semantics, selection semantics, evidence semantics, bridge calibration semantics, refresh orchestration (these remain with their owners and are **cited**).
 
 ### G.10:1 - Problem frame — Shipping without smuggling semantics
@@ -23,7 +23,7 @@ Naive shipping fails (conceptually) when any of the following occurs:
 1. **Format-as-contract.** A concrete export format is treated as “the pack,” turning a tool choice into a semantic authority.
 2. **Editionless hand‑offs.** Shipped artefacts omit the edition/policy pins required to replay or compare outcomes, so parity and RSCR become non‑actionable.
 3. **Pack smuggles semantics.** Shipping reintroduces “convenience” rules (hidden scalarisation, competing defaults, private gate decisions), fragmenting the contract surface.
-4. **Invisible crossings.** Cross‑context/plane reuse is present, but the pack does not expose the crossing surfaces and penalty policy pins needed for audit and refresh planning.
+4. **Invisible crossings.** Cross‑context/plane reuse is present, but the pack does not expose the crossing bundles and penalty policy pins needed for audit and refresh planning.
 5. **No method‑of‑obtaining‑output disclosure.** Consumers receive outcomes without a minimal, citable trail of *which mechanisms/policies/editions produced them*.
 6. **Refresh orphaning.** Telemetry and decay signals exist, but the shipped artefact provides no stable scope keys (`PathId` / `PathSliceId`) and no payload pins for RSCR triggers.
 
@@ -40,7 +40,7 @@ Naive shipping fails (conceptually) when any of the following occurs:
 
 ### G.10:4 - Solution — `SoTA‑Pack(Core)` as the shipping object and publication kit
 
-`G.10` defines a **pack‑owned** shipping surface: a notation‑independent object that **cites** all upstream artefacts by stable ids/refs and exposes the minimum pins required to (a) consume the result via selection, (b) audit it via path citations and crossing surfaces, and (c) refresh it via typed RSCR triggers.
+`G.10` defines a **pack‑owned** shipping surface: a notation‑independent object that **cites** all upstream artefacts by stable ids/refs and exposes the minimum pins required to (a) consume the result via selection, (b) audit it via path citations and crossing bundles, and (c) refresh it via typed RSCR triggers.
 
 #### G.10:4.1 - G.Core linkage (normative)
 
@@ -81,13 +81,13 @@ Effective obligations/pins/triggers are computed as **union(expand(sets), explic
 
   `UTSRowId[]`,
   `PathId[]?`, `PathSliceId[]?`,
-  `CrossingSurfaceIds := CrossingSurfaceId[]?`,
+  `CrossingBundleIds := CrossingBundleId[]?`,
   `TelemetryPinIds := TelemetryPinId[]?`,
-  `PortfolioSurfaceId?`,
+  `PortfolioRosterId?`,
 
   `MOOManifestId?` *(method‑of‑obtaining‑output disclosure; conceptual object id)*
   }
-  *(Optional pins from `CrossingVisibilityPins` MAY be strengthened to unconditional by listing them above; `G.10` typically strengthens `UTSRowId[]` and path/crossing surfaces when the pack is publicly shipped.)*
+  *(Optional pins from `CrossingVisibilityPins` MAY be strengthened to unconditional by listing them above; `G.10` typically strengthens `UTSRowId[]` and path/crossing bundles when the pack is publicly shipped.)*
 
 * `TriggerAliasMapRef` := `∅` *(no local trigger tokens in Phase‑2)*
 
@@ -110,8 +110,8 @@ SoTA‑Pack(Core) :=
   CNSpecRef := ⟨A.19 ref, CNSpecRef.edition⟩,
   CGSpecRef := ⟨G.0 ref,  CGSpecRef.edition⟩,
 
-  // Selector-facing portfolio/parity surface (conceptual; no formats mandated)
-  PortfolioSurfaceId?,        // produced by `G.10‑1` as part of composition; may cite ε and the applicable pinned regime/mode refs
+  // Selector-facing selection/parity roster token (conceptual; no formats mandated)
+  PortfolioRosterId?,        // produced by `G.10‑1` as part of composition; may cite ε and the applicable pinned regime/mode refs
 
   // Cited payload packs/kits (ids only; semantics owned by the cited owners)
   SoTAHarvestPackId?          // e.g., G.2 output id
@@ -134,7 +134,7 @@ SoTA‑Pack(Core) :=
   AuditPins := { id pins… },                 // editions only on `…Ref.edition`; includes policies, UTS/Path pins, crossing pins
 
   // Crossing visibility surface (per GateCrossing; ids only)
-  CrossingSurfaceIds := CrossingSurfaceId[]?,
+  CrossingBundleIds := CrossingBundleId[]?,
 
   // Telemetry hooks for refresh planning (ids only; PathSlice-keyed; policy-id pinned)
   TelemetryPinIds := TelemetryPinId[]?,
@@ -144,25 +144,40 @@ SoTA‑Pack(Core) :=
 
   Notes?
 ⟩
+```
 
-#### G.10:4.2.1 - Portfolio surface (normative; pack‑owned; owner‑delegating)
+#### G.10:4.2.1 - Portfolio roster (normative; pack‑owned; owner‑delegating)
 
-`PortfolioSurfaceId` identifies the **selector‑facing** pack surface. It is **wiring + citation** only:
-it MUST NOT redefine selection/portfolio semantics (owned by `G.5`) or parity semantics (owned by `G.9`).
+`PortfolioRosterId` identifies the **selector‑facing** pack roster token. The corresponding `PortfolioRoster@Context` is one citation-and-binding roster record inside the shipped publication surface, not a `Surface` or `SurfaceKind` value:
+it MUST NOT redefine selection / selected-set semantics (owned by `G.5`) or parity semantics (owned by `G.9`).
 Mode‑specific definition pins (QD/OEE/interop) are introduced only via `G.10:Ext.*` blocks.
 
 ```
-PortfolioSurface@Context :=
+PortfolioRoster@Context :=
 ⟨
-  PortfolioSurfaceId,
+  PortfolioRosterId,
   PackId(UTS),
   CG-FrameContext,
   describedEntity,
 
-  // Portfolio semantics (values may be explicit or resolved via DefaultOwnershipIndex)
+  // Selector operation and default-resolution support
   portfolioMode?,
   dominanceRegime?,
   ε?,
+
+  // Published selector outcome and set-surface declaration (metadata fields, not local semantics)
+  selectorOutcomeKind?,
+  setSurfaceKind?,
+  handoffKind?,
+  subjectKind?,
+  sourceSurfaceKind?,
+  derivedViewKind?,
+  sourceSurfaceComposition?,
+  basePaletteRef?,
+  lensId?,
+  shortlistId?,
+  promotionPolicyRef?,
+  retentionIntent?,
 
   // Selector-facing roster + provenance hooks (ids only)
   MethodFamilyIds := MethodFamilyId[]?,
@@ -176,9 +191,10 @@ PortfolioSurface@Context :=
 ⟩
 ```
 
-*Presence rule:* `PortfolioSurfaceId` MAY be omitted only when the shipped pack is *inputs‑only*
-(e.g., shipping CHR/CAL/evidence without any selector‑consumable portfolio/shortlist output).
-```
+*Presence rule:* `PortfolioRosterId` MAY be omitted only when the shipped pack is *inputs‑only*
+(e.g., shipping CHR/CAL/evidence without any selector‑consumable selected-set/shortlist output).
+
+The `selectorOutcomeKind`, `setSurfaceKind`, `handoffKind`, `sourceSurfaceKind`, `sourceSurfaceComposition`, `derivedViewKind`, `basePaletteRef`, `lensId`, and `shortlistId` fields in this roster are payload metadata fields or refs inside the shipped publication surface. They do not define new Part-E `SurfaceKind` values and they do not let `G.10` re-own `G.5`, `C.18`, `C.19`, or `G.2` semantics.
 
 **Interpretation constraints (normative by delegation).** Any universal invariants governing (i) contract‑surface ownership, (ii) crossing visibility and penalty routing, (iii) tri‑state guards, (iv) set‑return semantics, (v) P2W split, (vi) defaults, and (vii) RSCR trigger typing are **not restated here** and are enforced via `G.Core` routing (see `CC‑G10‑CoreRef`).
 
@@ -188,10 +204,10 @@ PortfolioSurface@Context :=
 
 1. **S‑1 — Gather & pin.** Collect upstream artefact ids and verify the **required pins** implied by the linkage manifest (edition pins, policy pins, UTS/Path pins).
 2. **S‑2 — Compose `SoTA‑Pack(Core)` + MOO disclosure.** Assemble the pack object and attach a **`MOOManifest`** that lists the referenced mechanisms/policies/editions that produced the shipped outcomes (ids only; semantics stay with owners).
-3. **S‑3 — Publish portfolio/parity surface (selector‑facing).** Produce a selector‑readable `PortfolioSurfaceId` with the parity/definition pins required for reproducibility; do not mandate formats.
+3. **S‑3 — Publish selection/parity roster (selector‑facing).** Produce a selector‑readable `PortfolioRosterId` with the parity/definition pins required for reproducibility; do not mandate formats.
 4. **S‑4 — Anchor and publish path citations.** Ensure A.10 anchors exist and publish/record `PathId/PathSliceId` citations required for downstream explainability (e.g., `C.23/H4`) and maturity rung changes.
-5. **S‑5 — Expose CrossingSurface.** For each GateCrossing relevant to the shipped artefacts, expose the required `CrossingSurface` references (fail fast on missing or non‑conformant surfaces when required).
-6. **S‑6 — Emit telemetry pins for refresh planning.** Whenever illumination increases or archive/OEE wiring changes, emit PathSlice‑keyed telemetry with policy‑id and the active `…Ref.edition` pins (and QD `EmitterPolicyRef`/`InsertionPolicyRef` when applicable).
+5. **S‑5 — Expose CrossingBundle.** For each GateCrossing relevant to the shipped artefacts, expose the required `CrossingBundle` references (fail fast on missing or non‑conformant bundles when required).
+6. **S‑6 — Emit telemetry pins for refresh planning.** Whenever illumination increases or archive/OEE pin state changes, emit PathSlice‑keyed telemetry with policy‑id and the active `…Ref.edition` pins (and QD `EmitterPolicyRef`/`InsertionPolicyRef` when applicable).
 7. **S‑7 — Publish to UTS (twin labels).** Mint/refresh UTS Name Cards needed to cite the pack and shipped heads (Tech/Plain twins when required); cross‑Context identity travels only via Bridges with CL and loss notes.
 8. **S‑8 — Optional: ingest interop surface.** If `G.13` interop is in use, ingest/cite `InteropSurface@Context` as annotation-only notes, pinning external index editions; do not redefine interop semantics.
 
@@ -199,9 +215,9 @@ PortfolioSurface@Context :=
 
 | ID         | Interface (conceptual)     | Consumes                                                          | Produces                                                |
 | ---------- | -------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- |
-| **G.10‑1** | `Compose_SoTA_Pack`        | G.* outputs, ComparatorSet, Bridges, editions, SCR/DRR deltas     | `SoTA‑Pack(Core)` (UTS row + surfaces) + `AuditPins` (+ `MOOManifestId?`) (+ `PortfolioSurfaceId?`) |
+| **G.10‑1** | `Compose_SoTA_Pack`        | G.* outputs, ComparatorSet, Bridges, editions, SCR/DRR deltas     | `SoTA‑Pack(Core)` (UTS row + surfaces) + `AuditPins` (+ `MOOManifestId?`) (+ `PortfolioRosterId?`) |
 | **G.10‑2** | `Publish_UTS`              | `PackId(UTS)`, `UTSRowId[]`, deprecation/edition‑bump notes       | UTS rows/Name Cards for the pack and shipped heads (incl. twins when required) |
-| **G.10‑3** | `Expose_CrossingHooks`     | GateCrossings, lanes/planes/contexts                              | **CrossingSurface** (**E.18:CrossingSurface**) per GateCrossing; **fail** on missing/non‑conformant surfaces |
+| **G.10‑3** | `Expose_CrossingHooks`     | GateCrossings, lanes/planes/contexts                              | **CrossingBundle** (**E.18:CrossingBundle**) per GateCrossing; **fail** on missing/non‑conformant bundles |
 | **G.10‑4** | `Pack_MOO`                 | referenced mechanism/policy/edition ids                           | `MOOManifestId` (ids only; owner‑delegating) |
 | **G.10‑5** | `Emit_TelemetryPins`       | Illumination/archive/OEE events                                   | PathSlice‑keyed telemetry: `policy‑id`, `…Ref.edition` (+ QD/OEE pins when applicable) |
 | **G.10‑6** | `Publish_PathCitations`    | A.10 anchors, PathIds                                             | PathId/PathSlice citations for `C.23/H4` & rung changes |
@@ -218,14 +234,14 @@ Other `G.x` patterns may produce artefacts that are shipped, but they must not e
 
 #### G.10:4.6 - Extensions (pattern‑scoped; non‑core)
 
-All method‑/generator‑/interop‑specific shipping wiring lives here as `GPatternExtension` blocks.
+All method‑/generator‑/interop‑specific shipping extension declarations live here as `GPatternExtension` blocks.
 
 ##### GPatternExtension — `G.10:Ext.QDArchiveShippingPins`
 
 **PatternScopeId:** `G.10:Ext.QDArchiveShippingPins`
 **GPatternExtensionId:** `QDArchiveShippingPins`
 **GPatternExtensionKind:** `MethodSpecific`
-**SemanticOwnerPatternId:** `C.18` *(QD/NQD semantics live with the owner; this block is wiring-only.)*
+**SemanticOwnerPatternId:** `C.18`
 **Uses:** `{C.18, G.5, G.8, G.11}`
 **⊑/⊑⁺:** `∅`
 **RequiredPins/EditionPins/PolicyPins (minimum):**
@@ -241,7 +257,7 @@ All method‑/generator‑/interop‑specific shipping wiring lives here as `GPa
 * `PathSliceId[]` *(to bind telemetry/refresh scope when archive behaviour is present)*
 
 **RSCRTriggerSetIds:** `∅` *(covered by `G.10` core linkage via `GCoreTriggerSetId.RefreshOrchestration`)*
-**Notes (wiring only):**
+**Notes (shipping-pin discipline):**
 * This block never redefines archive semantics; it only states which pins must be present in the shipped pack when QD archive fields are present.
 
 ##### GPatternExtension — `G.10:Ext.OEEShippingPins`
@@ -249,17 +265,17 @@ All method‑/generator‑/interop‑specific shipping wiring lives here as `GPa
 **PatternScopeId:** `G.10:Ext.OEEShippingPins`
 **GPatternExtensionId:** `OEEShippingPins`
 **GPatternExtensionKind:** `GeneratorSpecific`
-**SemanticOwnerPatternId:** `G.5` *(generator family registry / transfer wiring is owned upstream; this block is pack‑wiring only.)*
+**SemanticOwnerPatternId:** `G.5`
 **Uses:** `{G.5, G.11}`
 **⊑/⊑⁺:** `∅`
 **RequiredPins/EditionPins/PolicyPins (minimum):**
 
 * `TransferRulesRef.edition`
-* `EnvironmentValidityRegion?` *(id/ref; iff an explicit region is declared as part of generator family wiring)*
+* `EnvironmentValidityRegion?` *(id/ref; iff an explicit region is declared as part of generator-family support)*
 * `PathSliceId[]` *(scope key for refreshable generator telemetry when present)*
 
 **RSCRTriggerSetIds:** `∅` *(covered by the core trigger set)*
-**Notes (wiring only):**
+**Notes (shipping-pin discipline):**
 * “Open‑endedness” semantics remain owner‑defined; the pack only carries the pins required to make the shipped claim replayable/auditable.
 
 ##### GPatternExtension — `G.10:Ext.InteropCitation`
@@ -267,7 +283,7 @@ All method‑/generator‑/interop‑specific shipping wiring lives here as `GPa
 **PatternScopeId:** `G.10:Ext.InteropCitation`
 **GPatternExtensionId:** `InteropCitation`
 **GPatternExtensionKind:** `InteropSpecific`
-**SemanticOwnerPatternId:** `G.13` *(interop semantics live with `G.13`; this block only cites ids/pins.)*
+**SemanticOwnerPatternId:** `G.13`
 **Uses:** `{G.13}`
 **⊑/⊑⁺:** `∅`
 **RequiredPins/EditionPins/PolicyPins (minimum):**
@@ -279,8 +295,33 @@ All method‑/generator‑/interop‑specific shipping wiring lives here as `GPa
 * `MappingPolicyRef`
 
 **RSCRTriggerSetIds:** `∅` *(covered by the core trigger set)*
-**Notes (wiring only):**
+**Notes (shipping-pin discipline):**
 * This block only records that an interop surface contributed to the shipped pack’s provenance; it does not redefine any crosswalk semantics.
+
+#### G.10:4.7 - Published surfaces must ship kind, source, derivation, lens, and shortlist token
+
+- Published surfaces should carry the selector outcome kind and, when applicable, the set-surface kind or handoff kind, plus the subject kind, source surface kind, and relevant declared surface pins.
+- These are publication payload metadata fields inside `SoTA-Pack(Core)`, not new Part-E `SurfaceKind` values.
+- Good publication fields include `selectorOutcomeKind`, `setSurfaceKind`, `handoffKind`, `subjectKind`, `sourceSurfaceKind`, `sourceSurfaceComposition`, `dominanceRegime`, `lensId`, `shortlistId`, and any declared archive or promotion-policy ids that the reader needs to interpret the visible set.
+- Those payload fields should use controlled tokens, cited ids, or already-declared head labels rather than shipping-local prose values.
+- When the visible surface or the shortlisted source is one derived tradition view, also publish the derivation explicitly.
+- Useful additional fields there include `derivedViewKind`, `basePaletteRef`, and the declared `qId` or reachability rule id that disciplined that derivation.
+- `portfolioMode` may remain as one support field about selector operation, but it should not stand in for the public set label.
+- A published surface should mirror semantics that are already declared in the governing palette/front/archive/shortlist language.
+- It should not redefine that semantics locally.
+- When one shipped surface still needs a plain-language label, use the declared set-surface kind and source surface rather than falling back to `portfolioMode`.
+
+#### G.10:4.7.1 - Worked publication slice
+
+- If the visible surface is one tradition front under the declared `Q`, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Front`, `sourceSurfaceKind=Front`, `derivedViewKind=TraditionFront`, and keep `basePaletteRef=SoTAPaletteDescriptionId` recoverable instead of pretending that the palette itself already was that front.
+- If one shortlist is emitted from that derived tradition front, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Shortlist`, `sourceSurfaceKind=Front`, `derivedViewKind=TraditionFront`, `basePaletteRef=SoTAPaletteDescriptionId`, and the named `lensId` together.
+- If that same shortlisted surface is emitted as one stable public object, also publish `shortlistId=<...>` and keep it recoverable that the token names that shortlist rather than replacing it.
+- If one retained tradition archive view is shown, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Archive`, `sourceSurfaceKind=Archive`, `derivedViewKind=TraditionArchive`, and keep the same `basePaletteRef` recoverable.
+- If the shortlist is later ordered, publish `setSurfaceKind=RankedShortlist` and keep the declared source surface visible.
+- Do not publish `setSurfaceKind=ChoiceSet` unless the shipped object is explicitly one mathematical analysis artifact rather than the public selected surface.
+- Do not publish `sourceSurfaceKind=TraditionPalette` alone when the visible object is already one derived tradition view; readers need to know which view is on the surface and which base palette it depends on.
+- Do not publish `TraditionFront` or `TraditionArchive` as if they were the default meaning of `Tradition`.
+- Do not ask `portfolioMode` to tell the reader whether they are seeing one palette, one front, one archive, or one shortlist.
 
 ### G.10:5 - Consequences
 
@@ -302,7 +343,7 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
 * **Format bias (Arch/Prag).** Strong temptation to treat a popular export format as “the pack”.  
   *Mitigation:* keep Core surfaces conceptual (E.5.2); move serialisation recipes to Annex/Interop; keep conformance on semantics.
 * **Centralisation bias (Gov).** A single shipping owner can become a bottleneck.  
-  *Mitigation:* keep shipping ownered, but push mode/method specifics into explicit `G.10:Ext.*` wiring blocks and cite semantic owners.
+  *Mitigation:* keep shipping as one explicit owner burden, but push mode/method specifics into explicit `G.10:Ext.*` extension blocks and cite semantic owners.
 * **Telemetry→dominance bias (Onto/Prag).** Shipping pipelines often “promote” telemetry proxies (illumination/coverage) into ranking.  
   *Mitigation:* preserve the telemetry/order separation and require explicit CAL policy‑id for any promotion; record the policy‑id in audit pins/telemetry.
 * **Interop authority bias (Onto/Epist).** External indexes can silently override local legality/typing.  
@@ -311,7 +352,7 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
 ### G.10:7 - Archetypal grounding (informative; post‑2015 method families)
 
 **World‑plane (benchmark shipping).**
-A CG‑Frame ships a portfolio that includes a QD archive (e.g., MAP‑Elites‑class / CMA‑ME‑class families) and a generator family (e.g., POET‑class environment generation). The shipped `SoTA‑Pack(Core)` cites the CHR/CAL packs and pins the QD/OEE wiring via the extension blocks so that downstream parity and refresh can be scoped to the affected `PathSliceId`s rather than forcing a global rebuild.
+A CG‑Frame ships a selected set that includes a QD archive (e.g., MAP‑Elites‑class / CMA‑ME‑class families) and a generator family (e.g., POET‑class environment generation). The shipped `SoTA‑Pack(Core)` cites the CHR/CAL packs and records the QD/OEE extension-required pins through the extension blocks so that downstream parity and refresh can be scoped to the affected `PathSliceId`s rather than forcing a global rebuild.
 
 **Episteme‑plane (synthesis shipping).**
 A CG‑Frame ships a pluralistic set of admissible methods gathered from post‑2015 literature streams (living review + synthesis pack). The shipped pack carries explicit contract‑surface refs, evidence path citations, and method‑of‑obtaining‑output disclosure; downstream selection uses set‑valued outcomes and can schedule refresh when the synthesis pack or key pins change.
@@ -327,21 +368,23 @@ This pattern inherits order/illumination, evidence, and bridge/penalty legality 
 | **CC‑G10.2 (Pack parity pins).** | If QD/OEE fields are present, pin `DescriptorMapRef.edition`, `DistanceDefRef.edition`, (optional) `DHCMethodRef.edition` / `DHCMethodSpecRef.edition` when used, and (OEE) `TransferRulesRef.edition`; include `CharacteristicSpaceRef` (+ `CharacteristicSpaceRef.edition` when it affects partitioning reproducibility); for QD archive semantics also pin `EmitterPolicyRef` and `InsertionPolicyRef`. | Verify the corresponding `G.10:Ext.*` block is present and the pins appear in AuditPins and (when relevant) in telemetry pins. |
 | **CC‑G10.3 (Telemetry discipline).** | Any illumination increase or archive edit SHALL log `PathSliceId`, the active `policy‑id`, the active editions of the pinned `…Ref` fields (incl. OEE `TransferRulesRef.edition`), and the active `EmitterPolicyRef`/`InsertionPolicyRef` when applicable. | Verify emitted telemetry is PathSlice‑keyed and carries the required pins; ensure causes are recorded using canonical trigger kinds (alias labels optional only). |
 | **CC‑G10.4 (UTS publication & twins).** | All shipped heads appear on UTS with Tech/Plain twins **per delegated UTS discipline**; cross‑Context identity (when present) is routed via Bridges with CL and loss notes **per delegated crossing discipline**. | Verify UTS rows exist and that any cross‑Context identity is routed via Bridge artefacts with visible CL/loss notes. |
-| **CC‑G10.5 (MOO surfaced in shipping).** | For every portfolio set or archive published, the pack SHALL list the applicable generation/parity mechanism ids (e.g., QD `EmitterPolicyRef`/`InsertionPolicyRef`, parity harness ids, method refs where the method definition is generative) and the active policy‑id(s) in SCR‑visible bindings and telemetry pins (ids only; owner‑delegating). | Verify `MOOManifestId` is present when outcomes are intended for downstream use and does not redefine semantics. |
-| **CC‑G10.6 (Pack completeness as a citation surface).** | The pack cites all included upstream artefacts by id/ref and exposes the required pins (`AuditPins`, UTS/Path pins, CrossingSurfaceIds when required). | Verify all present payload artefacts have ids and the pins needed to cite/replay them. |
-| **CC‑G10.7 (CrossingSurface exposure).** | For each GateCrossing relevant to shipped artefacts, the pack exposes the relevant `CrossingSurfaceIds` (or records that no such crossings exist) **per delegated crossing visibility discipline**, and shipping fails fast on missing/non‑conformant crossing surfaces when required. | Verify crossing surface presence/absence is honest and aligned with the shipped artefacts’ declared crossings. |
+| **CC‑G10.5 (MOO surfaced in shipping).** | For every declared selector set-surface or archive published, the pack SHALL list the applicable generation/parity mechanism ids (e.g., QD `EmitterPolicyRef`/`InsertionPolicyRef`, parity harness ids, method refs where the method definition is generative) and the active policy‑id(s) in SCR‑visible bindings and telemetry pins (ids only; owner‑delegating). | Verify `MOOManifestId` is present when outcomes are intended for downstream use and does not redefine semantics. |
+| **CC‑G10.6 (Pack completeness as a citation surface).** | The pack cites all included upstream artefacts by id/ref and exposes the required pins (`AuditPins`, UTS/Path pins, CrossingBundleIds when required). | Verify all present payload artefacts have ids and the pins needed to cite/replay them. |
+| **CC‑G10.7 (CrossingBundle exposure).** | For each GateCrossing relevant to shipped artefacts, the pack exposes the relevant `CrossingBundleIds` (or records that no such crossings exist) **per delegated crossing visibility discipline**, and shipping fails fast on missing/non‑conformant crossing bundles when required. | Verify crossing bundle presence/absence is honest and aligned with the shipped artefacts’ declared crossings. |
 | **CC‑G10.8 (Baseline binding is explicit when used).** | If the shipped pack claims a planned baseline, `PlanItemRefs := SlotFillingsPlanItemRef[]` are present (WorkPlanning artefacts, cited; no execution logs). | Verify plan items are cited by id and the pack does not ship “decisions/logs” as authoritative artefacts. |
-| **CC‑G10.9 (Extension‑scoped wiring).** | If QD/OEE/interop fields are present, the corresponding `GPatternExtension` block is present and its required pins/editions/policies are recorded in AuditPins and in emitted telemetry pins when those pins affect refreshability. | Verify conditional wiring is not silently omitted when the mode is used. |
+| **CC‑G10.9 (Extension‑scoped pin declaration).** | If QD/OEE/interop fields are present, the corresponding `GPatternExtension` block is present and its required pins/editions/policies are recorded in AuditPins and in emitted telemetry pins when those pins affect refreshability. | Verify conditional extension pins are not silently omitted when the mode is used. |
+| **CC‑G10.10 (Derived tradition-view shipping).** | If the visible shipped surface or shortlisted source is one derived tradition view such as `TraditionFront` or `TraditionArchive`, the pack **MUST** publish the declared `sourceSurfaceKind`, keep `basePaletteRef=SoTAPaletteDescriptionId` recoverable, and carry the derivation basis (`derivedViewKind`, declared `Q`, or reachability/coverage rule id) strongly enough that the visible surface cannot be mistaken for the default palette semantics. | Verify derived tradition views are shipped as derived views, not as silent redefinitions of the base palette. |
 
 ### G.10:8.1 - Anti‑patterns and remedies
 
 * **AP‑1 Format‑as‑contract.** Remedy: keep Core surfaces conceptual (E.5.2); move serialisation to Annex/Interop; enforce `CC‑G10.1`.
 * **AP‑2 Hidden edition drift.** Remedy: require `…Ref.edition` pins in AuditPins and treat edition changes as RSCR‑relevant via canonical trigger kinds.
-* **AP‑3 “QD archive present” but missing definition pins.** Remedy: enforce `CC‑G10.2` and the `G.10:Ext.QDArchiveShippingPins` wiring.
+* **AP‑3 “QD archive present” but missing definition pins.** Remedy: enforce `CC‑G10.2` and the `G.10:Ext.QDArchiveShippingPins` pin declarations.
 * **AP‑4 Telemetry silently becomes dominance.** Remedy: keep telemetry report‑only unless an explicit CAL policy promotes it; require policy‑id recorded (ties to `CC‑G10.3` and MOO discipline).
 * **AP‑5 No PathSlice key → refresh becomes global.** Remedy: enforce PathSlice‑keyed telemetry and path citations (`G.10‑4`, `G.10‑5`).
-* **AP‑6 Cross‑Context reuse without visible routing.** Remedy: require `CrossingSurfaceIds` + Bridge/CL policy pins; fail fast on missing/non‑conformant surfaces (`CC‑G10.7`).
+* **AP‑6 Cross‑Context reuse without visible routing.** Remedy: require `CrossingBundleIds` + Bridge/CL policy pins; fail fast on missing/non‑conformant bundles (`CC‑G10.7`).
 * **AP‑7 Interop ingestion rewrites semantics.** Remedy: ingest interop as cited notes only; semantics remain in `G.13` (`G.10‑6`, `G.10:Ext.InteropCitation`).
+* **AP‑8 Derived-view collapse.** Remedy: ship `sourceSurfaceKind`, `derivedViewKind`, `basePaletteRef`, and the declared `Q` or reachability basis strongly enough that one derived tradition view cannot masquerade as the default palette meaning.
 
 ### G.10:8.2 - SoTA‑Echoing (post‑2015, for orientation)
 
@@ -356,4 +399,6 @@ This pattern inherits order/illumination, evidence, and bridge/penalty legality 
 **Constrains:** tooling exports are downstream; serialisation and repository integration are explicitly non‑normative here.
 
 ### G.10:End
+
+---
 

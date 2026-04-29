@@ -12,8 +12,8 @@
 - [F.6 - Role Assignment & Enactment Cycle (Six-Step)](07-f-6---role-assignment-enactment-cycle.md) (257 lines) — “Assign only what you can later justify by local meaning and observable facts.”
 - [F.7 - Concept‑Set Table](08-f-7---concept-set-table.md) (296 lines) — “Show one thing across Contexts—only where explicit bridges allow it.”
 - [F.8 - Mint or Reuse? (U.Type vs Concept-Set vs Role Description vs Alias)](09-f-8---mint-or-reuse.md) (345 lines) — “Name only what thinking requires, and reuse everything else.”
-- [F.9 - Alignment & Bridge across Contexts](10-f-9---alignment-bridge-across-contexts.md) (532 lines) — “Translate across Contexts; never collapse them.”
-- [F.9.1 - Bridge Stance Overlay](11-f-9-1---bridge-stance-overlay.md) (161 lines) — Type: Architectural (A)
+- [F.9 - Alignment & Bridge across Contexts](10-f-9---alignment-bridge-across-contexts.md) (595 lines) — “Translate across Contexts; never collapse them.”
+- [F.9.1 - Bridge Stance Overlay](11-f-9-1---bridge-stance-overlay.md) (194 lines) — Type: Architectural (A)
 - [F.10 - Status Families Mapping (Evidence • Standard • Requirement)](12-f-10---status-families-mapping.md) (372 lines) — “Keep statuses in their native modality; translate between Contexts explicitly.”
 - [F.11 - Method Quartet Harmonisation](13-f-11---method-quartet-harmonisation.md) (340 lines) — “Keep the how (Method), the recipe (MethodDescription), the happening (Work/Execution), and the control push (Actuation) in their own Contexts—then relate them explicitly.”
 - [F.12 — Service Acceptance–Work Evidence Link](14-f-12-service-acceptance-work-evidence-link.md) (337 lines) — “Judge promises on what happened, not on what was planned.”

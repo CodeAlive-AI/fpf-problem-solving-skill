@@ -76,7 +76,7 @@ DefaultsConsumed := { DefaultId.GammaFoldForR_eff },
 RSCRTriggerKindIds := {
 RSCRTriggerKindId.EvidenceSurfaceEdit,
 RSCRTriggerKindId.TokenizationOrNameChange,
-RSCRTriggerKindId.CrossingSurfaceEdit,
+RSCRTriggerKindId.CrossingBundleEdit,
 RSCRTriggerKindId.ReferencePlaneEdit,
 RSCRTriggerKindId.EditionPinChange,
 RSCRTriggerKindId.PolicyPinChange,
@@ -267,7 +267,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId‑scoped; **not
   * `SoTAPaletteDescriptionId?` (when palette/traces are cited; used to dock contested‑term inventory and (if present) lane tags/tolerances)
   * `BridgeMatrixId?` (when terms/constructs are imported across traditions)
   * `UTSRowId[]` drafts/aliases from synthesis
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.TokenizationOrNameChange, RSCRTriggerKindId.CrossingSurfaceEdit}`
+* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.TokenizationOrNameChange, RSCRTriggerKindId.CrossingBundleEdit}`
 * **Notes (wiring‑only):** SoTA pluralism inputs are owned by `G.2`; this module only specifies which synthesis artefacts are cited while authoring CHR.
 
 **GPatternExtension: CGSpecPromotionWiring**

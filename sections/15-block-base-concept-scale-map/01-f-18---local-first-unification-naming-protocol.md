@@ -398,6 +398,14 @@ Disputes often orbit the string (“we hate that word”). By separating **sense
 * Where overlap exists with another context, propose an **alignment bridge**.
 * Keep your home; record the mapping and any known divergence in reading.
 
+**11.5a Keep support-view labels subordinate to the base surface.**
+
+* When a naming pass talks about one palette, front, archive, shortlist, or candidate surface, keep that base surface recoverable on the Name Card.
+* Use thinner support-view wording when the burden is local comparison across candidate labels, sense-seeds, rejected candidates, or guarded-head notes.
+* Escalate to atlas wording only when the naming explanation truly depends on several declared views, spaces, mappings, or distortion qualifiers being visible together (for example one cited `OutcomeMapRef` plus a `BridgeDistortionNote`).
+* Those cited spaces or qualifiers stay naming-side reuse of already-declared substrate support; they do not let naming passages invent one new source-to-outcome relation or one new posture locally.
+* A guarded-head note remains naming governance: it can explain why one head word misleads across lawful readings, but it does not decide substrate ownership or publication policy.
+
 **11.6 Publish and steward.**
 
 * Publish the name with MDS, subtitle, rung, home contact, examples.
@@ -409,7 +417,7 @@ Disputes often orbit the string (“we hate that word”). By separating **sense
 
 **11.8 The “Friday test.”**
 
-* On a busy Friday, could a competent colleague apply the name correctly using only the MDS, subtitle, and two examples? If not, refine before ratification: it too overloaded with meanings to be helpful.
+* On a busy Friday, could a competent colleague apply the name correctly using only the MDS, subtitle, and two examples? If not, refine before ratification: it is too overloaded with meanings to be helpful.
 
 ### F.18:12 - Examples (worked mini‑cases for engineer‑managers)
 
@@ -439,6 +447,12 @@ Disputes often orbit the string (“we hate that word”). By separating **sense
 * *Home H (Quality)* mints **Lot**: “An integrated whole packaged and tracked as one item.” **Structural whole**.
 * **Unification:** Bridge notes: “A **Lot** may originate from a single **Batch** or a slice of a Batch; not every Batch yields a single Lot.” Relation mapping: **MemberOf** (Batch membership) vs **ComponentOf**/**Whole** (Lot integration). *Loss note:* membership evidence does **not** imply part‑whole structure; part‑whole structure does **not** imply shared production conditions.
 
+**12.5 “Palette label” vs “Atlas label” (NQD/OEE naming support).**
+
+* A naming pass compares candidate labels over one active palette and shortlist. The card keeps the active palette recoverable and uses thinner support-view wording, because the question is only which label best fits the current candidate spread.
+* Later, the same naming discussion must explain why one label misleads unless the reader can see the palette together with a derived archive, an `OutcomeMapRef`, and one `BridgeDistortionNote`. In that case atlas wording is allowed, but the card still names the base palette and records that the atlas is only optional support for the explanation.
+* In both cases, guarded-head notes stay on the naming side: they explain alias risk or mismatch patterns, not who owns the substrate or publication surface.
+
 ### F.18:13 - Anti‑Patterns & Failure Modes (what to avoid)
 
 **13.1 “Global name first.”**
@@ -459,6 +473,9 @@ Defining a name by appealing to another Draft at the same rung or higher. **Fix:
 **13.6 “Alias/Plain drift.”**
 Letting a Plain label or alias accumulate extra meanings absent in the underlying row. **Fix:** periodic label review; prune metaphors that start bending sense; respect the alias budget.
 
+**13.7 “Atlas label does substrate work.”**
+Letting atlas or support-view language quietly replace the base candidate surface or decide architectural ownership. **Fix:** keep the base palette/front/archive/shortlist recoverable, use atlas wording only when several declared views or qualifiers are jointly load-bearing, and route substrate/publication ownership questions to the owning patterns.
+
 ### F.18:14 - Assurance & Conformance (human‑only checks)
 
 #### F.18:14.1 - Author checklist (before requesting review).
@@ -470,6 +487,7 @@ Letting a Plain label or alias accumulate extra meanings absent in the underlyin
 * [ ] I surveyed near‑neighbors and recorded my decision to align, merge, or keep separate.
 * [ ] I produced both **Unified Tech** and **Plain** labels (per E.10), with the same sense and pointing to the same **Row ID**.
 * [ ] Dependencies point **only downward**; no sideways or upward pulls.
+* [ ] If I used support-view or atlas wording, the card still names the base source surface and states why thinner support wording did or did not suffice.
 * [ ] I scheduled a **refresh date** and listed 2–3 usage examples.
 
 #### F.18:14.2 - Reviewer checklist (at the gate).**
@@ -481,6 +499,7 @@ Letting a Plain label or alias accumulate extra meanings absent in the underlyin
 * [ ] Alignment bridges are proposed where overlap exists, with explicit reading of convergence/divergence.
 * [ ] The ladder discipline holds: acyclic, downward‑only dependencies.
 * [ ] The **Plain** label does not smuggle extra commitments; **Unified Tech** and **Plain** remain co‑referential and point to the same **Row ID**.
+* [ ] Support-view or atlas wording, if present, leaves the base source surface recoverable and does not smuggle substrate or publication decisions into a naming note.
 * [ ] Lifecycle state is accurate (Idea/Draft/Pilot/Ratified/Deprecated) and dated.
 
 #### F.18:14.3 - Lightweight outcomes.**
@@ -534,6 +553,9 @@ Every Name Card **SHALL** declare its `CardMode ∈ {MintNew, DocumentLegacy}`. 
 
 **CC-F18-17 (Procedure is not optional in MintNew mode).**  
 A **MintNew** Name Card is **non-conformant** if it records only the chosen label, Kind, and a short rationale while omitting the seed candidate set, the NQD-front, the sense-seed read-through, or the mismatch patterns that justify the final choice. A card filled in after an intuition-first label pick does **not** satisfy F.18.
+
+**CC-F18-18 (Support-view labels keep their base surface).**
+When a Name Card or worked naming note uses support-view or atlas wording, it **SHALL** keep the base palette/front/archive/shortlist or candidate surface recoverable, **SHALL** use atlas wording only when several declared views or qualifiers are jointly load-bearing for the naming explanation, and **SHALL NOT** let guarded-head notes stand in for substrate ownership or publication policy decisions.
 
 ### F.18:16 - Anti‑patterns & safe rewrites (normative)
 
@@ -729,7 +751,29 @@ Example 2 (§F.18:18.2) shows one naming instantiation of this unpacking.
 
 > **“Name on a row, never on a whim.”** In FPF we **speak on rows, not on vibes**: a **Name Card** ties each Tech/Plain pair to a concrete Context, Concept‑Set row, and SenseCells, with a small **NQD‑front** of rejected alternatives. This gives you **bridged precision** without losing **local comfort**. **Your UTS is the one page a careful mind can hold.**
 
+### F.18:24a - Name-card guardrails for set-surface language
+
+- Keep `Palette`, `Front`, `Archive`, and `Shortlist` as distinct head families rather than as aliases of one generic `portfolio`.
+- Prefer this head family when the local burden matches it:
+  - `TraditionPalette` when `SubjectKind=Tradition`
+  - `Q-Front`
+  - `ExplorationArchive`
+  - `Shortlist`
+- The shortlisted family stays internally coherent:
+  - `RankedShortlist ⊑ Shortlist`
+  - `ShortlistId` is one `Id` specialized to an emitted shortlist
+  - `ChoiceSet` may appear only as one mathematical gloss for the shortlist's set object, not as one rival public head
+- Reserve `Pareto` for actual non-domination under a declared `DominanceSet`; do not use it for weighted ranking, popularity ordering, or one post-lens shortlist.
+- Treat bare `portfolio` as a guarded reject here because current `FPF` already uses `portfolio` as one broader selector/set-return family. When the local set surface is recoverable, do not reuse that broader head as the local winner.
+- Treat bare `shortlist` as lawful only when the selected-set family is intended and the declared `SourceSurfaceKind` plus the named lens are already recoverable nearby.
+- When one surface is tied to traditions, methods, hypotheses, or environment-method pairs, say the `SubjectKind` explicitly instead of letting the head noun do the work by implication.
+- When one shortlist is emitted from one front or one archive, say the declared `SourceSurfaceKind` and the named lens instead of letting `Shortlist` drift into one generic selector result.
+- If one local explanation still needs `ChoiceSet`, say that it is the mathematical set gloss for the shortlist rather than letting it read like one second public set family.
+- Good examples include `TraditionPalette` for a tradition-member palette, `Palette + SubjectKind=MethodFamily`, `Q-Front`, `ExplorationArchive`, `ShortlistFromQFront`, `RankedShortlistFromShortlist`, and `ShortlistId`.
+- Bad examples include bare `portfolio`, `SoTA portfolio`, `Pareto shortlist`, `Pareto archive`, and `frontier set` when the declared dominance basis is still missing.
+
 ### F.18:25 - SoTA‑Echoing (post‑2015 practice alignment)
+
 
 * **Neural WSD & sense evaluation (2015→).** P2’s sense‑seed read‑through is a human‑scale analogue of modern **word‑sense disambiguation** evaluation, where models are scored by the fraction of examples assigned the correct sense and by error profiles across sense inventories. Post‑2015 neural WSD benchmarks (e.g., multi‑domain evaluations reported in ACL venues) motivate the explicit `{too‑narrow, on‑target, too‑wide, wrong‑prototype}` labelling and the `θ_P` threshold for **SemanticFidelity**.
 * **Quality‑Diversity & multi‑objective search (MAP‑Elites, NSGA‑II families, 2015→).** P1’s NQD‑front and **CC‑F18‑13** follow the same discipline as QD/NSGA‑style archives in optimisation: maintain a **set of non‑dominated candidates** over a vector of objectives rather than a single scalar score. The lexical Q‑tuple `{SemanticFidelity, CognitiveErgonomics, OperationalAffordance, AliasRisk}` is deliberately small so that human authors can inspect a Pareto frontier in the same way QD methods expose illumination archives.
@@ -746,7 +790,7 @@ All patterns that propose or consume unified names and rows in Part F; any Part 
 
 **Coordinates with.**
 **A.17/A.18** for measurement lexicon when rows concern measurable notions (Characteristic/Scale/Level/Coordinate vocabulary), ensuring neutral naming aligns with canonical terms and eases external alignment via Bridges.  
+**A.19.SUPPORT-VIEW / A.6.P / G.2** when naming work needs support-view, space/view/publication, or tradition-atlas discipline; keep those as neighboring precision checks while leaving `F.18` responsible for the naming decision itself.
 
 ### F.18:End
-
 

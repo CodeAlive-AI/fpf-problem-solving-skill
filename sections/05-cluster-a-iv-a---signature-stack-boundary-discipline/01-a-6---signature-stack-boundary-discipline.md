@@ -11,6 +11,14 @@
 >
 **Canonical companion.** The square itself (quadrant definitions, form constraints, and cross‑quadrant dependency discipline) is specified normatively in **A.6.B — Boundary Norm Square**. This overview only (i) maps quadrants onto the Signature Stack, and (ii) explains how MVPK faces project the canonical routed claim set. If anything in this overview conflicts with A.6.B, **A.6.B is authoritative**.
 
+**Start here when.** The dominant burden is API, protocol, contract, compliance, SLO/SLA, connector, or interface language that is mixing runtime behaviour, governance, and evidence into one undifferentiated boundary story.
+
+**First output.** One Claim Register or equivalent routed atomic claim set with stable `L-* / A-* / D-* / E-*` identifiers, stack placement, and face citations by ID rather than paraphrase.
+
+**Typical next owners.** `A.6.B` for the quadrant law, `A.6.C` for contract unpacking, `A.6.P`, `A.6.Q`, or `A.6.A` for later lexical repair, and `E.17` faces for audience-specific publication of the same routed claim set.
+
+**Common wrong escalations / reroutes.** If the real burden is still cue preservation or route-bearing early articulation, reroute to `A.16` / `A.16.1`; if you are already repairing qualified relation, quality-term, or action-invitation language, continue into `A.6.P`, `A.6.Q`, or `A.6.A`; if agent duties are being mixed into one contract sentence, split them through `A.6.B` rather than minting one more contract-soup paragraph.
+
 **Conventions:** The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**, and **SHALL** are to be interpreted as in RFC 2119/8174. Lower‑case “must/may/should” in explanatory prose is descriptive, not normative.
 
 **Statement identifiers (recommended):** Adopt the quadrant‑prefixed ID scheme from **A.6.B:0** for routable statements:
@@ -47,8 +55,8 @@ This cluster overview makes one disciplined move:
 
 When boundaries are described without a routing discipline, four confusions dominate:
 
-1. **Laws vs admissibility.** Authors encode runtime gate predicates as “laws”, or write invariants using RFC‑style deontic verbs, blurring “what is true/defined” with “what is allowed to be applied”. FPF explicitly separates these: operational guard predicates belong to mechanisms (A.6.1), not signatures (A.6.0).
-   *Common mistake #0 — Applicability ≠ Admissibility (informative):* Signature `Applicability` scopes intended use/bounded context; it is not a runtime entry gate. Runtime entry checks and permission predicates belong in `U.Mechanism.AdmissibilityConditions` as `A-*`. If an agent is obligated to satisfy/enforce such a gate, express that as a `D-*` duty that references the `A-*` claim ID (per A.6.B), not by rewriting the gate as “X MUST …”.
+1. **Laws vs admissibility.** Authors encode runtime gate predicates as “laws”, or write invariants using RFC‑style deontic verbs, blurring “what is true/defined” with “what application is admissible”. FPF explicitly separates these: operational guard predicates belong to mechanisms (A.6.1), not signatures (A.6.0).
+   *Common mistake #0 — Applicability ≠ Admissibility (informative):* Signature `Applicability` scopes intended use/bounded context; it is not a runtime entry gate. Runtime entry checks and authorization predicates belong in `U.Mechanism.AdmissibilityConditions` as `A-*`. If an agent is obligated to satisfy/enforce such a gate, express that as a `D-*` duty that references the `A-*` claim ID (per A.6.B), not by rewriting the gate as “X MUST …”.
 
 2. **Admissibility vs deontics.** “MUST/SHOULD/MAY” is used both for agent obligations and for world‑state admissibility predicates. E.8 already demands keeping deontics distinct from admissibility/definitions and recommends predicate‑style constraints for admissibility rather than RFC keywords.
 
@@ -63,7 +71,7 @@ These confusions destroy evolvability: you cannot swap implementations behind a 
 | Force                                        | Tension                                                                                                                                                            |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Modularity vs expressiveness**             | A stable boundary must be abstract, but users want operational detail “in the same doc”.                                                                           |
-| **Truth vs governance**                      | Definitions/invariants (“is”, “iff”, “∀”) vs permissions/obligations (“MUST/SHOULD/MAY”).                                                                          |
+| **Truth vs governance**                      | Definitions/invariants (“is”, “iff”, “∀”) vs authorizations/obligations (“MUST/SHOULD/MAY”).                                                                       |
 | **Design‑time clarity vs run‑time evidence** | What can be checked statically vs what requires executing work and observing traces.                                                                               |
 | **View vs viewpoint discipline**             | Views are projections; viewpoints are accountable stances. Dropping viewpoint loses architecture accountability (ISO‑style discipline is already encoded in MVPK). |
 | **Local meaning vs cross‑context reuse**     | Boundaries should be local to a bounded context; reuse must be explicit (Bridges/CL), not hidden.                                                                  |
@@ -81,7 +89,7 @@ This pattern uses **stack** in the same pragmatic sense as other FPF stacks (e.g
 
 This is consistent with existing “stack discipline” uses in FPF (e.g., import layering over holonic strata).
 
-The **Signature Stack** (as used in this cluster) is the ordered family of **canonical claim layers** for a boundary package. Each layer is a stable “landing zone” for one quadrant of statements (L/A/D/E), with a canonical home in the boundary’s artefacts/sections:
+The **Signature Stack** (as used in this cluster) is the ordered family of **canonical claim layers** for a boundary package. Each layer is a stable canonical home for one quadrant of statements (L/A/D/E), with a named home in the boundary’s artefacts/sections:
 
 1. **Signature layer (L: laws/definitions).** `U.Signature` provides the stable declarative boundary: Vocabulary + Laws + Applicability, without runtime gate predicates.
 
@@ -89,7 +97,7 @@ The **Signature Stack** (as used in this cluster) is the ordered family of **can
 
    *Audit vs AssuranceLane (avoid duplication):* the Mechanism’s **Audit/Observability** block defines the required semantics of an observability/evidence interface (carrier classes and required fields, correlation keys, exposure interface). **Retention/access/enforcement are D‑claims** (agent duties) that reference the same carrier classes by ID. An MVPK **AssuranceLane** is a projection for auditors that explains how to read/check the evidence interface. This is a special case of CC‑A.6.6: the lane references the Mechanism section and the relevant claim IDs rather than restating semantics.
 
-3. **Norms & commitments layer (D: duties/commitments).** Deontic statements are anchored to accountable agents/roles (authors, implementers, operators, providers, reviewers). Canonical placement is a Norms/Commitments section in the boundary package (typically rendered inside `TechCard`), and those statements reference `L-*`/`A-*`/`E-*` by ID rather than duplicating predicates.
+3. **Norms & commitments layer (D: duties/commitments).** Deontic statements are anchored to accountable agents/roles (authors, implementers, operators, providers, assessors). Canonical placement is a Norms/Commitments section in the boundary package (typically rendered inside `TechCard`), and those statements reference `L-*`/`A-*`/`E-*` by ID rather than duplicating predicates.
 
 4. **Evidence bindings layer (E: effects/evidence).** `E-*` claims bind observed behaviour to **carrier classes** and measurement conditions. Canonical placement is an Evidence/Carriers section in the boundary package (typically rendered in `AssuranceLane`), and adjudication happens against carriers produced in work.
 
@@ -133,7 +141,7 @@ AssuranceLane:
       references: [A-AC-1, D-RET-1, Mechanism.AuditObservability]
 ```
 
-Default landing zones (quadrant → stack layer / section):
+Default canonical homes (quadrant → stack layer / section):
 
 * **L →** Signature.Laws (and, where appropriate, mechanism‑local semantic laws; never runtime gates)
 * **A →** Mechanism.AdmissibilityConditions
@@ -156,12 +164,12 @@ Default landing zones (quadrant → stack layer / section):
 
 A “four‑part list” is not strong enough, because real sentences reuse the same surface words (“must”, “guarantees”, “valid”) across different logical roles. A **2×2 matrix** is stronger because it arises from crossing **two independent distinctions**:
 
-* **Modality family:** truth‑conditional vs governance (permissions/obligations/commitments).
+* **Modality family:** truth‑conditional vs governance (authorizations/obligations/commitments).
 * **Adjudication substrate:** in‑description vs in‑work (whether satisfaction is decided from the description alone or requires observing executed work/carriers).
 
 Operational summary (quadrant → canonical home in the stack):
 * **L** (Laws & Definitions) → `Signature.Laws` (truth‑conditional semantics, in‑description)
-* **A** (Admissibility & Gates) → `Mechanism.AdmissibilityConditions` (runtime entry predicates / permission checks)
+* **A** (Admissibility & Gates) → `Mechanism.AdmissibilityConditions` (runtime entry predicates / authorization checks)
 * **D** (Deontics & Commitments) → Norms/Commitments (agent/role duties and commitments; may be audited via `E-*`)
 * **E** (Work‑Effects & Evidence) → Evidence/Carriers (work‑adjudicated effects tied to carriers and measurement conditions)
 
@@ -207,7 +215,7 @@ A disciplined stack therefore requires:
 
 * Every published face is a **Description** (A.7) that is *about* an Object and is carried by some Carrier; do not conflate these layers.
 * Each face must declare the viewpoint that justifies its projection (ISO/42010 discipline operationalised by MVPK).
-* Per **E.17** (“no new semantics”), a face **MUST NOT** introduce new semantic commitments beyond the boundary’s **canonical routed claim set** (the authoritative `L-* / A-* / D-* / E-*` statements at their canonical locations). A face **MAY** add informative explanation, examples, and cross‑references, provided they are clearly marked as informative. Any **normative** sentence on a face **MUST** cite the routed claim ID(s) it depends on (or be moved into the canonical claim set); paraphrase is allowed only as explicitly informative text.
+* Per **E.17** (“no new semantics”), a face **MUST NOT** introduce new semantic commitments beyond the boundary’s **canonical routed claim set** (the authoritative `L-* / A-* / D-* / E-*` statements at their canonical locations). A face **MAY** add informative explanation, examples, and cross‑references, provided they are clearly marked as informative. Any **normative** sentence on a face **MUST** cite the routed claim ID(s) it depends on (or be moved into the canonical claim set); paraphrase remains valid only as explicitly informative text.
 * Per **E.17 / L‑SURF** (face‑kind closure), a publication package that claims MVPK alignment **MUST NOT** mint additional MVPK face kinds (e.g., “EvidenceCard”, “NormsCard”) as if they were first‑class kinds; if you need local headings, keep them as sections within the canonical face kinds.
 
 #### A.6:4.4 - “Contract” unpacking: avoid assigning agency to epistemes
@@ -216,7 +224,7 @@ When practitioners say “the API contract”, they usually compress multiple di
 
 * **Promise content (promise content; `U.PromiseContent`, A.2.3):** what is promised to be made available to eligible consumers — **a promise, not execution** (`U.Work`).
 * **Utterance package (published descriptions + instituting act):** what is said/published and versioned (signature/mechanism + MVPK faces), plus the `U.SpeechAct <: U.Work` that published/approved it when provenance matters (A.2.9).
-* **Commitment (deontic binding; `U.Commitment`, A.2.8):** what an accountable role/agent is obligated/permitted/prohibited to do (often: to satisfy a promise content).
+* **Commitment (deontic binding; `U.Commitment`, A.2.8):** what an accountable role/agent is obligated, authorized, or constrained not to do (often: to satisfy a promise content).
 * **Work + Evidence (adjudication substrate; `U.Work` + carriers):** what actually happens and what carriers/traces can adjudicate whether commitments and operational guarantees were met.
 
 In A.6 terms:
@@ -313,9 +321,9 @@ A boundary description is evolvable iff its claims are separated across the sign
 
 * **Signature layer:** defines operations like `Evaluate(model, dataset) → Report` and truth‑conditional definitions of metrics (AUROC, calibration error) as Laws.
 
-* **Mechanism layer:** admissibility gate encodes when evaluation is permitted: dataset version must match declared license; measurement environment must meet constraints; seeds pinned.
+* **Mechanism layer:** admissibility gate encodes when evaluation is admissible: dataset version must match declared usage terms; measurement environment must meet constraints; seeds pinned.
 
-* **Deontics/commitments:** reviewers MUST use dataset vX.Y; authors SHALL publish MVPK faces and cite the measurement environment; an organisation commits to a review SLA (explicitly an agent commitment).
+* **Deontics/commitments:** assessors MUST use dataset vX.Y; authors SHALL publish MVPK faces and cite the measurement environment; an organisation commits to an assessment SLA (explicitly an agent commitment).
 
 * **Effects/evidence:** the produced report file, logs of evaluation runs, cryptographic hashes, and trace IDs are carriers. A.7 discipline prevents calling the report “the evaluation” (object) and prevents treating the file as the model.
 
@@ -375,13 +383,13 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Un
 A boundary is simultaneously:
 
 * a **mathematical object** (signature: operations over vocabulary, governed by laws),
-* an **engineering contract surface** (stable intent, evolvable implementations),
+* an **engineering interface description** (stable intent, evolvable implementations),
 * a **governance object** (commitments, responsibilities, deontics), and
 * an **operational phenomenon** (effects happen only by doing work and observing traces).
 
 If these are mixed, evolution becomes impossible to reason about: every change becomes “semantic”, and every claim becomes unfalsifiable.
 
-The stack creates a default **direction of dependence**: higher layers constrain lower layers, not vice versa. The matrix creates a default **routing** that is not reliant on word choice alone and therefore survives natural‑language variation (“must”, “guarantee”, “valid”, “allowed”).
+The stack creates a default **direction of dependence**: higher layers constrain lower layers, not vice versa. The matrix creates a default **routing** that is not reliant on word choice alone and therefore survives natural-language variation (“must”, “guarantee”, “valid”, “admissible”).
 
 ### A.6:11 - SoTA‑Echoing (post‑2015 practice alignment)
 
@@ -411,5 +419,38 @@ The stack creates a default **direction of dependence**: higher layers constrain
 * **Unpacks “contract” talk:** Reuses F.18’s promise/utterance/commitment separation to keep agency and responsibility explicit.
 * **Connects to signature engineering patterns:** A.6.5 (slot discipline) and A.6.6 (anchor/base discipline) can be read as “constructor/enabling” operations that help *build* well‑formed signatures by disciplined unpacking and grounding (they belong in the same stack discipline because they govern boundary construction).
 
-### A.6:End
+### A.6:12a - Quantum-like boundary-route note
 
+Use A.6 first for ordinary boundary, interface, API, protocol, contract, connector, publication-face, and observability-evidence wording. Quantum-like boundary prose is supported only after the boundary text still needs a probe/order/frame/export/state-reading distinction that ordinary boundary routing would otherwise erase.
+
+Action path:
+
+1. Identify the boundary sentence and name the boundary object in ordinary A.6 terms.
+2. Name endpoints, channel, and carrier separately; do not let one word such as "interface", "service", "contract", or "context" stand for all of them.
+3. Route the ordinary boundary content through A.6/A.6.B/F.9/A.15/C.16/C.25 as applicable.
+4. If the boundary text uses a coarsened representation to claim preserved action, intervention, manipulation, explanation, or cross-level structure, state the causal-abstraction or approximate-causal-abstraction mapping before retaining QL wording.
+5. Ask whether the boundary act is being used as a passive read or unjustified lossless-transfer reading while actually changing the represented state, export validity, or viability decision.
+6. If yes, route only that remaining burden through `C.26.1`; keep the ordinary boundary pattern active.
+7. If no, keep the text in the ordinary boundary/bridge/work/measurement/quality pattern and remove QL wording.
+
+Minimum boundary routing before a quantum-like boundary reading:
+
+
+| Field | What the author names |
+| --- | --- |
+| Boundary | Which interface, protocol, context crossing, publication face, service situation, or evidence boundary is being described |
+| Endpoints | Which systems, epistemes, roles, carriers, contexts, or faces stand on each side |
+| Channel or interaction | Message, meeting, metric, dashboard, API read, bridge/export, split/merge, orchestration, or other boundary act |
+| Claimed state reading | What represented state is claimed before and after the act, and whether the act is treated as passive read, action, export, or probe |
+| Evidence / carrier | Which carrier, trace, metric, report, observation, or work result supports the reading |
+| Export or loss | What is copied, transformed, no longer comparable, or not faithfully exportable |
+| Ordinary pattern tried | Which A.6 / F.9 / A.15 / C.16 / C.25 route already carries the baseline burden |
+
+Useful outputs:
+
+- a routed boundary claim set when ordinary A.6 is enough;
+- a Bridge Card when the issue is export/loss across contexts;
+- a C.26.1 probe-coupled boundary note only when the boundary act changes the represented state in a decision-relevant way;
+- a relation repair through `A.6.P` / `F.18` when coupling words become reusable relation candidates.
+
+### A.6:End

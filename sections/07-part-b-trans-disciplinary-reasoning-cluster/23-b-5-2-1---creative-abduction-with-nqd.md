@@ -8,9 +8,9 @@
 ### B.5.2.1:1 - **Problem Frame**
 * **Conceptual binding:** **B.5.2 Abductive Loop** (this pattern specifies the *how* for Steps 2–3).
 * **FPF pattern:** a domain‑neutral **Creativity‑CHR** (C‑cluster) that declares the **Characteristics** used here (see §2). (No change to Γ/LOG.) This binding also references **C.18 NQD-CAL** (operators Γ_nqd.*) and **C.19 E/E-LOG** (EmitterPolicy).
-* **Manager’s mental model (informative):** “We add measurable characteristics for *newness*, *spread*, and *fit*, then use a generator that explores widely and returns a **Pareto set** (not a single winner) of non‑dominated options.”
+* **Manager’s mental model (informative):** “We add measurable characteristics for *newness*, *spread*, and *fit*, then use a generator that explores widely and returns a **front over the declared Q components** together with retained exploration/archive evidence when the policy asks for it, not a single winner and not one bundled `{Q,N,D}` default.”
 * **Operational loops:** compatible with **B.4 Canonical Evolution Loop** (ideas generated here flow into Run→Observe→Refine→Deploy) and with **B.5 Canonical Reasoning Cycle** (ADI), preserving abductive primacy. 
-* **Agency note.** Decisions are taken by a **system in role**. **Contexts publish** measurement spaces and admissible policies as **semantic frames**; they do **not** enact choices.
+* **Decision-subject note.** Later choices are attributed to one declared `DecisionSubject` at explicit `DecisionSubjectGranularity`. **Contexts publish** measurement spaces and admissible policies as **semantic frames**; they do **not** enact choices.
 
 ### B.5.2.1:2 - Intent & Problem
 
@@ -29,12 +29,12 @@ All listed **Characteristics** are **context‑local** with explicit units/range
 
 > **Lexical discipline.** The items above are **Characteristics** in the sense of **A.17/A.18**; avoid reserved names such as “validity” or “operation.”
 > **Normalization note.** If a **QualityVector** has heterogeneous units, Contexts SHALL normalize or nondimensionalize each component before Pareto analysis (see CC‑B.5.2.1‑7).
-> **D vs I (normative).** **D = ΔDiversity_P** (marginal gain) and is eligible for the primary dominance test. **I** is _portfolio illumination_ (report/visual); it **SHALL NOT** be part of the primary dominance test and is usable **only** as an explicit tie-break per policy.
+> **D vs I (normative).** **D = ΔDiversity_P** (marginal gain) is measured for archive quality, tie-breaking, and policy-promoted dominance only. By default it is **not** in the primary `DominanceSet`. **I** is _portfolio illumination_ (report/visual); it **SHALL NOT** be part of the primary dominance test and is usable **only** as an explicit tie-break per policy.
 > **Measurement invariants.** Distances, grids, and transforms MUST be declared once per run, versioned, and referenced from provenance (§3, §5).
 
 ### B.5.2.1:4 - Solution — **Binding to Γ_nqd.generate (C.18)**
 
-**Method name (Plain/Unified Tech).** *NQD‑Generate* — a **U.Method** that, given (i) a **HypothesisSpace** and (ii) a **CharacteristicSpace** with a **CoverageGrid**, returns a *finite*, **non‑dominated** set of candidate hypotheses that maximize **Quality** (per‑component) while maintaining **Diversity** and encouraging **Novelty**.
+**Method name (Plain/Unified Tech).** *NQD‑Generate* — a **U.Method** that, given (i) a **HypothesisSpace** and (ii) a **CharacteristicSpace** with a **CoverageGrid**, returns a *finite* candidate package: a current **front over the declared `DominanceSet`** plus the retained archive/tie-break telemetry needed to keep diversity and novelty reviewable without making them default dominance dimensions.
 
 **Minimal signature.**
 
@@ -42,13 +42,13 @@ All listed **Characteristics** are **context‑local** with explicit units/range
  `HypothesisSpace`, `CharacteristicSpace`, `Seeds?`, `Budget (time/compute)`, `EmitterPolicy` (**E/E-LOG policy id**), `QualityMeasures (Q components)`, `NoveltyMetric`, `CoverageGrid/Granularity`, `CellCapacity K? (default=1)`, `EpsilonDominance ε? (default=0)`, `TieBreakPolicy? (S/I)`, `DedupThreshold?`, `Policy(TimeWindow)`, `DeterminismSeed?`
  
 * **Outputs:**
-  CandidateSet = {h_i: (desc_i, Q_i, N_i, D_i:=ΔDiversity_P(h_i | Pool), S_i, I_i, UseValue_i?), genealogy_i?, provenance_i (including **DHCMethodRef.edition** and **policyId** from E/E-LOG)} where `Q_i` is a vector and `provenance_i` captures generator settings and evaluation sources. If Use‑Value is present, include the objective id / acceptanceSpec, counterfactual method (if predicted), and model edition per C.17. Note: S and I are tie-breakers only unless promoted by explicit Context policy; Use-Value is informative for decision lenses and SHALL NOT enter the dominance set.
+  CandidateSet = {h_i: (desc_i, Q_i, N_i, D_i:=ΔDiversity_P(h_i | Pool), S_i, I_i, UseValue_i?), genealogy_i?, provenance_i (including **DHCMethodRef.edition** and **policyId** from E/E-LOG)} where `Q_i` is a vector and `provenance_i` captures generator settings and evaluation sources. If Use‑Value is present, include the objective id / acceptanceSpec, counterfactual method (if predicted), and model edition per C.17. Note: `N`, `D`, `S`, and `I` are archive, tie-break, telemetry, or policy-promoted signals by default; only the declared `DominanceSet` enters the current front. `Use-Value` is decision-side/supporting unless the current Context explicitly declares it inside the active `Q` tuple / `DominanceSet`; when it is only recorded as a side measure, keep it outside dominance.
 
 **Strategy (notation‑neutral).**
 
 1. **Seeding.** Initialize with seeds (known solutions, random draws, or prior L0 artifacts).
 2. **Iterated illumination.** Propose variations, evaluate **Q** (per‑component); maintain up to **K** elites per cell (or descriptor bucket); compute **N/D/S/I** on the fly; deduplicate by `DedupThreshold` in **CharacteristicSpace**.
-3. **Budget‑bounded loop.** Iterate until budget or coverage‑convergence; return the **(ε‑)Pareto front** over `{Q₁…Q_k, D, N, ΔDiversity_P}` (do **not** collapse to a single scalar). Illumination is excluded from the dominance set by default; Surprise and Illumination act only as tie-breakers unless a Context policy explicitly promotes them. **Use-Value** may appear as a **side note** for decision discussions **but MUST NOT be mixed into NQD dominance set**.   
+3. **Budget‑bounded loop.** Iterate until budget or coverage‑convergence; return the **(ε‑)Pareto front** over the declared `DominanceSet`. When the Context consumes the ordinary default, that means the declared `Q` components under `DefaultId.DominanceRegime`, not one fresh local doctrine. Keep `N`, `D=ΔDiversity_P`, `Surprise`, and `IlluminationSummary` as archive/tie-break/telemetry signals unless one Context policy explicitly promotes one of them into dominance and records the policy id. `Use-Value` enters dominance only when the current Context explicitly declares it inside the active `Q` tuple; otherwise it may appear as one decision-side/supporting side note.
 4. **Traceability.** Emit a **Design Rationale Record (DRR)**: grids/metrics versions, seed(s), policy and `TimeWindow`, which cells were filled, why items were dominated (list **Characteristics**), and how the final set was produced (including `ε`, `K`, and dedup). (Lightweight DRR is permitted per B.4 guidance.)
 5. **Algorithmic freedom (informative).** Implementations MAY use MAP‑Elites/illumination, novelty search with local competition, Bayesian/surrogate‑assisted search, or deterministic enumerations; ε‑dominance or knee‑point thinning MAY be used *after* recording the full front in provenance.
 
@@ -68,13 +68,13 @@ When the pattern is imported, replace or *supplement* freeform brainstorming wit
 
 The *selected* “prime hypothesis” proceeds exactly as in B.5.2: formalize it as a new `U.Episteme` at **L0**, then move to Deduction/Induction.
 
-Primary dominance test: compute the (ε-)Pareto front over {Q components}. By default, N (Novelty@context) and ΔDiversity_P act only as tie-breakers unless a policy explicitly promotes them into the dominance set; S (Surprise) and I (Illumination) are also tie-break/report-only by default; Use-Value remains non-dominant.
+Primary dominance test: compute the (ε-)Pareto front over the declared `DominanceSet`. When the Context consumes the ordinary default, that means the declared `Q` components. By default, `N (Novelty@context)` and `ΔDiversity_P` act only as tie-breakers unless a policy explicitly promotes them into the dominance set; `S (Surprise)` and `I (Illumination)` are also tie-break/report-only by default; `Use-Value` remains non-dominant unless the active `Q` tuple explicitly includes it.
 
-**Defaults (if policy is unspecified)**  
-> **Dominance:** `{Q components}`, with `ConstraintFit=pass` as **eligibility gate**.  
+**Ordinary fallback posture when no narrower local policy is specified**  
+> Do not mint one local dominance doctrine here. Consume the ordinary default `DefaultId.DominanceRegime` from `G.Core/G.5` together with the active `C.19` policy-side defaults; in ordinary Q-front use this means the declared `Q` components, with `ConstraintFit=pass` as **eligibility gate**.  
 > **Tie‑breakers:** `Novelty@context`, `ΔDiversity_P`, and `Surprise`; `IlluminationSummary (telemetry summary over Diversity_P)` remains report‑only unless a CAL policy promotes it.  
 > **Archive:** `K=1`, `ε=0`, deduplication in `CharacteristicSpace`.  
-> **Policy:** UCB‑class with moderate temperature; `explore_share ≈ 0.3–0.5`.  
+> **Policy family:** one uncertainty-aware explore policy family with one declared regime key; `UCB`-class with moderate temperature and `explore_share ≈ 0.3–0.5` is one didactic starter profile, not the semantic default family.  
 > **Provenance (minimum):** record `DescriptorMapRef.edition`, `DistanceDefRef.edition`, `EmitterPolicyRef`, `TimeWindow`, `Seeds`.
 
 “**Scope‑of‑claim annotation (descriptive).** Record the **BoundedContext** and **TimeWindow** that delimit where each **N/Q/D** measurement is intended to hold; this is for reasoning traceability only (no operational gates).”
@@ -82,20 +82,30 @@ Primary dominance test: compute the (ε-)Pareto front over {Q components}. By de
 Note — Status `Surprise` (scope and default role):
 By default in B.5.2.1, `Surprise` functions solely as a secondary tie‑break among candidates that are otherwise Pareto‑equivalent on the Context’s primary characteristics. A Context policy MAY elevate `Surprise` into the dominance set, allowing it to enter the CreativitySpace dominance alongside the primary characteristics.  If no Context policy is specified, the default tie‑break role applies.
 
+### B.5.2.1:5.1 - Creative-generation consistency with the declared dominance doctrine
+
+- When candidate generation speaks about fronts, use the declared `DominanceSet` for the front and keep archive retention separate when archive mode is active.
+- Do not write novelty or diversity terms into the front definition merely because they are important to archive quality or exploration value.
+- If one generator emits both a front-facing result and an archive-facing result, say which surface each result belongs to.
+- If one generator speaks about selected results, keep that language in the shortlist family rather than silently reusing front language.
+- Prefer wording like `front over the declared DominanceSet, plus the corresponding ExplorationArchive when archive mode is active` over wording that folds `Q`, novelty, and diversity into one default front by habit.
+- The local generation story should stay consistent with the declared `Front`, `Archive`, and `Shortlist` language so comparison stays intelligible and lawful.
+
 ### B.5.2.1:6 - Conformance Checklist (normative)
 
 **CC‑B.5.2.1‑1 (CHR discipline).** If a Context uses this pattern, it **SHALL** declare the Creativity‑CHR **Characteristics** with **A.18**‑style templates (type, unit/range, polarity). No new kernel terms are introduced.
 **CC‑B.5.2.1‑2 (Instrumented generation).** Step 2 of **B.5.2** **SHALL** either (a) invoke *NQD‑Generate* or (b) justify a Context‑specific generator of equivalent effect (diversity + quality + novelty with measurable **Characteristics**).
 **CC‑B.5.2.1‑3 (Diversity coupling).** When this pattern is used, **D MUST be ΔDiversity_P** computed against the current candidate Pool using the **C.17** definition of **Diversity_P** under the same Context, CharacteristicSpace, kernel, and TimeWindow.
 **CC‑B.5.2.1‑Eligibility**: Eligibility requires **(i)** `ConstraintFit = pass` for the candidate (Norm‑CAL must‑set), **then (ii)** **USM** coverage for the TargetSlice and **(iii)** an enactable **RSG** state for the performer; only then may calls to `Γ_nqd.*` occur.
-**CC‑B.5.2.1‑4 (Non‑dominated shortlist).** The *CandidateSet* **MUST** include the **Pareto front** over `{Q₁…Q_k, N, D}`; any pruned candidate **MUST** carry a DRR note (“dominated by … on {Characteristics}”).
+**CC‑B.5.2.1‑4 (Non‑dominated candidate front).** The *CandidateSet* **MUST** include the **Pareto front** over the declared `DominanceSet`. If the Context consumes the ordinary default, cite that consumed `DefaultId.DominanceRegime` rather than restating one local default doctrine. Any pruned candidate **MUST** carry a DRR note (“dominated by … on {Characteristics}”). `N`, `D=ΔDiversity_P`, `Surprise`, `IlluminationSummary`, and similar signals enter dominance only under an explicit recorded promotion policy; otherwise they remain archive, tie-break, or telemetry signals.
+**CC‑B.5.2.1‑4a (Archive companion when retained exploration is in scope).** If the active policy depends on retained exploration, stepping-stone retention, or open-ended search, the emitted candidate package **MUST** include the corresponding `ExplorationArchive` or cite one explicit policy id that says archive mode is disabled for that run.
 **CC‑B5.2.1‑5 (Abductive primacy preserved).** The pattern **MUST NOT** bypass the ADI ordering mandated by **B.5**: induction may not start before deduction; abductive L0 creation remains the start.
 **CC‑B.5.2.1‑6 (Normalization for Pareto).** When **Q** has multiple components with different units/scales, Contexts **SHALL** normalize or use declared utility‑free monotone transforms before dominance tests.
-**CC‑B.5.2.1‑7 (Use‑Value separation). ** If Use‑Value (C.17 §5.2) is recorded, it SHALL remain outside Assurance scores; it MAY inform decision lenses (Decsn‑CAL). Do not alter **R/G** semantics based on Use‑Value. (see **C.17 §5.2** for `Use-Value / ValueGain` definition)
+**CC‑B.5.2.1‑7 (Use‑Value separation). ** If Use‑Value (C.17 §5.2) is recorded outside the active `DominanceSet`, it SHALL remain outside Assurance scores and MAY inform decision lenses (Decsn‑CAL). If the current Context explicitly places `Use-Value` inside the active `Q` tuple, record that declaration together with its objective id / acceptanceSpec. Do not alter **R/G** semantics based on side-measure Use‑Value. (see **C.17 §5.2** for `Use-Value / ValueGain` definition)
 **CC‑B.5.2.1‑8 (Provenance).** Each `h_i` in the *CandidateSet* **MUST** reference its `provenance_i` sufficient to reproduce scores given the same `Policy(TimeWindow)`, score/metric versions, and `DeterminismSeed?`.
-**CC‑B.5.2.1‑9 (Secondary metrics).** **I (illumination)** and **S (surprise)** SHALL be used only for tie‑breaking/reporting unless explicitly promoted by policy; the **primary dominance test is over {Q components}** by default.
+**CC‑B.5.2.1‑9 (Secondary metrics).** **I (illumination)** and **S (surprise)** SHALL be used only for tie‑breaking/reporting unless explicitly promoted by policy; the **primary dominance test uses the declared `DominanceSet`**, which under the ordinary default means the context-declared `Q` components.
 **CC‑B.5.2.1‑10 (Cell capacity & ε).** If `K>1` or `ε>0` are used, the values MUST be declared and recorded in provenance; any thinning AFTER recording the front SHALL be documented in the DRR.
-**CC‑B.5.2.1‑11 (Dominance set).** By default the dominance set **SHALL be {Q components}**; **N (Novelty@context)** and **ΔDiversity_P** act as **tie‑breakers** unless explicitly promoted by **policy** (record the policy‑id in provenance).
+**CC‑B.5.2.1‑11 (Dominance set).** If the Context consumes the ordinary default `DefaultId.DominanceRegime`, the active dominance set **SHALL be the declared `Q` components** and provenance **SHALL** cite that consumed default plus the active `C.19` policy or lens id. **N (Novelty@context)** and **ΔDiversity_P** act as **tie‑breakers** unless explicitly promoted by **policy** (record the policy‑id in provenance).
 
 ### B.5.2.1:7 - Cognitive Load & Kernel Growth Budget
 
@@ -118,7 +128,7 @@ This pattern **only structures hypothesis exploration** (Abduction) and does not
 Contexts *may* monitor these—*not* as gates, but to improve practice:
 
 1. **Generativity (Gv).** Fraction of abductive cycles whose selected candidate reaches **L1/L2** within policy windows (time‑to‑L1; time‑to‑evidence). (Maps onto state transitions driven by **B.5**.)
-2. **Frontier‑Hit Rate (FHR).** % of cycles where the chosen candidate lies on the **Pareto front** of `{Q, N, D}` at selection time.
+2. **Frontier‑Hit Rate (FHR).** % of cycles where the chosen candidate lies on the **Pareto front** over the declared `DominanceSet` at selection time; track novelty/diversity contribution separately as archive, tie-break, or policy-promoted evidence.
 3. Coverage Gain (ΔI, report). Change in the *illumination summary* (coverage map/%filled cells) per cycle (how much of the descriptor space is now “lit”).
 4. **Exploration Cost Ratio (ECR).** Compute/time spent in NQD‑Generate divided by downstream Shape/Evidence cost saved (tracks whether the pattern pays for itself).
 5. **Refutation Learning Yield (RLY).** Among *refuted* candidates, % that added new coverage or raised SurpriseScore—turning “failures” into map‑building.
@@ -144,7 +154,7 @@ Contexts *may* monitor these—*not* as gates, but to improve practice:
 * **Scope (USM):** `h₁` scoped to Part B; `TimeWindow = edition 2025‑Q4` → *covers TargetSlice*. `h₃` crosses Contexts (tooling) → requires Bridge; the overhead is accounted for in **R** (not **F/G**). *(This pattern does not create or alter Bridges.)*
 * **Select prime:** `h₁` → formalize as L0 episteme (this pattern), move to *Shaping* (define checklist), then *Evidence* (track KPIs).
 
-### B.5.2.1:10 - Trade‑offs & mitigations
+### B.5.2.1:10a - Trade‑offs & mitigations
 
 * **Cognitive effort.** Interpreting Pareto sets and coverage maps adds thinking overhead. *Mitigation:* standard “NQD Card” + default grids; keep **Characteristics** small in number (≤ 7). *Manager shortcut:* pick 2–3 **Q** characteristics that reflect the anomaly, then run with defaults.
 * **Locality.** Novelty/diversity are **context‑local**; Cross‑context reuse requires **re‑measurement or an explicit mapping**. This pattern **does not define** Cross‑context operational controls.
@@ -159,4 +169,6 @@ Contexts *may* monitor these—*not* as gates, but to improve practice:
 * **Respects:** **A.11** (no kernel growth beyond CHR template import + Method).
   
 ### B.5.2.1:End
+
+---
 

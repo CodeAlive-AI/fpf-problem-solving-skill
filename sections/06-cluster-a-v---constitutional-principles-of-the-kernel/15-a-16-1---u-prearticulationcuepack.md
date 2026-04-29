@@ -1,10 +1,18 @@
 ## A.16.1 - `U.PreArticulationCuePack`
 
 > **Type:** Definitional (D)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Normative unless marked informative
 
 **Plain-name.** Pre-articulation cue pack.
+
+**Start here when.** Your first honest artefact is a preserve-worthy cue nucleus that should not yet be forced into a claim, route decision, method, or work record.
+
+**First output.** One `U.PreArticulationCuePack` with an explicit cue nucleus, preservation rationale, primary witness or anchor when one is load-bearing, and any early lane candidates or route pressure that is already visible.
+
+**Typical next owners.** `B.4.1` when route plurality or route authority becomes publishable, `B.5.2.0` for cue-derived abductive prompting, `A.6.P`, `A.6.A`, or `A.6.Q` once endpoint articulation threshold is actually met, and `A.16.2` when reopening or retirement becomes the truthful move.
+
+**Common wrong escalations / reroutes.** Do not publish a cue pack as a route decision, anomaly statement, evaluative ascription, action invitation, or work record; if route authority is already explicit, reroute to `B.4.1`; if endpoint semantics are already stable, reroute to the later owner; if backoff or retirement is the real burden, reroute to `A.16.2`.
 
 ### A.16.1:1 - Problem frame
 Early governed `U.Episteme` publications can be worth preserving before route publication, prompt publication, relation repair, evaluative repair, action-invitation repair, method work, or later endpoint ownership. `U.PreArticulationCuePack` therefore exists as the earliest durable seam publication form for such pre-threshold material.
@@ -274,4 +282,7 @@ A reviewer can test a cue pack with four questions:
 
 Migration from legacy signal language should therefore reconstruct not just a vague "signal", but the preserved cue nucleus, its primary witness or anchor, and any directional pressure that is already honestly visible.
 ### A.16.1:End
+
+
+---
 

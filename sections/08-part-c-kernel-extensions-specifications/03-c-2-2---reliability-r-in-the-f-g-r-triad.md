@@ -138,7 +138,7 @@ Claim scope may be *re-expressed* by an explicit translation, but must not be si
 **No implicit translation.** Translation between contexts never occurs implicitly: if the target context differs, an explicit Bridge (with declared CL and loss note) is mandatory; otherwise the reuse is non-conformant.
 **No implicit translation.** Cross‑Context reuse is conformant only via an explicit Bridge (declared CL + loss note) and an explicit `translate(Bridge,·)`; see **CC‑C.2.2‑4**.
 
-This invariant is why KD‑CAL guard macros and crossing surfaces can be simple: transport never silently *widens* a claim; it either (i) translates/narrows scope explicitly, and/or (ii) reduces warrant.
+This invariant is why KD‑CAL guard macros and crossing bundles can be simple: transport never silently *widens* a claim; it either (i) translates/narrows scope explicitly, and/or (ii) reduces warrant.
 
 `translate` is the USM operator (A.2.6). It may drop unmappable slices and may include refit-like normalization; **this is not a penalty**. Any further narrowing is an explicit Δ‑move (ΔG−) under A.2.6. Congruence loss (CL/CL^k/CL^plane) still routes to **R only**.
 
@@ -367,7 +367,7 @@ Normative.
 ### C.2.2:12 - Relations
 
 **Builds on:** C.2 (KD‑CAL overview), A.2.6 (Claim scope and operators), C.2.3 (Formality F), B.3 (Trust & Assurance calculus), B.1.3 (Γ‑fold patterns), B.3.3 (assurance lanes), B.3.4 (refresh/decay), C.3 (Kind‑CAL and kind bridges), F.9 (Bridges & CL), G.6 (EvidenceGraph PathId discipline), G.7 (Bridge calibration / admissibility thresholds).
-**Coordinates with:** C.16 (MM‑CHR evidence discipline), E.14 (working-model assertions), E.18/A.27 (crossing surfaces), C.25 (Q‑Bundle, for avoiding confusion between epistemic reliability and system reliability).
+**Coordinates with:** C.16 (MM‑CHR evidence discipline), E.14 (working-model assertions), E.18/A.27 (crossing bundles), C.25 (Q‑Bundle, for avoiding confusion between epistemic reliability and system reliability).
 **Used by:** C.3.3 (cross-kind reuse discipline), guard macro bundles in C.3.A and C.21, and any acceptance/gating logic that consumes `R_eff` while preserving `F` and `G`.
 **Clarifies:** The KD‑CAL meaning of reliability implicit in C.2:4.1 and the transport clauses referenced across B.3 and C.3.
 

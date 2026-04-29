@@ -2,9 +2,9 @@
 
 **Tag.** Architectural kit pattern (conceptual interop kit; notation‑independent; normative when used)
 **Stage.** *design‑time registration & alignment* → *run‑time ingestion, telemetry, refresh*
-**Primary hooks.** `G.Core` (Part‑G core invariants + trigger catalogue + default ownership), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.4` (CAL Pack), `G.5` (selector & registries), `G.6` (EvidenceGraph + PathId/PathSliceId), `G.7` (BridgeMatrix + CL/planes), `G.8` (SoS‑LOG bundle surfaces), `G.9` (parity harness), `G.10` (shipping), `G.11` (refresh orchestration), `G.12` (dashboards), `A.19` (CN‑Spec), `A.18` (CSLC legality), `G.0` (CG‑Spec), `F.17` (UTS), `E.5.2` (notation independence), `E.18/A.21/A.27` (GateCrossing/CrossingSurface checks).
+**Primary hooks.** `G.Core` (Part‑G core invariants + trigger catalogue + default ownership), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.4` (CAL Pack), `G.5` (selector & registries), `G.6` (EvidenceGraph + PathId/PathSliceId), `G.7` (BridgeMatrix + CL/planes), `G.8` (SoS‑LOG bundle surfaces), `G.9` (parity harness), `G.10` (shipping), `G.11` (refresh orchestration), `G.12` (dashboards), `A.19` (CN‑Spec), `A.18` (CSLC legality), `G.0` (CG‑Spec), `F.17` (UTS), `E.5.2` (notation independence), `E.18/A.21/A.27` (GateCrossing/CrossingBundle checks).
 
-**Status.** Draft (Phase‑2 universalized; `G.Core` linkage explicit)
+**Status.** Stable (Phase‑2 universalized; `G.Core` linkage explicit)
 **Normativity.** Normative when used (when any `G.13` surface is authored/emitted/consumed); informative otherwise.
 
 **Non‑duplication note (Phase‑2 universalization).** This pattern **does not restate** Part‑G‑wide invariants (contract‑surface single‑ownership, crossing visibility, penalty routing, set‑return discipline, typed RSCR triggers, default ownership, Δ‑discipline). Those are **single‑owned** in `G.Core` and referenced here via the linkage manifest and CC delegations (*cite, don’t duplicate*).
@@ -19,10 +19,10 @@ Without an explicit **conceptual interop kit**, authors tend to build one‑off 
 
 ### G.13:2 - Problem
 
-External sources publish **claim‑adjacent signals** (citations, concept graphs, “task/method” tags, replication links, dataset usage, disruption‑style indicators, benchmark metadata). These are useful for *generation* (palette building, portfolio exploration, candidate bridge discovery), not only for audit. But typical interop practices create predictable failure modes:
+External sources publish **claim‑adjacent signals** (citations, concept graphs, “task/method” tags, replication links, dataset usage, disruption‑style indicators, benchmark metadata). These are useful for *generation* (palette building, declared set-surface exploration, candidate bridge discovery), not only for audit. But typical interop practices create predictable failure modes:
 
 * **Contract‑surface leakage.** External numeric signals get treated as if they were lawful “scores” without explicit binding to CHR/CAL/CG surfaces.
-* **Implicit crossings.** Cross‑context and cross‑plane reuse happens through opaque transformations, without explicit exposure of the crossing surface pins needed downstream.
+* **Implicit crossings.** Cross‑context and cross‑plane reuse happens through opaque transformations, without explicit exposure of the crossing bundle pins needed downstream.
 * **Edition drift + refresh brittleness.** Snapshots change, schemas drift, indicator definitions get revised; without edition‑pinned interop surfaces and typed trigger causes, parity and dashboard stability degrade.
 * **Evidence disconnect.** “Derived features” are produced without explicit EvidenceGraph anchoring, making later refutation/repair expensive.
 * **Format‑as‑norm.** A convenient serialisation (KG export, JSON schema, RO‑Crate, etc.) becomes treated as the specification, undermining notation independence.
@@ -97,7 +97,7 @@ All objects below are **conceptual**. Any concrete serialisation belongs to Anne
   **Notes.**
 
   * This is **not** a shadow legality gate. It is an interop surface that **cites** owners (`A.19`, `G.0`, `G.3`, `G.4`) and publishes the required pins for downstream audit/refresh.
-  * When cross‑plane or cross‑context reuse is implicated, the alignment outputs must route via the existing crossing surfaces (see `G.Core` linkage).
+  * When cross‑plane or cross‑context reuse is implicated, the alignment outputs must route via the existing crossing bundles (see `G.Core` linkage).
   * Avoid “edition echo”: downstream artefacts cite `ExternalIndexRef.edition` and `ClaimMapperRef.edition` (and optional `PlaneMapRef.edition` / `ScaleEmbeddingSpecRef.edition`) rather than copying snapshot ids/editions as free fields.
 
 * **`SoSFeatureTransform@Context`** — declares how external signals become **CHR‑typed** SoS features (for DHC/dashboard usage and/or SoS‑LOG rule evaluation).
@@ -107,7 +107,7 @@ All objects below are **conceptual**. Any concrete serialisation belongs to Anne
 
   **Notes.**
 
-  * The derivation is a **typing + provenance** surface; it does not introduce new comparators or new contract surfaces.
+  * The derivation is a **typing + provenance** surface; it does not introduce new comparators or new governance cards or legality gates.
 
 * **`ScaleEmbeddingSpec@Context`** — optional constraints for representation/space alignment used inside an alignment recipe.
 
@@ -262,7 +262,7 @@ Register external environment/task taxonomies as index cards. Align them into ge
 5. **CC‑G13‑SetReturnPreserved.** *(delegated)* Interop **MUST NOT** introduce hidden scalarisation or forced single‑winner selection.
    → delegate to `CC‑GCORE‑SET‑1`.
 
-6. **CC‑G13‑DefaultClaimsAreCitationsOnly.** *(delegated)* Any mention of defaults (e.g., dominance regime, portfolio mode) is a **citation** to the single owner in `G.Core.DefaultOwnershipIndex`, not a local default statement.
+6. **CC‑G13‑DefaultClaimsAreCitationsOnly.** *(delegated)* Any mention of defaults (e.g., dominance regime, `PortfolioMode`) is a **citation** to the single owner in `G.Core.DefaultOwnershipIndex`, not a local default statement.
    → delegate to `CC‑GCORE‑DEF‑1`.
 
 7. **CC‑G13‑EditionDisciplineForInteropCards.** *(local)* `ExternalIndexCard@Context` and `ClaimMapperCard@Context` **MUST** expose edition pins (`ExternalIndexRef.edition`, `ClaimMapperRef.edition`). Any interop surface published to UTS **MUST** cite the relevant `…Ref.edition` values (incl. `PlaneMapRef.edition?`, `ScaleEmbeddingSpecRef.edition?`) when present.
@@ -294,13 +294,13 @@ Register external environment/task taxonomies as index cards. Align them into ge
 * **Anti‑pattern: Edition‑free dashboards.** Feeding externally derived rows into dashboards without pinned editions/policies.
   **Remedy:** Pin `ExternalIndexRef.edition` and `ClaimMapperRef.edition`; emit RSCR triggers on changes.
 
-* **Anti‑pattern: Interop asserts defaults.** “Interop decides dominance regime / portfolio mode.”
+* **Anti‑pattern: Interop asserts defaults.** “Interop decides dominance regime / `PortfolioMode`.”
   **Remedy:** Treat defaults as citations only (single owner in `G.Core.DefaultOwnershipIndex`).
 
 ### G.13:10 - Consequences
 
 * **Interop becomes refresh‑ready.** External source drift produces typed RSCR causes with scopes/payload pins; refresh becomes slice‑scoped rather than global guesswork.
-* **Generation‑first authoring becomes cheaper.** External sources become controlled inputs into SoTA synthesis and portfolio exploration, not ad‑hoc audit decoration.
+* **Generation‑first authoring becomes cheaper.** External sources become controlled inputs into SoTA synthesis and declared set-surface exploration, not ad‑hoc audit decoration.
 * **Conceptual hygiene improves.** Explicit cards + edition pins reduce semantic leakage from tools/formats/providers.
 * **Cross‑tradition reuse becomes auditable.** Plane/context reuse is surfaced as crossings rather than embedded assumptions.
 
@@ -320,7 +320,7 @@ FPF is a conceptual framework for disciplined creative work, not a data governan
 
 * **Systematic review process modernisation.** PRISMA‑2020‑class workflow records (post‑2015 practice) are valuable as evidence anchors and coverage telemetry; treat them as evidenced inputs (EvidenceGraph anchors + pinned editions/windows), not as legality gates.
 
-* **QD / Illumination and OEE portfolios.** Post‑2015 QD (MAP‑Elites successors, CMA‑ME line, differentiable QD toolkits) and OEE (POET‑class and related environment/method co‑evolution lines) often rely on external taxonomies and environment corpora. Interop should expose those as pinned external editions and keep coverage/regret as telemetry inputs—never as implicit dominance.
+* **QD / Illumination and OEE declared set surfaces.** Post‑2015 QD (MAP‑Elites successors, CMA‑ME line, differentiable QD toolkits) and OEE (POET‑class and related environment/method co‑evolution lines) often rely on external taxonomies and environment corpora. Interop should expose those as pinned external editions and keep coverage/regret as telemetry inputs—never as implicit dominance.
 
 ### G.13:13 - Relations
 

@@ -7,7 +7,15 @@
 **Primary output.** the **six‑card chassis** `M1…M6` published as a **complete, reusable CG‑Frame kit**, plus a versioned **kit manifest** `CGKitId` that binds the six cards as a single reusable unit (view‑friendly inventory + wiring surface)  
 **Primary hooks.** see **§12 Relations** (notably `G.Core`, `G.0`, `G.2`, `G.5`, `G.10`, `G.11`)  
 **Working‑model first (informative).** prefer working models and didactic micro‑examples; escalate to formal harnesses only when risk warrants (per E.8).  
-**Non‑duplication note.** universal Part‑G invariants (tri‑state guard, set‑return, penalties→`R_eff`‑only, crossing visibility, typed RSCR triggers, default ownership, P2W split, linkage discipline, shipping boundary) are **single‑owner in `G.Core`** and are **only cited** here.
+**Non‑duplication note.** universal Part‑G invariants (tri‑state guard, set-return, penalties→`R_eff`‑only, crossing visibility, typed RSCR triggers, default ownership, P2W split, linkage discipline, shipping boundary) are **single‑owner in `G.Core`** and are **only cited** here.
+
+**Start here when.** Your first deliverable is a reusable generator / selector / set-surface scaffold rather than a one-off plan, one-off comparison, or tool-specific workflow recipe.
+
+**First output.** The six-card chassis `M1…M6` published as a reusable `CGKitId`-bound kit with a scope anchor, local SoTA set, variant pool, shortlist surface, and refresh-ready wiring.
+
+**Typical next owners.** `G.2` for the local SoTA set, `G.5` for governed set-return selection, `G.10` for shipping surfaces, `G.11` for refresh wiring, and `F.17` when the result must also land on a human-facing UTS surface.
+
+**Common wrong escalations / reroutes.** If the real burden is only a one-off governed comparison or shortlist, reroute to `A.19` / `G.0` / `G.5`; if the real burden is project alignment rather than kit authoring, reroute to `A.15`; if tooling choice is being treated as the first artefact, hold the route here until the chassis and its bindings are explicit.
 
 ### G.1:1 - Problem frame
 
@@ -16,7 +24,7 @@ You are authoring a **CG‑Frame** and want a **repeatable scaffold** that conne
 * a declared **scope anchor** (`CG‑FrameContext`, `describedEntity`, contract surfaces),
 * a **local SoTA set** (scoped and provenance‑anchored),
 * a **variant pool** (candidate ideas / decision options / method variants),
-* a **shortlist** (a set/portfolio outcome, not a forced singleton),
+* a **shortlist** (a set-surface outcome, not a forced singleton),
 * **publication‑ready bindings** into Part‑F artefacts (UTS rows, Name Cards, RSCR tests, worked examples),
 * and **refresh readiness** (telemetry hooks + RSCR wiring) without redefining refresh or shipping.
 
@@ -155,7 +163,7 @@ M3 MUST remain method‑agnostic in its core definition: it is an inventory surf
 **Owns (kit surface):**
 
 * `ShortlistId` bound to `CG‑FrameContext`
-* a portfolio/set of selected candidates plus rationale/assurance surfaces (`SCRId` required; `DRRId` optional; cite `PathId/PathSliceId` when applicable)
+* a selected set of candidates plus rationale/assurance surfaces (`SCRId` required; `DRRId` optional; cite `PathId/PathSliceId` when applicable)
 * optional **front/archive metadata** needed for reproducibility when used: ε‑front parameters and/or archive snapshot hooks, with ownership routed via `G.5` / `C.18` / `C.19` (no local semantics in `G.1`)
 
 **Semantic owner:** selection/dispatch semantics are owned by `G.5`.
@@ -194,7 +202,7 @@ M6 prepares *refresh‑readiness metadata* and wiring stubs; it does not define 
 | M1     | CG‑Frame brief + `describedEntity` + `CNSpecRef/CGSpecRef` (edition‑pinned) | `CG‑FrameContext` + context pins                                                       |
 | M2     | discovery inputs + inclusion criteria *(via G.2)*                           | `SoTA_SetId` (+ provenance anchors; optional UTS stubs/rows)                           |
 | M3     | `SoTA_SetId` + local constraints + emitter policy pins *(via Extensions)*   | `VariantPoolId` (+ candidate trace/provenance; optional method payload via Extensions) |
-| M4     | `VariantPoolId` + acceptance/eligibility surfaces *(via G.4/G.5)*           | `ShortlistId` (portfolio/set) + rationale refs                                         |
+| M4     | `VariantPoolId` + acceptance/eligibility surfaces *(via G.4/G.5)*           | `ShortlistId` (selected set / set-surface) + rationale refs                                         |
 | M5     | `ShortlistId` + CHR/CAL/LOG bundle refs + UTS/Name refs                     | `CGFrameLibraryId` (library index; publish‑ready bindings)                             |
 | M6     | telemetry inputs + freshness/decay policy pins + RSCR tests                 | `CGKitId` + `RefreshReadinessCardId` (wiring to `G.11`; no orchestration ownership)    |
 
@@ -295,7 +303,7 @@ All method/discipline/generator specifics MUST be expressed as `GPatternExtensio
 
 **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent}`
 
-**Notes (wiring‑only):** this block enables portfolios of `{Environment, MethodFamily}` pairs without redefining generator semantics in `G.1`; it should cite/align with the selector‑side wiring in `G.5:Ext.OpenEndedFamilyWiring`.
+**Notes (wiring‑only):** this block enables declared sets of `{Environment, MethodFamily}` pairs without redefining generator semantics in `G.1`; it should cite/align with the selector‑side wiring in `G.5:Ext.OpenEndedFamilyWiring`.
 
 ##### GPatternExtension — `G.1:Ext.RefreshWiring`
 
@@ -340,7 +348,7 @@ All method/discipline/generator specifics MUST be expressed as `GPatternExtensio
 * **M1:** define `CG‑FrameContext` for “R&D decision options”, pin `CNSpecRef/CGSpecRef` editions, and publish `describedEntity` + `ReferencePlane`.
 * **M2:** build `SoTA_SetId` via `G.2` using a living‑review style funnel (e.g., PRISMA‑like trace + update cadence) and publish UTS stubs for reusable constructs.
 * **M3:** emit a `VariantPoolId` where each candidate cites its emitter policy and provenance; if QD is used, wire `DescriptorMapRef.edition` and `DistanceDefRef.edition` via `G.1:Ext.NQD`.
-* **M4:** produce `ShortlistId` as a portfolio set via `G.5`, with acceptance predicates sourced from `G.4`.
+* **M4:** produce `ShortlistId` as a selected-set / shortlist surface via `G.5`, with acceptance predicates sourced from `G.4`.
 * **M5:** publish a `CGFrameLibraryId` indexing the chosen CHR/CAL/LOG bundles and UTS rows; register RSCR tests.
 * **M6:** declare refresh readiness (telemetry pins + canonical RSCR trigger kinds) and wire to `G.11`.
 
@@ -357,7 +365,7 @@ All method/discipline/generator specifics MUST be expressed as `GPatternExtensio
 * **Recency bias:** “newest paper wins” (mitigate with explicit inclusion criteria and update cadence in `G.2` wiring).
 * **Novelty bias:** over‑rewarding novelty at the expense of legality/assurance (mitigate by making acceptance and assurance pins explicit and owned).
 * **Algorithmic favoritism:** baking a preferred generator into “the chassis” (mitigate by keeping M3 method‑agnostic and pushing methods into Extensions).
-* **Scalarisation bias:** collapsing portfolios/partial orders into a single score (mitigate by set‑return discipline routed via `G.Core`).
+* **Scalarisation bias:** collapsing selected sets or partial orders into a single score (mitigate by set‑return discipline routed via `G.Core`).
 * **Hidden‑crossing bias:** implicit reuse across contexts (mitigate by explicit crossing pins and Bridge‑only routing via `G.Core`).
 
 ### G.1:7 - Conformance Checklist (normative)
@@ -369,7 +377,7 @@ All method/discipline/generator specifics MUST be expressed as `GPatternExtensio
 | CC‑G1‑02          | `M1` MUST bind the kit to a single `CG‑FrameContext` and MUST expose the required pins from `GCorePinSetId.PartG.AuthoringMinimal` (including `describedEntity` and `CNSpecRef/CGSpecRef` editions). `M1` MUST also expose (or explicitly cite) a `ReferenceMap` surface and MUST NOT restate its semantics (cite `G.0:CG‑Spec.ReferenceMap`).  |
 | CC‑G1‑03          | `M2` MUST be wired to `G.2` (or explicitly cite the `G.2` owner artefacts) and MUST be reconstructible as a scoped set, including `SoTAPaletteDescriptionId` + `SoTA_SetId` (not free‑floating prose). Provenance MUST be anchored via `A.10` for the emitted set.  |
 | CC‑G1‑04          | `M3` MUST record emitter provenance as a wiring surface, including `EmitterPolicyRef` (policy‑id/ref), edition pins, and provenance anchors (via `A.10`). Any method‑specific fields MUST be introduced only via `GPatternExtension` blocks.   |
-| CC‑G1‑05          | `M4` MUST be wired to `G.5` (or explicitly cite `G.5` owner artefacts) and MUST preserve set/portfolio outcomes. `SCRId` MUST be present (or explicitly cited to the owner surface) so assurance is id‑addressable; `DRRId` SHOULD be present when a decision‑rationale artefact is minted.   |
+| CC‑G1‑05          | `M4` MUST be wired to `G.5` (or explicitly cite `G.5` owner artefacts) and MUST preserve set-surface outcomes. `SCRId` MUST be present (or explicitly cited to the owner surface) so assurance is id‑addressable; `DRRId` SHOULD be present when a decision‑rationale artefact is minted.   |
 | CC‑G1‑06          | `M5` MUST publish a library/index surface that points to referenced CHR/CAL/LOG artefacts and to any minted public ids (`UTSRowId[]`, Name Cards) via the canonical owners (Part F), without introducing shadow specs (delegation target: `CC‑GCORE‑CN‑CG‑1` via `CC‑G1‑CoreRef`).    |
 | CC‑G1‑07          | `M6` MUST publish `CGKitId` and expose refresh‑readiness wiring: canonical `RSCRTriggerKindId[]` applicability + minimal payload pins (including `SlotFillingsPlanItemRef[]` when applicable) and RSCR test ids; orchestration semantics MUST be cited to `G.11`.  |
 | CC‑G1‑08          | Any method/discipline/generator specificity in `G.1` MUST be located in `G.1:4.4` as `GPatternExtension` blocks with `PatternScopeId`, `GPatternExtensionKind`, and `SemanticOwnerPatternId` (or `owner TBD` only for Phase‑3 seeds). If QD/illumination or Open‑Ended generator families are declared, the corresponding extension blocks MUST be present and MUST carry the owner‑required edition/policy pins. |
@@ -384,7 +392,7 @@ All method/discipline/generator specifics MUST be expressed as `GPatternExtensio
   *Avoid:* keep M3 core method‑agnostic; add algorithm families only via Extensions with explicit owner patterns and edition pins.
 
 * **Anti‑pattern: “Shortlist = one winner.”**
-  *Avoid:* preserve set/portfolio returns; any singleton choice must be an explicit downstream decision rule (policy‑bound).
+  *Avoid:* preserve selected-set returns; any singleton choice must be an explicit downstream decision rule (policy‑bound).
 
 * **Anti‑pattern: “Refresh plan described as prose triggers.”**
   *Avoid:* record canonical `RSCRTriggerKindId` and payload pins; aliases only as labels and only if docked.

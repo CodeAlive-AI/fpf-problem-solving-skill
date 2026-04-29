@@ -140,7 +140,7 @@ Each named component is addressable via a stable **pack‑local identifier** (e.
 
 10. **`G.2j MethodFamilyCards`**
     Candidate method families with a shared signature and a plurality of implementations, each with validity regions, cost/complexity notes, and known failure modes.
-    When the pack targets downstream registry/dispatch, MethodFamily cards **SHOULD** include wiring stubs needed by `G.5` (eligibility predicate refs, assurance profile cues, and the pack ids that justify the family).
+    When the pack targets downstream registry/dispatch, MethodFamily cards **SHOULD** include the declared refs and pins `G.5` needs (eligibility predicate refs, assurance profile cues, and the pack ids that justify the family).
 
 11. **`G.2k GeneratorFamilyCards`** *(if applicable)*
     Candidate generator families for environment/task generation with declared validity regions and transfer hooks.
@@ -217,14 +217,14 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 
 #### G.2:4.5 - Extensions (pattern‑scoped; non‑core)
 
-`Extensions` are pattern‑scoped modules. They do not introduce Part‑G‑wide norms; they provide wiring/pins and cite semantic owners.
+`Extensions` are pattern‑scoped annexes. They do not introduce Part‑G‑wide norms; they declare the additional pins required when those semantics are active and cite the corresponding semantic owners.
 
 ###### G.2:4.5.1 - GPatternExtension: GammaEpistSynthesis
 
 **PatternScopeId:** `G.2:Ext.GammaEpistSynthesis`  
 **GPatternExtensionId:** `GammaEpistSynthesis`  
 **GPatternExtensionKind:** `GeneratorSpecific`  
-**SemanticOwnerPatternId:** `G.2` *(this pattern owns synthesis semantics; module exists for modularity + later extraction)*  
+**SemanticOwnerPatternId:** `G.2`  
 **Uses:** `{G.Core, B.3, F.9, G.6}` *(penalty routing + trust/decay cues + bridges/CL + evidence path citation when used)*  
 **⊑/⊑⁺:** `∅`  
 **RequiredPins/EditionPins/PolicyPins (minimum):**
@@ -235,18 +235,18 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 * `CL/CL^plane` + `Φ/Ψ/Φ_plane policy-ids` *(ids only; semantics routed via owners; penalties → `R_eff` only by delegation)*  
 * `PathId/PathSliceId?` *(only when citing via `G.6`)*
 
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingSurfaceEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EditionPinChange}`
+**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.ReferencePlaneEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EditionPinChange}`
 
 **Notes (normative intent; duplication‑avoidant):**
 * `Γ_epist^synth` is an auditable record that binds: (i) provenance union, (ii) explicit object alignment refs, (iii) assurance tuple refs (via existing owners) for each asserted fusion/substitution.  
-* This module **does not** redefine `Γ‑fold`, `Φ`, or penalty semantics; it only requires the pins/refs needed for replayability and auditability (see `G.Core` delegations).
+* This extension **does not** redefine `Γ‑fold`, `Φ`, or penalty semantics; it only requires the pins/refs needed for replayability and auditability (see `G.Core` delegations).
 
 ###### G.2:4.5.2 - GPatternExtension: HarvestProtocols
 
 **PatternScopeId:** `G.2:Ext.HarvestProtocols`
 **GPatternExtensionId:** `HarvestProtocols`
 **GPatternExtensionKind:** `Phase3Seed`
-**SemanticOwnerPatternId:** `owner TBD` *(Phase‑3 seed: harvesting protocol taxonomy not yet extracted into a dedicated owner)*
+**SemanticOwnerPatternId:** `G.2`
 **Uses:** `{B.3, A.10}` *(for freshness/decay and provenance anchors, when protocol requires them explicitly)*
 **⊑/⊑⁺:** `∅`
 **RequiredPins/EditionPins/PolicyPins (minimum):**
@@ -257,8 +257,8 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 
 **RSCRTriggerKindIds:** `{RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.FreshnessOrDecayEvent}`
 
-**Notes (wiring‑only):**
-* This module binds a declared protocol profile to the pack’s `FlowRecord` without redefining evidence semantics.
+**Notes (extension discipline):**
+* This extension binds a declared protocol profile to the pack’s `FlowRecord` without redefining evidence semantics.
 
 ###### G.2:4.5.3 - GPatternExtension: DHCAlignmentHooks
 
@@ -278,8 +278,8 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 
 **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.TelemetryDelta}`
 
-**Notes (wiring‑only):**
-* If DHC alignment summaries are emitted, this module ensures the DHC method edition and the cited evidence paths are visible.
+**Notes (extension discipline):**
+* If DHC alignment summaries are emitted, this extension ensures the DHC method edition and the cited evidence paths are visible.
 * Units/constraints (semantic owner: `C.21`) must be **pinned, not redefined** here (e.g., `bridges_per_100_DHC_SenseCells`, `CL_min = 2` for cross‑Context counting, and the “CL=3 implies free substitution” interpretation when used).
 
 ###### G.2:4.5.4 - GPatternExtension: NQDAnnex
@@ -300,8 +300,8 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 
 **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent}`
 
-**Notes (wiring‑only):**
-* This module only pins the required references for replayability; it does not redefine QD semantics, dominance, or acceptance rules.
+**Notes (extension discipline):**
+* This extension only pins the required references for replayability; it does not redefine QD semantics, dominance, or acceptance rules.
 
 ###### G.2:4.5.5 - GPatternExtension: InteropForms
 
@@ -320,8 +320,40 @@ A conforming `G.2` work product is built by iterating the following conceptual l
 
 **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TokenizationOrNameChange, RSCRTriggerKindId.EvidenceSurfaceEdit}`
 
-**Notes (wiring‑only):**
+**Notes (extension discipline):**
 * Interop affects only representation and citation routes; it must not introduce alternate legality gates or acceptance semantics.
+
+#### G.2:4.6 - Palette first
+
+- `SoTAPaletteDescription` is one plurality-preserving palette.
+- It is not by itself one `Front`, one `Archive`, or one `Shortlist`.
+- When that palette's members are traditions, `TraditionPalette` is the reader-facing tradition-only palette head over the same burden, not one second owner. For methods, hypotheses, or other members, keep `SoTAPaletteDescription` or `Palette + SubjectKind` explicit instead.
+- Traditions remain in the palette until a later surface declares comparison, retention, or choice semantics explicitly.
+- `TraditionFront` is one derived view over the declared palette under one declared `Q`; the `Q` basis stays pinned separately and the view does not rename `Tradition` or `SoTAPaletteDescription`.
+- `TraditionArchive` is one derived retention view over that same palette under one declared reachability or coverage rule; that rule stays pinned separately and the view does not turn the palette into one archive by default.
+- When one derived tradition view is shown, keep the base palette recoverable at the same time.
+- When comparison or retention needs stronger geometry or atlas language, treat that as support for the derivation rather than as the default meaning of the palette.
+- A reader should be able to say both `this is the palette` and `this is the derived tradition view currently being shown` without collapsing those two objects.
+
+#### G.2:4.7 - Atlas views stay optional neighboring support over one declared palette and declared set surfaces
+
+- `TraditionAtlasView` is one declared optional neighboring support view over one palette and any declared front, archive, or shortlist surfaces drawn from it, while the cited substrate-bearing line, the active source/set surface, and any cited `SearchSpaceRef`, `OutcomeSpaceRef`, or other declared space refs remain recoverable.
+- `TraditionAtlasView` is the `G.2` use-site specialization of `CrossSurfaceAtlasView`; keep the generic support-view contract in `A.19.SUPPORT-VIEW`.
+- It is not the default meaning of `Tradition` or `SoTAPaletteDescription`.
+- Stay palette-first when the harvest or synthesis question can already be judged from the declared palette together with ordinary front, archive, or shortlist surfaces.
+- Use `TraditionAtlasView` only when the reader must hold several declared derived views or support qualifiers together to see why one tradition grouping, omission risk, or comparison boundary matters.
+- A conforming `TraditionAtlasView` must keep the same atlas-support record that `A.19.SUPPORT-VIEW` requires by value: recoverable base palette, active source/set surface, `TypedSetViews` when several declared set views are held together, cited `SearchSpaceRef`, `OutcomeSpaceRef`, or other declared space refs, cited mappings such as `OutcomeMapRef`, cited qualifiers such as `SpaceMetricRef`, `TransitionSupportRef`, and `BridgeDistortionNote`, and one explicit reason why thinner `CrossSurfaceSupportView` is insufficient here.
+- It may help explain where one tradition, method family, or retained line sits relative to another, but it should not silently redefine the base palette or one derived front/archive view.
+- If one atlas view uses several typed views over the same source surface, keep the active set surface, any cited `SearchSpaceRef`, `OutcomeSpaceRef`, or other declared space ref, and any `BridgeDistortionNote` recoverable instead of letting `TraditionAtlasView` hide those choices.
+- Treat the atlas layer as optional neighboring support, not as ordinary palette-first core. Use `SpaceMetricRef` or `TransitionSupportRef` only when one declared comparison, reachability, transition, or level-shift claim actually depends on that formal support; otherwise leave them unstated.
+- Use `OutcomeMapRef` only when the atlas must show how one declared set surface maps into one outcome or effect surface; it does not turn the palette, front, archive, or shortlist into that outcome surface.
+- If one atlas reading would materially change the base source-to-outcome relation or distortion posture, reopen the substrate declaration instead of treating that change as one local `G.2` convenience.
+- If one thinner `CrossSurfaceSupportView` already keeps the question legible, prefer that thinner support form and leave atlas specialization unused.
+- `SearchSpaceRef` / `OutcomeSpaceRef` doctrine, transition-aware novelty, metric-transfer loss, and cross-level geometry belong to a heavier formal layer: keep them outside ordinary palette-first use unless the current comparison, reachability, transition, or multilevel claim explicitly needs them, and do not pull them in merely because one stronger comparative reading is mathematically available.
+- If no declared atlas view is needed, stay with the simpler palette-first and declared-derived-view surfaces.
+- Different atlas views may rely on different declared spaces, metrics, bridges, or transition supports; keep that plurality visible rather than forcing one geometry monoculture across every neighboring view.
+- If several mathematical traditions remain plausible, keep that plurality visible rather than pretending the atlas already fixes one final formalism.
+- If the burden is naming-side only, route that wording choice through `F.18` rather than letting atlas support language carry the naming decision by itself.
 
 ### G.2:5 - Archetypal Grounding (System / Episteme)
 
@@ -357,23 +389,25 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
 | **CC‑G2‑FlowRecord‑1**    | A conforming pack **MUST** include `G.2h FlowRecord` that traces identification → screening → eligibility → included at a minimum granularity sufficient to reproduce the corpus boundary.                                                                                                                                                         | Prevents “mystery inclusion” and supports refresh.                                  |
 | **CC‑G2‑ClaimSheets‑1**   | For each included `Tradition`, a conforming pack **MUST** include a `ClaimSheetId` that declares home context, `describedEntity`, evidence anchors, and freshness notes; it **MUST NOT** fuse cross‑`Tradition` claims by default.                                                                                                                 | Keeps plurality explicit and prevents hidden crossings.                             |
 | **CC‑G2‑Palette‑1**       | A conforming pack **MUST** export `SoTA_Set@CG‑Frame` and `SoTAPaletteDescription` as citable views (via `SoTA_SetId`, `SoTAPaletteDescriptionId`) and ensure both are reconstructible from pack components by id (no hidden extra structure).                                                                                                      | Prevents downstream scraping of prose; keeps “M2 output” explicit.                  |
+| **CC‑G2‑Palette‑2**       | If the pack exports one derived tradition view such as `TraditionFront` or `TraditionArchive`, it **MUST** keep `SoTAPaletteDescription` explicit as the default base palette, keep that derivation recoverable, and cite the declared `Q` or reachability/coverage rule that disciplined that view. Derived tradition views **MUST NOT** silently replace the palette's default meaning. | Keeps non-default tradition views recoverable without redefining palette-first semantics. |
+| **CC‑G2‑AtlasSupport‑1**  | If the pack exports `TraditionAtlasView`, it **MUST** satisfy the same atlas-support record required by `A.19.SUPPORT-VIEW`: keep the base palette and active source/set surface recoverable, name `TypedSetViews` when several declared set views are held together, cite any active `SearchSpaceRef`, `OutcomeSpaceRef`, or other declared space refs, cite any active `OutcomeMapRef`, `SpaceMetricRef`, `TransitionSupportRef`, or `BridgeDistortionNote` only when they do real explanatory work, state why thinner `CrossSurfaceSupportView` is insufficient here, and **MUST NOT** use atlas form when palette-first or thinner `CrossSurfaceSupportView` is sufficient. | Keeps the `G.2` specialization no weaker than the general atlas-support contract and preserves space-role recoverability. |
 | **CC‑G2‑describedEntityMap‑1** | A conforming pack **MUST** include `G.2g describedEntity Map`, mapping (at minimum) each load‑bearing claim family and each minted/evolved public id to `describedEntity := ⟨GroundingHolon, ReferencePlane⟩`, and citing the relevant `ClaimSheetId` and evidence anchors (A.10 and/or G.6 paths when used).                                         | Keeps plane/holon boundaries explicit and citable.                                  |
-| **CC‑G2‑Alignment‑1**     | Any cross‑`Tradition` consolidation **SHALL** be presented as either (i) disjoint parallel claims with explicit divergence, or (ii) an explicitly justified alignment proof; any reuse across `Tradition` boundaries **MUST** use explicit crossing surfaces per `CC‑GCORE‑CROSS‑1` (delegation).                                                  | Prevents silent semantic leakage.                                                   |
+| **CC‑G2‑Alignment‑1**     | Any cross‑`Tradition` consolidation **SHALL** be presented as either (i) disjoint parallel claims with explicit divergence, or (ii) an explicitly justified alignment proof; any reuse across `Tradition` boundaries **MUST** use explicit crossing bundles per `CC‑GCORE‑CROSS‑1` (delegation).                                                  | Prevents silent semantic leakage.                                                   |
 | **CC‑G2‑GammaSynth‑1**    | If the pack asserts cross‑source / cross‑`Tradition` **fusion/substitution** (not merely “parallel divergent claims”), it **MUST** emit `GammaEpistSynthId` records satisfying `G.2:Ext.GammaEpistSynthesis` (provenance union + explicit alignment refs + assurance tuple refs). If no fusion/substitution is asserted, the pack **SHALL** state so explicitly. | Restores the load‑bearing synthesis artefact (alias: `G.2‑F`) without shadow specs. |
 | **CC‑G2‑Inventory‑1**     | A conforming pack **MUST** include `G.2c OperatorAndObjectInventory`, sufficient for downstream CHR/CAL authoring to begin without re‑harvesting terms.                                                                                                                                                                                            | Ensures the pack is actionable.                                                     |
 | **CC‑G2‑Inventory‑2**     | `G.2c OperatorAndObjectInventory` entries **MUST** be treated as **stubs** for downstream authoring: they **MUST NOT** embed acceptance thresholds or claim legality decisions locally. If an entry is not a citation of an already‑owned CHR/CAL artefact, it **MUST** be explicitly marked as `stub` (typing/lawfulness `TBD`) and **MUST NOT** be used as if lawful. Legality/threshold semantics are routed to owner patterns (`G.3` for CHR, `G.4` for CAL) via explicit ids/pins. | Prevents “shadow CHR/CAL” and preserves lawfulness discipline without redefining it locally. |
 | **CC‑G2‑MeasurementLawful‑1** | If any inventory entry is presented as **non‑stub** (i.e., already lawful/typed), the pack **MUST** cite the owning lawfulness discipline (e.g., `A.17–A.19/C.16` as applicable) and provide the minimal evidence anchors needed to justify that typing claim.                                                                                      | Prevents “quietly lawful” measurement claims inside the harvester pack.             |
 | **CC‑G2‑MicroExamples‑1** | For every load‑bearing claim family, a conforming pack **MUST** include **at least two** worked micro‑examples on **heterogeneous substrates**, each with explicit A.10 carrier anchors, declared context + `describedEntity`, and an assurance tag (`TA`/`VA`/`LA`, where applicable).                                                          | Makes the synthesis teachable and anchor‑grounded.                                  |
 | **CC‑G2‑UTS‑1**           | If the pack proposes or evolves any public ids, it **MUST** publish UTS proposals *(Name Cards + MDS where applicable)* and cite them via `UTSRowId[]`, satisfying `CC‑GCORE‑UTS‑1` (delegation).                                                                                                                                               | Keeps naming and evolution disciplined.                                             |
-| **CC‑G2‑Families‑1**      | SoS indicators and candidate evaluation constructs **SHALL** be represented as **families/variants** (windows/constraints/assumptions) **with explicit Acceptance branch structure per variant** (branch ids/labels only), not as single unqualified scalars; any scalar summary **MAY** be included only as report‑only unless explicitly promoted by owner patterns. *(Set/portfolio discipline is delegated to `CC‑GCORE‑SET‑1`.)* | Prevents covert scalarization and keeps acceptance downstream-owned.                |
+| **CC‑G2‑Families‑1**      | SoS indicators and candidate evaluation constructs **SHALL** be represented as **families/variants** (windows/constraints/assumptions) **with explicit Acceptance branch structure per variant** (branch ids/labels only), not as single unqualified scalars; any scalar summary **MAY** be included only as report‑only unless explicitly promoted by owner patterns. *(Set-return discipline is delegated to `CC‑GCORE‑SET‑1`.)* | Prevents covert scalarization and keeps acceptance downstream-owned.                |
 | **CC‑G2‑HandOff‑1**       | A conforming pack **MUST** emit hand‑off manifests to `G.3`, `G.4`, and `G.5` that cite pack components by id and identify which families/operators are intended for downstream formalisation or registry entry.                                                                                                                                   | Prevents downstream re‑authoring and drift.                                         |
 | **CC‑G2‑CoverageGate‑1**  | The pack **MUST** declare `FamilyCoverageFloorK` and enforce it as a harvesting gate. It **MUST** either (i) specify `k` explicitly in an explicit `HarvestPolicyRef`, or (ii) use the pattern‑local default rule owned by `CC‑G2‑CoverageGate‑1`. *Default rule (owner‑local):* `k=3`. If the gate fails, the pack **MUST** (a) record the repair iteration in `FlowRecord`, and (b) broaden the search radius (new venues/corpora/contexts/traditions) rather than silently weakening the gate; if an exploration policy is used for this broadening, it **MUST** be pinned as a policy id/ref. | Makes “coverage floor” explicit and prevents “silent narrowing” under failure.      |
 | **CC‑G2‑DistanceGate‑1**  | If a diversity‑by‑distance gate is used, the pack **MUST** pin `DistanceDefRef.edition` and the declared threshold (δ), and treat edits as RSCR‑relevant per `CC‑GCORE‑TRIG‑*` (delegation). If no such gate is used, the pack **SHALL** explicitly state that it is not used.                                                                     | Avoids implicit distance defaults and improves refreshability.                      |
 | **CC‑G2‑RSCR‑1**          | A conforming pack **MUST** emit canonical `RSCRTriggerKindId` causes (not free text) for edits to evidence surfaces, name/tokenization surfaces (e.g., UTS proposals/aliases), crossings, planes, edition pins, and harvesting policy pins (`HarvestPolicyRef`), per `CC‑GCORE‑TRIG‑1…TRIG‑4` (delegation).                                                                                      | Keeps refresh reason codes stable and typed.                                        |
 | **CC‑G2‑Ext‑GammaEpist‑1** | If `G.2:Ext.GammaEpistSynthesis` is used (i.e., any fusion/substitution is asserted), the pack **SHALL** expose the required pins listed in that extension and **SHALL NOT** redefine `Γ‑fold/Φ/penalty` semantics locally (route via owners by delegation).                                                                                       | Keeps synthesis auditable without creating shadow specs.                            |
-| **CC‑G2‑Ext‑HarvestProtocols‑1** | If `G.2:Ext.HarvestProtocols` is used, the pack **SHALL** expose the required pins/criteria ids listed in that extension and **SHALL NOT** redefine evidence/quality semantics outside the declared protocol profile.                                                                                                                            | Keeps protocol variation modular and Phase‑3‑extractable.                           |
-| **CC‑G2‑Ext‑DHC‑1**       | If `G.2:Ext.DHCAlignmentHooks` is used, the pack **SHALL** (a) expose the required pins listed in that extension, including `DHCSenseCellId[]`, and (b) declare the unit/constraint pins required by `C.21` (e.g., `bridges_per_100_DHC_SenseCells`, `CL_min=2`) without redefining their semantics locally (semantic owner: `C.21`).                                                             | Keeps DHC wiring auditable and non‑shadowing.                                       |
-| **CC‑G2‑Ext‑NQD‑1**       | If `G.2:Ext.NQDAnnex` is used, the pack **SHALL** expose the required pins/editions/policies listed in that extension and **SHALL NOT** redefine QD semantics locally.                                                                                                                                                                             | Keeps QD/OEE wiring replayable and modular.                                         |
+| **CC‑G2‑Ext‑HarvestProtocols‑1** | If `G.2:Ext.HarvestProtocols` is used, the pack **SHALL** expose the required pins/criteria ids listed in that extension and **SHALL NOT** redefine evidence/quality semantics outside the declared protocol profile.                                                                                                                            | Keeps protocol variation explicit and separately citable.                           |
+| **CC‑G2‑Ext‑DHC‑1**       | If `G.2:Ext.DHCAlignmentHooks` is used, the pack **SHALL** (a) expose the required pins listed in that extension, including `DHCSenseCellId[]`, and (b) declare the unit/constraint pins required by `C.21` (e.g., `bridges_per_100_DHC_SenseCells`, `CL_min=2`) without redefining their semantics locally (semantic owner: `C.21`).                                                             | Keeps DHC extension pins auditable and non‑shadowing.                              |
+| **CC‑G2‑Ext‑NQD‑1**       | If `G.2:Ext.NQDAnnex` is used, the pack **SHALL** expose the required pins/editions/policies listed in that extension and **SHALL NOT** redefine QD semantics locally.                                                                                                                                                                             | Keeps QD/OEE extension pins replayable and non‑shadowing.                          |
 | **CC‑G2‑Ext‑Interop‑1**   | If `G.2:Ext.InteropForms` is used, the pack **SHALL** expose the required interop pins and **SHALL NOT** introduce alternative legality/acceptance semantics.                                                                                                                                                                                      | Prevents “foreign gate” shadowing.                                                  |
 
 ### G.2:8 - Common Anti‑Patterns and How to Avoid Them
@@ -393,6 +427,10 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
 * **AP‑G2‑4: Unanchored pedagogy.**
   **Avoid:** micro‑examples without carriers (they become folklore).
   **Do instead:** bind micro‑examples to A.10 anchors and declare `describedEntity`.
+
+* **AP‑G2‑5: Atlas by default.**
+  **Avoid:** writing as if every tradition comparison or NQD/OEE note needs `TraditionAtlasView`, or as if atlas wording renames the palette itself.
+  **Do instead:** keep the base palette and derived front/archive/shortlist explicit; use atlas form only when several declared views or support qualifiers must be held together, and prefer thinner `CrossSurfaceSupportView` when that is enough.
 
 ### G.2:9 - Consequences
 
@@ -427,7 +465,7 @@ This pattern aligns its *method options* (via Extensions and authoring practice)
    *Status:* **Adopt (as exemplar family)** — useful as an example of a SoS‑indicator family with strong dependence on windowing and corpus definition.
 
 6. **Quality‑Diversity and open‑ended generation** (e.g., Fontaine et al., 2020 for CMA‑ME; Wang et al., 2019 for POET)
-   *Status:* **Adopt (as optional annex wiring)** — when QD/OEE is relevant for the `CG‑Frame`, we include generator/method family cards and pin the required edition/policy surfaces via `G.2:Ext.NQDAnnex`, without embedding those semantics into the core pack.
+   *Status:* **Adopt (as optional annex with explicit pin declarations)** — when QD/OEE is relevant for the `CG‑Frame`, we include generator/method family cards and pin the required edition/policy surfaces via `G.2:Ext.NQDAnnex`, without embedding those semantics into the core pack.
 
 ### G.2:12 - Relations
 
@@ -438,6 +476,8 @@ This pattern aligns its *method options* (via Extensions and authoring practice)
   * `E.10` (lexical/ontological rules; strict distinction; kind‑suffix discipline)
   * `E.19` (conformance discipline)
   * `A.10` (provenance anchors / carriers)
+  * `A.19.SUPPORT-VIEW` (generic support-view / atlas discipline when `TraditionAtlasView` is used)
+  * `A.6.P` (space/view/publication precision restoration when palette/support claims collapse)
   * `B.3` (trust, freshness/decay as cited owners)
   * `F.9` (bridges and CL as cited owners)
   * `F.17` (UTS publication discipline; via delegation)
@@ -456,6 +496,9 @@ This pattern aligns its *method options* (via Extensions and authoring practice)
 * **Relates to:**
 
   * `G.13` (interop surfaces when external indices are used)
+  * `F.18` (naming-side support wording when the burden is label choice rather than synthesis geometry)
 
 ### G.2:End
+
+---
 
