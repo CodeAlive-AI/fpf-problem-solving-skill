@@ -174,6 +174,36 @@ class TestRuleC_MisplacedClusterNesting(SplitSpecTestCase):
         )
 
 
+class TestTOC_NoEmptyContentsHeader(SplitSpecTestCase):
+    def test_part_with_only_subclusters_omits_contents_header(self):
+        # When a Part has its own preamble and a nested cluster but no
+        # H2 children of its own, the auto-generated _index.md must not
+        # carry an empty `## Contents` header.
+        spec = (
+            "# Part X - Some Top-Level Part\n"
+            "\n"
+            "Some preamble describing Part X.\n"
+            "\n"
+            "# Cluster X.I - Subcluster\n"
+            "\n"
+            "## X.1 First Pattern\n"
+            "Body.\n"
+            "\n"
+            "# Part Z - Next Part\n"
+            "\n"
+            "## Z.1 Pattern\n"
+            "Body.\n"
+        )
+        out = self.run_splitter(spec)
+        part_x = next(d for d in list_dirs(out) if "part-x" in d)
+        idx = (out / part_x / "_index.md").read_text()
+        self.assertIn("## Sub-clusters", idx, "Sub-clusters block must be present")
+        self.assertNotIn(
+            "## Contents", idx,
+            "Empty Contents header must not appear when there are no H2 entries",
+        )
+
+
 class TestRegression_PreserveCurrentBehaviour(SplitSpecTestCase):
     def test_h1_with_content_does_not_merge_with_next_h1(self):
         # Title page (heading + author + date) followed by another H1 must

@@ -81,7 +81,8 @@ def build_toc(h2_entries: list[tuple], sub_clusters: list[tuple] | None = None) 
             toc_lines.append(
                 f"- [{clean_title}]({subdir}/_index.md) ({sub_count} sub-sections){summary}"
             )
-    toc_lines += ["", "## Contents", ""]
+    if h2_entries:
+        toc_lines += ["", "## Contents", ""]
     for filename, title, line_count, desc in h2_entries:
         clean_title = re.sub(r"[*`]", "", title.lstrip("# ").strip())
         summary = f" — {desc}" if desc else ""
